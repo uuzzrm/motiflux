@@ -1,0 +1,46 @@
+schema_version: "1.0"
+project:
+  name: "Basic Motiflux mark"
+  surface: "responsive web intro"
+  source: "mark.svg"
+theme_selection:
+  primary: "system-spatial"
+  modifiers:
+    - "quiet"
+  matched_tags:
+    - "product"
+    - "structured"
+  rejected_candidates:
+    - "sports-impact"
+motion_language:
+  traits:
+    - name: "clear"
+      tempo: "moderate"
+      overlap: "low"
+      direction: "outward"
+beats:
+  - id: orient
+    intent: "establish the mark center"
+    duration_weight: 1
+  - id: form
+    intent: "reveal identity-bearing actors"
+    duration_weight: 2
+  - id: resolve
+    intent: "settle into canonical mark"
+    duration_weight: 1
+dependencies:
+  - actor: "spark"
+    beat: "form"
+    starts_after: []
+    must_finish_before:
+      - "resolve"
+runtime:
+  duration_ms: 1200
+  reduced_motion: "static-canonical"
+  seed: 0
+  tempo: 1
+  controls:
+    - "play"
+    - "pause"
+    - "replay"
+    - "tempo"

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/theme-selection.schema.json",
+  "title": "Motiflux theme selection",
+  "type": "object",
+  "required": ["schema_version", "theme_selection"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "theme_selection": {
+      "type": "object",
+      "required": ["primary", "modifiers", "matched_tags", "rejected_candidates", "algorithm_stack"],
+      "properties": {
+        "primary": { "type": "string", "minLength": 1 },
+        "modifiers": { "type": "array", "maxItems": 2, "items": { "type": "string" } },
+        "matched_tags": { "type": "array", "items": { "type": "string" } },
+        "rejected_candidates": { "type": "array", "items": { "type": "string" } },
+        "public_reference_basis": { "type": "array", "items": { "type": "string" } },
+        "algorithm_stack": { "type": "array", "items": { "type": "string" } },
+        "scores": { "type": "object" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

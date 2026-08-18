@@ -5,77 +5,58 @@ description: "Motiflux V1 reconstructs raster brand marks as editable SVG scene 
 
 # Motiflux V1
 
-## Operating contract
+## AI execution contract
 
-Convert a raster mark into an editable vector scene and a responsive motion package.
+Act as a design-and-verification system. Convert a supplied mark and brand
+context into an editable vector scene, a motion plan, a responsive web package,
+and an evidence ledger. Optimize in this order: identity landmarks; contour and
+negative-space fidelity; editable scene structure and topology; motion
+legibility; responsive and accessible behavior; compact implementation.
 
-Optimize in this order:
+Use `MUST` for completion requirements, `SHOULD` for defaults, and `MAY` for
+optional behavior. If a MUST is not verified, return `candidate` and preserve
+the missing item in `not_run` or `unresolved`. Never turn missing evidence into
+a pass. Do not infer provenance or licensing from this file.
 
-1. identity-bearing landmarks;
-2. contour and negative-space fidelity;
-3. editable scene structure;
-4. motion legibility and brand character;
-5. responsive and accessible behavior;
-6. compact implementation.
+## Architecture map
 
-Use MUST for completion requirements, SHOULD for defaults, and MAY for optional behavior. If a MUST cannot be verified, return candidate, not_run, or blocked; do not claim completion.
+The skill is the orchestration module. Keep implementation complexity behind
+these narrow seams:
 
-Do not infer provenance from this file. Preserve truthful attribution and licensing separately when the project incorporates prior work.
+| Phase need | Stable seam | Output |
+| --- | --- | --- |
+| source observations | `tools/motiflux.py measure` | `source-analysis.json` |
+| theme selection | `tools/motiflux.py route` | `theme_selection` |
+| artifact contract | `tools/motiflux.py validate` | structured validity report |
+| semantic geometry | `tools/motiflux.py compare` | geometry evidence |
+| runtime telemetry | `tools/motiflux.py audit` | motion evidence |
+| web delivery | `tools/motiflux.py build` | dependency-free package |
 
-## Motiflux model
+Read only the direct resource needed for the current phase:
 
-Represent the job with four linked models:
+- `guides/motion-themes.md` — theme and algorithm routing;
+- `guides/algorithm-catalog.md` — reusable algorithm families and proof gates;
+- `guides/output-contract.md` — artifact names and status semantics;
+- `guides/runtime-contract.md` — browser hooks and safety behavior;
+- `schemas/*.schema.json` — machine-readable artifact contracts;
+- `tools/*.py` — executable adapters behind the seams.
 
-    constraint_graph:
-      landmarks: []
-      contours: []
-      negative_spaces: []
-      symmetry_axes: []
-      color_regions: []
+Run tools from the skill directory. Treat their JSON output as evidence, not as
+a replacement for design judgment. If an optional capability is unavailable,
+record the substitution or missing check; do not invent a result.
 
-    scene_graph:
-      actors: []
-      parent_links: []
-      occlusion_links: []
-      transform_anchors: []
-
-    motion_graph:
-      beats: []
-      dependencies: []
-      overlaps: []
-      interaction_states: []
-
-    evidence_ledger:
-      geometry_metrics: {}
-      motion_metrics: {}
-      accessibility: {}
-      unresolved: []
-
-Every design decision MUST trace to one of these models.
-
-## Preflight
-
-Resolve files relative to this SKILL.md. Inspect available tools/, guides/, templates/, and agents/openai.yaml.
-
-Use optional resources only when present:
-
-- guides/form-reconstruction.md for difficult geometry;
-- guides/motion-language.md for personality-to-motion mapping;
-- guides/crossing-topology.md for self-crossing marks;
-- guides/web-runtime.md for package hooks and responsive behavior;
-- guides/motion-themes.md for theme routing and algorithm recipes;
-- tools/measure_mark.py for source analysis;
-- tools/compare_shape.py for geometry metrics;
-- tools/audit_motion.py for temporal telemetry;
-- tools/build_web_package.py for delivery assembly.
-
-If a resource is absent, use an equivalent local capability and record the substitution. Do not invent a missing file or report its checks as run.
-
-If agents/openai.yaml exists, ensure its name, summary, and default prompt match Motiflux V1.
+Represent every task with four linked models: `constraint_graph` for landmarks,
+contours, gaps, symmetry, and color; `scene_graph` for actors, parents, layers,
+anchors, and occlusion; `motion_graph` for beats, dependencies, overlaps, and
+interaction states; and `evidence_ledger` for geometry, motion, accessibility,
+substitutions, `not_run`, and `unresolved`. Every design decision MUST trace to
+one model and remain inspectable in an artifact.
 
 ## Theme router
 
-When the request includes a style, industry, reference system, audience, or motion adjective, read guides/motion-themes.md before composing.
+When the request includes a style, industry, reference system, audience, or
+motion adjective, read `guides/motion-themes.md` and run the `route` seam before
+composing. Use `guides/algorithm-catalog.md` to justify the selected stack.
 
 Normalize the request into:
 
@@ -128,29 +109,21 @@ The selected theme changes choreography and implementation parameters, not the i
 
 ## Inputs and outputs
 
-Require one PNG, JPG, WebP, or screenshot source. Use supplied brand context. Ask only when ambiguity changes the intended surface or motion behavior.
+Require one PNG, JPG, WebP, or SVG source plus supplied brand context. Ask only
+when ambiguity changes the intended surface, identity, or motion behavior.
+Default surface: a responsive web intro that settles into a static mark.
 
-Default surface: responsive web intro that settles into a static mark.
+Follow `guides/output-contract.md` for the required filenames. Use these machine
+contracts when writing artifacts:
 
-Required package:
+- `schemas/source-analysis.schema.json`;
+- `schemas/motion-plan.schema.json`;
+- `schemas/telemetry.schema.json`;
+- `schemas/evidence.schema.json`.
 
-    mark.svg
-    motion.html
-    motion-plan.yaml
-    evidence.json
-    evidence/
-      source-analysis.json
-      geometry/
-      motion/
-      accessibility/
-
-Optional:
-
-    motion.css
-    motion.js
-    preview.webp
-
-Do not require a particular internal script or filename beyond this package contract.
+Validate generated artifacts with `tools/motiflux.py validate` before delivery.
+The generic builder is a delivery adapter; it does not prove brand-specific
+choreography, browser pixels, or accessibility-tree behavior.
 
 ## Workflow
 
@@ -163,6 +136,15 @@ Do not require a particular internal script or filename beyond this package cont
       -> DELIVER
 
 Do not compose motion before the reconstructed scene reaches geometry acceptance.
+
+The executable vertical slice is:
+
+```text
+measure -> model -> reconstruct -> compare -> compose -> build -> audit -> deliver
+```
+
+Use `measure` before modeling, `compare` before motion, `build` only after a
+contract-valid plan exists, and `audit` before claiming motion completion.
 
 ## OBSERVE
 
@@ -177,6 +159,16 @@ Measure and record:
 - mark, wordmark, letters, accents, and containers.
 
 Write evidence/source-analysis.json.
+
+For SVG input, run:
+
+```text
+tools/motiflux.py measure <source.svg> --output evidence/source-analysis.json
+```
+
+For PNG, JPG, or WebP, a header-only result is a candidate. Pixel decoding,
+color clustering, landmark detection, and topology analysis remain `not_run`
+unless an approved image adapter is available.
 
 ## MODEL
 
@@ -195,7 +187,8 @@ Identity constraints dominate cosmetic pixel agreement.
 
 ### Build scene graph
 
-Create one actor for each independently transformable or occluding part:
+Create one actor for each independently transformable or occluding part. Store
+the full actor record in `motion-plan.yaml`:
 
     id:
     role:
@@ -291,6 +284,15 @@ Stop when:
 
 If acceptance fails, deliver a candidate with unresolved constraints.
 
+Run semantic comparison before composing motion:
+
+```text
+tools/motiflux.py compare mark.svg canonical.svg --output evidence/geometry/semantic.json
+```
+
+Semantic vector equality does not imply raster contour or browser-pixel equality.
+Keep those proof types separate.
+
 ## COMPOSE
 
 ### Build named beats
@@ -368,20 +370,10 @@ Use a moving cursor accent only when it belongs to the brand language. It MUST N
 
 ### Web runtime
 
-The delivery MUST:
-
-- be dependency-free unless dependencies are approved;
-- expose window.__motifluxReady;
-- expose window.__motifluxControl.seek(ms);
-- expose window.__motifluxControl.finish();
-- render the canonical mark after finish;
-- support replay and current-playback tempo changes;
-- pause when the document is hidden;
-- show the canonical mark under reduced motion;
-- provide keyboard-accessible semantic controls;
-- avoid motion-triggered layout shift.
-
-Interactive studies are optional unless requested.
+Follow `guides/runtime-contract.md`. The delivery MUST be dependency-free unless
+dependencies are approved, expose the required readiness and control globals,
+render the canonical mark after finish, pause when hidden, respect reduced
+motion, provide keyboard-accessible controls, and avoid layout shift.
 
 ## INSTRUMENT
 
@@ -396,6 +388,13 @@ At each beat boundary and risk interval, collect:
     runtime_errors:
 
 Risk intervals include crossings, occluder changes, actor handoffs, spring extrema, viewport approaches, and loop seams.
+
+Build a dependency-free delivery adapter only after the motion plan validates:
+
+```text
+tools/motiflux.py validate motion-plan motion-plan.yaml
+tools/motiflux.py build mark.svg motion-plan.yaml <output-dir>
+```
 
 ## VALIDATE
 
@@ -440,7 +439,18 @@ Vector semantics are authoritative; pixel tolerance absorbs renderer noise.
 
 ### Accessibility and runtime
 
-Verify reduced motion, keyboard controls, visible focus, no console errors, no unapproved external requests, no layout shift, and correct replay and tempo behavior.
+Verify reduced motion, keyboard controls, visible focus, no console errors,
+unapproved external requests, layout shift, and incorrect replay or tempo
+behavior. Apply the browser/runtime contract from `guides/runtime-contract.md`.
+
+Audit structured telemetry with:
+
+```text
+tools/motiflux.py audit telemetry.json --duration-ms <duration>
+```
+
+An audit with missing canonical, browser, or accessibility evidence remains a
+candidate even when available progress samples are monotonic.
 
 ## DELIVER
 

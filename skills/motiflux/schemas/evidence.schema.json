@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/evidence.schema.json",
+  "title": "Motiflux evidence ledger",
+  "type": "object",
+  "required": ["schema_version", "status", "source", "constraint_summary", "geometry_metrics", "motion_metrics", "canonical_fingerprint", "accessibility", "substituted_tools", "not_run", "unresolved"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "status": { "enum": ["complete", "candidate"] },
+    "source": { "type": "object" },
+    "constraint_summary": { "type": "object" },
+    "geometry_metrics": { "type": "object" },
+    "motion_metrics": { "type": "object" },
+    "canonical_fingerprint": { "type": "object" },
+    "pixel_tolerance": { "type": "object" },
+    "accessibility": { "type": "object" },
+    "substituted_tools": { "type": "array", "items": { "type": "string" } },
+    "not_run": { "type": "array", "items": { "type": "string" } },
+    "unresolved": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

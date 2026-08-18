@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/source-analysis.schema.json",
+  "title": "Motiflux source analysis",
+  "type": "object",
+  "required": ["schema_version", "status", "source", "observations", "not_run", "unresolved"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "status": { "enum": ["complete", "candidate"] },
+    "source": {
+      "type": "object",
+      "required": ["path", "format"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "format": { "enum": ["svg", "png", "jpg", "jpeg", "webp", "unknown"] },
+        "width": { "type": ["number", "null"], "minimum": 0 },
+        "height": { "type": ["number", "null"], "minimum": 0 },
+        "color_mode": { "type": ["string", "null"] },
+        "has_alpha": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "observations": {
+      "type": "object",
+      "required": ["elements", "colors", "landmarks", "negative_spaces", "topology"],
+      "properties": {
+        "elements": { "type": "array", "items": { "type": "object" } },
+        "colors": { "type": "array", "items": { "type": "object" } },
+        "landmarks": { "type": "array", "items": { "type": "object" } },
+        "negative_spaces": { "type": "array", "items": { "type": "object" } },
+        "topology": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "capabilities": { "type": "array", "items": { "type": "string" } },
+    "not_run": { "type": "array", "items": { "type": "string" } },
+    "unresolved": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

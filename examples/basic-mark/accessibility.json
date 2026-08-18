@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "reduced_motion": "static-canonical",
+  "keyboard_controls": ["play", "pause", "replay", "tempo"],
+  "visible_focus": true,
+  "layout_shift": false,
+  "external_requests": []
+}

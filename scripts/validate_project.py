@@ -11,7 +11,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_ROOT = ROOT / "skills" / "motiflux"
-TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".py", ".gitignore"}
+TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".py", ".html", ".css", ".js", ".gitignore"}
+TOOL_NAMES = {
+    "motiflux_core.py",
+    "measure_mark.py",
+    "compare_shape.py",
+    "audit_motion.py",
+    "build_web_package.py",
+    "motiflux.py",
+    "validate_artifact.py",
+    "route_theme.py",
+    "validate_package.py",
+}
 
 
 def fail(message: str) -> None:
@@ -50,8 +61,20 @@ def validate_skill() -> tuple[str, str]:
     skill_path = SKILL_ROOT / "SKILL.md"
     guide_path = SKILL_ROOT / "guides" / "motion-themes.md"
     agent_path = SKILL_ROOT / "agents" / "openai.yaml"
-    for path in (skill_path, guide_path, agent_path):
+    schema_paths = sorted((SKILL_ROOT / "schemas").glob("*.schema.json"))
+    tool_paths = sorted((SKILL_ROOT / "tools").glob("*.py"))
+    for path in (skill_path, guide_path, agent_path, *schema_paths, *tool_paths):
         require_file(path)
+    if {path.name for path in tool_paths} != TOOL_NAMES:
+        fail("skill tools must contain exactly the declared adapter set")
+    if {path.name for path in schema_paths} != {
+        "source-analysis.schema.json",
+        "motion-plan.schema.json",
+        "telemetry.schema.json",
+        "evidence.schema.json",
+        "theme-selection.schema.json",
+    }:
+        fail("skill schemas must contain the declared artifact contracts")
 
     skill = skill_path.read_text(encoding="utf-8")
     guide = guide_path.read_text(encoding="utf-8")
@@ -80,6 +103,14 @@ def validate_skill() -> tuple[str, str]:
         "VALIDATE",
         "DELIVER",
         "semantic fingerprint",
+        "guides/output-contract.md",
+        "guides/runtime-contract.md",
+        "tools/motiflux.py",
+        "tools/motiflux.py measure",
+        "tools/motiflux.py compare",
+        "tools/motiflux.py audit",
+        "tools/motiflux.py build",
+        "tools/motiflux.py route",
     ):
         if required not in skill:
             fail(f"SKILL.md is missing required concept: {required}")
@@ -100,6 +131,51 @@ def validate_skill() -> tuple[str, str]:
         fail("skill UI default prompt must explicitly name $motiflux")
 
     return skill, guide
+
+
+def validate_showcase() -> None:
+    showcase = ROOT / "showcase"
+    required = (
+        showcase / "README.md",
+        showcase / "index.html",
+        showcase / "styles.css",
+        showcase / "app.js",
+        showcase / "themes.json",
+        showcase / "generate_showcase.py",
+        showcase / "assets" / "prysai-logo-white.jpg",
+        showcase / "assets" / "prysai-mark-crop.jpg",
+        showcase / "assets" / "prysai-mark-transparent.png",
+        showcase / "output" / "pdf" / "motiflux-theme-atlas.pdf",
+    )
+    for path in required:
+        require_file(path)
+    try:
+        showcase_data = json.loads((showcase / "themes.json").read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        fail(f"invalid showcase theme JSON: {error}")
+    themes = showcase_data.get("themes")
+    if not isinstance(themes, list) or len(themes) != 13:
+        fail("showcase must contain exactly 13 theme records")
+    theme_ids = [theme.get("id") for theme in themes if isinstance(theme, dict)]
+    if len(theme_ids) != 13 or len(set(theme_ids)) != 13:
+        fail("showcase theme ids must be present and unique")
+    index = (showcase / "index.html").read_text(encoding="utf-8")
+    if index.count('class="theme-card"') != 13:
+        fail("showcase HTML must contain exactly 13 theme cards")
+    if index.count("assets/prysai-mark-crop.jpg") != 13:
+        fail("showcase HTML must repeat the same source derivative in every card")
+    if index.count("assets/prysai-mark-transparent.png") != 13:
+        fail("showcase HTML must provide one output mark per theme card")
+    for required_marker in (
+        'data-action="play"',
+        'data-action="pause"',
+        'data-action="replay"',
+        'data-filter',
+        'prefers-reduced-motion',
+        'aria-label=',
+    ):
+        if required_marker not in index and required_marker not in (showcase / "styles.css").read_text(encoding="utf-8"):
+            fail(f"showcase is missing required interaction/accessibility marker: {required_marker}")
 
 
 def validate_content(skill: str, guide: str) -> None:
@@ -132,6 +208,7 @@ def main() -> int:
     try:
         validate_manifest()
         skill, guide = validate_skill()
+        validate_showcase()
         validate_content(skill, guide)
     except (OSError, UnicodeError, ValueError) as error:
         print(f"Motiflux validation failed: {error}")

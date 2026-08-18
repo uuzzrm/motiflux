@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "time_ms": 0,
+      "active_beat": "orient",
+      "actor_states": {},
+      "visible_bounds": {},
+      "progress_values": {"global": 0},
+      "runtime_errors": []
+    },
+    {
+      "time_ms": 600,
+      "active_beat": "form",
+      "actor_states": {},
+      "visible_bounds": {},
+      "progress_values": {"global": 0.5},
+      "runtime_errors": []
+    },
+    {
+      "time_ms": 1200,
+      "active_beat": "resolve",
+      "actor_states": {},
+      "visible_bounds": {},
+      "progress_values": {"global": 1},
+      "runtime_errors": []
+    }
+  ],
+  "risk_intervals": [
+    {"id": "resolve", "kind": "actor-handoff", "time_ms": 1200}
+  ],
+  "runtime_errors": [],
+  "final_scene_fingerprint": {}
+}

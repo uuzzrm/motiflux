@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/telemetry.schema.json",
+  "title": "Motiflux runtime telemetry",
+  "type": "object",
+  "required": ["schema_version", "samples", "risk_intervals", "runtime_errors"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["time_ms", "active_beat", "progress_values", "runtime_errors"],
+        "properties": {
+          "time_ms": { "type": "number", "minimum": 0 },
+          "active_beat": { "type": "string" },
+          "actor_states": { "type": "object" },
+          "visible_bounds": { "type": "object" },
+          "progress_values": { "type": "object" },
+          "changed_pixels_or_alpha_mass": { "type": ["number", "null"] },
+          "runtime_errors": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "risk_intervals": { "type": "array", "items": { "type": "object" } },
+    "runtime_errors": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
