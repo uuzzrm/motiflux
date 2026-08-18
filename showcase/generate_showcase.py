@@ -7,11 +7,12 @@ import argparse
 import html
 import json
 import math
+import random
 import textwrap
 from pathlib import Path
 from typing import Iterable
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 
 
 ROOT = Path(__file__).resolve().parent
@@ -20,8 +21,15 @@ OUTPUT = ROOT / "output"
 SOURCE = ASSETS / "prysai-logo-white.jpg"
 CROP_JPG = ASSETS / "prysai-mark-crop.jpg"
 MARK_PNG = ASSETS / "prysai-mark-transparent.png"
+ANIMATIONS = ASSETS / "animations"
 THEMES = ROOT / "themes.json"
 CATALOG = ROOT.parent / "skills" / "motiflux" / "catalog" / "themes.json"
+PROJECT_README = ROOT.parent / "README.md"
+GITHUB_GALLERY_START = "<!-- GITHUB_GALLERY:START -->"
+GITHUB_GALLERY_END = "<!-- GITHUB_GALLERY:END -->"
+ANIMATION_SIZE = (900, 302)
+ANIMATION_FRAME_COUNT = 28
+ANIMATION_FRAME_MS = 90
 
 EFFECT_VISUALS = {
     "grid": {"accent": "#8aa4ff", "background": "#101723"},
@@ -74,6 +82,7 @@ def load_data() -> dict:
             "name": profile["name"],
             "number": f"{index:02d}",
             "trigger": ", ".join(aliases[:6]),
+            "keywords": aliases,
             "tags": [profile["id"], effect, *controls[:1]],
             "public_analogue": profile.get("public_analogue", ""),
             "intent": profile.get("design_intent", ""),
@@ -86,6 +95,8 @@ def load_data() -> dict:
             "pattern": effect,
             "tempo": tempo,
             "duration_ms": duration,
+            "animation_file": f"assets/animations/prysai-{profile['id']}.gif",
+            "animation_poster": f"assets/animations/prysai-{profile['id']}-poster.png",
         })
     return {
         "schema_version": "1.0",
@@ -134,6 +145,225 @@ def derive_preview_assets() -> None:
     transparent.save(MARK_PNG, optimize=True)
 
 
+def _rgb(hex_color: str) -> tuple[int, int, int]:
+    value = hex_color.removeprefix("#")
+    return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+
+
+def _rgba(hex_color: str, alpha: int) -> tuple[int, int, int, int]:
+    return (*_rgb(hex_color), max(0, min(255, alpha)))
+
+
+def _clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
+    return min(high, max(low, value))
+
+
+def _smoothstep(value: float) -> float:
+    progress = _clamp(value)
+    return progress * progress * (3 - 2 * progress)
+
+
+def _contain(image: Image.Image, size: tuple[int, int]) -> Image.Image:
+    copy = image.copy()
+    copy.thumbnail(size, Image.Resampling.LANCZOS)
+    return copy
+
+
+def _center_position(canvas_size: tuple[int, int], image_size: tuple[int, int], offset: tuple[int, int] = (0, 0)) -> tuple[int, int]:
+    return (
+        (canvas_size[0] - image_size[0]) // 2 + offset[0],
+        (canvas_size[1] - image_size[1]) // 2 + offset[1],
+    )
+
+
+def _with_opacity(layer: Image.Image, opacity: float) -> Image.Image:
+    result = layer.convert("RGBA")
+    alpha = result.getchannel("A").point(lambda value: round(value * _clamp(opacity)))
+    result.putalpha(alpha)
+    return result
+
+
+def _sample_logo_targets(mark: Image.Image, size: tuple[int, int], count: int, seed: int) -> list[tuple[int, int]]:
+    target = _contain(mark, (int(size[0] * .68), int(size[1] * .76)))
+    left, top = _center_position(size, target.size)
+    mask = target.getchannel("A")
+    pixels = [
+        (left + x, top + y)
+        for y in range(target.height)
+        for x in range(target.width)
+        if mask.getpixel((x, y)) > 150
+    ]
+    if not pixels:
+        return []
+    rng = random.Random(seed)
+    if len(pixels) <= count:
+        return pixels
+    return rng.sample(pixels, count)
+
+
+def _starting_points(size: tuple[int, int], count: int, seed: int) -> list[tuple[int, int]]:
+    rng = random.Random(seed)
+    points: list[tuple[int, int]] = []
+    for index in range(count):
+        side = index % 4
+        if side == 0:
+            points.append((rng.randint(-20, size[0] // 5), rng.randint(0, size[1])))
+        elif side == 1:
+            points.append((rng.randint(size[0] * 4 // 5, size[0] + 20), rng.randint(0, size[1])))
+        elif side == 2:
+            points.append((rng.randint(0, size[0]), rng.randint(-20, size[1] // 5)))
+        else:
+            points.append((rng.randint(0, size[0]), rng.randint(size[1] * 4 // 5, size[1] + 20)))
+    return points
+
+
+def _draw_animation_effect(layer: Image.Image, theme: dict, progress: float, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int) -> None:
+    """Draw deterministic secondary motion around the unchanged source mark."""
+
+    width, height = layer.size
+    draw = ImageDraw.Draw(layer, "RGBA")
+    accent = theme["accent"]
+    effect = theme["pattern"]
+    p = _smoothstep(progress)
+    fade_in = int(255 * _clamp(progress * 1.7))
+    fade_out = int(255 * (1 - _clamp((progress - .62) / .38)))
+    effect_alpha = min(fade_in, max(32, fade_out))
+
+    if effect == "grid":
+        shift = int((1 - p) * 38)
+        for x in range(-40 + shift, width + 40, 28):
+            draw.line((x, 0, x, height), fill=_rgba(accent, max(22, effect_alpha // 2)), width=1)
+        for y in range(-40 + shift, height + 40, 28):
+            draw.line((0, y, width, y), fill=_rgba(accent, max(22, effect_alpha // 2)), width=1)
+    elif effect == "quiet":
+        glow = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+        glow_draw = ImageDraw.Draw(glow, "RGBA")
+        radius = int(min(width, height) * (.18 + p * .18))
+        glow_draw.ellipse((width // 2 - radius, height // 2 - radius, width // 2 + radius, height // 2 + radius), fill=_rgba(accent, max(18, effect_alpha // 2)))
+        layer.alpha_composite(glow.filter(ImageFilter.GaussianBlur(22)))
+    elif effect == "scan":
+        offset = int((1 - p) * height)
+        for y in range(-height + offset, height * 2, 14):
+            draw.line((0, y, width, y), fill=_rgba(accent, max(18, effect_alpha // 2)), width=1)
+    elif effect == "field":
+        for index, (start, target) in enumerate(zip(points, targets)):
+            travel = _smoothstep((progress - .04) / .72)
+            x = round(start[0] + (target[0] - start[0]) * travel)
+            y = round(start[1] + (target[1] - start[1]) * travel)
+            radius = 1 + (index % 3 == 0)
+            alpha = int(220 * (1 - _clamp((progress - .7) / .3)))
+            draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=_rgba(accent, max(24, alpha)))
+        ring = int(min(width, height) * (.18 + (1 - p) * .3))
+        draw.ellipse((width // 2 - ring, height // 2 - ring, width // 2 + ring, height // 2 + ring), outline=_rgba(accent, max(20, effect_alpha // 2)), width=1)
+        ring_2 = int(ring * .68)
+        draw.ellipse((width // 2 - ring_2, height // 2 - ring_2, width // 2 + ring_2, height // 2 + ring_2), outline=_rgba(accent, max(14, effect_alpha // 3)), width=1)
+    elif effect in {"ring", "orbit"}:
+        ring = int(min(width, height) * (.18 + p * .22))
+        draw.ellipse((width // 2 - ring, height // 2 - ring, width // 2 + ring, height // 2 + ring), outline=_rgba(accent, max(24, effect_alpha)), width=2)
+        ring_2 = int(ring * .64)
+        draw.ellipse((width // 2 - ring_2, height // 2 - ring_2, width // 2 + ring_2, height // 2 + ring_2), outline=_rgba(accent, max(16, effect_alpha // 2)), width=1)
+        angle = math.radians((progress * 360) - 90)
+        dot_x = width // 2 + int(math.cos(angle) * ring)
+        dot_y = height // 2 + int(math.sin(angle) * ring)
+        draw.ellipse((dot_x - 4, dot_y - 4, dot_x + 4, dot_y + 4), fill=_rgba(accent, max(28, effect_alpha)))
+    elif effect == "shield":
+        inset = int(min(width, height) * (.08 + (1 - p) * .08))
+        points_shape = [(width // 2, inset), (width - inset, int(height * .23)), (width - inset * 2, int(height * .74)), (width // 2, height - inset), (inset * 2, int(height * .74)), (inset, int(height * .23))]
+        draw.line(points_shape + [points_shape[0]], fill=_rgba(accent, max(24, effect_alpha)), width=2, joint="curve")
+    elif effect in {"burst", "speed"}:
+        for index in range(5):
+            y = int(height * (.24 + index * .13))
+            length = int(width * (.38 + p * .38))
+            x = int((1 - p) * -width * .24 + index * 10)
+            draw.line((x, y, x + length, y - int(height * .16)), fill=_rgba(accent, max(22, effect_alpha)), width=2)
+    elif effect == "track":
+        sweep = int((p * 1.7 - .35) * width)
+        draw.line((sweep, 0, sweep - width // 5, height), fill=_rgba(accent, max(34, effect_alpha)), width=max(2, width // 120))
+        draw.line((0, height // 2, width, height // 2), fill=_rgba(accent, max(20, effect_alpha // 2)), width=1)
+    elif effect == "curtain":
+        opening = int(width * (.12 + p * .38))
+        draw.rectangle((0, 0, width // 2 - opening, height), fill=(0, 0, 0, max(20, fade_out // 2)))
+        draw.rectangle((width // 2 + opening, 0, width, height), fill=(0, 0, 0, max(20, fade_out // 2)))
+        draw.line((width // 2 - opening, 0, width // 2 - opening, height), fill=_rgba(accent, max(18, effect_alpha)), width=1)
+        draw.line((width // 2 + opening, 0, width // 2 + opening, height), fill=_rgba(accent, max(18, effect_alpha)), width=1)
+    elif effect == "wave":
+        for row in range(4):
+            baseline = int(height * (.23 + row * .18))
+            wave = ImageDraw.Draw(layer, "RGBA")
+            coordinates = []
+            for x in range(-20, width + 20, 12):
+                y = baseline + int(math.sin(x / 54 + progress * 4 + row) * height * .07)
+                coordinates.append((x, y))
+            wave.line(coordinates, fill=_rgba(accent, max(20, effect_alpha // 2)), width=1)
+    elif effect == "plain":
+        draw.line((int(width * (p * 1.4 - .4)), 0, int(width * (p * 1.4 - .4)) + width // 4, height), fill=_rgba(accent, max(18, effect_alpha // 2)), width=2)
+
+
+def _render_animation_frame(theme: dict, progress: float, mark: Image.Image, source: Image.Image, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int) -> Image.Image:
+    """Render one source-to-animation frame for the portable GIF export."""
+
+    size = ANIMATION_SIZE
+    background = Image.new("RGB", size, _rgb(theme["background"]))
+    glow = Image.new("RGBA", size, (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow, "RGBA")
+    glow_draw.ellipse((size[0] * .18, -size[1] * .45, size[0] * .82, size[1] * 1.45), fill=_rgba(theme["accent"], 20))
+    background = Image.alpha_composite(background.convert("RGBA"), glow.filter(ImageFilter.GaussianBlur(42))).convert("RGB")
+
+    source_frame = _contain(source, (int(size[0] * .9), int(size[1] * .78)))
+    source_layer = Image.new("RGB", size, (0, 0, 0))
+    source_layer.paste(source_frame, _center_position(size, source_frame.size))
+    source_opacity = 1 - _smoothstep((progress - .04) / .22)
+    background = Image.blend(background, source_layer, _clamp(source_opacity))
+
+    effects = Image.new("RGBA", size, (0, 0, 0, 0))
+    _draw_animation_effect(effects, theme, progress, points, targets, seed)
+    background = Image.alpha_composite(background.convert("RGBA"), effects)
+
+    reveal = _smoothstep((progress - .1) / .64)
+    start_scale = {"quiet": .92, "curtain": .88, "speed": .7, "burst": .76}.get(theme["pattern"], .8)
+    overshoot = .04 * math.sin(min(progress, 1) * math.pi) if theme["pattern"] in {"burst", "speed"} else 0
+    mark_scale = start_scale + (1 - start_scale) * reveal + overshoot
+    mark_width = int(size[0] * .68 * mark_scale)
+    mark_height = max(1, int(mark.height * mark_width / mark.width))
+    mark_frame = mark.resize((mark_width, mark_height), Image.Resampling.LANCZOS)
+    start_x, start_y, start_rotate = {
+        "grid": (-30, 12, -4), "scan": (-24, 0, 0), "field": (-10, 16, -6),
+        "speed": (-38, 4, -8), "burst": (0, 0, -16), "wave": (12, 16, 6),
+        "orbit": (0, -10, 12), "curtain": (0, 0, 0),
+    }.get(theme["pattern"], (0, 8, 0))
+    offset = (int((1 - reveal) * start_x), int((1 - reveal) * start_y))
+    if start_rotate:
+        mark_frame = mark_frame.rotate((1 - reveal) * start_rotate, resample=Image.Resampling.BICUBIC, expand=True)
+    mark_frame = _with_opacity(mark_frame, .08 + reveal * .92)
+    mark_position = _center_position(size, mark_frame.size, offset)
+
+    mark_glow = Image.new("RGBA", size, (0, 0, 0, 0))
+    mark_glow.paste(_with_opacity(mark_frame, .32), mark_position, mark_frame)
+    background = Image.alpha_composite(background, mark_glow.filter(ImageFilter.GaussianBlur(14)))
+    background.alpha_composite(mark_frame, mark_position)
+    return background.convert("RGB")
+
+
+def build_animation_exports(data: dict) -> None:
+    """Export one portable animated render for every routed theme."""
+
+    ANIMATIONS.mkdir(parents=True, exist_ok=True)
+    mark = Image.open(MARK_PNG).convert("RGBA")
+    source = Image.open(CROP_JPG).convert("RGB")
+    for theme in data["themes"]:
+        seed = sum((index + 1) * ord(character) for index, character in enumerate(theme["id"]))
+        targets = _sample_logo_targets(mark, ANIMATION_SIZE, 110, seed)
+        starts = _starting_points(ANIMATION_SIZE, len(targets), seed + 17)
+        frames = [
+            _render_animation_frame(theme, index / (ANIMATION_FRAME_COUNT - 1), mark, source, starts, targets, seed)
+            for index in range(ANIMATION_FRAME_COUNT)
+        ]
+        gif_path = ANIMATIONS / Path(theme["animation_file"]).name
+        frames[0].save(gif_path, save_all=True, append_images=frames[1:], duration=ANIMATION_FRAME_MS, loop=0, optimize=True, disposal=2)
+        poster_path = ANIMATIONS / Path(theme["animation_poster"]).name
+        frames[-1].save(poster_path, format="PNG", optimize=True)
+
+
 def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
@@ -173,7 +403,7 @@ def theme_card(theme: dict) -> str:
         <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
       </div>
-      <span class="cell-foot">same image / animated result</span>
+      <a class="download-animation" href="{esc(theme["animation_file"])}" download>Open / download GIF output</a>
     </div>
   </div>
   <div class="card-copy">
@@ -227,6 +457,24 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
 .hero-side figure { margin: 0; border: 1px solid var(--line); background: #000; aspect-ratio: 1.2; overflow: hidden; }
 .hero-side figure img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
 .source-note { color: var(--muted); font-size: .67rem; line-height: 1.6; margin: 0; }
+.io-showcase { margin: 3.2rem 0 2.5rem; border: 1px solid var(--line); background: linear-gradient(130deg, rgba(156,140,255,.08), transparent 46%), var(--panel); padding: 1.35rem; }
+.io-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: end; border-bottom: 1px solid var(--line); padding-bottom: 1.2rem; }
+.io-heading .eyebrow { margin-bottom: .65rem; }
+.io-heading h2 { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(2rem, 4vw, 4rem); letter-spacing: -.07em; line-height: .95; }
+.io-heading p:not(.eyebrow) { max-width: 630px; margin: .8rem 0 0; color: #c8cac4; font: 1rem/1.55 Arial, Helvetica, sans-serif; }
+.io-badge { min-width: 145px; border-left: 1px solid var(--line); padding-left: 1rem; color: var(--muted); font-size: .61rem; line-height: 1.7; letter-spacing: .08em; }
+.io-badge strong { color: var(--accent); font-size: .9rem; }
+.io-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.55fr); gap: 1rem; align-items: center; padding: 1.2rem 0; }
+.io-frame { position: relative; min-width: 0; margin: 0; aspect-ratio: 2.62; overflow: hidden; border: 1px solid var(--line); background: #000; display: grid; place-items: center; }
+.io-frame img { width: 100%; height: 100%; object-fit: contain; }
+.io-output { background: #14122b; }
+.io-output img { object-fit: cover; }
+.io-arrow { color: var(--accent); font-size: 2rem; }
+.io-status { position: absolute; right: .8rem; bottom: .7rem; color: #e9e5ff; font-size: .6rem; letter-spacing: .08em; }
+.io-footer { display: flex; align-items: center; gap: 1rem; border-top: 1px solid var(--line); padding-top: .9rem; color: var(--muted); font-size: .63rem; line-height: 1.5; }
+.io-footer span { flex: 1; }
+.io-footer a, .download-animation { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); }
+.io-footer a:hover, .io-footer a:focus-visible, .download-animation:hover, .download-animation:focus-visible { border-color: var(--accent); }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .stat { padding: 1rem 0; border-right: 1px solid var(--line); }
 .stat:last-child { border-right: 0; padding-left: 1rem; }
@@ -322,7 +570,7 @@ body[data-motion="paused"] .theme-card *, body[data-motion="reduced"] .theme-car
 body[data-motion="reduced"] .theme-card * { animation: none !important; }
 body[data-motion="reduced"] .output-mark { opacity: 1; filter: none; transform: none; }
 @media (max-width: 1050px) { .theme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero { gap: 2rem; } }
-@media (max-width: 720px) { .shell { width: min(100% - 28px, 640px); } .topbar { font-size: .62rem; } .hero { grid-template-columns: 1fr; padding-top: 4rem; } .hero-side { border-left: 0; padding-left: 0; grid-template-columns: 1fr 1fr; align-items: end; } .route-brief { grid-template-columns: 1fr; } .route-cell { border-right: 0; border-bottom: 1px solid var(--line); } .route-cell:last-child { border-bottom: 0; } .theme-grid { grid-template-columns: 1fr; } .footer { display: block; } .footer p + p { margin-top: 1rem; } }
+@media (max-width: 720px) { .shell { width: min(100% - 28px, 640px); } .topbar { font-size: .62rem; } .hero { grid-template-columns: 1fr; padding-top: 4rem; } .hero-side { border-left: 0; padding-left: 0; grid-template-columns: 1fr 1fr; align-items: end; } .io-heading { display: block; } .io-badge { border-left: 0; border-top: 1px solid var(--line); margin-top: 1rem; padding: .8rem 0 0; } .io-flow { grid-template-columns: 1fr; } .io-arrow { transform: rotate(90deg); justify-self: center; } .io-footer { display: block; } .io-footer a { display: inline-block; margin: .6rem .8rem 0 0; } .route-brief { grid-template-columns: 1fr; } .route-cell { border-right: 0; border-bottom: 1px solid var(--line); } .route-cell:last-child { border-bottom: 0; } .theme-grid { grid-template-columns: 1fr; } .footer { display: block; } .footer p + p { margin-top: 1rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .theme-card * { animation: none !important; } .output-mark { opacity: 1; filter: none; transform: none; } }
 '''
 
@@ -361,6 +609,7 @@ MOTION_CSS = r'''
 .pattern-plain .motion-effect-a { background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 24%, transparent), transparent); opacity: calc(var(--motion-progress) * .55); transform: scale(calc(.7 + var(--motion-progress) * .3)); }
 .motion-controls { display: flex; align-items: center; gap: .3rem; padding: .45rem .55rem .55rem; background: color-mix(in srgb, #000 20%, transparent); }
 .motion-controls button { padding: .3rem .42rem; font-size: .55rem; }
+.download-animation { display: block; padding: .45rem .55rem .6rem; background: color-mix(in srgb, #000 20%, transparent); font-size: .57rem; }
 .motion-timeline { flex: 1; min-width: 26px; height: 2px; background: color-mix(in srgb, var(--accent) 22%, transparent); overflow: hidden; }
 .motion-timeline span { display: block; width: 0; height: 100%; background: var(--accent); transition: width .08s linear; }
 .motion-time { color: rgba(242,241,233,.65); font-size: .52rem; min-width: 2.1rem; text-align: right; }
@@ -504,7 +753,7 @@ def build_html(data: dict) -> None:
         <div>
           <p class="eyebrow">Brand motion routing / comparative study</p>
           <h1 id="page-title">One image.<br>Thirteen animations.</h1>
-          <p class="hero-copy">The source stays fixed. The animation changes. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-motion studies, then explains the algorithm family behind each result.</p>
+          <p class="hero-copy">The source stays fixed. The output moves. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-motion results. Algorithm families remain available as explanation, not as the thing being displayed.</p>
           <div class="stats" aria-label="Showcase summary">
             <div class="stat"><strong>13</strong><span>routable themes</span></div>
             <div class="stat"><strong>1</strong><span>identity source</span></div>
@@ -516,20 +765,36 @@ def build_html(data: dict) -> None:
           <p class="source-note">INPUT ASSET<br>{source_label}<br>Display derivatives remove the black surround for legibility only; the logo geometry is unchanged.</p>
         </aside>
       </section>
+      <section class="io-showcase" aria-labelledby="io-title">
+        <div class="io-heading">
+          <div>
+            <p class="eyebrow">Actual rendered output / AI-field route</p>
+            <h2 id="io-title">From image to animation.</h2>
+            <p>Give the skill one logo image and a request such as “make an AI company logo animation.” Motiflux routes it to AI-field, keeps the source mark intact, and returns a portable animated output.</p>
+          </div>
+          <div class="io-badge">INPUT → OUTPUT<br><strong>JPG → GIF</strong></div>
+        </div>
+        <div class="io-flow">
+          <figure class="io-frame io-source"><span class="cell-label">INPUT / SUPPLIED IMAGE</span><img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo image"></figure>
+          <div class="io-arrow" aria-hidden="true">→</div>
+          <figure class="io-frame io-output"><span class="cell-label">OUTPUT / REAL ANIMATION</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo animated through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
+        </div>
+        <div class="io-footer"><span>Same identity source / secondary choreography changes / canonical logo remains readable</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
+      </section>
       <section class="route-brief" aria-labelledby="route-title">
         <div class="route-cell"><span id="route-title" class="route-label">Example request</span><p class="route-value">“I want to make a logo animation for my artificial-intelligence company.”</p></div>
         <div class="route-cell"><span class="route-label">AI-field animation</span><p class="route-value"><strong>AI-field</strong><br>the supplied image becomes a signal-convergence reveal</p></div>
         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Source image → reveal → transformation → stable logo. Play, pause, or replay each card.</p></div>
       </section>
-      <section aria-labelledby="grid-title">
+      <section id="theme-atlas" aria-labelledby="grid-title">
         <div class="controls">
-          <div><div id="grid-title" class="controls-copy">Image → animation comparison grid</div><div data-filter-status class="controls-copy">13 of 13 animations shown</div></div>
+          <div><div id="grid-title" class="controls-copy">Theme animation atlas / algorithm notes are secondary</div><div data-filter-status class="controls-copy">13 of 13 animations shown</div></div>
           <div class="controls-actions"><input class="filter" data-filter type="search" placeholder="Filter by theme or keyword" aria-label="Filter themes"><button type="button" data-action="play">Play all</button><button type="button" data-action="pause">Pause</button><button type="button" data-action="replay">Replay</button><span class="route-state" data-motion-label>RUNNING</span></div>
         </div>
         <div class="theme-grid">{theme_markup}</div>
       </section>
     </main>
-    <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo motion: the source image stays recognizable while the selected theme changes the reveal choreography.</p><p>The PDF is a static storyboard of the playable HTML animations. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
+    <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo motion: the source image stays recognizable while the selected theme changes the reveal choreography.</p><p>The HTML includes portable GIF outputs plus interactive players. The PDF is a static storyboard of the same image-to-animation sequences. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
   </div>
   <script src="app.js"></script>
 </body>
@@ -806,6 +1071,11 @@ redraw or rename the Prysai identity.
 ## Files
 
 - `index.html` - dependency-free interactive grid with filtering and motion controls.
+- `assets/animations/prysai-ai-field.gif` - the primary image-to-animation output
+  for the example request; every theme also has a portable GIF export.
+- The repository root `README.md` contains a generated GitHub-native gallery:
+  every row places the same static source image beside its theme GIF and trigger
+  keywords, so the image-to-animation result is visible without opening HTML.
 - `themes.json` - derived display snapshot generated from the canonical catalog;
   it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
@@ -820,12 +1090,53 @@ From the repository root:
 python showcase\\generate_showcase.py
 ```
 
-The PDF includes the route example `artificial-intelligence` -> `AI-field` and
-records the four key frames of each playable animation. Public design systems
-are principle analogues only; this material does not claim private vendor
-algorithms.
+The HTML presents the actual image-to-animation result first. The PDF includes
+the route example `artificial-intelligence` -> `AI-field` and records four key
+frames of each playable animation. Public design systems are principle analogues
+only; this material does not claim private vendor algorithms.
 '''
     (ROOT / "README.md").write_text(text, encoding="utf-8")
+
+
+def github_gallery(data: dict) -> str:
+    """Build the GitHub-rendered source-image to GIF comparison table."""
+
+    rows = [
+        "## GitHub-native image → animation gallery",
+        "",
+        "The same supplied Prysai source is shown on the left of every row. The right side is the actual portable GIF generated for that routed theme; keywords are the triggers an AI agent can use to select the route.",
+        "",
+        "| # | Static source | Animated result | Theme / trigger keywords |",
+        "| --- | --- | --- | --- |",
+    ]
+    for theme in data["themes"]:
+        theme_id = esc(theme["id"])
+        name = esc(theme["name"])
+        image_path = "showcase/assets/prysai-mark-crop.jpg"
+        animation_path = f"showcase/{theme['animation_file']}"
+        keywords = "<br>".join(f"<code>{esc(keyword)}</code>" for keyword in theme["keywords"])
+        rows.append(
+            f'| {esc(theme["number"])} | '
+            f'<img src="{image_path}" alt="Static Prysai source mark" width="240"> | '
+            f'<img src="{animation_path}" alt="{name} Prysai logo animation" width="480"> | '
+            f'**{name}**<br><code>{theme_id}</code><br>{keywords} |'
+        )
+    return "\n".join(rows)
+
+
+def write_github_gallery(data: dict) -> None:
+    """Replace only the generated gallery in the project README."""
+
+    readme = PROJECT_README.read_text(encoding="utf-8")
+    if readme.count(GITHUB_GALLERY_START) != 1 or readme.count(GITHUB_GALLERY_END) != 1:
+        raise ValueError("project README must contain exactly one GitHub gallery marker pair")
+    start = readme.index(GITHUB_GALLERY_START)
+    end = readme.index(GITHUB_GALLERY_END, start)
+    if end < start:
+        raise ValueError("project README GitHub gallery markers are out of order")
+    replacement = f"{GITHUB_GALLERY_START}\n\n{github_gallery(data)}\n\n{GITHUB_GALLERY_END}"
+    updated = readme[:start] + replacement + readme[end + len(GITHUB_GALLERY_END):]
+    PROJECT_README.write_text(updated, encoding="utf-8")
 
 
 def main() -> None:
@@ -837,8 +1148,10 @@ def main() -> None:
         raise ValueError("showcase requires exactly 13 theme records")
     derive_preview_assets()
     write_snapshot(data)
+    build_animation_exports(data)
     build_html(data)
     write_readme(data)
+    write_github_gallery(data)
     if not args.skip_pdf:
         pdf_path = build_pdf(data)
         print(f"Generated {pdf_path}")

@@ -174,6 +174,7 @@ def validate_showcase() -> None:
         showcase / "assets" / "prysai-logo-white.jpg",
         showcase / "assets" / "prysai-mark-crop.jpg",
         showcase / "assets" / "prysai-mark-transparent.png",
+        showcase / "assets" / "animations" / "prysai-ai-field.gif",
         showcase / "output" / "pdf" / "motiflux-theme-atlas.pdf",
     )
     for path in required:
@@ -198,10 +199,15 @@ def validate_showcase() -> None:
     index = (showcase / "index.html").read_text(encoding="utf-8")
     if index.count('class="theme-card"') != 13:
         fail("showcase HTML must contain exactly 13 theme cards")
-    if index.count("assets/prysai-mark-crop.jpg") != 13:
-        fail("showcase HTML must repeat the same source derivative in every card")
+    if index.count("assets/prysai-mark-crop.jpg") != 14:
+        fail("showcase HTML must use the same source derivative in the primary input and every card")
     if index.count("assets/prysai-mark-transparent.png") != 13:
         fail("showcase HTML must provide one output mark per theme card")
+    if "assets/animations/prysai-ai-field.gif" not in index:
+        fail("showcase must include the primary image-to-animation output")
+    animation_paths = sorted((showcase / "assets" / "animations").glob("prysai-*.gif"))
+    if len(animation_paths) != 13:
+        fail("showcase must export one portable GIF per theme")
     for required_marker in (
         'data-action="play"',
         'data-action="pause"',
@@ -212,6 +218,45 @@ def validate_showcase() -> None:
     ):
         if required_marker not in index and required_marker not in (showcase / "styles.css").read_text(encoding="utf-8"):
             fail(f"showcase is missing required interaction/accessibility marker: {required_marker}")
+
+
+def validate_github_gallery() -> None:
+    """Ensure the root README exposes every canonical theme as static -> GIF."""
+
+    readme_path = ROOT / "README.md"
+    require_file(readme_path)
+    readme = readme_path.read_text(encoding="utf-8")
+    start_marker = "<!-- GITHUB_GALLERY:START -->"
+    end_marker = "<!-- GITHUB_GALLERY:END -->"
+    if readme.count(start_marker) != 1 or readme.count(end_marker) != 1:
+        fail("README must contain exactly one GitHub gallery marker pair")
+    start = readme.index(start_marker)
+    end = readme.index(end_marker)
+    if end <= start:
+        fail("README GitHub gallery markers must be in order")
+    gallery = readme[start:end]
+
+    catalog = json.loads((SKILL_ROOT / "catalog" / "themes.json").read_text(encoding="utf-8"))
+    themes = catalog.get("themes", [])
+    if not isinstance(themes, list) or len(themes) != 13:
+        fail("GitHub gallery source catalog must contain exactly 13 themes")
+    static_path = "showcase/assets/prysai-mark-crop.jpg"
+    if gallery.count(static_path) != 13:
+        fail("GitHub gallery must show the static source exactly once per theme")
+    if not (ROOT / static_path).is_file():
+        fail("GitHub gallery static source image is missing")
+    for theme in themes:
+        theme_id = theme.get("id") if isinstance(theme, dict) else None
+        if not theme_id:
+            fail("GitHub gallery source catalog contains an invalid theme record")
+        animation_path = f"showcase/assets/animations/prysai-{theme_id}.gif"
+        if theme_id not in gallery or animation_path not in gallery:
+            fail(f"GitHub gallery is missing canonical theme or GIF: {theme_id}")
+        if not (ROOT / animation_path).is_file():
+            fail(f"GitHub gallery GIF is missing: {animation_path}")
+        for keyword in theme.get("aliases", []):
+            if str(keyword) not in gallery:
+                fail(f"GitHub gallery is missing trigger keyword for {theme_id}: {keyword}")
 
 
 def validate_content(skill: str, guide: str) -> None:
@@ -245,6 +290,7 @@ def main() -> int:
         validate_manifest()
         skill, guide = validate_skill()
         validate_showcase()
+        validate_github_gallery()
         validate_content(skill, guide)
     except (OSError, UnicodeError, ValueError) as error:
         print(f"Motiflux validation failed: {error}")

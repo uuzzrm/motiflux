@@ -128,6 +128,13 @@ class MotifluxToolTests(unittest.TestCase):
         self.assertIn("window.__motifluxShowcaseReady", runtime)
         self.assertIn('setMotion("running")', runtime)
 
+    def test_showcase_exposes_portable_image_to_animation_outputs(self) -> None:
+        html = (ROOT / "showcase" / "index.html").read_text(encoding="utf-8")
+        animation_dir = ROOT / "showcase" / "assets" / "animations"
+        self.assertIn("assets/animations/prysai-ai-field.gif", html)
+        self.assertEqual(len(list(animation_dir.glob("prysai-*.gif"))), 13)
+        self.assertGreater((animation_dir / "prysai-ai-field.gif").stat().st_size, 1000)
+
 
 if __name__ == "__main__":
     unittest.main()

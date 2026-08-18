@@ -17,6 +17,17 @@
       "name": "System-spatial",
       "number": "01",
       "trigger": "system, product, saas, dashboard, enterprise, interface",
+      "keywords": [
+        "system",
+        "product",
+        "saas",
+        "dashboard",
+        "enterprise",
+        "interface",
+        "structured",
+        "clear",
+        "technology"
+      ],
       "tags": [
         "system-spatial",
         "grid",
@@ -42,13 +53,25 @@
       "background": "#101723",
       "pattern": "grid",
       "tempo": 1.0,
-      "duration_ms": 1800
+      "duration_ms": 1800,
+      "animation_file": "assets/animations/prysai-system-spatial.gif",
+      "animation_poster": "assets/animations/prysai-system-spatial-poster.png"
     },
     {
       "id": "premium-quiet",
       "name": "Premium-quiet",
       "number": "02",
       "trigger": "premium, luxury, fashion, beauty, editorial, quiet",
+      "keywords": [
+        "premium",
+        "luxury",
+        "fashion",
+        "beauty",
+        "editorial",
+        "quiet",
+        "elegant",
+        "minimal"
+      ],
       "tags": [
         "premium-quiet",
         "quiet",
@@ -74,13 +97,26 @@
       "background": "#171513",
       "pattern": "quiet",
       "tempo": 0.72,
-      "duration_ms": 2400
+      "duration_ms": 2400,
+      "animation_file": "assets/animations/prysai-premium-quiet.gif",
+      "animation_poster": "assets/animations/prysai-premium-quiet-poster.png"
     },
     {
       "id": "developer-open",
       "name": "Developer-open",
       "number": "03",
       "trigger": "developer, open source, opensource, api, cli, code",
+      "keywords": [
+        "developer",
+        "open source",
+        "opensource",
+        "api",
+        "cli",
+        "code",
+        "tooling",
+        "technical",
+        "precise"
+      ],
       "tags": [
         "developer-open",
         "scan",
@@ -106,13 +142,27 @@
       "background": "#0d1714",
       "pattern": "scan",
       "tempo": 1.0,
-      "duration_ms": 1800
+      "duration_ms": 1800,
+      "animation_file": "assets/animations/prysai-developer-open.gif",
+      "animation_poster": "assets/animations/prysai-developer-open-poster.png"
     },
     {
       "id": "ai-field",
       "name": "AI-field",
       "number": "04",
       "trigger": "ai, artificial intelligence, machine learning, ml, neural, data",
+      "keywords": [
+        "ai",
+        "artificial intelligence",
+        "machine learning",
+        "ml",
+        "neural",
+        "data",
+        "model",
+        "generative",
+        "future",
+        "intelligent"
+      ],
       "tags": [
         "ai-field",
         "field",
@@ -138,13 +188,27 @@
       "background": "#14122b",
       "pattern": "field",
       "tempo": 0.92,
-      "duration_ms": 1957
+      "duration_ms": 1957,
+      "animation_file": "assets/animations/prysai-ai-field.gif",
+      "animation_poster": "assets/animations/prysai-ai-field-poster.png"
     },
     {
       "id": "fintech-trust",
       "name": "Fintech-trust",
       "number": "05",
       "trigger": "fintech, banking, bank, payments, payment, trust",
+      "keywords": [
+        "fintech",
+        "banking",
+        "bank",
+        "payments",
+        "payment",
+        "trust",
+        "finance",
+        "institutional",
+        "reliable",
+        "secure finance"
+      ],
       "tags": [
         "fintech-trust",
         "ring",
@@ -170,13 +234,26 @@
       "background": "#0c1c1b",
       "pattern": "ring",
       "tempo": 0.86,
-      "duration_ms": 2093
+      "duration_ms": 2093,
+      "animation_file": "assets/animations/prysai-fintech-trust.gif",
+      "animation_poster": "assets/animations/prysai-fintech-trust-poster.png"
     },
     {
       "id": "security-shield",
       "name": "Security-shield",
       "number": "06",
       "trigger": "security, privacy, identity, authentication, auth, defense",
+      "keywords": [
+        "security",
+        "privacy",
+        "identity",
+        "authentication",
+        "auth",
+        "defense",
+        "shield",
+        "compliance",
+        "protection"
+      ],
       "tags": [
         "security-shield",
         "shield",
@@ -202,13 +279,25 @@
       "background": "#1b1510",
       "pattern": "shield",
       "tempo": 0.8,
-      "duration_ms": 2250
+      "duration_ms": 2250,
+      "animation_file": "assets/animations/prysai-security-shield.gif",
+      "animation_poster": "assets/animations/prysai-security-shield-poster.png"
     },
     {
       "id": "commerce-energy",
       "name": "Commerce-energy",
       "number": "07",
       "trigger": "commerce, retail, shopping, marketplace, consumer, sale",
+      "keywords": [
+        "commerce",
+        "retail",
+        "shopping",
+        "marketplace",
+        "consumer",
+        "sale",
+        "conversion",
+        "friendly"
+      ],
       "tags": [
         "commerce-energy",
         "burst",
@@ -234,13 +323,24 @@
       "background": "#24131b",
       "pattern": "burst",
       "tempo": 1.2,
-      "duration_ms": 1500
+      "duration_ms": 1500,
+      "animation_file": "assets/animations/prysai-commerce-energy.gif",
+      "animation_poster": "assets/animations/prysai-commerce-energy-poster.png"
     },
     {
       "id": "automotive-precision",
       "name": "Automotive-precision",
       "number": "08",
       "trigger": "automotive, mobility, transport, engineering, performance, industrial",
+      "keywords": [
+        "automotive",
+        "mobility",
+        "transport",
+        "engineering",
+        "performance",
+        "industrial",
+        "mechanical"
+      ],
       "tags": [
         "automotive-precision",
         "track",
@@ -266,13 +366,25 @@
       "background": "#11191e",
       "pattern": "track",
       "tempo": 0.9,
-      "duration_ms": 2000
+      "duration_ms": 2000,
+      "animation_file": "assets/animations/prysai-automotive-precision.gif",
+      "animation_poster": "assets/animations/prysai-automotive-precision-poster.png"
     },
     {
       "id": "sports-impact",
       "name": "Sports-impact",
       "number": "09",
       "trigger": "sports, fitness, competition, speed, impact, bold",
+      "keywords": [
+        "sports",
+        "fitness",
+        "competition",
+        "speed",
+        "impact",
+        "bold",
+        "dynamic",
+        "athletics"
+      ],
       "tags": [
         "sports-impact",
         "speed",
@@ -298,13 +410,25 @@
       "background": "#24120f",
       "pattern": "speed",
       "tempo": 1.35,
-      "duration_ms": 1333
+      "duration_ms": 1333,
+      "animation_file": "assets/animations/prysai-sports-impact.gif",
+      "animation_poster": "assets/animations/prysai-sports-impact-poster.png"
     },
     {
       "id": "cinematic-title",
       "name": "Cinematic-title",
       "number": "10",
       "trigger": "cinematic, film, movie, title, trailer, story",
+      "keywords": [
+        "cinematic",
+        "film",
+        "movie",
+        "title",
+        "trailer",
+        "story",
+        "dramatic",
+        "suspense"
+      ],
       "tags": [
         "cinematic-title",
         "curtain",
@@ -330,13 +454,26 @@
       "background": "#100f1c",
       "pattern": "curtain",
       "tempo": 0.65,
-      "duration_ms": 2400
+      "duration_ms": 2400,
+      "animation_file": "assets/animations/prysai-cinematic-title.gif",
+      "animation_poster": "assets/animations/prysai-cinematic-title-poster.png"
     },
     {
       "id": "nature-flow",
       "name": "Nature-flow",
       "number": "11",
       "trigger": "nature, organic, wellness, sustainable, water, wind",
+      "keywords": [
+        "nature",
+        "organic",
+        "wellness",
+        "sustainable",
+        "water",
+        "wind",
+        "growth",
+        "calm",
+        "health"
+      ],
       "tags": [
         "nature-flow",
         "wave",
@@ -362,13 +499,25 @@
       "background": "#132017",
       "pattern": "wave",
       "tempo": 0.72,
-      "duration_ms": 2400
+      "duration_ms": 2400,
+      "animation_file": "assets/animations/prysai-nature-flow.gif",
+      "animation_poster": "assets/animations/prysai-nature-flow-poster.png"
     },
     {
       "id": "gaming-world",
       "name": "Gaming-world",
       "number": "12",
       "trigger": "gaming, esports, fantasy, sci-fi, character, quest",
+      "keywords": [
+        "gaming",
+        "esports",
+        "fantasy",
+        "sci-fi",
+        "character",
+        "quest",
+        "arcade",
+        "playful"
+      ],
       "tags": [
         "gaming-world",
         "orbit",
@@ -394,13 +543,25 @@
       "background": "#101b2b",
       "pattern": "orbit",
       "tempo": 1.1,
-      "duration_ms": 1636
+      "duration_ms": 1636,
+      "animation_file": "assets/animations/prysai-gaming-world.gif",
+      "animation_poster": "assets/animations/prysai-gaming-world-poster.png"
     },
     {
       "id": "accessibility-first",
       "name": "Accessibility-first",
       "number": "13",
       "trigger": "accessible, accessibility, reduced motion, calm, inclusive, low motion",
+      "keywords": [
+        "accessible",
+        "accessibility",
+        "reduced motion",
+        "calm",
+        "inclusive",
+        "low motion",
+        "keyboard",
+        "assistive"
+      ],
       "tags": [
         "accessibility-first",
         "plain",
@@ -426,7 +587,9 @@
       "background": "#1b1b19",
       "pattern": "plain",
       "tempo": 0.55,
-      "duration_ms": 2400
+      "duration_ms": 2400,
+      "animation_file": "assets/animations/prysai-accessibility-first.gif",
+      "animation_poster": "assets/animations/prysai-accessibility-first-poster.png"
     }
   ]
 }
