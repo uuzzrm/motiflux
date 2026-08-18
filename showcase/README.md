@@ -1,20 +1,22 @@
 # Motiflux V1 showcase
 
 This showcase uses one supplied raster source - `assets/prysai-logo-white.jpg` -
-to make a direct visual comparison across 13 Motiflux theme routes.
+to make a direct visual comparison across 13 playable Motiflux theme animations.
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
-the source mark on the left and shows a theme-specific representative output
-stage on the right. The output stage changes motion language and secondary
-visual treatment; it does not redraw or rename the Prysai identity.
+the same source image on the left and runs a real source-to-animation sequence
+on the right: source, reveal, transform, settle, and canonical hold. The
+animation changes motion language and secondary visual treatment; it does not
+redraw or rename the Prysai identity.
 
 ## Files
 
 - `index.html` - dependency-free interactive grid with filtering and motion controls.
-- `themes.json` - structured theme records used by the page and PDF generator.
+- `themes.json` - derived display snapshot generated from the canonical catalog;
+  it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
 - `assets/prysai-mark-crop.jpg` and `assets/prysai-mark-transparent.png` - display-only derivatives made from the same source; no geometry edits.
-- `output/pdf/motiflux-theme-atlas.pdf` - printable comparison atlas.
+- `output/pdf/motiflux-theme-atlas.pdf` - printable four-frame storyboard atlas.
 
 ## Regenerate
 
@@ -24,6 +26,7 @@ From the repository root:
 python showcase\generate_showcase.py
 ```
 
-The PDF includes a route example for the phrase `artificial-intelligence` ->
-`AI-field`. Public design systems are principle analogues only; this material
-does not claim private vendor algorithms or browser-runtime validation.
+The PDF includes the route example `artificial-intelligence` -> `AI-field` and
+records the four key frames of each playable animation. Public design systems
+are principle analogues only; this material does not claim private vendor
+algorithms.

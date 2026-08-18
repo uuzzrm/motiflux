@@ -31,15 +31,16 @@ these narrow seams:
 | semantic geometry | `tools/motiflux.py compare` | geometry evidence |
 | runtime telemetry | `tools/motiflux.py audit` | motion evidence |
 | web delivery | `tools/motiflux.py build` | dependency-free package |
+| complete source/request job | `tools/motiflux.py project` | `project.json` manifest |
 
-Read only the direct resource needed for the current phase:
+Read the direct resource for the active phase: `catalog/themes.json` for
+canonical profiles; `guides/motion-themes.md` for rationale and aliases;
+`guides/algorithm-catalog.md` for algorithm proof gates;
+`guides/output-contract.md` and `guides/runtime-contract.md` for delivery;
+`schemas/*.schema.json` for contracts; and `tools/*.py` for adapters.
 
-- `guides/motion-themes.md` — theme and algorithm routing;
-- `guides/algorithm-catalog.md` — reusable algorithm families and proof gates;
-- `guides/output-contract.md` — artifact names and status semantics;
-- `guides/runtime-contract.md` — browser hooks and safety behavior;
-- `schemas/*.schema.json` — machine-readable artifact contracts;
-- `tools/*.py` — executable adapters behind the seams.
+`catalog/themes.json` is the single routing source consumed by the router,
+planner, runtime compiler, tests, and showcase. Markdown is explanatory only.
 
 Run tools from the skill directory. Treat their JSON output as evidence, not as
 a replacement for design judgment. If an optional capability is unavailable,
@@ -51,6 +52,34 @@ anchors, and occlusion; `motion_graph` for beats, dependencies, overlaps, and
 interaction states; and `evidence_ledger` for geometry, motion, accessibility,
 substitutions, `not_run`, and `unresolved`. Every design decision MUST trace to
 one model and remain inspectable in an artifact.
+
+## Project pipeline
+
+For a complete source/request job, use the project pipeline in this order:
+
+```text
+analyze -> route -> plan -> reconstruct -> compile -> verify -> package
+```
+
+Run it through the stable command seam:
+
+```text
+tools/motiflux.py project <source> <request> <output>
+```
+
+The command writes a `project manifest` at `<output>/project.json`, links each
+stage to its artifacts, and preserves `complete`, `candidate`, or `blocked`,
+plus `not_run` and `unresolved`. It does not replace artifact contracts. Raster
+input without a real raster-to-vector adapter remains a candidate; never label
+a placeholder vector complete.
+
+Before delivery, validate cross-artifact references in addition to JSON shape:
+theme IDs must exist in `catalog/themes.json`; actor, beat, parent, occlusion,
+and dependency references must resolve; and the compiled package must preserve
+the selected theme and canonical source mark.
+Theme profiles are executable inputs: the planner and runtime compiler turn
+their motion parameters into beats, controls, CSS, and JavaScript behavior.
+An algorithm list without a corresponding runtime effect is incomplete.
 
 ## Theme router
 
@@ -143,20 +172,20 @@ The executable vertical slice is:
 measure -> model -> reconstruct -> compare -> compose -> build -> audit -> deliver
 ```
 
+The project pipeline is the preferred one-command path when intermediate
+artifacts do not already exist. Use the lower-level seams when an existing
+artifact needs isolated inspection or when a missing adapter must remain
+explicitly `not_run`.
+
 Use `measure` before modeling, `compare` before motion, `build` only after a
 contract-valid plan exists, and `audit` before claiming motion completion.
 
 ## OBSERVE
 
-Measure and record:
-
-- source dimensions, color mode, alpha, and background;
-- foreground color clusters;
-- antialiasing, compression, thresholding, and blur artifacts;
-- identity-bearing corners, extrema, junctions, terminals, and centers;
-- enclosed and open negative spaces;
-- likely symmetry, repetition, and alignment relations;
-- mark, wordmark, letters, accents, and containers.
+Measure dimensions, color mode, alpha, background, foreground clusters,
+antialiasing/compression, identity corners/extrema/junctions/terminals/centers,
+negative spaces, symmetry, repetition, alignment, and mark/wordmark/letter/
+accent/container roles.
 
 Write evidence/source-analysis.json.
 
@@ -174,57 +203,33 @@ unless an approved image adapter is available.
 
 ### Build constraint graph
 
-Assign each visual constraint:
-
-    id:
-    kind: landmark | contour | gap | symmetry | color
-    importance: identity | structural | cosmetic
-    target:
-    tolerance:
-    dependencies: []
+Assign each constraint `id`, `kind` (`landmark`, `contour`, `gap`, `symmetry`,
+or `color`), `importance` (`identity`, `structural`, or `cosmetic`), target,
+tolerance, and dependencies. Identity constraints outrank raster noise.
 
 Identity constraints dominate cosmetic pixel agreement.
 
 ### Build scene graph
 
-Create one actor for each independently transformable or occluding part. Store
-the full actor record in `motion-plan.yaml`:
-
-    id:
-    role:
-    geometry_strategy:
-    parent:
-    anchor:
-    layer:
-    occludes: []
-    occluded_by: []
+Create one actor per independently transformable or occluding part. Store `id`,
+`role`, `geometry_strategy`, `parent`, `anchor`, `layer`, `occludes`, and
+`occluded_by` in `motion-plan.yaml`.
 
 Use stable semantic ids. Avoid child-index selectors.
 
 ### Define motion language
 
-Derive three motion traits from the mark and brand context. Map each trait to:
-
-- tempo range;
-- acceleration character;
-- overlap amount;
-- deformation limit;
-- preferred spatial direction;
-- stillness requirement.
-
-Record the mapping in motion-plan.yaml. Do not choose interpolation or effects without a traceable trait.
+Derive three motion traits from the mark and context. Record tempo,
+acceleration, overlap, deformation limit, direction, and stillness for each in
+the plan. Every interpolation and effect must trace to a trait.
 
 ## RECONSTRUCT
 
 ### Choose geometry by explainability
 
-For each actor, choose the smallest model that explains its constraints:
-
-1. primitive;
-2. transformed primitive family;
-3. centerline plus width profile;
-4. sparse Bezier contour;
-5. simplified measured outline.
+Choose the smallest model that explains constraints: primitive; transformed
+primitive family; centerline plus width profile; sparse Bezier contour; or
+simplified measured outline.
 
 Escalate only when identity or structural constraints fail.
 
@@ -238,26 +243,16 @@ Do not encode a crossing only as a convenient compound path when later occlusion
 
 ### Define draw traversal
 
-For a drawn reveal, store explicit traversal metadata:
-
-    actor:
-    start_landmark:
-    end_landmark:
-    direction:
-    measured_length:
-    visible_intervals: []
+For a drawn reveal, store `actor`, `start_landmark`, `end_landmark`, `direction`,
+`measured_length`, and `visible_intervals`.
 
 Use browser measurement or geometry tooling to derive real lengths at build time.
 
 ### Geometry acceptance
 
-Compute:
-
-- weighted landmark error;
-- symmetric contour or Chamfer distance;
-- negative-space area and centroid error;
-- topology match;
-- actor, segment, and control-point counts.
+Compute weighted landmark error, symmetric contour/Chamfer distance,
+negative-space area/centroid error, topology, and actor/segment/control-point
+counts.
 
 Render at source scale and one enlarged inspection scale.
 
@@ -297,74 +292,35 @@ Keep those proof types separate.
 
 ### Build named beats
 
-Describe motion as named beats:
-
-    beats:
-      - id: orient
-        intent: establish direction and focus
-      - id: form
-        intent: reveal identity-bearing structure
-      - id: bind
-        intent: connect secondary actors
-      - id: resolve
-        intent: settle into canonical mark
-
-Assign duration weights from visual distance, actor area, curvature, reading order, and interaction context. Normalize weights to target duration. Do not impose a fixed global phase ratio.
+Name beats such as `orient`, `form`, `bind`, and `resolve`. Weight duration from
+visual distance, actor area, curvature, reading order, and context; do not use a
+fixed global phase ratio.
 
 ### Build dependency graph
 
-For each action, record:
-
-    actor:
-    beat:
-    starts_after: []
-    may_overlap: []
-    must_finish_before: []
-    anchor:
-    property_channels: []
+For each action record actor, beat, `starts_after`, `may_overlap`,
+`must_finish_before`, anchor, and property channels.
 
 Prevent lockstep through dependencies, not arbitrary delays.
 
 ### Derive interpolation
 
-Choose interpolation per property and beat:
-
-- monotonic cubic for directed reveals;
-- critically damped spring for controlled settling;
-- linear for physically uniform channels;
-- stepped for intentional discrete states.
-
-Store Motiflux variables:
-
-    :root {
-      --motiflux-tempo: 1;
-      --motiflux-settle-damping: 0.82;
-      --motiflux-stage-inline: clamp(1rem, 6vw, 6rem);
-    }
-
-Do not assume one curve fits every property.
+Choose monotonic cubic for directed reveals, critically damped spring for
+controlled settling, linear for uniform channels, and stepped for intentional
+discrete states. Store tempo, settle damping, and stage safe-area variables;
+never assume one curve fits every property.
 
 ### Responsive stage
 
-Derive scale:
-
-    available_width = container_width - 2 * inline_safe_area
-    available_height = container_height - 2 * block_safe_area
-    scale = min(available_width / mark_width, available_height / mark_height)
-
-Set safe areas from maximum transformed actor bounds. Do not use a fixed presentation multiplier.
+Derive scale from available width/height minus inline/block safe areas and set
+those areas from maximum transformed actor bounds. Do not use a fixed multiplier.
 
 ### Crossing topology
 
-For self-crossing or braided marks:
-
-1. identify crossing nodes;
-2. record over/under order per traversal;
-3. split the visibility graph as needed;
-4. reveal segments with clip regions or ordered occluders;
-5. preserve one global progress variable;
-6. derive local progress from measured arc intervals;
-7. verify no nonlocal branch appears early.
+For self-crossing or braided marks: identify nodes and over/under order; split
+visibility as needed; reveal with clips or ordered occluders; preserve one global
+progress variable; derive local progress from measured arcs; and verify no
+nonlocal branch appears early.
 
 Use a moving cursor accent only when it belongs to the brand language. It MUST NOT hide a topology or timing defect.
 
@@ -377,15 +333,9 @@ motion, provide keyboard-accessible controls, and avoid layout shift.
 
 ## INSTRUMENT
 
-At each beat boundary and risk interval, collect:
-
-    time_ms:
-    active_beat:
-    actor_states:
-    visible_bounds:
-    progress_values:
-    changed_pixels_or_alpha_mass:
-    runtime_errors:
+At beat boundaries and risk intervals collect `time_ms`, `active_beat`,
+`actor_states`, `visible_bounds`, `progress_values`,
+`changed_pixels_or_alpha_mass`, and `runtime_errors`.
 
 Risk intervals include crossings, occluder changes, actor handoffs, spring extrema, viewport approaches, and loop seams.
 
@@ -400,40 +350,25 @@ tools/motiflux.py build mark.svg motion-plan.yaml <output-dir>
 
 ### Geometry
 
-Verify declared constraint tolerances, topology, enlarged edge quality, and scene complexity.
+Verify constraint tolerances, topology, enlarged edges, and scene complexity.
 
 ### Temporal behavior
 
-Check:
-
-- intended progress is monotonic;
-- velocity and acceleration have no unexplained discontinuities;
-- no required handoff stalls;
-- no branch appears before its visibility interval;
-- transformed bounds remain inside safe areas;
-- loop state and first derivative are seam-compatible.
+Check monotonic progress, velocity/acceleration continuity, handoffs, visibility
+intervals, safe bounds, and loop seam compatibility.
 
 Use telemetry plus targeted frames. Do not rely on evenly spaced screenshots alone.
 
 ### Canonical end state
 
-Define a semantic fingerprint:
+Define a semantic fingerprint with `viewBox`, `actor_ids`, `path_data_hashes`,
+`paint_attributes`, `transform_matrices`, and `layer_order`.
 
-    viewBox:
-    actor_ids:
-    path_data_hashes:
-    paint_attributes:
-    transform_matrices:
-    layer_order:
-
-At runtime finish:
-
-1. serialize the final scene;
-2. compare its fingerprint with the canonical mark;
-3. require exact geometry, paint, transform, and layer equality;
-4. render both states through the same browser;
-5. compare with declared antialiasing tolerance, default 0.25% differing pixels and maximum channel delta 8;
-6. fail semantic inequality even when pixels look close.
+At runtime finish, serialize the final scene, compare its fingerprint with the
+canonical mark, require exact geometry/paint/transform/layer equality, then
+render both states through the same browser. Apply a declared antialiasing
+tolerance (default 0.25% differing pixels and maximum channel delta 8); semantic
+inequality always fails.
 
 Vector semantics are authoritative; pixel tolerance absorbs renderer noise.
 
@@ -468,19 +403,10 @@ Write evidence.json:
     not_run: []
     unresolved: []
 
-Return complete only when:
-
-- required package files exist;
-- identity and topology constraints pass;
-- scene graph matches vector structure;
-- motion graph traces to motion language;
-- telemetry has no unexplained discontinuity;
-- canonical semantic fingerprint matches;
-- rendered end state is within declared tolerance;
-- accessibility and runtime checks pass;
-- not_run and unresolved are empty.
-
-Otherwise return candidate and preserve unresolved evidence.
+Return `complete` only when the package exists; identity, topology, scene graph,
+motion graph, telemetry, canonical fingerprint, rendered end state,
+accessibility, and runtime checks pass; and `not_run` and `unresolved` are empty.
+Otherwise return `candidate` and preserve every missing or uncertain item.
 
 ## Invariants
 

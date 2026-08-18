@@ -1,30 +1,34 @@
-# Motiflux V1 Upgrade Checklist
+# Motiflux V1 Project Kernel Checklist
 
-## Foundation
+## Already shipped
 
-- [ ] Contract guides and schemas
-- [ ] ADRs for seams, offline adapters, and evidence semantics
+- [x] Contract guides and schemas
+- [x] ADRs for seams, offline adapters, and evidence semantics
+- [x] Initial tools, examples, tests, showcase, CI, and private remote push
 
-## Tools
+## Kernel foundation
 
-- [ ] `measure_mark.py`
-- [ ] `compare_shape.py`
-- [ ] `audit_motion.py`
-- [ ] `build_web_package.py`
-- [ ] Unified `motiflux.py` entrypoint
+- [x] `skills/motiflux/catalog/themes.json` is the authoritative theme source
+- [x] `tools/engine/domain.py` defines typed stage records and references
+- [x] `tools/engine/artifacts.py` owns deterministic artifact writes
+- [x] `tools/engine/planner.py` rejects dangling plan references
+- [x] `tools/engine/project_pipeline.py` owns the stage graph
 
-## Skill integration
+## Executable pipeline
 
-- [ ] Main workflow routes to tools and contracts
-- [ ] Theme atlas remains the only theme-algorithm routing source
-- [ ] Output filenames and completion semantics are explicit
+- [x] `motiflux.py project <source> <request> <output>` runs the full pipeline
+- [x] The planner creates a valid plan from route + source analysis
+- [x] The runtime compiler consumes theme profile data
+- [x] `project.json` records stage status and artifact paths
+- [x] Evidence aggregation preserves missing browser/raster proof
 
-## Verification
+## Verification and product quality
 
-- [ ] Unit and integration tests
-- [ ] Project validator
-- [ ] Plugin validator
-- [ ] Skill validator
-- [ ] GitHub Actions
+- [x] Cross-reference and pipeline tests
+- [x] Browser smoke test against a generated generic package (showcase browser smoke is complete)
+- [x] Showcase consumes catalog data
+- [x] README documents the new one-command workflow
+- [x] Project validator and plugin validator
+- [x] Skill validator
+- [x] GitHub Actions
 - [ ] Private remote SHA verification
-

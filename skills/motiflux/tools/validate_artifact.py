@@ -16,6 +16,7 @@ SCHEMAS = {
     "motion-plan": SCHEMA_DIR / "motion-plan.schema.json",
     "telemetry": SCHEMA_DIR / "telemetry.schema.json",
     "evidence": SCHEMA_DIR / "evidence.schema.json",
+    "project": SCHEMA_DIR / "project.schema.json",
 }
 
 

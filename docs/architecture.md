@@ -16,8 +16,8 @@ runtime controls.
           +----------------------+----------------------+
           |                      |                      |
           v                      v                      v
-   theme router            artifact contracts       output contract
- motion-themes.md       schemas/*.schema.json     guides/output-contract.md
+   theme catalog          project pipeline         artifact contracts
+ catalog/themes.json   tools/engine/*.py        schemas/*.schema.json
           |                      |                      |
           +--------------+-------+--------------+-------+
                          v                      v
@@ -31,9 +31,8 @@ runtime controls.
 
 ## External seams
 
-The project exposes four narrow command seams. Each accepts a file path and
-returns structured JSON; each can be used independently or in the standard
-pipeline.
+The project exposes narrow command seams. Each returns structured artifacts and
+can be used independently or through the standard project pipeline.
 
 | Seam | Purpose | Main output |
 | --- | --- | --- |
@@ -41,6 +40,12 @@ pipeline.
 | `compare` | Compare candidate and canonical SVG semantics | geometry evidence |
 | `audit` | Check telemetry, progress, bounds, fingerprints, and accessibility | motion evidence |
 | `build` | Assemble a dependency-free web package with runtime hooks | output package |
+| `project` | Run analyze -> route -> plan -> reconstruct -> compile -> verify -> package | `project.json` |
+
+`catalog/themes.json` is the routing authority. `tools/engine/project_pipeline.py`
+is the deep internal module that composes adapters behind the small `project`
+interface. It writes a manifest even when reconstruction or browser proof is
+unavailable, preserving `candidate`, `blocked`, `not_run`, and `unresolved`.
 
 `tools/motiflux_core.py` is an internal seam shared by these adapters. It owns
 SVG parsing, semantic fingerprints, structured-document loading, safe writes, and
@@ -51,15 +56,19 @@ they should use the four CLI seams or the artifact files.
 
 1. `measure` turns an input mark into observations. It does not invent a vector
    reconstruction.
-2. The agent creates a `motion-plan.yaml` from those observations, user intent,
-   and one primary theme plus at most two modifiers.
-3. The agent reconstructs `mark.svg` and uses `compare` against the accepted
-   canonical mark.
-4. `build` creates a runtime package. Its generic motion is a delivery adapter;
-   brand-specific choreography remains encoded by the plan and runtime edits.
-5. The runtime emits telemetry. `audit` turns that telemetry into evidence.
-6. `evidence.json` is complete only when every required check has evidence. A
-   missing check remains visible as `not_run`.
+2. The catalog router selects one theme and the planner creates a plan from the
+   observations, request, and at most two modifiers.
+3. Reconstruction produces `mark.svg` only when a canonical vector is real;
+   raster input without that adapter remains a candidate.
+4. `build` compiles the selected profile into a dependency-free runtime package.
+5. The runtime emits telemetry and `audit` turns it into evidence.
+6. `project.json` links every stage and artifact. Missing proof remains visible
+   as `not_run` or `unresolved`.
+
+The showcase is a separate display adapter: it consumes the same catalog and
+the supplied source raster, then renders a playable image-to-animation grid.
+Its PDF records four static checkpoints of the HTML sequence; it is not a
+substitute for runtime evidence.
 
 ## Deep-module rules
 
@@ -89,4 +98,3 @@ To add a new algorithm family:
 5. Update the relevant guide and ADR if the seam changes.
 6. Keep the main skill concise; link to the new reference instead of duplicating
    the algorithm description.
-

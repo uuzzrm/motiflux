@@ -9,6 +9,7 @@ from pathlib import Path
 from audit_motion import audit
 from build_web_package import build
 from compare_shape import compare
+from engine.project_pipeline import run_project
 from measure_mark import measure
 from motiflux_core import write_json
 from route_theme import route
@@ -55,8 +56,18 @@ def main() -> None:
     package_parser.add_argument("package", type=Path)
     package_parser.add_argument("--output", type=Path)
 
+    project_parser = subparsers.add_parser(
+        "project",
+        help="run the source-aware project pipeline and write a project manifest",
+    )
+    project_parser.add_argument("source", type=Path)
+    project_parser.add_argument("request")
+    project_parser.add_argument("output", type=Path)
+
     args = parser.parse_args()
-    if args.command == "measure":
+    if args.command == "project":
+        result, output = run_project(args.source, args.request, args.output), None
+    elif args.command == "measure":
         result, output = measure(args.input.resolve()), args.output
     elif args.command == "compare":
         result, output = compare(args.candidate.resolve(), args.canonical.resolve(), args.tolerance), args.output

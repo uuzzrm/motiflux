@@ -21,10 +21,93 @@ SOURCE = ASSETS / "prysai-logo-white.jpg"
 CROP_JPG = ASSETS / "prysai-mark-crop.jpg"
 MARK_PNG = ASSETS / "prysai-mark-transparent.png"
 THEMES = ROOT / "themes.json"
+CATALOG = ROOT.parent / "skills" / "motiflux" / "catalog" / "themes.json"
+
+EFFECT_VISUALS = {
+    "grid": {"accent": "#8aa4ff", "background": "#101723"},
+    "quiet": {"accent": "#d7c7a7", "background": "#171513"},
+    "scan": {"accent": "#79e2a4", "background": "#0d1714"},
+    "field": {"accent": "#9c8cff", "background": "#14122b"},
+    "ring": {"accent": "#6dd9c0", "background": "#0c1c1b"},
+    "shield": {"accent": "#ffb86b", "background": "#1b1510"},
+    "burst": {"accent": "#ff6f91", "background": "#24131b"},
+    "track": {"accent": "#e2edf1", "background": "#11191e"},
+    "speed": {"accent": "#ff5c4d", "background": "#24120f"},
+    "curtain": {"accent": "#d7d2ff", "background": "#100f1c"},
+    "wave": {"accent": "#b9d8a5", "background": "#132017"},
+    "orbit": {"accent": "#62d7ff", "background": "#101b2b"},
+    "plain": {"accent": "#f4f1df", "background": "#1b1b19"},
+}
+
+BEATS = {
+    "grid": ["map", "align", "resolve"],
+    "quiet": ["still", "reveal", "rest"],
+    "scan": ["parse", "assemble", "commit"],
+    "field": ["observe", "converge", "land"],
+    "ring": ["secure", "process", "confirm"],
+    "shield": ["guard", "verify", "unlock"],
+    "burst": ["anticipate", "respond", "idle"],
+    "track": ["prime", "drive", "settle"],
+    "speed": ["load", "impact", "recover"],
+    "curtain": ["establish", "title", "hold"],
+    "wave": ["breathe", "flow", "root"],
+    "orbit": ["spawn", "orbit", "clear"],
+    "plain": ["show", "signal", "rest"],
+}
 
 
 def load_data() -> dict:
-    return json.loads(THEMES.read_text(encoding="utf-8"))
+    """Build the showcase snapshot from the canonical theme catalog."""
+
+    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    themes: list[dict] = []
+    for index, profile in enumerate(catalog.get("themes", []), start=1):
+        runtime = profile.get("runtime", {})
+        effect = str(runtime.get("secondary_effect", "plain"))
+        visual = EFFECT_VISUALS.get(effect, EFFECT_VISUALS["plain"])
+        tempo = float(runtime.get("tempo", 1.0))
+        duration = max(1100, min(2400, round(1800 / tempo)))
+        aliases = [str(item) for item in profile.get("aliases", [])]
+        controls = [str(item).replace("_", " ") for item in profile.get("controls", [])]
+        themes.append({
+            "id": profile["id"],
+            "name": profile["name"],
+            "number": f"{index:02d}",
+            "trigger": ", ".join(aliases[:6]),
+            "tags": [profile["id"], effect, *controls[:1]],
+            "public_analogue": profile.get("public_analogue", ""),
+            "intent": profile.get("design_intent", ""),
+            "algorithm": list(profile.get("algorithm_stack", [])),
+            "result": f"The same source mark moves through {effect} staging, then returns to a readable canonical state.",
+            "beats": BEATS.get(effect, BEATS["plain"]),
+            "qa": "; ".join(profile.get("qa_focus", [])),
+            "accent": visual["accent"],
+            "background": visual["background"],
+            "pattern": effect,
+            "tempo": tempo,
+            "duration_ms": duration,
+        })
+    return {
+        "schema_version": "1.0",
+        "source_catalog": "skills/motiflux/catalog/themes.json",
+        "source": {
+            "asset": "assets/prysai-logo-white.jpg",
+            "label": "Prysai logo / supplied raster source",
+            "identity_rule": "Use the same source mark in every theme. Change motion language and sequencing only.",
+        },
+        "request_example": {
+            "user_says": "I want to make a logo animation for my artificial-intelligence company.",
+            "agent_route": "AI-field",
+            "routing_explanation": "The phrase artificial intelligence selects AI-field; the same source image is animated through signal convergence and a quiet canonical landing.",
+        },
+        "themes": themes,
+    }
+
+
+def write_snapshot(data: dict) -> None:
+    """Persist a readable derived snapshot; never use it as routing input."""
+
+    THEMES.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def derive_preview_assets() -> None:
@@ -68,19 +151,29 @@ def theme_card(theme: dict) -> str:
     </div>
     <span class="route-state">ROUTE</span>
   </header>
-  <div class="comparison" aria-label="Source mark compared with the {esc(theme["name"])} generated result">
+  <div class="comparison" aria-label="The same source image compared with its {esc(theme["name"])} animated result">
     <div class="source-cell">
-      <span class="cell-label">INPUT / SAME SOURCE</span>
+      <span class="cell-label">INPUT / SAME IMAGE</span>
       <img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo raster source" loading="lazy">
-      <span class="cell-foot">identity locked</span>
+      <span class="cell-foot">source frame</span>
     </div>
-    <div class="result-cell pattern-{esc(theme["pattern"])}">
-      <span class="cell-label">OUTPUT / {esc(theme["name"]).upper()}</span>
-      <div class="effect effect-a" aria-hidden="true"></div>
-      <div class="effect effect-b" aria-hidden="true"></div>
-      <div class="effect effect-c" aria-hidden="true"></div>
-      <img class="output-mark" src="assets/prysai-mark-transparent.png" alt="Prysai logo in the {esc(theme["name"])} motion study" loading="lazy">
-      <span class="cell-foot">representative landing frame</span>
+    <div class="result-cell motion-output pattern-{esc(theme["pattern"])}">
+      <span class="cell-label">OUTPUT / PLAYABLE ANIMATION</span>
+      <div class="motion-stage" data-motion-card data-effect="{esc(theme["pattern"])}" data-duration-ms="{esc(theme["duration_ms"])}" data-tempo="{esc(theme["tempo"])}" data-beats="{esc(" / ".join(theme["beats"]))}" data-state="playing">
+        <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
+        <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
+        <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
+        <img class="animated-mark" src="assets/prysai-mark-transparent.png" alt="Same Prysai source image animated in the {esc(theme["name"])} style" loading="lazy">
+        <span class="motion-phase" data-motion-phase>source</span>
+      </div>
+      <div class="motion-controls" aria-label="{esc(theme["name"])} animation controls">
+        <button type="button" data-card-action="play">Play</button>
+        <button type="button" data-card-action="pause">Pause</button>
+        <button type="button" data-card-action="replay">Replay</button>
+        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+        <span class="motion-time" data-motion-time>0.0s</span>
+      </div>
+      <span class="cell-foot">same image / animated result</span>
     </div>
   </div>
   <div class="card-copy">
@@ -90,7 +183,7 @@ def theme_card(theme: dict) -> str:
       <div><span class="detail-label">ALGORITHM STACK</span><ul>{algorithms}</ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats">{beats}</div><span class="detail-label qa-label">QA FOCUS</span><p>{esc(theme["qa"])}</p></div>
     </div>
-    <p class="result-note"><span>GENERATED RESULT</span>{esc(theme["result"])}</p>
+    <p class="result-note"><span>ANIMATED RESULT</span>{esc(theme["result"])}</p>
   </div>
 </article>'''
 
@@ -165,7 +258,7 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
 .source-cell img { width: 84%; height: 84%; object-fit: contain; }
 .result-cell { display: grid; place-items: center; isolation: isolate; background: var(--stage-bg); }
 .cell-label { position: absolute; z-index: 5; top: .7rem; left: .7rem; margin: 0; color: #c7c8c2; font-size: .53rem; }
-.cell-foot { position: absolute; z-index: 5; bottom: .65rem; left: .7rem; right: .7rem; color: rgba(242,241,233,.55); font-size: .52rem; text-transform: uppercase; letter-spacing: .07em; }
+.cell-foot { position: absolute; z-index: 5; bottom: .65rem; left: .7rem; right: .7rem; color: rgba(242,241,233,.55); font-size: .52rem; text-transform: uppercase; letter-spacing: .07em; pointer-events: none; }
 .output-mark { position: relative; z-index: 3; width: 84%; max-height: 84%; object-fit: contain; opacity: 1; filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 38%, transparent)); animation: mark-float 4.8s cubic-bezier(.2,.8,.2,1) infinite alternate; }
 .effect { position: absolute; pointer-events: none; z-index: 1; }
 .effect-a { inset: 0; opacity: .5; }
@@ -234,14 +327,128 @@ body[data-motion="reduced"] .output-mark { opacity: 1; filter: none; transform: 
 '''
 
 
+MOTION_CSS = r'''
+.motion-output { display: grid; grid-template-rows: 1fr auto; min-height: 205px; background: var(--stage-bg); }
+.motion-stage { position: relative; min-height: 145px; display: grid; place-items: center; isolation: isolate; overflow: hidden; --motion-progress: 0; --motion-x: 0; --motion-y: 0; --motion-scale: .72; --motion-rotate: 0deg; --motion-opacity: .05; }
+.animated-mark { position: relative; z-index: 3; width: 84%; max-height: 82%; object-fit: contain; opacity: var(--motion-opacity); transform: translate3d(calc(var(--motion-x) * 1%), calc(var(--motion-y) * 1%), 0) scale(var(--motion-scale)) rotate(var(--motion-rotate)); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) calc(20% + var(--motion-progress) * 28%), transparent)); will-change: transform, opacity, filter; }
+.motion-effect { position: absolute; z-index: 1; pointer-events: none; opacity: 0; will-change: transform, opacity, background-position; }
+.motion-effect-a { inset: 0; }
+.motion-effect-b { inset: 12%; }
+.motion-effect-c { inset: 20%; }
+.motion-phase { position: absolute; z-index: 5; bottom: .58rem; right: .65rem; color: rgba(242,241,233,.72); font-size: .52rem; text-transform: uppercase; letter-spacing: .08em; }
+.pattern-grid .motion-effect-a { background-image: linear-gradient(rgba(138,164,255,.2) 1px, transparent 1px), linear-gradient(90deg, rgba(138,164,255,.2) 1px, transparent 1px); background-size: 20px 20px; opacity: calc(var(--motion-progress) * .55); transform: translate3d(calc((1 - var(--motion-progress)) * -18%), 0, 0); }
+.pattern-quiet .motion-effect-a { background: radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 65%); opacity: calc(var(--motion-progress) * .66); transform: scale(calc(.7 + var(--motion-progress) * .32)); }
+.pattern-scan .motion-effect-a { background: repeating-linear-gradient(0deg, transparent 0 6px, color-mix(in srgb, var(--accent) 20%, transparent) 7px 8px); opacity: calc(var(--motion-progress) * .68); transform: translateY(calc((1 - var(--motion-progress)) * -35%)); }
+.pattern-field .motion-effect-a { background: radial-gradient(circle at 20% 30%, var(--accent) 0 1px, transparent 2px), radial-gradient(circle at 76% 65%, var(--accent) 0 1px, transparent 2px), radial-gradient(circle at 48% 20%, #fff 0 1px, transparent 2px), radial-gradient(circle at 88% 38%, var(--accent) 0 1px, transparent 2px); background-size: 48px 42px, 61px 58px, 73px 71px, 54px 63px; opacity: calc((1 - var(--motion-progress)) * .9); transform: translate3d(calc((1 - var(--motion-progress)) * -12%), calc((1 - var(--motion-progress)) * 16%), 0) scale(calc(1.2 - var(--motion-progress) * .22)); }
+.pattern-field .motion-effect-b { border: 1px solid color-mix(in srgb, var(--accent) 56%, transparent); border-radius: 50%; opacity: calc((1 - var(--motion-progress)) * .7); transform: scale(calc(1.35 - var(--motion-progress) * .45)); }
+.pattern-ring .motion-effect-a { inset: 14%; border: 1px solid color-mix(in srgb, var(--accent) 66%, transparent); border-radius: 50%; opacity: calc(var(--motion-progress) * .74); transform: rotate(calc(var(--motion-progress) * 150deg)) scale(calc(.45 + var(--motion-progress) * .55)); }
+.pattern-ring .motion-effect-b { inset: 27%; border: 1px dashed color-mix(in srgb, var(--accent) 48%, transparent); border-radius: 50%; opacity: calc(var(--motion-progress) * .68); transform: rotate(calc(var(--motion-progress) * -210deg)); }
+.pattern-shield .motion-effect-a { clip-path: polygon(50% 3%, 92% 18%, 84% 72%, 50% 98%, 16% 72%, 8% 18%); border: 1px solid color-mix(in srgb, var(--accent) 68%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); opacity: calc(var(--motion-progress) * .65); transform: scale(calc(.72 + var(--motion-progress) * .28)); }
+.pattern-shield .motion-effect-b { inset: 25% 12%; border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent); opacity: calc(var(--motion-progress) * .7); transform: translateY(calc((1 - var(--motion-progress)) * 40%)); }
+.pattern-burst .motion-effect-a { inset: 36% 9%; border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent); opacity: calc(var(--motion-progress) * .72); transform: rotate(-20deg) scaleX(calc(.28 + var(--motion-progress) * .72)); }
+.pattern-burst .motion-effect-b { inset: 9% 36%; border-left: 1px solid var(--accent); border-right: 1px solid var(--accent); opacity: calc(var(--motion-progress) * .58); transform: rotate(-20deg) scaleY(calc(.25 + var(--motion-progress) * .75)); }
+.pattern-track .motion-effect-a { inset: 0; width: 35%; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 80%, transparent), transparent); opacity: calc(var(--motion-progress) * .75); transform: translateX(calc((var(--motion-progress) * 180% - 80%))); }
+.pattern-track .motion-effect-b { top: 48%; left: 0; right: 0; height: 1px; background: var(--accent); opacity: calc(var(--motion-progress) * .55); box-shadow: 0 -34px 0 color-mix(in srgb, var(--accent) 25%, transparent), 0 34px 0 color-mix(in srgb, var(--accent) 25%, transparent); }
+.pattern-speed .motion-effect-a { inset: 28% 0; background: repeating-linear-gradient(165deg, transparent 0 12px, color-mix(in srgb, var(--accent) 64%, transparent) 13px 14px); opacity: calc((1 - var(--motion-progress)) * .75); transform: translateX(calc((1 - var(--motion-progress)) * -24%)); }
+.pattern-speed .motion-effect-b { inset: 42% -20%; height: 1px; background: var(--accent); opacity: calc((1 - var(--motion-progress)) * .85); transform: rotate(-14deg) translateX(calc((1 - var(--motion-progress)) * -28%)); }
+.pattern-curtain .motion-effect-a { inset: 0; background: linear-gradient(90deg, #000 0 43%, transparent 44% 56%, #000 57%); opacity: calc((1 - var(--motion-progress)) * .82); transform: scaleX(calc(1 - var(--motion-progress) * .5)); }
+.pattern-curtain .motion-effect-b { inset: 0; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 28%, transparent), transparent 65%); opacity: calc(var(--motion-progress) * .65); }
+.pattern-wave .motion-effect-a { inset: 0; background: repeating-radial-gradient(ellipse at 20% 80%, transparent 0 16px, color-mix(in srgb, var(--accent) 28%, transparent) 17px 18px); opacity: calc(var(--motion-progress) * .55); transform: rotate(calc(-9deg + var(--motion-progress) * 13deg)) scale(calc(1.3 - var(--motion-progress) * .08)); }
+.pattern-wave .motion-effect-b { inset: 0; background: linear-gradient(150deg, transparent 20%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 75%); opacity: calc(var(--motion-progress) * .6); transform: translateX(calc((1 - var(--motion-progress)) * -12%)); }
+.pattern-orbit .motion-effect-a { inset: 14%; border: 1px dotted color-mix(in srgb, var(--accent) 76%, transparent); border-radius: 50%; opacity: calc(var(--motion-progress) * .7); transform: rotate(calc(var(--motion-progress) * 360deg)); }
+.pattern-orbit .motion-effect-b { inset: 29%; border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent); border-radius: 50%; opacity: calc(var(--motion-progress) * .52); transform: rotate(calc(var(--motion-progress) * -260deg)); }
+.pattern-orbit .motion-effect-c { width: 7px; height: 7px; top: 16%; left: 50%; border-radius: 50%; background: var(--accent); box-shadow: 0 0 13px var(--accent); opacity: calc(var(--motion-progress) * .9); transform: rotate(calc(var(--motion-progress) * 360deg)); transform-origin: 0 190%; }
+.pattern-plain .motion-effect-a { background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 24%, transparent), transparent); opacity: calc(var(--motion-progress) * .55); transform: scale(calc(.7 + var(--motion-progress) * .3)); }
+.motion-controls { display: flex; align-items: center; gap: .3rem; padding: .45rem .55rem .55rem; background: color-mix(in srgb, #000 20%, transparent); }
+.motion-controls button { padding: .3rem .42rem; font-size: .55rem; }
+.motion-timeline { flex: 1; min-width: 26px; height: 2px; background: color-mix(in srgb, var(--accent) 22%, transparent); overflow: hidden; }
+.motion-timeline span { display: block; width: 0; height: 100%; background: var(--accent); transition: width .08s linear; }
+.motion-time { color: rgba(242,241,233,.65); font-size: .52rem; min-width: 2.1rem; text-align: right; }
+body[data-motion="paused"] .motion-stage { outline: 1px solid color-mix(in srgb, var(--accent) 42%, transparent); outline-offset: -1px; }
+body[data-motion="reduced"] .motion-effect { display: none; }
+body[data-motion="reduced"] .animated-mark { opacity: 1; transform: none; filter: none; }
+@media (max-width: 720px) { .motion-stage { min-height: 155px; } .motion-controls { flex-wrap: wrap; } .motion-timeline { flex-basis: 100%; order: 5; } }
+'''
+
+
 JS = r'''(() => {
   "use strict";
   const body = document.body;
   const cards = [...document.querySelectorAll(".theme-card")];
+  const stages = [...document.querySelectorAll("[data-motion-card]")];
   const filter = document.querySelector("[data-filter]");
   const status = document.querySelector("[data-filter-status]");
   const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const presets = {
+    grid: [-28, 16, -6, .78], quiet: [0, 10, 0, .9], scan: [-26, 0, 0, .8],
+    field: [-10, 22, -8, .72], ring: [0, 0, -22, .78], shield: [0, 24, 0, .74],
+    burst: [0, 0, -18, .76], track: [-42, 0, 0, .8], speed: [-48, 6, -10, .7],
+    curtain: [0, 0, 0, .84], wave: [16, 22, 8, .76], orbit: [0, -16, 16, .78],
+    plain: [0, 12, 0, .86]
+  };
+  const players = [];
   let motion = prefersReduced ? "reduced" : "running";
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const ease = (value, effect) => {
+    const p = clamp(value, 0, 1);
+    if (effect === "speed" || effect === "burst") return 1 - Math.pow(1 - p, 3);
+    if (effect === "quiet" || effect === "curtain") return p * p * (3 - 2 * p);
+    if (effect === "wave" || effect === "orbit") return p < .78 ? p / .78 : 1 - Math.pow((1 - p) / .22, 2) * .035;
+    return 1 - Math.pow(1 - p, 2.4);
+  };
+  function phaseFor(progress) {
+    if (progress < .16) return "source";
+    if (progress < .42) return "reveal";
+    if (progress < .78) return "transform";
+    if (progress < .96) return "settle";
+    return "canonical";
+  }
+  function render(player, progress) {
+    const p = clamp(progress, 0, 1);
+    const eased = ease(p, player.effect);
+    const [startX, startY, startRotate, startScale] = presets[player.effect] || presets.plain;
+    const settle = p > .78 ? (p - .78) / .22 : 0;
+    const overshoot = (player.effect === "sports-impact" || player.effect === "speed" || player.effect === "burst") ? Math.sin(Math.min(1, p) * Math.PI) * .06 : 0;
+    const scale = startScale + (1 - startScale) * eased + overshoot;
+    player.stage.style.setProperty("--motion-progress", p.toFixed(4));
+    player.stage.style.setProperty("--motion-x", ((1 - eased) * startX).toFixed(3));
+    player.stage.style.setProperty("--motion-y", ((1 - eased) * startY).toFixed(3));
+    player.stage.style.setProperty("--motion-scale", scale.toFixed(4));
+    player.stage.style.setProperty("--motion-rotate", `${((1 - eased) * startRotate).toFixed(3)}deg`);
+    player.stage.style.setProperty("--motion-opacity", (.06 + eased * .94).toFixed(4));
+    player.stage.dataset.state = phaseFor(p);
+    if (player.phase) player.phase.textContent = phaseFor(p);
+    if (player.progress) player.progress.style.width = `${p * 100}%`;
+    if (player.time) player.time.textContent = `${(p * player.duration / 1000).toFixed(1)}s`;
+  }
+  function stop(player) { player.playing = false; if (player.frame) cancelAnimationFrame(player.frame); player.frame = 0; }
+  function tick(player, timestamp) {
+    if (!player.playing || motion === "paused" || motion === "reduced") return;
+    if (player.last === null) player.last = timestamp;
+    player.current += (timestamp - player.last) * player.tempo;
+    player.last = timestamp;
+    const progress = clamp(player.current / player.duration, 0, 1);
+    render(player, progress);
+    if (progress >= 1) stop(player); else player.frame = requestAnimationFrame((next) => tick(player, next));
+  }
+  function play(player) {
+    if (prefersReduced) { render(player, 1); return; }
+    player.playing = true; player.last = null; if (!player.frame) player.frame = requestAnimationFrame((next) => tick(player, next));
+  }
+  function pause(player) { stop(player); }
+  function replay(player) { stop(player); player.current = 0; render(player, 0); play(player); }
+  stages.forEach((stage) => {
+    const player = { stage, effect: stage.dataset.effect || "plain", duration: Number(stage.dataset.durationMs || 1800), tempo: Number(stage.dataset.tempo || 1), current: 0, last: null, playing: false, frame: 0, phase: stage.querySelector("[data-motion-phase]"), progress: stage.closest(".motion-output")?.querySelector("[data-motion-progress]"), time: stage.closest(".motion-output")?.querySelector("[data-motion-time]") };
+    player.playButton = stage.closest(".motion-output")?.querySelector('[data-card-action="play"]');
+    player.pauseButton = stage.closest(".motion-output")?.querySelector('[data-card-action="pause"]');
+    player.replayButton = stage.closest(".motion-output")?.querySelector('[data-card-action="replay"]');
+    player.playButton?.addEventListener("click", () => { setMotion("running"); play(player); });
+    player.pauseButton?.addEventListener("click", () => pause(player));
+    player.replayButton?.addEventListener("click", () => { setMotion("running"); replay(player); });
+    players.push(player);
+    render(player, prefersReduced ? 1 : 0);
+    if (!prefersReduced) play(player);
+  });
   function setMotion(next) {
     motion = next;
     body.dataset.motion = next;
@@ -249,19 +456,13 @@ JS = r'''(() => {
       node.textContent = next === "reduced" ? "REDUCED" : next.toUpperCase();
     });
   }
-  function replay() {
-    cards.forEach((card) => {
-      card.querySelectorAll(".output-mark, .effect").forEach((node) => {
-        node.style.animation = "none";
-        void node.offsetWidth;
-        node.style.animation = "";
-      });
-    });
+  function replayAll() {
+    players.forEach(replay);
     setMotion(prefersReduced ? "reduced" : "running");
   }
-  document.querySelector("[data-action=play]")?.addEventListener("click", () => setMotion("running"));
-  document.querySelector("[data-action=pause]")?.addEventListener("click", () => setMotion("paused"));
-  document.querySelector("[data-action=replay]")?.addEventListener("click", replay);
+  document.querySelector("[data-action=play]")?.addEventListener("click", () => { setMotion("running"); players.forEach(play); });
+  document.querySelector("[data-action=pause]")?.addEventListener("click", () => { setMotion("paused"); players.forEach(pause); });
+  document.querySelector("[data-action=replay]")?.addEventListener("click", replayAll);
   filter?.addEventListener("input", () => {
     const query = filter.value.trim().toLowerCase();
     let visible = 0;
@@ -272,9 +473,10 @@ JS = r'''(() => {
     });
     if (status) status.textContent = `${visible} of ${cards.length} routes shown`;
   });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) players.forEach(pause); });
   setMotion(motion);
   window.__motifluxShowcaseReady = true;
-  window.__motifluxShowcaseControl = { play: () => setMotion("running"), pause: () => setMotion("paused"), replay, setMotion };
+  window.__motifluxShowcaseControl = { play: () => { setMotion("running"); players.forEach(play); }, pause: () => { setMotion("paused"); players.forEach(pause); }, replay: replayAll, setMotion };
 })();
 '''
 
@@ -301,8 +503,8 @@ def build_html(data: dict) -> None:
       <section class="hero" aria-labelledby="page-title">
         <div>
           <p class="eyebrow">Brand motion routing / comparative study</p>
-          <h1 id="page-title">One mark.<br>Thirteen motion systems.</h1>
-          <p class="hero-copy">The source stays fixed. The design language changes. This atlas shows how Motiflux routes the same Prysai logo through thirteen market-facing motion themes, then explains the algorithm family behind each representative landing frame.</p>
+          <h1 id="page-title">One image.<br>Thirteen animations.</h1>
+          <p class="hero-copy">The source stays fixed. The animation changes. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-motion studies, then explains the algorithm family behind each result.</p>
           <div class="stats" aria-label="Showcase summary">
             <div class="stat"><strong>13</strong><span>routable themes</span></div>
             <div class="stat"><strong>1</strong><span>identity source</span></div>
@@ -316,25 +518,25 @@ def build_html(data: dict) -> None:
       </section>
       <section class="route-brief" aria-labelledby="route-title">
         <div class="route-cell"><span id="route-title" class="route-label">Example request</span><p class="route-value">“I want to make a logo animation for my artificial-intelligence company.”</p></div>
-        <div class="route-cell"><span class="route-label">AI field selected</span><p class="route-value"><strong>AI-field</strong><br>signal flow / convergence / progressive disclosure</p></div>
-        <div class="route-cell"><span class="route-label">Why this result</span><p class="route-value">Organized signals converge into the real mark, then settle into a quiet canonical state.</p></div>
+        <div class="route-cell"><span class="route-label">AI-field animation</span><p class="route-value"><strong>AI-field</strong><br>the supplied image becomes a signal-convergence reveal</p></div>
+        <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Source image → reveal → transformation → stable logo. Play, pause, or replay each card.</p></div>
       </section>
       <section aria-labelledby="grid-title">
         <div class="controls">
-          <div><div id="grid-title" class="controls-copy">Theme comparison grid</div><div data-filter-status class="controls-copy">13 of 13 routes shown</div></div>
+          <div><div id="grid-title" class="controls-copy">Image → animation comparison grid</div><div data-filter-status class="controls-copy">13 of 13 animations shown</div></div>
           <div class="controls-actions"><input class="filter" data-filter type="search" placeholder="Filter by theme or keyword" aria-label="Filter themes"><button type="button" data-action="play">Play all</button><button type="button" data-action="pause">Pause</button><button type="button" data-action="replay">Replay</button><span class="route-state" data-motion-label>RUNNING</span></div>
         </div>
         <div class="theme-grid">{theme_markup}</div>
       </section>
     </main>
-    <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo motion: measure, route, reconstruct, compose, instrument, validate, deliver.</p><p>Public design systems are principle analogues only. This showcase does not claim private vendor algorithms, copied assets, or browser-runtime proof.</p></footer>
+    <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo motion: the source image stays recognizable while the selected theme changes the reveal choreography.</p><p>The PDF is a static storyboard of the playable HTML animations. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
   </div>
   <script src="app.js"></script>
 </body>
 </html>
 '''
     (ROOT / "index.html").write_text(html_doc, encoding="utf-8")
-    (ROOT / "styles.css").write_text(CSS, encoding="utf-8")
+    (ROOT / "styles.css").write_text(CSS + MOTION_CSS, encoding="utf-8")
     (ROOT / "app.js").write_text(JS, encoding="utf-8")
 
 
@@ -419,6 +621,60 @@ def draw_image_contained(canvas, path: Path, x: float, y: float, width: float, h
     canvas.drawImage(str(path), x + (width - draw_width)/2, y + (height - draw_height)/2, draw_width, draw_height, mask=mask)
 
 
+def draw_storyboard_frame(canvas, path: Path, x: float, y: float, width: float, height: float, *, frame: str, theme: dict) -> None:
+    """Draw one static frame from the same source-image animation."""
+
+    from reportlab.lib.colors import HexColor
+
+    accent = pdf_color(theme["accent"])
+    canvas.saveState()
+    canvas.setFillColor(HexColor(theme["background"]))
+    canvas.rect(x, y, width, height, stroke=0, fill=1)
+    canvas.setStrokeColor(accent)
+    canvas.setLineWidth(.6)
+    progress = {"source": 0.0, "reveal": .3, "transform": .68, "canonical": 1.0}[frame]
+    effect = theme["pattern"]
+    if effect == "grid":
+        canvas.setStrokeAlpha(.15 + progress * .2)
+        for offset in range(0, int(width), 12): canvas.line(x + offset, y, x + offset, y + height)
+        for offset in range(0, int(height), 12): canvas.line(x, y + offset, x + width, y + offset)
+    elif effect in {"ring", "orbit"}:
+        canvas.setStrokeAlpha(.15 + progress * .35)
+        canvas.circle(x + width*.5, y + height*.5, min(width, height) * (.18 + progress*.18), stroke=1, fill=0)
+    elif effect == "shield":
+        canvas.setStrokeAlpha(.2 + progress * .35)
+        points = [(x + width*.5, y + height*.91), (x + width*.83, y + height*.76), (x + width*.76, y + height*.27), (x + width*.5, y + height*.08), (x + width*.24, y + height*.27), (x + width*.17, y + height*.76)]
+        path_shape = canvas.beginPath(); path_shape.moveTo(*points[0])
+        for point in points[1:]: path_shape.lineTo(*point)
+        path_shape.close(); canvas.drawPath(path_shape, stroke=1, fill=0)
+    elif effect in {"speed", "track"}:
+        canvas.setStrokeAlpha((1 - progress) * .5)
+        canvas.line(x + width*(.1 - progress*.2), y + height*.15, x + width*(.8 + progress*.2), y + height*.7)
+        canvas.line(x + width*(.1 - progress*.2), y + height*.35, x + width*(.8 + progress*.2), y + height*.9)
+    elif effect in {"wave", "field"}:
+        canvas.setStrokeAlpha(.12 + progress * .18)
+        for row in range(2):
+            path_shape = canvas.beginPath(); path_shape.moveTo(x, y + height*(.35 + row*.18))
+            path_shape.curveTo(x + width*.25, y + height*(.52 + row*.1), x + width*.55, y + height*(.08 + row*.2), x + width, y + height*(.35 + row*.16))
+            canvas.drawPath(path_shape, stroke=1, fill=0)
+    elif effect == "curtain":
+        canvas.setStrokeAlpha((1 - progress) * .5)
+        canvas.line(x + width*(.12 + progress*.25), y, x + width*(.35 + progress*.15), y + height)
+        canvas.line(x + width*(.88 - progress*.25), y, x + width*(.65 - progress*.15), y + height)
+    else:
+        canvas.setStrokeAlpha(.12 + progress * .22)
+        canvas.circle(x + width*.5, y + height*.5, min(width, height)*(.12 + progress*.12), stroke=1, fill=0)
+    if frame == "source":
+        draw_image_contained(canvas, CROP_JPG, x + 5, y + 5, width - 10, height - 10)
+    else:
+        draw_image_contained(canvas, MARK_PNG, x + 5, y + 5, width - 10, height - 10, mask="auto")
+        if frame == "reveal":
+            canvas.setFillColor(HexColor(theme["background"]))
+            canvas.setFillAlpha(.34)
+            canvas.rect(x, y + height*(1-progress), width, height*progress, stroke=0, fill=1)
+    canvas.restoreState()
+
+
 def draw_card(canvas, x: float, y: float, width: float, height: float, theme: dict, index: int) -> None:
     from reportlab.lib.colors import HexColor
 
@@ -432,18 +688,17 @@ def draw_card(canvas, x: float, y: float, width: float, height: float, theme: di
     canvas.setStrokeColor(line); canvas.line(x, y + height - header_h, x + width, y + height - header_h)
     canvas.setFillColor(accent); canvas.setFont("Courier-Bold", 8); canvas.drawString(x + 10, y + height - 15, theme["number"])
     canvas.setFillColor(ink); canvas.setFont("Helvetica-Bold", 10); canvas.drawString(x + 31, y + height - 15, theme["name"])
-    canvas.setFillColor(muted); canvas.setFont("Courier", 5.7); canvas.drawRightString(x + width - 10, y + height - 14, "ROUTE")
-    stage_y = y + height - header_h - 116
-    stage_h = 106
-    half = width / 2
-    canvas.setFillColor(HexColor("#000000")); canvas.rect(x, stage_y, half, stage_h, stroke=0, fill=1)
-    canvas.setFillColor(pdf_color(theme["background"])); canvas.rect(x + half, stage_y, half, stage_h, stroke=0, fill=1)
-    canvas.setStrokeColor(line); canvas.line(x + half, stage_y, x + half, stage_y + stage_h); canvas.line(x, stage_y, x + width, stage_y); canvas.line(x, stage_y + stage_h, x + width, stage_y + stage_h)
-    draw_pattern(canvas, x + half, stage_y, half, stage_h, theme)
-    draw_image_contained(canvas, CROP_JPG, x + 7, stage_y + 13, half - 14, stage_h - 26)
-    draw_image_contained(canvas, MARK_PNG, x + half + 7, stage_y + 13, half - 14, stage_h - 26, mask="auto")
-    canvas.setFillColor(muted); canvas.setFont("Courier", 5.2); canvas.drawString(x + 7, stage_y + stage_h - 12, "INPUT / SAME SOURCE"); canvas.drawString(x + half + 7, stage_y + stage_h - 12, "OUTPUT / REPRESENTATIVE FRAME")
-    text_y = stage_y - 13
+    canvas.setFillColor(muted); canvas.setFont("Courier", 5.7); canvas.drawRightString(x + width - 10, y + height - 14, "PLAYABLE IN HTML")
+    stage_y = y + height - header_h - 105
+    stage_h = 95
+    gap = 4
+    frame_width = (width - 3*gap) / 4
+    for frame_index, frame in enumerate(("source", "reveal", "transform", "canonical")):
+        frame_x = x + gap + frame_index * (frame_width + gap)
+        draw_storyboard_frame(canvas, SOURCE, frame_x, stage_y, frame_width, stage_h, frame=frame, theme=theme)
+        canvas.setFillColor(muted); canvas.setFont("Courier", 4.7); canvas.drawCentredString(frame_x + frame_width/2, stage_y - 8, frame.upper())
+    canvas.setStrokeColor(line); canvas.line(x, stage_y - 13, x + width, stage_y - 13)
+    text_y = stage_y - 26
     canvas.setFillColor(muted); canvas.setFont("Courier", 5.6); canvas.drawString(x + 10, text_y, theme["trigger"][:68])
     text_y -= 11
     canvas.setFillColor(ink); canvas.setFont("Helvetica", 6.8)
@@ -470,21 +725,21 @@ def build_pdf(data: dict) -> Path:
     pdf_path.parent.mkdir(parents=True, exist_ok=True)
     page_width, page_height = landscape(A4)
     pdf = canvas.Canvas(str(pdf_path), pagesize=(page_width, page_height), pageCompression=1)
-    pdf.setTitle("Motiflux V1 / Theme Atlas")
+    pdf.setTitle("Motiflux V1 / Image to Animation Atlas")
     pdf.setAuthor("uuzzrm / Motiflux")
     ink = HexColor("#f2f1e9"); muted = HexColor("#a2a69f"); line = HexColor("#303532"); accent = HexColor("#9c8cff")
 
     # Cover / route explanation page.
     pdf.setFillColor(HexColor("#070908")); pdf.rect(0, 0, page_width, page_height, stroke=0, fill=1)
-    pdf.setFillColor(accent); pdf.setFont("Courier-Bold", 8); pdf.drawString(38, page_height - 42, "MOTIFLUX / V1 / THEME ATLAS")
+    pdf.setFillColor(accent); pdf.setFont("Courier-Bold", 8); pdf.drawString(38, page_height - 42, "MOTIFLUX / V1 / IMAGE TO ANIMATION ATLAS")
     pdf.setStrokeColor(line); pdf.line(38, page_height - 53, page_width - 38, page_height - 53)
-    pdf.setFillColor(ink); pdf.setFont("Helvetica-Bold", 40); pdf.drawString(38, page_height - 125, "One mark.")
-    pdf.drawString(38, page_height - 168, "Thirteen motion systems.")
+    pdf.setFillColor(ink); pdf.setFont("Helvetica-Bold", 40); pdf.drawString(38, page_height - 125, "One image.")
+    pdf.drawString(38, page_height - 168, "Thirteen playable animations.")
     pdf.setFillColor(muted); pdf.setFont("Helvetica", 11)
     cover_lines = [
-        "A source-preserving comparison of the same supplied Prysai logo routed",
-        "through Motiflux V1 design themes. The logo geometry stays locked; the",
-        "motion language, stage treatment, algorithm family, and QA focus change.",
+        "A source-preserving storyboard of the same supplied Prysai image moving",
+        "through Motiflux V1 design themes. The source stays recognizable while",
+        "the reveal, motion language, and algorithm explanation change.",
     ]
     for offset, line_text in enumerate(cover_lines): pdf.drawString(40, page_height - 214 - offset*16, line_text)
     pdf.setFillColor(HexColor("#000000")); pdf.setStrokeColor(line); pdf.roundRect(40, 82, 235, 190, 6, stroke=1, fill=1)
@@ -497,9 +752,9 @@ def build_pdf(data: dict) -> Path:
     route_lines = [
         "Request: I want to make a logo animation for my artificial-intelligence company.",
         "Route: signal flow / convergence / progressive disclosure.",
-        "Result: organized signals converge into the real mark, then settle into a",
-        "quiet canonical state. This is a representative landing frame, not a claim",
-        "of a private vendor's internal algorithm or a browser-runtime pass.",
+        "Animation: the supplied image moves through a field of signals into a",
+        "readable canonical logo. The HTML is playable; this PDF records its",
+        "source, reveal, transform, and settle frames.",
     ]
     for offset, line_text in enumerate(route_lines): pdf.drawString(334, 198 - offset*14, line_text)
     pdf.setStrokeColor(line); pdf.line(334, 116, 782, 116)
@@ -529,7 +784,7 @@ def build_pdf(data: dict) -> Path:
                 x = margin_x + col*(card_width + gap_x)
                 y = page_height - 47 - (row + 1)*card_height - row*gap_y
                 draw_card(pdf, x, y, card_width, card_height, theme, page_start + slot)
-        pdf.setFillColor(muted); pdf.setFont("Courier", 6); pdf.drawString(margin_x, 14, "Source-preserving theme studies / representative static frames")
+        pdf.setFillColor(muted); pdf.setFont("Courier", 6); pdf.drawString(margin_x, 14, "Same source image / four-frame animation storyboards")
         pdf.drawRightString(page_width - margin_x, 14, f"PAGE {2 + page_start//4:02d}")
         pdf.showPage()
     pdf.save()
@@ -540,20 +795,22 @@ def write_readme(data: dict) -> None:
     text = f'''# Motiflux V1 showcase
 
 This showcase uses one supplied raster source - `assets/prysai-logo-white.jpg` -
-to make a direct visual comparison across {len(data["themes"])} Motiflux theme routes.
+to make a direct visual comparison across {len(data["themes"])} playable Motiflux theme animations.
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
-the source mark on the left and shows a theme-specific representative output
-stage on the right. The output stage changes motion language and secondary
-visual treatment; it does not redraw or rename the Prysai identity.
+the same source image on the left and runs a real source-to-animation sequence
+on the right: source, reveal, transform, settle, and canonical hold. The
+animation changes motion language and secondary visual treatment; it does not
+redraw or rename the Prysai identity.
 
 ## Files
 
 - `index.html` - dependency-free interactive grid with filtering and motion controls.
-- `themes.json` - structured theme records used by the page and PDF generator.
+- `themes.json` - derived display snapshot generated from the canonical catalog;
+  it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
 - `assets/prysai-mark-crop.jpg` and `assets/prysai-mark-transparent.png` - display-only derivatives made from the same source; no geometry edits.
-- `output/pdf/motiflux-theme-atlas.pdf` - printable comparison atlas.
+- `output/pdf/motiflux-theme-atlas.pdf` - printable four-frame storyboard atlas.
 
 ## Regenerate
 
@@ -563,9 +820,10 @@ From the repository root:
 python showcase\\generate_showcase.py
 ```
 
-The PDF includes a route example for the phrase `artificial-intelligence` ->
-`AI-field`. Public design systems are principle analogues only; this material
-does not claim private vendor algorithms or browser-runtime validation.
+The PDF includes the route example `artificial-intelligence` -> `AI-field` and
+records the four key frames of each playable animation. Public design systems
+are principle analogues only; this material does not claim private vendor
+algorithms.
 '''
     (ROOT / "README.md").write_text(text, encoding="utf-8")
 
@@ -578,6 +836,7 @@ def main() -> None:
     if len(data.get("themes", [])) != 13:
         raise ValueError("showcase requires exactly 13 theme records")
     derive_preview_assets()
+    write_snapshot(data)
     build_html(data)
     write_readme(data)
     if not args.skip_pdf:

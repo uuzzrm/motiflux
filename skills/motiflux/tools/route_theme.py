@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from engine.catalog import load_catalog
 from motiflux_core import SCHEMA_VERSION, write_json
 
 
@@ -113,64 +114,10 @@ def parse_themes(markdown: str) -> list[dict[str, Any]]:
 
 
 def route(query: str, guide_path: Path = GUIDE_PATH) -> dict[str, Any]:
-    themes = parse_themes(guide_path.read_text(encoding="utf-8"))
-    if not themes:
-        raise ValueError("motion theme guide contains no numbered theme records")
-    query_folded = query.casefold()
-    query_words = words(query)
-    scores: dict[str, int] = {}
-    matched_by_theme: dict[str, list[str]] = {}
-    for theme in themes:
-        score = 0
-        matched: list[str] = []
-        name_folded = theme["name"].casefold()
-        if name_folded in query_folded:
-            score += 8
-            matched.append(theme["name"])
-        for tag in theme["tags"]:
-            tag_folded = tag.casefold()
-            if tag_folded in query_folded:
-                score += 3
-                matched.append(tag)
-            elif tag_folded in query_words:
-                score += 2
-                matched.append(tag)
-        for alias, target in ALIASES.items():
-            if target.casefold() == name_folded and alias.casefold() in query_folded:
-                score += 5
-                matched.append(alias)
-        scores[theme["name"]] = score
-        matched_by_theme[theme["name"]] = list(dict.fromkeys(matched))
-
-    ranked = sorted(themes, key=lambda item: (-scores[item["name"]], item["name"]))
-    primary = ranked[0]
-    if scores[primary["name"]] == 0:
-        primary = next((item for item in themes if item["name"] == "System-spatial"), themes[0])
-        modifiers = ["quiet", "accessible"]
-        fallback = True
-    else:
-        explicit_modifiers = [modifier for modifier in MODIFIERS if modifier in query_words]
-        modifiers = explicit_modifiers[:2]
-        fallback = False
-    rejected = [
-        item["name"]
-        for item in ranked
-        if item["name"] != primary["name"] and scores[item["name"]] > 0
-    ]
-    return {
-        "schema_version": SCHEMA_VERSION,
-        "theme_selection": {
-            "primary": primary["name"],
-            "modifiers": modifiers,
-            "matched_tags": matched_by_theme[primary["name"]],
-            "rejected_candidates": rejected,
-            "public_reference_basis": [primary["analogue"]] if primary["analogue"] else [],
-            "algorithm_stack": primary["algorithms"],
-            "scores": scores,
-            "query": query,
-            "fallback_used": fallback,
-        },
-    }
+    # Keep the Markdown parser above as a migration/inspection adapter. Runtime
+    # routing has one source of truth: the machine-readable catalog.
+    del guide_path
+    return load_catalog().route(query)
 
 
 def main() -> None:

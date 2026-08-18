@@ -21,3 +21,7 @@ jobs:
         run: python scripts/validate_project.py
       - name: Run offline tool tests
         run: python -m unittest discover -s tests -v
+      - name: Run project pipeline smoke test
+        run: |
+          python skills/motiflux/tools/motiflux.py project examples/basic-mark/mark.svg "AI logo animation" work/ci-project
+          python skills/motiflux/tools/motiflux.py validate project work/ci-project/project.json

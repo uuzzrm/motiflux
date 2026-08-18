@@ -16,8 +16,10 @@ Status: private development · Motiflux V1 · plugin release `1.0.0`
 - `skills/motiflux/agents/openai.yaml` — UI metadata for skill discovery.
 - `skills/motiflux/schemas/` — machine-readable contracts for plans, evidence,
   telemetry, and source observations.
-- `skills/motiflux/tools/` — offline `measure`, `compare`, `audit`, `build`, and
-  `validate` command seams.
+- `skills/motiflux/catalog/themes.json` — the single machine-readable catalog
+  for 13 routable motion themes.
+- `skills/motiflux/tools/` — offline `measure`, `route`, `project`, `compare`,
+  `audit`, `build`, and `validate` command seams.
 - `examples/basic-mark/` — a deterministic end-to-end fixture.
 - `showcase/` — a source-preserving 13-theme comparison grid, supplied Prysai
   asset, and generated PDF atlas.
@@ -47,11 +49,13 @@ copied assets.
 
 ## Showcase
 
-The source-preserving atlas applies the same supplied Prysai logo to 13 motion
-themes. The example request `artificial-intelligence logo animation` routes to
-`AI-field`, where organized signals converge into the real mark before it
-settles. Each card shows the source, representative output frame, algorithm
-stack, motion beats, and QA focus.
+The source-preserving atlas feeds the same supplied Prysai image into 13 real
+browser animation players. The example request `artificial-intelligence logo
+animation` routes to `AI-field`, where organized signals converge around the
+same mark before it settles into the canonical image. Each card keeps the input
+image beside a playable source -> reveal -> transform -> settle -> canonical
+sequence. Algorithm stacks, beats, and QA focus remain secondary explanations
+of the animation being shown.
 
 [Open the interactive HTML grid](showcase/index.html) · [Download the PDF atlas](showcase/output/pdf/motiflux-theme-atlas.pdf)
 
@@ -80,8 +84,15 @@ python skills\motiflux\tools\motiflux.py compare examples\basic-mark\mark.svg ex
 python skills\motiflux\tools\motiflux.py audit examples\basic-mark\telemetry.json --duration-ms 1200
 python skills\motiflux\tools\motiflux.py build examples\basic-mark\mark.svg examples\basic-mark\motion-plan.yaml work\basic-package
 python skills\motiflux\tools\motiflux.py route "AI security startup"
+python skills\motiflux\tools\motiflux.py project examples\basic-mark\mark.svg "AI logo animation" work\project
+python skills\motiflux\tools\motiflux.py validate project work\project\project.json
 python showcase\generate_showcase.py
 ```
+
+The project command runs `analyze -> route -> plan -> reconstruct -> compile ->
+verify -> package` and writes a traceable `project.json`. SVG input can compile
+through the deterministic fixture; raster input remains an honest `candidate`
+until a real raster-to-vector adapter is available.
 
 The output is deliberately evidence-preserving. A valid semantic SVG comparison
 does not claim browser pixels, raster contours, or accessibility-tree proof.
@@ -99,6 +110,8 @@ the output package described by the skill contract.
 The `showcase/` atlas is a separate demonstration surface inspired by the
 source-to-output comparison pattern used by public logo-motion projects. It
 uses one supplied Prysai raster source across 13 routed themes. Its HTML output
-contains representative, deterministic CSS motion studies; its PDF contains
-static landing frames and algorithm annotations. These materials do not claim
-private vendor algorithms, copied assets, or browser-runtime validation.
+contains dependency-free `requestAnimationFrame` players with per-card play,
+pause, replay, timeline, reduced-motion, and hidden-page behavior. Its PDF is a
+static four-frame storyboard of those playable sequences, with algorithm notes
+kept as context. These materials do not claim private vendor algorithms,
+copied assets, or generic-package browser validation.

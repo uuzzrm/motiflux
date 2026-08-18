@@ -1,7 +1,7 @@
 {
   "name": "motiflux",
   "version": "1.0.0",
-  "description": "AI skill for reconstructing brand marks as editable SVG scenes and designing validated, responsive logo motion.",
+  "description": "Motiflux V1 is an AI skill that turns one supplied brand image or vector mark into source-preserving, validated, responsive logo animation.",
   "author": {
     "name": "uuzzrm",
     "url": "https://github.com/uuzzrm"
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Motiflux",
-    "shortDescription": "Design and validate brand-mark motion",
-    "longDescription": "Motiflux V1 turns raster brand marks into editable SVG scene graphs and responsive motion packages. It routes requests through explicit design themes, preserves identity and topology, and validates geometry, timing, accessibility, and the exact canonical end state.",
+    "shortDescription": "Turn one brand image into validated logo motion",
+    "longDescription": "Motiflux V1 keeps the supplied image recognizable while routing the request through 13 explicit motion themes. It produces a traceable plan, a dependency-free playable runtime, and evidence for identity, topology, timing, accessibility, and the canonical end state.",
     "developerName": "uuzzrm",
     "category": "Design",
     "capabilities": [
@@ -29,8 +29,8 @@
     ],
     "brandColor": "#5B5CE2",
     "defaultPrompt": [
-      "Create a validated logo reveal from this mark.",
-      "Choose a motion theme for this brand and explain why.",
+      "Turn this supplied image into a validated logo animation.",
+      "Route this logo-animation request to a motion theme and explain the result.",
       "Audit this SVG animation for identity and accessibility."
     ]
   }

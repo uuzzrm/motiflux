@@ -1,223 +1,432 @@
 {
   "schema_version": "1.0",
+  "source_catalog": "skills/motiflux/catalog/themes.json",
   "source": {
     "asset": "assets/prysai-logo-white.jpg",
     "label": "Prysai logo / supplied raster source",
-    "identity_rule": "Use the same source mark in every theme. Change motion language, stage treatment, and sequencing only."
+    "identity_rule": "Use the same source mark in every theme. Change motion language and sequencing only."
   },
   "request_example": {
     "user_says": "I want to make a logo animation for my artificial-intelligence company.",
     "agent_route": "AI-field",
-    "routing_explanation": "The phrase artificial intelligence selects AI-field; the result uses organized signal convergence and a quiet canonical landing."
+    "routing_explanation": "The phrase artificial intelligence selects AI-field; the same source image is animated through signal convergence and a quiet canonical landing."
   },
   "themes": [
     {
       "id": "system-spatial",
       "name": "System-spatial",
       "number": "01",
-      "trigger": "product, SaaS, dashboard, enterprise",
-      "tags": ["hierarchy", "continuity", "clear state change"],
-      "public_analogue": "Material / Fluent / Atlassian motion principles",
-      "intent": "Make the mark feel native to a coherent product system: parts travel from semantic positions into one stable lockup.",
-      "algorithm": ["scene-graph dependency ordering", "shared spatial anchors", "monotonic cubic interpolation"],
-      "result": "Panels align, then the mark resolves with no decorative noise.",
-      "beats": ["map", "align", "resolve"],
-      "qa": "spatial continuity; no layout shift; focus order",
+      "trigger": "system, product, saas, dashboard, enterprise, interface",
+      "tags": [
+        "system-spatial",
+        "grid",
+        "hierarchy weight"
+      ],
+      "public_analogue": "Material, Fluent, Atlassian, and Carbon-style motion principles",
+      "intent": "Communicate state change, hierarchy, and spatial continuity through semantic movement.",
+      "algorithm": [
+        "scene-graph dependency ordering",
+        "shared spatial-anchor resolution",
+        "monotonic cubic interpolation",
+        "container-aware bounds",
+        "reduced-motion substitution"
+      ],
+      "result": "The same source mark moves through grid staging, then returns to a readable canonical state.",
+      "beats": [
+        "map",
+        "align",
+        "resolve"
+      ],
+      "qa": "spatial continuity; no layout shift; focus order; bounds",
       "accent": "#8aa4ff",
       "background": "#101723",
-      "pattern": "grid"
+      "pattern": "grid",
+      "tempo": 1.0,
+      "duration_ms": 1800
     },
     {
       "id": "premium-quiet",
       "name": "Premium-quiet",
       "number": "02",
-      "trigger": "luxury, fashion, beauty, editorial",
-      "tags": ["restraint", "material", "deliberate timing"],
-      "public_analogue": "Editorial motion and Apple-style purpose / hierarchy principles",
-      "intent": "Create perceived value through stillness, optical alignment, and a late, controlled reveal of the highest-value contour.",
-      "algorithm": ["low-amplitude transform field", "opacity and mask sequencing", "optical alignment correction"],
-      "result": "The logo emerges from near-black with one calm highlight pass.",
-      "beats": ["still", "reveal", "rest"],
-      "qa": "contour integrity; optical centering; calm frame pacing",
+      "trigger": "premium, luxury, fashion, beauty, editorial, quiet",
+      "tags": [
+        "premium-quiet",
+        "quiet",
+        "amplitude"
+      ],
+      "public_analogue": "Restrained editorial motion and Apple-style purpose, hierarchy, and user-control principles",
+      "intent": "Create perceived value through restraint, material presence, optical alignment, and deliberate timing.",
+      "algorithm": [
+        "low-amplitude transform field",
+        "opacity-and-mask sequencing",
+        "slow monotonic interpolation",
+        "optical-alignment correction",
+        "low-frequency highlight pass"
+      ],
+      "result": "The same source mark moves through quiet staging, then returns to a readable canonical state.",
+      "beats": [
+        "still",
+        "reveal",
+        "rest"
+      ],
+      "qa": "contour integrity; optical centering; frame pacing; typography",
       "accent": "#d7c7a7",
       "background": "#171513",
-      "pattern": "quiet"
+      "pattern": "quiet",
+      "tempo": 0.72,
+      "duration_ms": 2400
     },
     {
       "id": "developer-open",
       "name": "Developer-open",
       "number": "03",
-      "trigger": "developer, open source, API, CLI, tooling",
-      "tags": ["deterministic", "inspectable", "replayable"],
-      "public_analogue": "GitHub Primer motion principles",
-      "intent": "Expose a causal chain that a technical audience can inspect: named phases, stable actors, and reproducible replay.",
-      "algorithm": ["deterministic state machine", "typed event timeline", "semantic actor metadata"],
-      "result": "A terminal-like assembly trace resolves into the unchanged source mark.",
-      "beats": ["parse", "assemble", "commit"],
-      "qa": "determinism; event order; keyboard operation",
+      "trigger": "developer, open source, opensource, api, cli, code",
+      "tags": [
+        "developer-open",
+        "scan",
+        "phase step"
+      ],
+      "public_analogue": "GitHub Primer motion principles and inspectable interface systems",
+      "intent": "Make transformation legible to technical users through explicit phases and reproducible state.",
+      "algorithm": [
+        "deterministic state machine",
+        "tokenized property channels",
+        "typed event timeline",
+        "semantic actor metadata",
+        "reproducible seek controls"
+      ],
+      "result": "The same source mark moves through scan staging, then returns to a readable canonical state.",
+      "beats": [
+        "parse",
+        "assemble",
+        "commit"
+      ],
+      "qa": "determinism; event order; inspectability; keyboard operation",
       "accent": "#79e2a4",
       "background": "#0d1714",
-      "pattern": "scan"
+      "pattern": "scan",
+      "tempo": 1.0,
+      "duration_ms": 1800
     },
     {
       "id": "ai-field",
       "name": "AI-field",
       "number": "04",
-      "trigger": "AI, artificial intelligence, neural, generative, data",
-      "tags": ["signal flow", "convergence", "progressive disclosure"],
-      "public_analogue": "Public AI-product motion patterns; no private vendor recipe is claimed",
-      "intent": "Suggest intelligence through organized transformation: signals are guided into the mark's actual geometry, not random sci-fi decoration.",
-      "algorithm": ["constraint-to-signal mapping", "seeded vector-field guidance", "confidence-bounded morphing"],
-      "result": "A field of restrained points converges into the supplied Prysai identity and then goes quiet.",
-      "beats": ["observe", "converge", "land"],
-      "qa": "determinism; semantic landing; reduced motion; performance",
+      "trigger": "ai, artificial intelligence, machine learning, ml, neural, data",
+      "tags": [
+        "ai-field",
+        "field",
+        "field density"
+      ],
+      "public_analogue": "Public AI-product motion patterns using progressive disclosure, signal flow, and responsive feedback",
+      "intent": "Suggest intelligence through organized transformation rather than science-fiction decoration.",
+      "algorithm": [
+        "constraint-to-signal mapping",
+        "seeded vector-field guidance",
+        "graph-flow convergence",
+        "progressive disclosure",
+        "confidence-bounded morphing"
+      ],
+      "result": "The same source mark moves through field staging, then returns to a readable canonical state.",
+      "beats": [
+        "observe",
+        "converge",
+        "land"
+      ],
+      "qa": "determinism; semantic landing; performance; reduced motion; misleading-data avoidance",
       "accent": "#9c8cff",
       "background": "#14122b",
-      "pattern": "field"
+      "pattern": "field",
+      "tempo": 0.92,
+      "duration_ms": 1957
     },
     {
       "id": "fintech-trust",
       "name": "Fintech-trust",
       "number": "05",
-      "trigger": "finance, banking, payments, trusted, institutional",
-      "tags": ["reliable", "bounded", "confirmation"],
-      "public_analogue": "Predictable system feedback and calm state-transition principles",
-      "intent": "Make motion feel dependable: a guarded sequence moves from processing to a clear, reversible resolution.",
-      "algorithm": ["monotonic progress", "guarded state transitions", "bounded confirmation spring"],
-      "result": "A measured progress ring completes before the mark enters its stable state.",
-      "beats": ["secure", "process", "confirm"],
-      "qa": "state correctness; cancellation; contrast; no false success",
+      "trigger": "fintech, banking, bank, payments, payment, trust",
+      "tags": [
+        "fintech-trust",
+        "ring",
+        "progress mode"
+      ],
+      "public_analogue": "Predictable system feedback, hierarchy, and calm state-transition principles",
+      "intent": "Communicate reliability, controlled movement, and successful resolution.",
+      "algorithm": [
+        "monotonic progress",
+        "guarded state transitions",
+        "bounded confirmation spring",
+        "high-contrast completion cue",
+        "failure-safe cancellation"
+      ],
+      "result": "The same source mark moves through ring staging, then returns to a readable canonical state.",
+      "beats": [
+        "secure",
+        "process",
+        "confirm"
+      ],
+      "qa": "state correctness; cancellation; contrast; announcement timing; no false success",
       "accent": "#6dd9c0",
       "background": "#0c1c1b",
-      "pattern": "ring"
+      "pattern": "ring",
+      "tempo": 0.86,
+      "duration_ms": 2093
     },
     {
       "id": "security-shield",
       "name": "Security-shield",
       "number": "06",
-      "trigger": "security, privacy, identity, authentication, defense",
-      "tags": ["boundary", "verification", "controlled access"],
-      "public_analogue": "Accessible system motion with clear focus and user control",
-      "intent": "Reveal the boundary first, verify the interior second, and make the final state unambiguous.",
-      "algorithm": ["boundary-first reveal", "occlusion and aperture logic", "interruptible finite-state sequence"],
-      "result": "A perimeter closes around the source mark before the identity is unlocked.",
-      "beats": ["guard", "verify", "unlock"],
-      "qa": "semantic state; interruption; focus; contrast",
+      "trigger": "security, privacy, identity, authentication, auth, defense",
+      "tags": [
+        "security-shield",
+        "shield",
+        "verification state"
+      ],
+      "public_analogue": "Accessible system motion with explicit focus, status feedback, and user control",
+      "intent": "Convey boundary, verification, and controlled access.",
+      "algorithm": [
+        "boundary-first reveal",
+        "occlusion-and-aperture logic",
+        "finite-state verification sequence",
+        "restrained lock transition",
+        "interruptible animation"
+      ],
+      "result": "The same source mark moves through shield staging, then returns to a readable canonical state.",
+      "beats": [
+        "guard",
+        "verify",
+        "unlock"
+      ],
+      "qa": "semantic state; interruption; focus; contrast; temporal clarity",
       "accent": "#ffb86b",
       "background": "#1b1510",
-      "pattern": "shield"
+      "pattern": "shield",
+      "tempo": 0.8,
+      "duration_ms": 2250
     },
     {
       "id": "commerce-energy",
       "name": "Commerce-energy",
       "number": "07",
-      "trigger": "commerce, retail, shopping, marketplace, consumer",
-      "tags": ["approachable", "responsive", "action feedback"],
-      "public_analogue": "Commerce-system interaction feedback principles",
-      "intent": "Give the mark a quick, friendly response to an action while returning rapidly to a stable idle state.",
-      "algorithm": ["short interaction transition", "spring-like confirmation", "action-completion state machine"],
-      "result": "A compact burst surrounds the mark, then settles before the next action.",
-      "beats": ["anticipate", "respond", "idle"],
-      "qa": "input latency; repeat action; touch-safe range",
+      "trigger": "commerce, retail, shopping, marketplace, consumer, sale",
+      "tags": [
+        "commerce-energy",
+        "burst",
+        "interaction speed"
+      ],
+      "public_analogue": "Public commerce-system interaction feedback and clear-affordance principles",
+      "intent": "Create approachability and action without making the brand feel unstable.",
+      "algorithm": [
+        "short interaction transitions",
+        "spring-like confirmation",
+        "badge-and-accent choreography",
+        "responsive hit-area anchoring",
+        "action-completion state machine"
+      ],
+      "result": "The same source mark moves through burst staging, then returns to a readable canonical state.",
+      "beats": [
+        "anticipate",
+        "respond",
+        "idle"
+      ],
+      "qa": "input latency; hit-area stability; repeat action; focus; touch behavior",
       "accent": "#ff6f91",
       "background": "#24131b",
-      "pattern": "burst"
+      "pattern": "burst",
+      "tempo": 1.2,
+      "duration_ms": 1500
     },
     {
       "id": "automotive-precision",
       "name": "Automotive-precision",
       "number": "08",
-      "trigger": "automotive, mobility, engineering, performance, industrial",
-      "tags": ["mass", "trajectory", "mechanical confidence"],
-      "public_analogue": "Engineering-oriented physical continuity principles",
-      "intent": "Express mass and direction with controlled acceleration, stable anchors, and no weightless teleportation.",
-      "algorithm": ["kinematic trajectory planning", "acceleration and jerk limits", "anchor-based transforms"],
-      "result": "A directional light sweep passes across a mark that settles like a precision component.",
-      "beats": ["prime", "drive", "settle"],
-      "qa": "jerk continuity; clipping; anchor correctness",
+      "trigger": "automotive, mobility, transport, engineering, performance, industrial",
+      "tags": [
+        "automotive-precision",
+        "track",
+        "mass"
+      ],
+      "public_analogue": "Engineering-oriented physical continuity, hierarchy, and controlled acceleration",
+      "intent": "Express mass, direction, precision, and mechanical confidence.",
+      "algorithm": [
+        "kinematic trajectory planning",
+        "acceleration and jerk limits",
+        "anchor-based transforms",
+        "directional light sweep",
+        "constrained settle"
+      ],
+      "result": "The same source mark moves through track staging, then returns to a readable canonical state.",
+      "beats": [
+        "prime",
+        "drive",
+        "settle"
+      ],
+      "qa": "jerk continuity; clipping; anchor correctness; responsive bounds",
       "accent": "#e2edf1",
       "background": "#11191e",
-      "pattern": "track"
+      "pattern": "track",
+      "tempo": 0.9,
+      "duration_ms": 2000
     },
     {
       "id": "sports-impact",
       "name": "Sports-impact",
       "number": "09",
-      "trigger": "sports, fitness, competition, speed, bold",
-      "tags": ["anticipation", "release", "recovery"],
+      "trigger": "sports, fitness, competition, speed, impact, bold",
+      "tags": [
+        "sports-impact",
+        "speed",
+        "impact strength"
+      ],
       "public_analogue": "Broadcast and performance-interface motion grammar",
-      "intent": "Build tension, release along a dominant axis, and preserve silhouette recognition at peak speed.",
-      "algorithm": ["anticipation compression", "velocity burst", "controlled overshoot and recovery"],
-      "result": "The source mark compresses, cuts forward, and snaps back into a readable lockup.",
-      "beats": ["load", "impact", "recover"],
-      "qa": "peak silhouette; deformation limit; flashing risk",
+      "intent": "Create energy through anticipation, compression, release, and recovery.",
+      "algorithm": [
+        "anticipation compression",
+        "velocity burst",
+        "directional smear or stretch",
+        "controlled overshoot",
+        "recovery-to-idle state"
+      ],
+      "result": "The same source mark moves through speed staging, then returns to a readable canonical state.",
+      "beats": [
+        "load",
+        "impact",
+        "recover"
+      ],
+      "qa": "peak silhouette; deformation limit; flashing risk; reduced motion",
       "accent": "#ff5c4d",
       "background": "#24120f",
-      "pattern": "speed"
+      "pattern": "speed",
+      "tempo": 1.35,
+      "duration_ms": 1333
     },
     {
       "id": "cinematic-title",
       "name": "Cinematic-title",
       "number": "10",
-      "trigger": "film, title, trailer, story, dramatic, suspense",
-      "tags": ["attention", "scale", "composition"],
+      "trigger": "cinematic, film, movie, title, trailer, story",
+      "tags": [
+        "cinematic-title",
+        "curtain",
+        "depth"
+      ],
       "public_analogue": "Title-sequence staging grammar, not a studio pipeline claim",
-      "intent": "Use silence, scale, and compositional focus to stage one identity moment without obscuring the final silhouette.",
-      "algorithm": ["camera-space composition", "depth-layer parallax", "masked exposure reveal"],
-      "result": "The logo moves through a dark title frame and pauses long enough to be read.",
-      "beats": ["establish", "title", "hold"],
-      "qa": "final readability; crop safety; contrast; static fallback",
+      "intent": "Reveal meaning through attention control, scale, silence, and composition.",
+      "algorithm": [
+        "camera-space composition",
+        "depth-layer parallax",
+        "masked reveal",
+        "light-to-dark exposure curve",
+        "beat-driven timing"
+      ],
+      "result": "The same source mark moves through curtain staging, then returns to a readable canonical state.",
+      "beats": [
+        "establish",
+        "title",
+        "hold"
+      ],
+      "qa": "final readability; crop safety; contrast; reduced motion; static fallback",
       "accent": "#d7d2ff",
       "background": "#100f1c",
-      "pattern": "curtain"
+      "pattern": "curtain",
+      "tempo": 0.65,
+      "duration_ms": 2400
     },
     {
       "id": "nature-flow",
       "name": "Nature-flow",
       "number": "11",
-      "trigger": "nature, organic, wellness, sustainable, growth",
-      "tags": ["breath", "curvature", "connection"],
-      "public_analogue": "Continuous curves and variable-velocity organic motion",
-      "intent": "Follow the mark's curves with low-frequency motion that implies growth without erasing topology.",
-      "algorithm": ["curvature-following flow", "bounded low-frequency drift", "phase-offset secondary actors"],
-      "result": "Soft contour-following arcs carry the mark into a calm canonical endpoint.",
-      "beats": ["breathe", "flow", "root"],
-      "qa": "smoothness; amplitude bounds; topology; loop seam",
+      "trigger": "nature, organic, wellness, sustainable, water, wind",
+      "tags": [
+        "nature-flow",
+        "wave",
+        "flow amplitude"
+      ],
+      "public_analogue": "Organic motion built from continuous curves and variable velocity",
+      "intent": "Imply growth, breath, flow, and connection without losing mark structure.",
+      "algorithm": [
+        "curvature-following flow",
+        "bounded low-frequency drift",
+        "phase-offset secondary actors",
+        "damped wave",
+        "organic settle"
+      ],
+      "result": "The same source mark moves through wave staging, then returns to a readable canonical state.",
+      "beats": [
+        "breathe",
+        "flow",
+        "root"
+      ],
+      "qa": "smoothness; amplitude bounds; topology; loop seam; reduced motion",
       "accent": "#b9d8a5",
       "background": "#132017",
-      "pattern": "wave"
+      "pattern": "wave",
+      "tempo": 0.72,
+      "duration_ms": 2400
     },
     {
       "id": "gaming-world",
       "name": "Gaming-world",
       "number": "12",
-      "trigger": "gaming, esports, fantasy, sci-fi, arcade, playful",
-      "tags": ["reward", "combo", "world-building"],
-      "public_analogue": "Interactive-entertainment motion grammar; no game asset is copied",
-      "intent": "Treat the logo as the hero object and use deterministic secondary effects to signal reward and replay.",
-      "algorithm": ["stateful combo beats", "seeded particle secondary layer", "bounded squash and stretch"],
-      "result": "A controlled ring of reward particles frames the unchanged mark, then clears for readability.",
-      "beats": ["spawn", "combo", "clear"],
-      "qa": "readability; deterministic replay; flashing limits; performance",
+      "trigger": "gaming, esports, fantasy, sci-fi, character, quest",
+      "tags": [
+        "gaming-world",
+        "orbit",
+        "effect density"
+      ],
+      "public_analogue": "Interactive-entertainment motion grammar; no game asset or signature is copied",
+      "intent": "Create personality, reward, and world-building around a recognizable mark.",
+      "algorithm": [
+        "stateful combo or quest beats",
+        "seeded particle secondary layers",
+        "bounded squash and stretch",
+        "camera emphasis",
+        "interaction-triggered replay"
+      ],
+      "result": "The same source mark moves through orbit staging, then returns to a readable canonical state.",
+      "beats": [
+        "spawn",
+        "orbit",
+        "clear"
+      ],
+      "qa": "readability; deterministic replay; flashing limits; performance; reduced motion",
       "accent": "#62d7ff",
       "background": "#101b2b",
-      "pattern": "orbit"
+      "pattern": "orbit",
+      "tempo": 1.1,
+      "duration_ms": 1636
     },
     {
       "id": "accessibility-first",
       "name": "Accessibility-first",
       "number": "13",
-      "trigger": "accessible, reduced motion, calm, inclusive, keyboard",
-      "tags": ["static-first", "user control", "orientation"],
-      "public_analogue": "Apple / Fluent / Spectrum purpose-and-control principles",
-      "intent": "Design the static state first, then use opacity and small translation only when motion adds orientation or feedback.",
-      "algorithm": ["opacity and color state changes", "user-controlled pause and tempo", "focus-preserving transitions"],
-      "result": "The canonical mark is immediately legible; movement becomes optional context, not the meaning.",
-      "beats": ["show", "signal", "rest"],
-      "qa": "reduced motion; focus; contrast; static equivalence",
+      "trigger": "accessible, accessibility, reduced motion, calm, inclusive, low motion",
+      "tags": [
+        "accessibility-first",
+        "plain",
+        "pause"
+      ],
+      "public_analogue": "Apple, Fluent, Spectrum, and other public systems' purposeful-motion principles",
+      "intent": "Preserve orientation and feedback while minimizing vestibular, cognitive, and visual load.",
+      "algorithm": [
+        "opacity and color state changes",
+        "short translation only when necessary",
+        "user-controlled pause and tempo",
+        "focus-preserving transitions",
+        "static canonical fallback"
+      ],
+      "result": "The same source mark moves through plain staging, then returns to a readable canonical state.",
+      "beats": [
+        "show",
+        "signal",
+        "rest"
+      ],
+      "qa": "accessibility tree; focus; contrast; reduced motion; static equivalence",
       "accent": "#f4f1df",
       "background": "#1b1b19",
-      "pattern": "plain"
+      "pattern": "plain",
+      "tempo": 0.55,
+      "duration_ms": 2400
     }
   ]
 }

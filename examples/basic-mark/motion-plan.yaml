@@ -5,6 +5,7 @@ project:
   source: "mark.svg"
 theme_selection:
   primary: "system-spatial"
+  primary_id: "system-spatial"
   modifiers:
     - "quiet"
   matched_tags:

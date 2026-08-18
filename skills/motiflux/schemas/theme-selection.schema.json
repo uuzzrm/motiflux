@@ -8,9 +8,10 @@
     "schema_version": { "const": "1.0" },
     "theme_selection": {
       "type": "object",
-      "required": ["primary", "modifiers", "matched_tags", "rejected_candidates", "algorithm_stack"],
+      "required": ["primary", "primary_id", "modifiers", "matched_tags", "rejected_candidates", "algorithm_stack"],
       "properties": {
         "primary": { "type": "string", "minLength": 1 },
+        "primary_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
         "modifiers": { "type": "array", "maxItems": 2, "items": { "type": "string" } },
         "matched_tags": { "type": "array", "items": { "type": "string" } },
         "rejected_candidates": { "type": "array", "items": { "type": "string" } },

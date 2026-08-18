@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/project.schema.json",
+  "title": "Motiflux project manifest",
+  "type": "object",
+  "required": ["schema_version", "project_id", "request", "source", "stages", "artifacts", "status", "not_run", "unresolved"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "request": { "type": "string", "minLength": 1 },
+    "source": { "type": "object", "required": ["path", "format"], "additionalProperties": true },
+    "stages": { "type": "array", "minItems": 7, "items": { "type": "object", "required": ["stage", "status", "artifacts", "not_run", "unresolved", "metadata"], "properties": { "stage": { "type": "string" }, "status": { "enum": ["complete", "candidate", "blocked"] }, "artifacts": { "type": "array", "items": { "type": "string" } }, "not_run": { "type": "array", "items": { "type": "string" } }, "unresolved": { "type": "array", "items": { "type": "string" } }, "metadata": { "type": "object" } }, "additionalProperties": true } },
+    "artifacts": { "type": "object", "additionalProperties": { "type": "string" } },
+    "status": { "enum": ["complete", "candidate", "blocked"] },
+    "not_run": { "type": "array", "items": { "type": "string" } },
+    "unresolved": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

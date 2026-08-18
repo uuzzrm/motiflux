@@ -23,6 +23,15 @@ TOOL_NAMES = {
     "route_theme.py",
     "validate_package.py",
 }
+ENGINE_NAMES = {
+    "__init__.py",
+    "artifacts.py",
+    "catalog.py",
+    "domain.py",
+    "planner.py",
+    "project_pipeline.py",
+    "runtime.py",
+}
 
 
 def fail(message: str) -> None:
@@ -63,7 +72,8 @@ def validate_skill() -> tuple[str, str]:
     agent_path = SKILL_ROOT / "agents" / "openai.yaml"
     schema_paths = sorted((SKILL_ROOT / "schemas").glob("*.schema.json"))
     tool_paths = sorted((SKILL_ROOT / "tools").glob("*.py"))
-    for path in (skill_path, guide_path, agent_path, *schema_paths, *tool_paths):
+    engine_paths = sorted((SKILL_ROOT / "tools" / "engine").glob("*.py"))
+    for path in (skill_path, guide_path, agent_path, *schema_paths, *tool_paths, *engine_paths):
         require_file(path)
     if {path.name for path in tool_paths} != TOOL_NAMES:
         fail("skill tools must contain exactly the declared adapter set")
@@ -73,8 +83,21 @@ def validate_skill() -> tuple[str, str]:
         "telemetry.schema.json",
         "evidence.schema.json",
         "theme-selection.schema.json",
+        "project.schema.json",
     }:
         fail("skill schemas must contain the declared artifact contracts")
+    if {path.name for path in engine_paths} != ENGINE_NAMES:
+        fail("project engine must contain the declared internal modules")
+
+    catalog_path = SKILL_ROOT / "catalog" / "themes.json"
+    catalog_schema_path = SKILL_ROOT / "catalog" / "themes.schema.json"
+    require_file(catalog_path)
+    require_file(catalog_schema_path)
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog_themes = catalog.get("themes")
+    catalog_ids = [item.get("id") for item in catalog_themes if isinstance(item, dict)] if isinstance(catalog_themes, list) else []
+    if len(catalog_ids) != 13 or len(set(catalog_ids)) != 13:
+        fail("canonical theme catalog must contain exactly 13 unique IDs")
 
     skill = skill_path.read_text(encoding="utf-8")
     guide = guide_path.read_text(encoding="utf-8")
@@ -111,6 +134,10 @@ def validate_skill() -> tuple[str, str]:
         "tools/motiflux.py audit",
         "tools/motiflux.py build",
         "tools/motiflux.py route",
+        "catalog/themes.json",
+        "tools/motiflux.py project",
+        "project manifest",
+        "project pipeline",
     ):
         if required not in skill:
             fail(f"SKILL.md is missing required concept: {required}")
@@ -129,6 +156,8 @@ def validate_skill() -> tuple[str, str]:
             fail(f"skill UI metadata is missing quoted field: {required}")
     if "$motiflux" not in agent:
         fail("skill UI default prompt must explicitly name $motiflux")
+    if "engine.catalog" not in (SKILL_ROOT / "tools" / "route_theme.py").read_text(encoding="utf-8"):
+        fail("route compatibility adapter must delegate to engine.catalog")
 
     return skill, guide
 
@@ -159,6 +188,13 @@ def validate_showcase() -> None:
     theme_ids = [theme.get("id") for theme in themes if isinstance(theme, dict)]
     if len(theme_ids) != 13 or len(set(theme_ids)) != 13:
         fail("showcase theme ids must be present and unique")
+    catalog = json.loads((SKILL_ROOT / "catalog" / "themes.json").read_text(encoding="utf-8"))
+    catalog_ids = {theme.get("id") for theme in catalog.get("themes", []) if isinstance(theme, dict)}
+    if set(theme_ids) != catalog_ids:
+        fail("showcase theme ids must match the canonical catalog")
+    generator = (showcase / "generate_showcase.py").read_text(encoding="utf-8")
+    if "catalog" not in generator.lower():
+        fail("showcase generator must consume the canonical catalog")
     index = (showcase / "index.html").read_text(encoding="utf-8")
     if index.count('class="theme-card"') != 13:
         fail("showcase HTML must contain exactly 13 theme cards")
