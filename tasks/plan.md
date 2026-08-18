@@ -81,7 +81,7 @@ aggregator live behind internal seams.
 - [x] Core skill and plugin validators pass.
 - [x] Project tests pass without network access.
 - [x] No historical identifiers or unverified completion claims remain.
-- [ ] Remote private repository matches the local commit.
+- [x] Remote private repository matches the local commit.
 - [x] The project pipeline can be rerun from one source/request pair without
   manually assembling intermediate artifacts.
 

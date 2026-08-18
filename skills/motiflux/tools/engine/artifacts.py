@@ -16,7 +16,11 @@ class ArtifactStore:
         self.root.mkdir(parents=True, exist_ok=True)
 
     def path(self, relative: str) -> Path:
-        candidate = (self.root / relative).resolve()
+        # Artifact names can come from a Windows-authored plan even when the
+        # validator runs on Linux. Normalize both separator conventions before
+        # resolving so traversal checks have the same meaning in every runner.
+        normalized = relative.replace("\\", "/")
+        candidate = (self.root / normalized).resolve()
         if candidate != self.root and self.root not in candidate.parents:
             raise ValueError(f"artifact path escapes project root: {relative}")
         return candidate

@@ -31,4 +31,4 @@
 - [x] Project validator and plugin validator
 - [x] Skill validator
 - [x] GitHub Actions
-- [ ] Private remote SHA verification
+- [x] Private remote SHA verification
