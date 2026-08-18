@@ -1,0 +1,16 @@
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated evidence and previews belong to a consuming project, not this skill
+evidence.json
+preview.webp
+

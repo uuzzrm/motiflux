@@ -1,0 +1,6 @@
+interface:
+  display_name: "Motiflux"
+  short_description: "Design and validate brand-mark motion"
+  brand_color: "#5B5CE2"
+  default_prompt: "Use $motiflux to design and validate a responsive logo animation from this brand mark."
+
