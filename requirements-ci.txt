@@ -1,0 +1,2 @@
+# Image assertions for the checked-in GIF showcase tests.
+Pillow>=10.0

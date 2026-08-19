@@ -260,6 +260,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 From the repository root:
 
 ```powershell
+python -m pip install -r requirements-ci.txt
 python scripts/validate_project.py
 python H:\Codex\home\skills\.system\skill-creator\scripts\quick_validate.py skills\motiflux
 python H:\Codex\home\skills\.system\plugin-creator\scripts\validate_plugin.py .
