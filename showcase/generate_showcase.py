@@ -12,7 +12,7 @@ import textwrap
 from pathlib import Path
 from typing import Iterable
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageSequence
 
 
 ROOT = Path(__file__).resolve().parent
@@ -30,6 +30,56 @@ GITHUB_GALLERY_END = "<!-- GITHUB_GALLERY:END -->"
 ANIMATION_SIZE = (900, 302)
 ANIMATION_FRAME_COUNT = 28
 ANIMATION_FRAME_MS = 90
+GROWTH_SEQUENCE = ("blank", "spark", "arc", "bar", "monogram", "wordmark", "canonical")
+
+# The supplied raster has a stable, readable component layout: the icon sits on
+# the left, followed by the five wordmark components. These boxes are used only
+# to stage the existing pixels; they do not redraw or alter the supplied mark.
+LOGO_COMPONENT_BOXES = {
+    "origin_dot": (150, 780, 430, 1090),
+    "monogram_raw": (150, 160, 1130, 1150),
+    "wordmark_01": (1120, 240, 1760, 1000),
+    "wordmark_02": (1730, 380, 2110, 1000),
+    "wordmark_03": (2080, 380, 2670, 1160),
+    "wordmark_04": (2600, 380, 3070, 1000),
+    "wordmark_05": (3030, 170, 3770, 1000),
+}
+
+# These are animation grammars, not vendor recipes. The same component masks
+# are used by every route; trajectory_id decides how those supplied pixels are
+# staged. A theme must change the foreground construction, not only the field
+# around it.
+GROWTH_PROFILES = {
+    "system-spatial": {"construction_style": "orthogonal coordinate draw-on", "primary_motion": "grid lock and radial construction", "wordmark_reveal": "left-to-right component stagger", "monogram_mode": "radial", "wordmark_mode": "scan", "arc_start": 205, "arc_direction": 1, "stagger": 0.06},
+    "premium-quiet": {"construction_style": "quiet contour tracing", "primary_motion": "slow optical trace with a held pause", "wordmark_reveal": "soft letter-by-letter fade", "monogram_mode": "radial", "wordmark_mode": "fade", "arc_start": 228, "arc_direction": 1, "stagger": 0.09},
+    "developer-open": {"construction_style": "inspectable command sequence", "primary_motion": "deterministic scanline draw-on", "wordmark_reveal": "explicit left-to-right scan", "monogram_mode": "scan", "wordmark_mode": "scan", "arc_start": 180, "arc_direction": 1, "stagger": 0.04},
+    "ai-field": {"construction_style": "signal convergence into geometry", "primary_motion": "seeded signals converge on each component", "wordmark_reveal": "confidence-ordered component reveal", "monogram_mode": "radial", "wordmark_mode": "diagonal", "arc_start": 250, "arc_direction": 1, "stagger": 0.05},
+    "fintech-trust": {"construction_style": "progressive confirmation", "primary_motion": "bounded progress ring then stable lock", "wordmark_reveal": "monotonic component confirmation", "monogram_mode": "radial", "wordmark_mode": "scan", "arc_start": 270, "arc_direction": 1, "stagger": 0.05},
+    "security-shield": {"construction_style": "boundary-first construction", "primary_motion": "perimeter trace followed by verified interior", "wordmark_reveal": "protected sequential reveal", "monogram_mode": "scan", "wordmark_mode": "scan", "arc_start": 135, "arc_direction": 1, "stagger": 0.07},
+    "commerce-energy": {"construction_style": "anticipation and release", "primary_motion": "compressed spark with a fast stroke release", "wordmark_reveal": "quick readable letter cascade", "monogram_mode": "diagonal", "wordmark_mode": "scan", "arc_start": 200, "arc_direction": 1, "stagger": 0.035},
+    "automotive-precision": {"construction_style": "kinematic path tracing", "primary_motion": "single directional scan with velocity continuity", "wordmark_reveal": "track-aligned wordmark draw-on", "monogram_mode": "scan", "wordmark_mode": "scan", "arc_start": 315, "arc_direction": 1, "stagger": 0.045},
+    "sports-impact": {"construction_style": "compression, strike, recovery", "primary_motion": "high-velocity arc and controlled settle", "wordmark_reveal": "impact-timed component release", "monogram_mode": "diagonal", "wordmark_mode": "scan", "arc_start": 225, "arc_direction": 1, "stagger": 0.025},
+    "cinematic-title": {"construction_style": "dark-field title reveal", "primary_motion": "aperture opens from a single illuminated stroke", "wordmark_reveal": "paced title-card letter reveal", "monogram_mode": "radial", "wordmark_mode": "fade", "arc_start": 225, "arc_direction": 1, "stagger": 0.1},
+    "nature-flow": {"construction_style": "continuous organic contour", "primary_motion": "low-frequency flow follows the mark curvature", "wordmark_reveal": "breathing connected reveal", "monogram_mode": "diagonal", "wordmark_mode": "fade", "arc_start": 160, "arc_direction": 1, "stagger": 0.08},
+    "gaming-world": {"construction_style": "deterministic particle assembly", "primary_motion": "orbiting sparks assemble the stable silhouette", "wordmark_reveal": "reward-like sequential component reveal", "monogram_mode": "radial", "wordmark_mode": "diagonal", "arc_start": 300, "arc_direction": 1, "stagger": 0.04},
+    "accessibility-first": {"construction_style": "low-motion semantic construction", "primary_motion": "short opacity changes with a static-safe landing", "wordmark_reveal": "low-motion component fade", "monogram_mode": "radial", "wordmark_mode": "fade", "arc_start": 205, "arc_direction": 1, "stagger": 0.12},
+}
+
+IMPLEMENTED_TRAJECTORIES = {
+    "knowledge-graph-lock",
+    "contour-etch",
+    "token-commit",
+    "signal-convergence",
+    "progress-confirm",
+    "boundary-unlock",
+    "burst-assembly",
+    "kinematic-lock",
+    "impact-release",
+    "aperture-title",
+    "organic-current",
+    "orbit-quest",
+    "semantic-fade",
+}
 
 EFFECT_VISUALS = {
     "grid": {"accent": "#8aa4ff", "background": "#101723"},
@@ -48,19 +98,19 @@ EFFECT_VISUALS = {
 }
 
 BEATS = {
-    "grid": ["map", "align", "resolve"],
-    "quiet": ["still", "reveal", "rest"],
-    "scan": ["parse", "assemble", "commit"],
-    "field": ["observe", "converge", "land"],
-    "ring": ["secure", "process", "confirm"],
-    "shield": ["guard", "verify", "unlock"],
-    "burst": ["anticipate", "respond", "idle"],
-    "track": ["prime", "drive", "settle"],
-    "speed": ["load", "impact", "recover"],
-    "curtain": ["establish", "title", "hold"],
-    "wave": ["breathe", "flow", "root"],
-    "orbit": ["spawn", "orbit", "clear"],
-    "plain": ["show", "signal", "rest"],
+    "grid": ["locate", "draw", "lock"],
+    "quiet": ["spark", "trace", "rest"],
+    "scan": ["parse", "stroke", "commit"],
+    "field": ["seed", "converge", "land"],
+    "ring": ["orbit", "close", "confirm"],
+    "shield": ["boundary", "verify", "unlock"],
+    "burst": ["compress", "release", "idle"],
+    "track": ["scan", "draw", "settle"],
+    "speed": ["charge", "strike", "recover"],
+    "curtain": ["dark", "reveal", "hold"],
+    "wave": ["breathe", "grow", "root"],
+    "orbit": ["spawn", "assemble", "clear"],
+    "plain": ["appear", "form", "rest"],
 }
 
 
@@ -77,17 +127,25 @@ def load_data() -> dict:
         duration = max(1100, min(2400, round(1800 / tempo)))
         aliases = [str(item) for item in profile.get("aliases", [])]
         controls = [str(item).replace("_", " ") for item in profile.get("controls", [])]
+        try:
+            growth = GROWTH_PROFILES[profile["id"]]
+        except KeyError as error:
+            raise ValueError(f"missing growth profile for theme: {profile['id']}") from error
+        if profile["trajectory_id"] not in IMPLEMENTED_TRAJECTORIES:
+            raise ValueError(f"unimplemented trajectory: {profile['trajectory_id']}")
         themes.append({
             "id": profile["id"],
             "name": profile["name"],
             "number": f"{index:02d}",
             "trigger": ", ".join(aliases[:6]),
             "keywords": aliases,
-            "tags": [profile["id"], effect, *controls[:1]],
+            "tags": [profile["id"], effect, "logo-growth", *controls[:1]],
             "public_analogue": profile.get("public_analogue", ""),
             "intent": profile.get("design_intent", ""),
             "algorithm": list(profile.get("algorithm_stack", [])),
-            "result": f"The same source mark moves through {effect} staging, then returns to a readable canonical state.",
+            "trajectory_id": str(profile["trajectory_id"]),
+            "trajectory_summary": str(profile["trajectory_summary"]),
+            "result": f"The supplied mark follows this foreground route: {profile['trajectory_summary']}",
             "beats": BEATS.get(effect, BEATS["plain"]),
             "qa": "; ".join(profile.get("qa_focus", [])),
             "accent": visual["accent"],
@@ -95,6 +153,11 @@ def load_data() -> dict:
             "pattern": effect,
             "tempo": tempo,
             "duration_ms": duration,
+            "growth_sequence": list(GROWTH_SEQUENCE),
+            "construction_style": growth["construction_style"],
+            "primary_motion": growth["primary_motion"],
+            "wordmark_reveal": growth["wordmark_reveal"],
+            "stagger": float(growth["stagger"]),
             "animation_file": f"assets/animations/prysai-{profile['id']}.gif",
             "animation_poster": f"assets/animations/prysai-{profile['id']}-poster.png",
         })
@@ -104,12 +167,12 @@ def load_data() -> dict:
         "source": {
             "asset": "assets/prysai-logo-white.jpg",
             "label": "Prysai logo / supplied raster source",
-            "identity_rule": "Use the same source mark in every theme. Change motion language and sequencing only.",
+            "identity_rule": "Use the same source mark in every theme. Change the foreground trajectory and motion language only.",
         },
         "request_example": {
             "user_says": "I want to make a logo animation for my artificial-intelligence company.",
             "agent_route": "AI-field",
-            "routing_explanation": "The phrase artificial intelligence selects AI-field; the same source image is animated through signal convergence and a quiet canonical landing.",
+            "routing_explanation": "The phrase artificial intelligence selects AI-field; deterministic signals converge into the supplied Logo pixels, then the Prysai wordmark assembles and holds canonical.",
         },
         "themes": themes,
     }
@@ -217,7 +280,7 @@ def _starting_points(size: tuple[int, int], count: int, seed: int) -> list[tuple
     return points
 
 
-def _draw_animation_effect(layer: Image.Image, theme: dict, progress: float, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int) -> None:
+def _draw_animation_effect(layer: Image.Image, theme: dict, progress: float, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int, focus: tuple[int, int] | None = None) -> None:
     """Draw deterministic secondary motion around the unchanged source mark."""
 
     width, height = layer.size
@@ -253,18 +316,20 @@ def _draw_animation_effect(layer: Image.Image, theme: dict, progress: float, poi
             radius = 1 + (index % 3 == 0)
             alpha = int(220 * (1 - _clamp((progress - .7) / .3)))
             draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=_rgba(accent, max(24, alpha)))
+        focus_x, focus_y = focus or (width // 2, height // 2)
         ring = int(min(width, height) * (.18 + (1 - p) * .3))
-        draw.ellipse((width // 2 - ring, height // 2 - ring, width // 2 + ring, height // 2 + ring), outline=_rgba(accent, max(20, effect_alpha // 2)), width=1)
+        draw.ellipse((focus_x - ring, focus_y - ring, focus_x + ring, focus_y + ring), outline=_rgba(accent, max(20, effect_alpha // 2)), width=1)
         ring_2 = int(ring * .68)
-        draw.ellipse((width // 2 - ring_2, height // 2 - ring_2, width // 2 + ring_2, height // 2 + ring_2), outline=_rgba(accent, max(14, effect_alpha // 3)), width=1)
+        draw.ellipse((focus_x - ring_2, focus_y - ring_2, focus_x + ring_2, focus_y + ring_2), outline=_rgba(accent, max(14, effect_alpha // 3)), width=1)
     elif effect in {"ring", "orbit"}:
+        focus_x, focus_y = focus or (width // 2, height // 2)
         ring = int(min(width, height) * (.18 + p * .22))
-        draw.ellipse((width // 2 - ring, height // 2 - ring, width // 2 + ring, height // 2 + ring), outline=_rgba(accent, max(24, effect_alpha)), width=2)
+        draw.ellipse((focus_x - ring, focus_y - ring, focus_x + ring, focus_y + ring), outline=_rgba(accent, max(24, effect_alpha)), width=2)
         ring_2 = int(ring * .64)
-        draw.ellipse((width // 2 - ring_2, height // 2 - ring_2, width // 2 + ring_2, height // 2 + ring_2), outline=_rgba(accent, max(16, effect_alpha // 2)), width=1)
+        draw.ellipse((focus_x - ring_2, focus_y - ring_2, focus_x + ring_2, focus_y + ring_2), outline=_rgba(accent, max(16, effect_alpha // 2)), width=1)
         angle = math.radians((progress * 360) - 90)
-        dot_x = width // 2 + int(math.cos(angle) * ring)
-        dot_y = height // 2 + int(math.sin(angle) * ring)
+        dot_x = focus_x + int(math.cos(angle) * ring)
+        dot_y = focus_y + int(math.sin(angle) * ring)
         draw.ellipse((dot_x - 4, dot_y - 4, dot_x + 4, dot_y + 4), fill=_rgba(accent, max(28, effect_alpha)))
     elif effect == "shield":
         inset = int(min(width, height) * (.08 + (1 - p) * .08))
@@ -299,48 +364,452 @@ def _draw_animation_effect(layer: Image.Image, theme: dict, progress: float, poi
         draw.line((int(width * (p * 1.4 - .4)), 0, int(width * (p * 1.4 - .4)) + width // 4, height), fill=_rgba(accent, max(18, effect_alpha // 2)), width=2)
 
 
-def _render_animation_frame(theme: dict, progress: float, mark: Image.Image, source: Image.Image, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int) -> Image.Image:
-    """Render one source-to-animation frame for the portable GIF export."""
+def _mask_in_box(alpha: Image.Image, box: tuple[int, int, int, int]) -> Image.Image:
+    """Keep only one supplied-raster component inside its source-space box."""
 
+    result = Image.new("L", alpha.size, 0)
+    result.paste(alpha.crop(box), box[:2])
+    return result
+
+
+def _place_mask(mask: Image.Image, size: tuple[int, int], target_size: tuple[int, int], position: tuple[int, int]) -> Image.Image:
+    """Scale a source-space mask exactly as the canonical mark is displayed."""
+
+    result = Image.new("L", size, 0)
+    result.paste(mask.resize(target_size, Image.Resampling.LANCZOS), position)
+    return result
+
+
+def _build_growth_components(mark: Image.Image, size: tuple[int, int]) -> dict[str, Image.Image | list[Image.Image]]:
+    """Build staged masks from the supplied alpha; never invent logo geometry."""
+
+    target = _contain(mark, (int(size[0] * .68), int(size[1] * .76)))
+    position = _center_position(size, target.size)
+    alpha = mark.getchannel("A")
+    raw = {name: _mask_in_box(alpha, box) for name, box in LOGO_COMPONENT_BOXES.items()}
+    # The monogram box overlaps the lower-left dot. Remove that overlap so the
+    # first visible identity-bearing signal is genuinely the standalone dot.
+    raw["monogram"] = ImageChops.subtract(raw["monogram_raw"], raw["origin_dot"])
+    components: dict[str, Image.Image | list[Image.Image]] = {
+        "origin_dot": _place_mask(raw["origin_dot"], size, target.size, position),
+        "monogram": _place_mask(raw["monogram"], size, target.size, position),
+        "wordmark": [
+            _place_mask(raw[name], size, target.size, position)
+            for name in ("wordmark_01", "wordmark_02", "wordmark_03", "wordmark_04", "wordmark_05")
+        ],
+        "final": _place_mask(alpha, size, target.size, position),
+        "position": position,
+        "target_size": target.size,
+    }
+    monogram = components["monogram"]
+    assert isinstance(monogram, Image.Image)
+    bbox = monogram.getbbox() or (size[0] // 2 - 70, size[1] // 2 - 70, size[0] // 2 + 70, size[1] // 2 + 70)
+    cx = (bbox[0] + bbox[2]) // 2
+    cy = (bbox[1] + bbox[3]) // 2
+    radius = max(24, min(bbox[2] - bbox[0], bbox[3] - bbox[1]) // 2)
+    ring = Image.new("L", size, 0)
+    ring_draw = ImageDraw.Draw(ring)
+    outer = (cx - radius, cy - radius, cx + radius, cy + radius)
+    inner_radius = max(8, int(radius * .60))
+    inner = (cx - inner_radius, cy - inner_radius, cx + inner_radius, cy + inner_radius)
+    ring_draw.ellipse(outer, fill=255)
+    ring_draw.ellipse(inner, fill=0)
+    components["arc"] = ImageChops.multiply(monogram, ring)
+    bar_gate = Image.new("L", size, 0)
+    bar_height = max(5, (bbox[3] - bbox[1]) // 12)
+    ImageDraw.Draw(bar_gate).rectangle((bbox[0], cy - bar_height, bbox[2], cy + bar_height), fill=255)
+    components["bar"] = ImageChops.multiply(monogram, bar_gate)
+    components["monogram_center"] = (cx, cy)
+    components["monogram_bbox"] = bbox
+    return components
+
+
+def _sector_mask(size: tuple[int, int], center: tuple[int, int], radius: int, start: float, sweep: float) -> Image.Image:
+    """Create a deterministic angular reveal mask for a contour-like stage."""
+
+    mask = Image.new("L", size, 0)
+    if sweep >= 359:
+        ImageDraw.Draw(mask).ellipse((center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius), fill=255)
+        return mask
+    ImageDraw.Draw(mask).pieslice((center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius), start=start, end=start + sweep, fill=255)
+    return mask
+
+
+def _progressive_mask(mask: Image.Image, progress: float, mode: str, *, center: tuple[int, int] | None = None, start: float = 0.0, direction: int = 1) -> Image.Image:
+    """Reveal existing pixels by scan, diagonal, fade, or angular trace."""
+
+    p = _smoothstep(progress)
+    if p <= 0:
+        return Image.new("L", mask.size, 0)
+    if p >= 1:
+        return mask.copy()
+    if mode == "fade":
+        return mask.point(lambda value: round(value * p))
+    bbox = mask.getbbox() or (0, 0, mask.width, mask.height)
+    gate = Image.new("L", mask.size, 0)
+    draw = ImageDraw.Draw(gate)
+    if mode == "scan":
+        x = round(bbox[0] + (bbox[2] - bbox[0]) * p)
+        draw.rectangle((0, 0, x, mask.height), fill=255)
+    elif mode == "diagonal":
+        x = round((mask.width + mask.height) * p)
+        draw.polygon([(0, 0), (x, 0), (0, x)], fill=255)
+    else:
+        if center is None:
+            center = ((bbox[0] + bbox[2]) // 2, (bbox[1] + bbox[3]) // 2)
+        radius = max(mask.width, mask.height)
+        sweep = 360 * p * direction
+        if direction < 0:
+            start = start - sweep
+            sweep = abs(sweep)
+        gate = _sector_mask(mask.size, center, radius, start, sweep)
+    return ImageChops.multiply(mask, gate)
+
+
+def _composite_logo_mask(canvas: Image.Image, mask: Image.Image, opacity: float = 1.0, glow: bool = False) -> None:
+    """Composite white pixels selected from the supplied mark mask."""
+
+    alpha = mask.point(lambda value: round(value * _clamp(opacity)))
+    layer = Image.new("RGBA", canvas.size, (255, 255, 255, 0))
+    layer.putalpha(alpha)
+    if glow:
+        glow_layer = Image.new("RGBA", canvas.size, (255, 255, 255, 0))
+        glow_layer.putalpha(alpha.point(lambda value: round(value * .45)))
+        canvas.alpha_composite(glow_layer.filter(ImageFilter.GaussianBlur(8)))
+    canvas.alpha_composite(layer)
+
+
+def _mask_outline(mask: Image.Image, width: int = 5) -> Image.Image:
+    """Derive a temporary contour from supplied alpha; never replace its fill."""
+
+    size = max(3, width if width % 2 else width + 1)
+    expanded = mask.filter(ImageFilter.MaxFilter(size))
+    contracted = mask.filter(ImageFilter.MinFilter(size))
+    return ImageChops.subtract(expanded, contracted)
+
+
+def _radial_gate(size: tuple[int, int], center: tuple[int, int], radius: float, *, vertical: float = 1.0) -> Image.Image:
+    gate = Image.new("L", size, 0)
+    rx = max(1, int(radius))
+    ry = max(1, int(radius * vertical))
+    ImageDraw.Draw(gate).ellipse((center[0] - rx, center[1] - ry, center[0] + rx, center[1] + ry), fill=255)
+    return gate
+
+
+def _resize_mask_about_center(mask: Image.Image, center: tuple[int, int], scale_x: float = 1.0, scale_y: float = 1.0) -> Image.Image:
+    """Scale a source-derived actor around its measured center for an intermediate frame."""
+
+    bbox = mask.getbbox()
+    result = Image.new("L", mask.size, 0)
+    if not bbox:
+        return result
+    crop = mask.crop(bbox)
+    scaled = crop.resize((max(1, round(crop.width * scale_x)), max(1, round(crop.height * scale_y))), Image.Resampling.BICUBIC)
+    position = (round(center[0] - scaled.width / 2), round(center[1] - scaled.height / 2))
+    result.paste(scaled, position, scaled)
+    return result
+
+
+def _transform_mask(
+    mask: Image.Image,
+    progress: float,
+    *,
+    start_offset: tuple[float, float] = (0, 0),
+    start_scale: tuple[float, float] = (1.0, 1.0),
+    wave: tuple[float, float, float] | None = None,
+    rotation: float = 0.0,
+) -> Image.Image:
+    """Move a supplied component toward its canonical position for one route."""
+
+    bbox = mask.getbbox()
+    result = Image.new("L", mask.size, 0)
+    if not bbox:
+        return result
+    t = _smoothstep(progress)
+    scale_x = start_scale[0] + (1 - start_scale[0]) * t
+    scale_y = start_scale[1] + (1 - start_scale[1]) * t
+    crop = mask.crop(bbox)
+    transformed = crop.resize((max(1, round(crop.width * scale_x)), max(1, round(crop.height * scale_y))), Image.Resampling.BICUBIC)
+    if rotation and progress < 1:
+        transformed = transformed.rotate(rotation * (1 - t), resample=Image.Resampling.BICUBIC, expand=True)
+    target_center = ((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2)
+    dx = start_offset[0] * (1 - t)
+    dy = start_offset[1] * (1 - t)
+    if wave:
+        amplitude_x, amplitude_y, phase = wave
+        dx += math.sin(t * math.pi * 2 + phase) * amplitude_x * (1 - t)
+        dy += math.cos(t * math.pi * 2 + phase) * amplitude_y * (1 - t)
+    position = (
+        round(target_center[0] + dx - transformed.width / 2),
+        round(target_center[1] + dy - transformed.height / 2),
+    )
+    result.paste(transformed, position, transformed)
+    return result
+
+
+def _actor_sequence(components: dict) -> list[Image.Image]:
+    return [components["origin_dot"], components["monogram"], *components["wordmark"]]
+
+
+def _composite_actor_sequence(
+    canvas: Image.Image,
+    actors: list[Image.Image],
+    progress: float,
+    *,
+    order: list[int] | None = None,
+    start_offsets: list[tuple[float, float]] | None = None,
+    start_scales: list[tuple[float, float]] | None = None,
+    wave: tuple[float, float, float] | None = None,
+    opacity: float = 1.0,
+    rotation: float = 0.0,
+    stagger: float = .055,
+) -> None:
+    """Assemble independent supplied actors in a declared semantic order."""
+
+    order = order or list(range(len(actors)))
+    start_offsets = start_offsets or [(0, 0)] * len(actors)
+    start_scales = start_scales or [(1, 1)] * len(actors)
+    for position, actor_index in enumerate(order):
+        # Keep the last semantic actor in motion until the canonical landing;
+        # otherwise several routes become identical well before their final frame.
+        local = _clamp((progress - position * stagger) / max(.25, 1 - position * stagger))
+        if local <= .002:
+            continue
+        actor_wave = wave
+        if wave and wave[2] != 0:
+            actor_wave = (wave[0], wave[1], wave[2] + position * .45)
+        moved = _transform_mask(
+            actors[actor_index],
+            local,
+            start_offset=start_offsets[actor_index],
+            start_scale=start_scales[actor_index],
+            wave=actor_wave,
+            rotation=rotation,
+        )
+        _composite_logo_mask(canvas, moved, opacity=min(1.0, opacity * (.82 + .18 * local)), glow=local < .36)
+
+
+def _draw_trajectory_guides(layer: Image.Image, theme: dict, progress: float, components: dict, seed: int) -> None:
+    """Draw the guide that explains the active foreground trajectory."""
+
+    draw = ImageDraw.Draw(layer, "RGBA")
+    accent = theme["accent"]
+    p = _smoothstep(progress)
+    cx, cy = components["monogram_center"]
+    bbox = components["monogram_bbox"]
+    trajectory = theme.get("trajectory_id", "")
+    if trajectory == "knowledge-graph-lock":
+        actors = _actor_sequence(components)
+        nodes = [(cx - 120, cy - 42), (cx - 28, cy + 60), (cx + 82, cy - 58), (cx + 166, cy + 58), (cx + 260, cy - 42), (cx + 350, cy + 55), (cx + 440, cy - 35)]
+        for index in range(1, len(nodes)):
+            if p > index / (len(nodes) + 1):
+                draw.line((nodes[index - 1][0], nodes[index - 1][1], nodes[index][0], nodes[index][1]), fill=_rgba(accent, 115), width=1)
+        for index, node in enumerate(nodes):
+            alpha = int(180 * _clamp((p - index * .06) / .25))
+            if alpha:
+                radius = 3 if index < len(actors) else 2
+                draw.ellipse((node[0] - radius, node[1] - radius, node[0] + radius, node[1] + radius), fill=_rgba(accent, alpha))
+    elif trajectory == "contour-etch":
+        radius = max(18, min(bbox[2] - bbox[0], bbox[3] - bbox[1]) // 2)
+        sweep = 360 * _clamp((progress - .06) / .70)
+        draw.arc((cx - radius, cy - radius, cx + radius, cy + radius), 210, 210 + sweep, fill=_rgba(accent, 170), width=2)
+    elif trajectory == "token-commit":
+        for index in range(7):
+            x = int(58 + index * 112)
+            if p > index * .075:
+                draw.rectangle((x, 18, x + 72, 23), fill=_rgba(accent, 130), outline=None)
+                draw.line((x, 26, x + int(72 * _clamp((p - index * .075) / .32)), 26), fill=_rgba(accent, 210), width=2)
+    elif trajectory == "signal-convergence":
+        rng = random.Random(seed + 91)
+        for _ in range(22):
+            x = rng.randrange(max(1, layer.width))
+            y = rng.randrange(max(1, layer.height))
+            radius = 1 + (rng.randrange(3) == 0)
+            draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=_rgba(accent, int(90 * (1 - p))))
+    elif trajectory == "progress-confirm":
+        radius = max(24, min(layer.size) * .27)
+        sweep = 360 * _clamp((progress - .04) / .86)
+        draw.arc((cx - radius, cy - radius, cx + radius, cy + radius), -90, -90 + sweep, fill=_rgba(accent, 210), width=3)
+        if p > .86:
+            draw.ellipse((cx - 4, cy - 4, cx + 4, cy + 4), fill=_rgba(accent, 220))
+    elif trajectory == "boundary-unlock":
+        outline = _mask_outline(components["final"], 3)
+        _composite_logo_mask(layer, _progressive_mask(outline, _clamp((progress - .06) / .52), "scan"), opacity=.62)
+        draw.rectangle((bbox[0], bbox[1], bbox[2], bbox[3]), outline=_rgba(accent, 110), width=1)
+    elif trajectory == "burst-assembly":
+        for index in range(12):
+            angle = math.radians(index * 30)
+            length = layer.width * (.08 + .31 * p)
+            x0, y0 = cx + math.cos(angle) * length * .25, cy + math.sin(angle) * length * .25
+            x1, y1 = cx + math.cos(angle) * length, cy + math.sin(angle) * length
+            draw.line((x0, y0, x1, y1), fill=_rgba(accent, int(155 * (1 - p))), width=2)
+    elif trajectory == "kinematic-lock":
+        sweep = int((p * 1.42 - .24) * layer.width)
+        draw.line((sweep, 0, sweep - layer.width // 6, layer.height), fill=_rgba(accent, 225), width=max(2, layer.width // 180))
+        draw.line((0, cy, layer.width, cy), fill=_rgba(accent, 95), width=1)
+    elif trajectory == "impact-release":
+        for offset in (-22, -11, 0, 11, 22):
+            x = int(cx - (1 - p) * layer.width * .42)
+            draw.line((x, cy + offset, x + int((.18 + p) * layer.width * .38), cy + offset), fill=_rgba(accent, int(150 * (1 - p))), width=2)
+    elif trajectory == "aperture-title":
+        opening = int(layer.width * (.035 + .54 * p))
+        draw.line((layer.width // 2 - opening, 0, layer.width // 2 - opening, layer.height), fill=_rgba(accent, 170), width=1)
+        draw.line((layer.width // 2 + opening, 0, layer.width // 2 + opening, layer.height), fill=_rgba(accent, 170), width=1)
+    elif trajectory == "organic-current":
+        for row in range(3):
+            coords = []
+            for x in range(-20, layer.width + 20, 12):
+                y = int(cy + (row - 1) * 42 + math.sin(x / 58 + progress * 4 + row) * 15)
+                coords.append((x, y))
+            draw.line(coords, fill=_rgba(accent, 95), width=1)
+    elif trajectory == "orbit-quest":
+        for radius, alpha in ((72, 135), (112, 95), (152, 65)):
+            draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), outline=_rgba(accent, alpha), width=1)
+        for index in range(5):
+            angle = math.radians(progress * 320 + index * 72)
+            radius = 72 + (index % 3) * 40
+            x = cx + int(math.cos(angle) * radius)
+            y = cy + int(math.sin(angle) * radius)
+            draw.ellipse((x - 3, y - 3, x + 3, y + 3), fill=_rgba(accent, 180))
+    elif trajectory == "semantic-fade":
+        draw.line((cx - 88, cy + 78, cx + 88, cy + 78), fill=_rgba(accent, 95), width=1)
+
+
+def _render_trajectory_mask(
+    canvas: Image.Image,
+    theme: dict,
+    progress: float,
+    components: dict,
+    points: list[tuple[int, int]],
+    targets: list[tuple[int, int]],
+    seed: int,
+) -> None:
+    """Render the theme-specific foreground construction from supplied masks."""
+
+    trajectory = theme.get("trajectory_id", "")
+    p = _smoothstep(progress)
+    final = components["final"]
+    actors = _actor_sequence(components)
+    cx, cy = components["monogram_center"]
+
+    if trajectory == "knowledge-graph-lock":
+        offsets = [(-120, -40), (-25, 68), (80, -58), (158, 62), (250, -48), (340, 58), (430, -38)]
+        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.62, .62)] * len(actors), stagger=theme["stagger"])
+    elif trajectory == "contour-etch":
+        outline = _mask_outline(final, 5)
+        trace = _progressive_mask(outline, _clamp((progress - .03) / .72), "scan")
+        _composite_logo_mask(canvas, trace, opacity=.92, glow=progress < .5)
+        fill_progress = _smoothstep(_clamp((progress - .48) / .48))
+        _composite_logo_mask(canvas, final, opacity=fill_progress)
+    elif trajectory == "token-commit":
+        order = [0, 2, 3, 4, 5, 6, 1]
+        _composite_actor_sequence(canvas, actors, p, order=order, start_offsets=[(-55, 0)] * len(actors), start_scales=[(1, 1)] * len(actors), stagger=theme["stagger"])
+    elif trajectory == "signal-convergence":
+        travel = _smoothstep(_clamp((progress - .02) / .70))
+        draw = ImageDraw.Draw(canvas, "RGBA")
+        for index, (start, target) in enumerate(zip(points, targets)):
+            x = round(start[0] + (target[0] - start[0]) * travel)
+            y = round(start[1] + (target[1] - start[1]) * travel)
+            radius = 1 + (index % 3 == 0)
+            alpha = int(230 * (1 - _clamp((progress - .62) / .24)))
+            draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=_rgba(theme["accent"], max(24, alpha)))
+        arrival = _smoothstep(_clamp((progress - .18) / .58))
+        if progress > .18:
+            convergence = Image.new("L", canvas.size, 0)
+            convergence_draw = ImageDraw.Draw(convergence)
+            radius = max(2, round(2 + 10 * arrival))
+            for target_x, target_y in targets:
+                convergence_draw.ellipse((target_x - radius, target_y - radius, target_x + radius, target_y + radius), fill=255)
+            settled = ImageChops.multiply(final, convergence)
+            _composite_logo_mask(canvas, settled, opacity=.98, glow=progress < .72)
+        fill = _smoothstep(_clamp((progress - .58) / .40))
+        _composite_logo_mask(canvas, final, opacity=fill, glow=False)
+    elif trajectory == "progress-confirm":
+        radius = max(canvas.size) * .78
+        gate = _sector_mask(canvas.size, (cx, cy), int(radius), -90, 360 * _clamp((progress - .05) / .86))
+        reveal = ImageChops.multiply(final, gate)
+        _composite_logo_mask(canvas, reveal, opacity=.98, glow=progress < .58)
+    elif trajectory == "boundary-unlock":
+        outline = _mask_outline(final, 6)
+        boundary = _progressive_mask(outline, _clamp((progress - .03) / .47), "fade")
+        _composite_logo_mask(canvas, boundary, opacity=.95, glow=progress < .55)
+        fill_gate = _radial_gate(canvas.size, (cx, cy), max(canvas.size) * (.08 + .88 * _clamp((progress - .36) / .54)), vertical=.62)
+        fill = ImageChops.multiply(final, fill_gate)
+        _composite_logo_mask(canvas, fill, opacity=_smoothstep(_clamp((progress - .36) / .54)))
+    elif trajectory == "burst-assembly":
+        origin_offsets = []
+        for actor in actors:
+            bbox = actor.getbbox() or (cx, cy, cx + 1, cy + 1)
+            actor_cx = (bbox[0] + bbox[2]) / 2
+            actor_cy = (bbox[1] + bbox[3]) / 2
+            origin_offsets.append((cx - actor_cx, cy - actor_cy))
+        _composite_actor_sequence(canvas, actors, p, start_offsets=origin_offsets, start_scales=[(.36, .36)] * len(actors), rotation=8, stagger=theme["stagger"])
+    elif trajectory == "kinematic-lock":
+        offsets = [(-190, 0), (-220, 0), (-250, -3), (-270, 1), (-290, -2), (-310, 2), (-330, -1)]
+        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.92, .92)] * len(actors), stagger=theme["stagger"])
+    elif trajectory == "impact-release":
+        if progress > .02:
+            if progress < .34:
+                scale_x = .08 + .22 * _smoothstep(progress / .34)
+            elif progress < .82:
+                scale_x = .30 + .82 * _smoothstep((progress - .34) / .48)
+            else:
+                scale_x = 1.0 - .035 * (1 - _smoothstep((progress - .82) / .18))
+            reshaped = _resize_mask_about_center(final, (cx + 130, cy), scale_x, 1.0)
+            _composite_logo_mask(canvas, reshaped, opacity=.98, glow=progress < .62)
+    elif trajectory == "aperture-title":
+        opening = int(canvas.width * (.035 + .60 * p))
+        gate = Image.new("L", canvas.size, 0)
+        ImageDraw.Draw(gate).rectangle((cx - opening, 0, cx + opening, canvas.height), fill=255)
+        reveal = ImageChops.multiply(final, gate)
+        _composite_logo_mask(canvas, reveal, opacity=_smoothstep(_clamp((progress - .02) / .82)), glow=progress < .62)
+    elif trajectory == "organic-current":
+        offsets = [(0, 88), (-28, 58), (-42, 34), (-54, 8), (-60, -26), (-66, -58), (-72, -90)]
+        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.88, .88)] * len(actors), wave=(24, 17, .3), rotation=2, stagger=theme["stagger"])
+    elif trajectory == "orbit-quest":
+        orbit_offsets = []
+        for index, actor in enumerate(actors):
+            angle = math.radians(index * 54 - 80)
+            radius = 105 + (index % 3) * 34
+            orbit_offsets.append((math.cos(angle) * radius, math.sin(angle) * radius))
+        _composite_actor_sequence(canvas, actors, p, start_offsets=orbit_offsets, start_scales=[(.72, .72)] * len(actors), rotation=14, stagger=theme["stagger"])
+    elif trajectory == "semantic-fade":
+        _composite_actor_sequence(canvas, actors, p, order=[0, 1, 2, 3, 4, 5, 6], opacity=1.0, stagger=theme["stagger"])
+    else:
+        raise ValueError(f"unimplemented trajectory: {trajectory}")
+
+
+def _draw_growth_guides(layer: Image.Image, theme: dict, progress: float, components: dict, seed: int) -> None:
+    """Keep trajectory guides secondary to the source-derived foreground."""
+
+    _draw_trajectory_guides(layer, theme, progress, components, seed)
+
+
+def _render_animation_frame(theme: dict, progress: float, mark: Image.Image, source: Image.Image, components: dict, points: list[tuple[int, int]], targets: list[tuple[int, int]], seed: int) -> Image.Image:
+    """Render a theme-specific source-to-canonical frame for the portable GIF."""
+
+    del source  # The source is shown in the left comparison cell; the GIF grows it from blank.
     size = ANIMATION_SIZE
-    background = Image.new("RGB", size, _rgb(theme["background"]))
+    background = Image.new("RGBA", size, (*_rgb(theme["background"]), 255))
     glow = Image.new("RGBA", size, (0, 0, 0, 0))
     glow_draw = ImageDraw.Draw(glow, "RGBA")
     glow_draw.ellipse((size[0] * .18, -size[1] * .45, size[0] * .82, size[1] * 1.45), fill=_rgba(theme["accent"], 20))
-    background = Image.alpha_composite(background.convert("RGBA"), glow.filter(ImageFilter.GaussianBlur(42))).convert("RGB")
+    background = Image.alpha_composite(background, glow.filter(ImageFilter.GaussianBlur(42)))
 
-    source_frame = _contain(source, (int(size[0] * .9), int(size[1] * .78)))
-    source_layer = Image.new("RGB", size, (0, 0, 0))
-    source_layer.paste(source_frame, _center_position(size, source_frame.size))
-    source_opacity = 1 - _smoothstep((progress - .04) / .22)
-    background = Image.blend(background, source_layer, _clamp(source_opacity))
+    if progress < .96:
+        effects = Image.new("RGBA", size, (0, 0, 0, 0))
+        _draw_animation_effect(effects, theme, progress, points, targets, seed, focus=components["monogram_center"])
+        background.alpha_composite(effects)
 
-    effects = Image.new("RGBA", size, (0, 0, 0, 0))
-    _draw_animation_effect(effects, theme, progress, points, targets, seed)
-    background = Image.alpha_composite(background.convert("RGBA"), effects)
-
-    reveal = _smoothstep((progress - .1) / .64)
-    start_scale = {"quiet": .92, "curtain": .88, "speed": .7, "burst": .76}.get(theme["pattern"], .8)
-    overshoot = .04 * math.sin(min(progress, 1) * math.pi) if theme["pattern"] in {"burst", "speed"} else 0
-    mark_scale = start_scale + (1 - start_scale) * reveal + overshoot
-    mark_width = int(size[0] * .68 * mark_scale)
-    mark_height = max(1, int(mark.height * mark_width / mark.width))
-    mark_frame = mark.resize((mark_width, mark_height), Image.Resampling.LANCZOS)
-    start_x, start_y, start_rotate = {
-        "grid": (-30, 12, -4), "scan": (-24, 0, 0), "field": (-10, 16, -6),
-        "speed": (-38, 4, -8), "burst": (0, 0, -16), "wave": (12, 16, 6),
-        "orbit": (0, -10, 12), "curtain": (0, 0, 0),
-    }.get(theme["pattern"], (0, 8, 0))
-    offset = (int((1 - reveal) * start_x), int((1 - reveal) * start_y))
-    if start_rotate:
-        mark_frame = mark_frame.rotate((1 - reveal) * start_rotate, resample=Image.Resampling.BICUBIC, expand=True)
-    mark_frame = _with_opacity(mark_frame, .08 + reveal * .92)
-    mark_position = _center_position(size, mark_frame.size, offset)
-
-    mark_glow = Image.new("RGBA", size, (0, 0, 0, 0))
-    mark_glow.paste(_with_opacity(mark_frame, .32), mark_position, mark_frame)
-    background = Image.alpha_composite(background, mark_glow.filter(ImageFilter.GaussianBlur(14)))
-    background.alpha_composite(mark_frame, mark_position)
+    # Preserve a clean canonical final frame for comparison and downstream use.
+    # Do not leave a transformed actor or guide underneath anti-aliased source
+    # pixels; the last frame must be the supplied mark, not a composite variant.
+    if progress >= .995:
+        final = _contain(mark, (int(size[0] * .68), int(size[1] * .76)))
+        background.alpha_composite(final, _center_position(size, final.size))
+    else:
+        _render_trajectory_mask(background, theme, progress, components, points, targets, seed)
+        _draw_growth_guides(background, theme, progress, components, seed)
     return background.convert("RGB")
 
 
@@ -350,16 +819,18 @@ def build_animation_exports(data: dict) -> None:
     ANIMATIONS.mkdir(parents=True, exist_ok=True)
     mark = Image.open(MARK_PNG).convert("RGBA")
     source = Image.open(CROP_JPG).convert("RGB")
+    components = _build_growth_components(mark, ANIMATION_SIZE)
     for theme in data["themes"]:
         seed = sum((index + 1) * ord(character) for index, character in enumerate(theme["id"]))
         targets = _sample_logo_targets(mark, ANIMATION_SIZE, 110, seed)
         starts = _starting_points(ANIMATION_SIZE, len(targets), seed + 17)
         frames = [
-            _render_animation_frame(theme, index / (ANIMATION_FRAME_COUNT - 1), mark, source, starts, targets, seed)
+            _render_animation_frame(theme, index / (ANIMATION_FRAME_COUNT - 1), mark, source, components, starts, targets, seed)
             for index in range(ANIMATION_FRAME_COUNT)
         ]
         gif_path = ANIMATIONS / Path(theme["animation_file"]).name
-        frames[0].save(gif_path, save_all=True, append_images=frames[1:], duration=ANIMATION_FRAME_MS, loop=0, optimize=True, disposal=2)
+        frame_ms = max(20, round(theme["duration_ms"] / ANIMATION_FRAME_COUNT / 10) * 10)
+        frames[0].save(gif_path, save_all=True, append_images=frames[1:], duration=frame_ms, loop=0, optimize=True, disposal=2)
         poster_path = ANIMATIONS / Path(theme["animation_poster"]).name
         frames[-1].save(poster_path, format="PNG", optimize=True)
 
@@ -370,7 +841,7 @@ def esc(value: object) -> str:
 
 def theme_card(theme: dict) -> str:
     algorithms = "".join(f"<li>{esc(item)}</li>" for item in theme["algorithm"])
-    tags = "".join(f"<span class=\"tag\">{esc(item)}</span>" for item in theme["tags"])
+    tags = "".join(f"<span class=\"tag\">{esc(item)}</span>" for item in [*theme["tags"], theme["trajectory_id"]])
     beats = "<span>" + "</span><span>".join(esc(item) for item in theme["beats"]) + "</span>"
     return f'''<article class="theme-card" data-theme="{esc(theme["id"])}" data-search="{esc(" ".join([theme["name"], theme["trigger"], *theme["tags"]]))}" style="--accent:{esc(theme["accent"])};--stage-bg:{esc(theme["background"])};--theme-index:{esc(theme["number"])}">
   <header class="card-head">
@@ -387,14 +858,15 @@ def theme_card(theme: dict) -> str:
       <img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo raster source" loading="lazy">
       <span class="cell-foot">source frame</span>
     </div>
-    <div class="result-cell motion-output pattern-{esc(theme["pattern"])}">
-      <span class="cell-label">OUTPUT / PLAYABLE ANIMATION</span>
-      <div class="motion-stage" data-motion-card data-effect="{esc(theme["pattern"])}" data-duration-ms="{esc(theme["duration_ms"])}" data-tempo="{esc(theme["tempo"])}" data-beats="{esc(" / ".join(theme["beats"]))}" data-state="playing">
-        <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
-        <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
-        <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-        <img class="animated-mark" src="assets/prysai-mark-transparent.png" alt="Same Prysai source image animated in the {esc(theme["name"])} style" loading="lazy">
-        <span class="motion-phase" data-motion-phase>source</span>
+     <div class="result-cell motion-output pattern-{esc(theme["pattern"])}">
+       <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
+       <div class="motion-stage" data-motion-card data-effect="{esc(theme["pattern"])}" data-duration-ms="{esc(theme["duration_ms"])}" data-tempo="{esc(theme["tempo"])}" data-beats="{esc(" / ".join(theme["beats"]))}" data-animation-src="{esc(theme["animation_file"])}" data-poster-src="{esc(theme["animation_poster"])}" data-growth-sequence="{esc(" / ".join(theme["growth_sequence"]))}" data-state="playing">
+         <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
+         <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
+         <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
+         <img class="growth-gif" src="{esc(theme["animation_file"])}" alt="{esc(theme["name"])} style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
+         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
+         <span class="motion-phase" data-motion-phase>blank</span>
       </div>
       <div class="motion-controls" aria-label="{esc(theme["name"])} animation controls">
         <button type="button" data-card-action="play">Play</button>
@@ -403,17 +875,18 @@ def theme_card(theme: dict) -> str:
         <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
       </div>
-      <a class="download-animation" href="{esc(theme["animation_file"])}" download>Open / download GIF output</a>
+       <a class="download-animation" href="{esc(theme["animation_file"])}" download>Open / download growth GIF</a>
     </div>
   </div>
   <div class="card-copy">
     <div class="tag-row">{tags}</div>
-    <p class="intent">{esc(theme["intent"])}</p>
+     <p class="intent">{esc(theme["intent"])}</p>
+     <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>{esc(theme["trajectory_summary"])}</p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul>{algorithms}</ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats">{beats}</div><span class="detail-label qa-label">QA FOCUS</span><p>{esc(theme["qa"])}</p></div>
     </div>
-    <p class="result-note"><span>ANIMATED RESULT</span>{esc(theme["result"])}</p>
+     <p class="result-note"><span>GROWTH RESULT</span>{esc(theme["result"])} <small>{esc(" → ".join(theme["growth_sequence"]))}</small></p>
   </div>
 </article>'''
 
@@ -507,7 +980,6 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
 .result-cell { display: grid; place-items: center; isolation: isolate; background: var(--stage-bg); }
 .cell-label { position: absolute; z-index: 5; top: .7rem; left: .7rem; margin: 0; color: #c7c8c2; font-size: .53rem; }
 .cell-foot { position: absolute; z-index: 5; bottom: .65rem; left: .7rem; right: .7rem; color: rgba(242,241,233,.55); font-size: .52rem; text-transform: uppercase; letter-spacing: .07em; pointer-events: none; }
-.output-mark { position: relative; z-index: 3; width: 84%; max-height: 84%; object-fit: contain; opacity: 1; filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 38%, transparent)); animation: mark-float 4.8s cubic-bezier(.2,.8,.2,1) infinite alternate; }
 .effect { position: absolute; pointer-events: none; z-index: 1; }
 .effect-a { inset: 0; opacity: .5; }
 .effect-b { inset: 12%; opacity: .6; }
@@ -538,7 +1010,9 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
 .card-copy { padding: .95rem .9rem 1rem; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .7rem; }
 .tag { border: 1px solid var(--line); color: var(--muted); padding: .22rem .35rem; font-size: .55rem; }
-.intent { margin: 0 0 1rem; color: #d6d7d0; font-family: Arial, Helvetica, sans-serif; font-size: .82rem; line-height: 1.48; }
+ .intent { margin: 0 0 .7rem; color: #d6d7d0; font-family: Arial, Helvetica, sans-serif; font-size: .82rem; line-height: 1.48; }
+ .trajectory-note { margin: 0 0 1rem; padding-left: .65rem; border-left: 2px solid var(--accent); color: #bfc2bb; font: .68rem/1.45 Arial, Helvetica, sans-serif; }
+ .trajectory-note span { display: block; margin-bottom: .25rem; color: var(--accent); font: .56rem/1.2 "IBM Plex Mono", monospace; letter-spacing: .08em; }
 .detail-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; border-top: 1px solid var(--line); padding-top: .8rem; }
 .detail-grid ul { margin: 0; padding-left: 1rem; color: #c1c5bd; font-size: .61rem; line-height: 1.5; }
 .detail-grid li::marker { color: var(--accent); }
@@ -568,17 +1042,17 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
 @keyframes orbit-dot { to { transform: rotate(360deg); } }
 body[data-motion="paused"] .theme-card *, body[data-motion="reduced"] .theme-card * { animation-play-state: paused !important; }
 body[data-motion="reduced"] .theme-card * { animation: none !important; }
-body[data-motion="reduced"] .output-mark { opacity: 1; filter: none; transform: none; }
 @media (max-width: 1050px) { .theme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero { gap: 2rem; } }
 @media (max-width: 720px) { .shell { width: min(100% - 28px, 640px); } .topbar { font-size: .62rem; } .hero { grid-template-columns: 1fr; padding-top: 4rem; } .hero-side { border-left: 0; padding-left: 0; grid-template-columns: 1fr 1fr; align-items: end; } .io-heading { display: block; } .io-badge { border-left: 0; border-top: 1px solid var(--line); margin-top: 1rem; padding: .8rem 0 0; } .io-flow { grid-template-columns: 1fr; } .io-arrow { transform: rotate(90deg); justify-self: center; } .io-footer { display: block; } .io-footer a { display: inline-block; margin: .6rem .8rem 0 0; } .route-brief { grid-template-columns: 1fr; } .route-cell { border-right: 0; border-bottom: 1px solid var(--line); } .route-cell:last-child { border-bottom: 0; } .theme-grid { grid-template-columns: 1fr; } .footer { display: block; } .footer p + p { margin-top: 1rem; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .theme-card * { animation: none !important; } .output-mark { opacity: 1; filter: none; transform: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .theme-card * { animation: none !important; } }
 '''
 
 
 MOTION_CSS = r'''
 .motion-output { display: grid; grid-template-rows: 1fr auto; min-height: 205px; background: var(--stage-bg); }
 .motion-stage { position: relative; min-height: 145px; display: grid; place-items: center; isolation: isolate; overflow: hidden; --motion-progress: 0; --motion-x: 0; --motion-y: 0; --motion-scale: .72; --motion-rotate: 0deg; --motion-opacity: .05; }
-.animated-mark { position: relative; z-index: 3; width: 84%; max-height: 82%; object-fit: contain; opacity: var(--motion-opacity); transform: translate3d(calc(var(--motion-x) * 1%), calc(var(--motion-y) * 1%), 0) scale(var(--motion-scale)) rotate(var(--motion-rotate)); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) calc(20% + var(--motion-progress) * 28%), transparent)); will-change: transform, opacity, filter; }
+.growth-gif { position: relative; z-index: 3; width: 100%; height: 100%; object-fit: cover; image-rendering: auto; }
+.motion-freeze { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; object-fit: cover; }
 .motion-effect { position: absolute; z-index: 1; pointer-events: none; opacity: 0; will-change: transform, opacity, background-position; }
 .motion-effect-a { inset: 0; }
 .motion-effect-b { inset: 12%; }
@@ -615,7 +1089,7 @@ MOTION_CSS = r'''
 .motion-time { color: rgba(242,241,233,.65); font-size: .52rem; min-width: 2.1rem; text-align: right; }
 body[data-motion="paused"] .motion-stage { outline: 1px solid color-mix(in srgb, var(--accent) 42%, transparent); outline-offset: -1px; }
 body[data-motion="reduced"] .motion-effect { display: none; }
-body[data-motion="reduced"] .animated-mark { opacity: 1; transform: none; filter: none; }
+body[data-motion="reduced"] .growth-gif { filter: none; }
 @media (max-width: 720px) { .motion-stage { min-height: 155px; } .motion-controls { flex-wrap: wrap; } .motion-timeline { flex-basis: 100%; order: 5; } }
 '''
 
@@ -646,48 +1120,72 @@ JS = r'''(() => {
     return 1 - Math.pow(1 - p, 2.4);
   };
   function phaseFor(progress) {
-    if (progress < .16) return "source";
-    if (progress < .42) return "reveal";
-    if (progress < .78) return "transform";
-    if (progress < .96) return "settle";
+    if (progress < .08) return "blank";
+    if (progress < .18) return "spark";
+    if (progress < .38) return "arc";
+    if (progress < .52) return "bar";
+    if (progress < .66) return "monogram";
+    if (progress < .94) return "wordmark";
     return "canonical";
   }
   function render(player, progress) {
     const p = clamp(progress, 0, 1);
-    const eased = ease(p, player.effect);
-    const [startX, startY, startRotate, startScale] = presets[player.effect] || presets.plain;
-    const settle = p > .78 ? (p - .78) / .22 : 0;
-    const overshoot = (player.effect === "sports-impact" || player.effect === "speed" || player.effect === "burst") ? Math.sin(Math.min(1, p) * Math.PI) * .06 : 0;
-    const scale = startScale + (1 - startScale) * eased + overshoot;
     player.stage.style.setProperty("--motion-progress", p.toFixed(4));
-    player.stage.style.setProperty("--motion-x", ((1 - eased) * startX).toFixed(3));
-    player.stage.style.setProperty("--motion-y", ((1 - eased) * startY).toFixed(3));
-    player.stage.style.setProperty("--motion-scale", scale.toFixed(4));
-    player.stage.style.setProperty("--motion-rotate", `${((1 - eased) * startRotate).toFixed(3)}deg`);
-    player.stage.style.setProperty("--motion-opacity", (.06 + eased * .94).toFixed(4));
     player.stage.dataset.state = phaseFor(p);
     if (player.phase) player.phase.textContent = phaseFor(p);
     if (player.progress) player.progress.style.width = `${p * 100}%`;
     if (player.time) player.time.textContent = `${(p * player.duration / 1000).toFixed(1)}s`;
   }
+  function showGif(player, restart) {
+    if (!player.gif) return;
+    player.gif.src = restart ? `${player.src}?play=${Date.now()}` : player.src;
+    player.gif.hidden = false;
+    if (player.poster) player.poster.hidden = true;
+  }
+  function showPoster(player, source) {
+    if (!player.gif) return;
+    player.gif.hidden = true;
+    if (player.poster) {
+      player.poster.src = source || player.posterSrc;
+      player.poster.hidden = false;
+    }
+  }
+  function freezeCurrentFrame(player) {
+    if (!player.gif || !player.gif.complete || !player.gif.naturalWidth) { showPoster(player); return; }
+    const canvas = document.createElement("canvas");
+    canvas.width = player.gif.naturalWidth;
+    canvas.height = player.gif.naturalHeight;
+    try {
+      canvas.getContext("2d").drawImage(player.gif, 0, 0);
+      showPoster(player, canvas.toDataURL("image/png"));
+    } catch (error) {
+      // A local GIF should be readable; keep the canonical poster as a safe fallback.
+      showPoster(player);
+    }
+  }
   function stop(player) { player.playing = false; if (player.frame) cancelAnimationFrame(player.frame); player.frame = 0; }
   function tick(player, timestamp) {
     if (!player.playing || motion === "paused" || motion === "reduced") return;
     if (player.last === null) player.last = timestamp;
-    player.current += (timestamp - player.last) * player.tempo;
+    player.current += timestamp - player.last;
     player.last = timestamp;
     const progress = clamp(player.current / player.duration, 0, 1);
     render(player, progress);
-    if (progress >= 1) stop(player); else player.frame = requestAnimationFrame((next) => tick(player, next));
+    if (progress >= 1) { stop(player); render(player, 1); showPoster(player); } else player.frame = requestAnimationFrame((next) => tick(player, next));
   }
   function play(player) {
-    if (prefersReduced) { render(player, 1); return; }
+    if (prefersReduced) { render(player, 1); showPoster(player); return; }
+    // A portable GIF cannot seek. Resume by restarting it so the timer and pixels agree.
+    const restart = player.current > 0 || player.paused || player.current >= player.duration;
+    if (restart) { player.current = 0; render(player, 0); }
+    player.paused = false;
+    showGif(player, restart);
     player.playing = true; player.last = null; if (!player.frame) player.frame = requestAnimationFrame((next) => tick(player, next));
   }
-  function pause(player) { stop(player); }
-  function replay(player) { stop(player); player.current = 0; render(player, 0); play(player); }
+  function pause(player) { stop(player); player.paused = true; freezeCurrentFrame(player); }
+  function replay(player) { stop(player); player.current = 0; player.paused = false; render(player, 0); showGif(player, true); play(player); }
   stages.forEach((stage) => {
-    const player = { stage, effect: stage.dataset.effect || "plain", duration: Number(stage.dataset.durationMs || 1800), tempo: Number(stage.dataset.tempo || 1), current: 0, last: null, playing: false, frame: 0, phase: stage.querySelector("[data-motion-phase]"), progress: stage.closest(".motion-output")?.querySelector("[data-motion-progress]"), time: stage.closest(".motion-output")?.querySelector("[data-motion-time]") };
+    const player = { stage, effect: stage.dataset.effect || "plain", duration: Number(stage.dataset.durationMs || 1800), current: 0, last: null, playing: false, paused: false, frame: 0, src: stage.dataset.animationSrc || "", posterSrc: stage.dataset.posterSrc || "", gif: stage.querySelector(".growth-gif"), poster: stage.querySelector(".motion-freeze"), phase: stage.querySelector("[data-motion-phase]"), progress: stage.closest(".motion-output")?.querySelector("[data-motion-progress]"), time: stage.closest(".motion-output")?.querySelector("[data-motion-time]") };
     player.playButton = stage.closest(".motion-output")?.querySelector('[data-card-action="play"]');
     player.pauseButton = stage.closest(".motion-output")?.querySelector('[data-card-action="pause"]');
     player.replayButton = stage.closest(".motion-output")?.querySelector('[data-card-action="replay"]');
@@ -696,7 +1194,7 @@ JS = r'''(() => {
     player.replayButton?.addEventListener("click", () => { setMotion("running"); replay(player); });
     players.push(player);
     render(player, prefersReduced ? 1 : 0);
-    if (!prefersReduced) play(player);
+    if (prefersReduced) showPoster(player); else play(player);
   });
   function setMotion(next) {
     motion = next;
@@ -754,7 +1252,7 @@ def build_html(data: dict) -> None:
         <div>
           <p class="eyebrow">Brand motion routing / comparative study</p>
           <h1 id="page-title">One image.<br>Thirteen animations.</h1>
-          <p class="hero-copy">The source stays fixed. The output moves. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-motion results. Algorithm families remain available as explanation, not as the thing being displayed.</p>
+           <p class="hero-copy">The source stays fixed. The output grows. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-construction results. Algorithm families remain available as explanation, not as the thing being displayed.</p>
           <div class="stats" aria-label="Showcase summary">
             <div class="stat"><strong>13</strong><span>routable themes</span></div>
             <div class="stat"><strong>1</strong><span>identity source</span></div>
@@ -771,21 +1269,21 @@ def build_html(data: dict) -> None:
           <div>
             <p class="eyebrow">Actual rendered output / AI-field route</p>
             <h2 id="io-title">From image to animation.</h2>
-            <p>Give the skill one logo image and a request such as “make an AI company logo animation.” Motiflux routes it to AI-field, keeps the source mark intact, and returns a portable animated output.</p>
+           <p>Give the skill one logo image and a request such as “make an AI company logo animation.” Motiflux routes it to AI-field, keeps the source mark intact, and returns a portable GIF that grows it from a blank field to a complete logo.</p>
           </div>
           <div class="io-badge">INPUT → OUTPUT<br><strong>JPG → GIF</strong></div>
         </div>
         <div class="io-flow">
           <figure class="io-frame io-source"><span class="cell-label">INPUT / SUPPLIED IMAGE</span><img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo image"></figure>
           <div class="io-arrow" aria-hidden="true">→</div>
-          <figure class="io-frame io-output"><span class="cell-label">OUTPUT / REAL ANIMATION</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo animated through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
+          <figure class="io-frame io-output"><span class="cell-label">OUTPUT / LOGO GROWTH GIF</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo growing from blank through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
         </div>
-        <div class="io-footer"><span>Same identity source / secondary choreography changes / canonical logo remains readable</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
+         <div class="io-footer"><span>Same identity source / spark → arc → bar → monogram → wordmark → canonical</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
       </section>
       <section class="route-brief" aria-labelledby="route-title">
         <div class="route-cell"><span id="route-title" class="route-label">Example request</span><p class="route-value">“I want to make a logo animation for my artificial-intelligence company.”</p></div>
         <div class="route-cell"><span class="route-label">AI-field animation</span><p class="route-value"><strong>AI-field</strong><br>the supplied image becomes a signal-convergence reveal</p></div>
-        <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Source image → reveal → transformation → stable logo. Play, pause, or replay each card.</p></div>
+         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Blank field → spark → P construction → wordmark → stable logo. Each card is a direct GIF output.</p></div>
       </section>
       <section id="theme-atlas" aria-labelledby="grid-title">
         <div class="controls">
@@ -795,7 +1293,7 @@ def build_html(data: dict) -> None:
         <div class="theme-grid">{theme_markup}</div>
       </section>
     </main>
-    <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo motion: the source image stays recognizable while the selected theme changes the reveal choreography.</p><p>The HTML includes portable GIF outputs plus interactive players. The PDF is a static storyboard of the same image-to-animation sequences. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
+     <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo growth: the source image stays recognizable while the selected theme changes the construction choreography.</p><p>The HTML and GitHub README expose portable GIF outputs. The PDF is a static storyboard of the same image-to-animation sequences. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
   </div>
   <script src="app.js"></script>
 </body>
@@ -887,57 +1385,53 @@ def draw_image_contained(canvas, path: Path, x: float, y: float, width: float, h
     canvas.drawImage(str(path), x + (width - draw_width)/2, y + (height - draw_height)/2, draw_width, draw_height, mask=mask)
 
 
-def draw_storyboard_frame(canvas, path: Path, x: float, y: float, width: float, height: float, *, frame: str, theme: dict) -> None:
-    """Draw one static frame from the same source-image animation."""
+STORYBOARD_PROGRESS = {"blank": 0.0, "spark": .16, "monogram": .52, "wordmark": .76, "canonical": 1.0}
+_GIF_FRAME_CACHE: dict[Path, tuple[Image.Image, ...]] = {}
 
-    from reportlab.lib.colors import HexColor
 
-    accent = pdf_color(theme["accent"])
+def _load_animation_frames(path: Path) -> tuple[Image.Image, ...]:
+    """Read the rendered GIF frames once so PDF pages use the real animation."""
+
+    resolved = path.resolve()
+    if resolved not in _GIF_FRAME_CACHE:
+        with Image.open(resolved) as gif:
+            frames = tuple(frame.convert("RGB").copy() for frame in ImageSequence.Iterator(gif))
+        if not frames:
+            raise ValueError(f"animation has no frames: {path}")
+        _GIF_FRAME_CACHE[resolved] = frames
+    return _GIF_FRAME_CACHE[resolved]
+
+
+def _draw_pil_contained(canvas, image: Image.Image, x: float, y: float, width: float, height: float) -> None:
+    from reportlab.lib.utils import ImageReader
+
+    image_width, image_height = image.size
+    scale = min(width / image_width, height / image_height)
+    draw_width = image_width * scale
+    draw_height = image_height * scale
+    canvas.drawImage(
+        ImageReader(image),
+        x + (width - draw_width) / 2,
+        y + (height - draw_height) / 2,
+        draw_width,
+        draw_height,
+    )
+
+
+def draw_storyboard_frame(canvas, x: float, y: float, width: float, height: float, *, frame: str, theme: dict) -> None:
+    """Draw a normalized keyframe directly from the theme's generated GIF."""
+
+    if frame not in STORYBOARD_PROGRESS:
+        raise ValueError(f"unknown storyboard frame: {frame}")
+    gif_path = ANIMATIONS / Path(theme["animation_file"]).name
+    frames = _load_animation_frames(gif_path)
+    frame_index = round(STORYBOARD_PROGRESS[frame] * (len(frames) - 1))
+    image = frames[frame_index]
     canvas.saveState()
-    canvas.setFillColor(HexColor(theme["background"]))
-    canvas.rect(x, y, width, height, stroke=0, fill=1)
-    canvas.setStrokeColor(accent)
+    _draw_pil_contained(canvas, image, x, y, width, height)
+    canvas.setStrokeColor(pdf_color(theme["accent"]))
     canvas.setLineWidth(.6)
-    progress = {"source": 0.0, "reveal": .3, "transform": .68, "canonical": 1.0}[frame]
-    effect = theme["pattern"]
-    if effect == "grid":
-        canvas.setStrokeAlpha(.15 + progress * .2)
-        for offset in range(0, int(width), 12): canvas.line(x + offset, y, x + offset, y + height)
-        for offset in range(0, int(height), 12): canvas.line(x, y + offset, x + width, y + offset)
-    elif effect in {"ring", "orbit"}:
-        canvas.setStrokeAlpha(.15 + progress * .35)
-        canvas.circle(x + width*.5, y + height*.5, min(width, height) * (.18 + progress*.18), stroke=1, fill=0)
-    elif effect == "shield":
-        canvas.setStrokeAlpha(.2 + progress * .35)
-        points = [(x + width*.5, y + height*.91), (x + width*.83, y + height*.76), (x + width*.76, y + height*.27), (x + width*.5, y + height*.08), (x + width*.24, y + height*.27), (x + width*.17, y + height*.76)]
-        path_shape = canvas.beginPath(); path_shape.moveTo(*points[0])
-        for point in points[1:]: path_shape.lineTo(*point)
-        path_shape.close(); canvas.drawPath(path_shape, stroke=1, fill=0)
-    elif effect in {"speed", "track"}:
-        canvas.setStrokeAlpha((1 - progress) * .5)
-        canvas.line(x + width*(.1 - progress*.2), y + height*.15, x + width*(.8 + progress*.2), y + height*.7)
-        canvas.line(x + width*(.1 - progress*.2), y + height*.35, x + width*(.8 + progress*.2), y + height*.9)
-    elif effect in {"wave", "field"}:
-        canvas.setStrokeAlpha(.12 + progress * .18)
-        for row in range(2):
-            path_shape = canvas.beginPath(); path_shape.moveTo(x, y + height*(.35 + row*.18))
-            path_shape.curveTo(x + width*.25, y + height*(.52 + row*.1), x + width*.55, y + height*(.08 + row*.2), x + width, y + height*(.35 + row*.16))
-            canvas.drawPath(path_shape, stroke=1, fill=0)
-    elif effect == "curtain":
-        canvas.setStrokeAlpha((1 - progress) * .5)
-        canvas.line(x + width*(.12 + progress*.25), y, x + width*(.35 + progress*.15), y + height)
-        canvas.line(x + width*(.88 - progress*.25), y, x + width*(.65 - progress*.15), y + height)
-    else:
-        canvas.setStrokeAlpha(.12 + progress * .22)
-        canvas.circle(x + width*.5, y + height*.5, min(width, height)*(.12 + progress*.12), stroke=1, fill=0)
-    if frame == "source":
-        draw_image_contained(canvas, CROP_JPG, x + 5, y + 5, width - 10, height - 10)
-    else:
-        draw_image_contained(canvas, MARK_PNG, x + 5, y + 5, width - 10, height - 10, mask="auto")
-        if frame == "reveal":
-            canvas.setFillColor(HexColor(theme["background"]))
-            canvas.setFillAlpha(.34)
-            canvas.rect(x, y + height*(1-progress), width, height*progress, stroke=0, fill=1)
+    canvas.rect(x, y, width, height, stroke=1, fill=0)
     canvas.restoreState()
 
 
@@ -958,10 +1452,10 @@ def draw_card(canvas, x: float, y: float, width: float, height: float, theme: di
     stage_y = y + height - header_h - 105
     stage_h = 95
     gap = 4
-    frame_width = (width - 3*gap) / 4
-    for frame_index, frame in enumerate(("source", "reveal", "transform", "canonical")):
+    frame_width = (width - 6*gap) / 5
+    for frame_index, frame in enumerate(("blank", "spark", "monogram", "wordmark", "canonical")):
         frame_x = x + gap + frame_index * (frame_width + gap)
-        draw_storyboard_frame(canvas, SOURCE, frame_x, stage_y, frame_width, stage_h, frame=frame, theme=theme)
+        draw_storyboard_frame(canvas, frame_x, stage_y, frame_width, stage_h, frame=frame, theme=theme)
         canvas.setFillColor(muted); canvas.setFont("Courier", 4.7); canvas.drawCentredString(frame_x + frame_width/2, stage_y - 8, frame.upper())
     canvas.setStrokeColor(line); canvas.line(x, stage_y - 13, x + width, stage_y - 13)
     text_y = stage_y - 26
@@ -1003,9 +1497,9 @@ def build_pdf(data: dict) -> Path:
     pdf.drawString(38, page_height - 168, "Thirteen playable animations.")
     pdf.setFillColor(muted); pdf.setFont("Helvetica", 11)
     cover_lines = [
-        "A source-preserving storyboard of the same supplied Prysai image moving",
+        "A source-preserving storyboard of the same supplied Prysai image growing",
         "through Motiflux V1 design themes. The source stays recognizable while",
-        "the reveal, motion language, and algorithm explanation change.",
+        "construction order, motion language, and algorithm explanation change.",
     ]
     for offset, line_text in enumerate(cover_lines): pdf.drawString(40, page_height - 214 - offset*16, line_text)
     pdf.setFillColor(HexColor("#000000")); pdf.setStrokeColor(line); pdf.roundRect(40, 82, 235, 190, 6, stroke=1, fill=1)
@@ -1017,14 +1511,14 @@ def build_pdf(data: dict) -> Path:
     pdf.setFillColor(muted); pdf.setFont("Helvetica", 9)
     route_lines = [
         "Request: I want to make a logo animation for my artificial-intelligence company.",
-        "Route: signal flow / convergence / progressive disclosure.",
-        "Animation: the supplied image moves through a field of signals into a",
-        "readable canonical logo. The HTML is playable; this PDF records its",
-        "source, reveal, transform, and settle frames.",
+        "Route: signal convergence / component growth / progressive disclosure.",
+        "Animation: blank field -> spark -> arc -> bar -> monogram -> wordmark",
+        "-> canonical. The HTML and GIF are playable; this PDF records growth",
+        "frames for the same supplied image.",
     ]
     for offset, line_text in enumerate(route_lines): pdf.drawString(334, 198 - offset*14, line_text)
     pdf.setStrokeColor(line); pdf.line(334, 116, 782, 116)
-    pdf.setFillColor(muted); pdf.setFont("Courier", 6.5); pdf.drawString(334, 98, "13 routable themes / 1 identity source / 0 geometry edits")
+    pdf.setFillColor(muted); pdf.setFont("Courier", 6.5); pdf.drawString(334, 84, "13 routable themes / 1 identity source / 0 geometry edits")
     pdf.setFillColor(muted); pdf.setFont("Courier", 6.5); pdf.drawRightString(page_width - 38, 28, "PAGE 01")
     pdf.showPage()
 
@@ -1050,7 +1544,7 @@ def build_pdf(data: dict) -> Path:
                 x = margin_x + col*(card_width + gap_x)
                 y = page_height - 47 - (row + 1)*card_height - row*gap_y
                 draw_card(pdf, x, y, card_width, card_height, theme, page_start + slot)
-        pdf.setFillColor(muted); pdf.setFont("Courier", 6); pdf.drawString(margin_x, 14, "Same source image / four-frame animation storyboards")
+        pdf.setFillColor(muted); pdf.setFont("Courier", 6); pdf.drawString(margin_x, 14, "Same source image / five-frame growth storyboards")
         pdf.drawRightString(page_width - margin_x, 14, f"PAGE {2 + page_start//4:02d}")
         pdf.showPage()
     pdf.save()
@@ -1061,13 +1555,13 @@ def write_readme(data: dict) -> None:
     text = f'''# Motiflux V1 showcase
 
 This showcase uses one supplied raster source - `assets/prysai-logo-white.jpg` -
-to make a direct visual comparison across {len(data["themes"])} playable Motiflux theme animations.
+to make a direct visual comparison across {len(data["themes"])} playable Motiflux logo-growth animations.
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
-the same source image on the left and runs a real source-to-animation sequence
-on the right: source, reveal, transform, settle, and canonical hold. The
-animation changes motion language and secondary visual treatment; it does not
-redraw or rename the Prysai identity.
+the same source image on the left and runs a real blank-to-canonical construction
+sequence on the right: blank, spark, arc, bar, monogram, wordmark, and canonical.
+Each theme changes construction timing and motion language; it does not redraw or
+rename the Prysai identity.
 
 ## Files
 
@@ -1081,7 +1575,7 @@ redraw or rename the Prysai identity.
   it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
 - `assets/prysai-mark-crop.jpg` and `assets/prysai-mark-transparent.png` - display-only derivatives made from the same source; no geometry edits.
-- `output/pdf/motiflux-theme-atlas.pdf` - printable four-frame storyboard atlas.
+- `output/pdf/motiflux-theme-atlas.pdf` - printable five-frame growth storyboard atlas.
 
 ## Regenerate
 
@@ -1092,7 +1586,7 @@ python showcase\\generate_showcase.py
 ```
 
 The HTML presents the actual image-to-animation result first. The PDF includes
-the route example `artificial-intelligence` -> `AI-field` and records four key
+the route example `artificial-intelligence` -> `AI-field` and records five growth
 frames of each playable animation. Public design systems are principle analogues
 only; this material does not claim private vendor algorithms.
 '''

@@ -4,12 +4,12 @@
   "source": {
     "asset": "assets/prysai-logo-white.jpg",
     "label": "Prysai logo / supplied raster source",
-    "identity_rule": "Use the same source mark in every theme. Change motion language and sequencing only."
+    "identity_rule": "Use the same source mark in every theme. Change the foreground trajectory and motion language only."
   },
   "request_example": {
     "user_says": "I want to make a logo animation for my artificial-intelligence company.",
     "agent_route": "AI-field",
-    "routing_explanation": "The phrase artificial intelligence selects AI-field; the same source image is animated through signal convergence and a quiet canonical landing."
+    "routing_explanation": "The phrase artificial intelligence selects AI-field; deterministic signals converge into the supplied Logo pixels, then the Prysai wordmark assembles and holds canonical."
   },
   "themes": [
     {
@@ -26,11 +26,22 @@
         "interface",
         "structured",
         "clear",
-        "technology"
+        "technology",
+        "education",
+        "learning",
+        "teaching",
+        "course",
+        "knowledge",
+        "教育",
+        "学习",
+        "课程",
+        "教学",
+        "知识"
       ],
       "tags": [
         "system-spatial",
         "grid",
+        "logo-growth",
         "hierarchy weight"
       ],
       "public_analogue": "Material, Fluent, Atlassian, and Carbon-style motion principles",
@@ -42,11 +53,13 @@
         "container-aware bounds",
         "reduced-motion substitution"
       ],
-      "result": "The same source mark moves through grid staging, then returns to a readable canonical state.",
+      "trajectory_id": "knowledge-graph-lock",
+      "trajectory_summary": "Place semantic nodes, connect their relationships, then lock the supplied mark component by component.",
+      "result": "The supplied mark follows this foreground route: Place semantic nodes, connect their relationships, then lock the supplied mark component by component.",
       "beats": [
-        "map",
-        "align",
-        "resolve"
+        "locate",
+        "draw",
+        "lock"
       ],
       "qa": "spatial continuity; no layout shift; focus order; bounds",
       "accent": "#8aa4ff",
@@ -54,6 +67,19 @@
       "pattern": "grid",
       "tempo": 1.0,
       "duration_ms": 1800,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "orthogonal coordinate draw-on",
+      "primary_motion": "grid lock and radial construction",
+      "wordmark_reveal": "left-to-right component stagger",
+      "stagger": 0.06,
       "animation_file": "assets/animations/prysai-system-spatial.gif",
       "animation_poster": "assets/animations/prysai-system-spatial-poster.png"
     },
@@ -75,6 +101,7 @@
       "tags": [
         "premium-quiet",
         "quiet",
+        "logo-growth",
         "amplitude"
       ],
       "public_analogue": "Restrained editorial motion and Apple-style purpose, hierarchy, and user-control principles",
@@ -86,10 +113,12 @@
         "optical-alignment correction",
         "low-frequency highlight pass"
       ],
-      "result": "The same source mark moves through quiet staging, then returns to a readable canonical state.",
+      "trajectory_id": "contour-etch",
+      "trajectory_summary": "Trace the mark's measured outer contour first, then let the solid identity resolve with optical restraint.",
+      "result": "The supplied mark follows this foreground route: Trace the mark's measured outer contour first, then let the solid identity resolve with optical restraint.",
       "beats": [
-        "still",
-        "reveal",
+        "spark",
+        "trace",
         "rest"
       ],
       "qa": "contour integrity; optical centering; frame pacing; typography",
@@ -98,6 +127,19 @@
       "pattern": "quiet",
       "tempo": 0.72,
       "duration_ms": 2400,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "quiet contour tracing",
+      "primary_motion": "slow optical trace with a held pause",
+      "wordmark_reveal": "soft letter-by-letter fade",
+      "stagger": 0.09,
       "animation_file": "assets/animations/prysai-premium-quiet.gif",
       "animation_poster": "assets/animations/prysai-premium-quiet-poster.png"
     },
@@ -120,6 +162,7 @@
       "tags": [
         "developer-open",
         "scan",
+        "logo-growth",
         "phase step"
       ],
       "public_analogue": "GitHub Primer motion principles and inspectable interface systems",
@@ -131,10 +174,12 @@
         "semantic actor metadata",
         "reproducible seek controls"
       ],
-      "result": "The same source mark moves through scan staging, then returns to a readable canonical state.",
+      "trajectory_id": "token-commit",
+      "trajectory_summary": "Commit deterministic identity tokens in an inspectable sequence, one source component at a time.",
+      "result": "The supplied mark follows this foreground route: Commit deterministic identity tokens in an inspectable sequence, one source component at a time.",
       "beats": [
         "parse",
-        "assemble",
+        "stroke",
         "commit"
       ],
       "qa": "determinism; event order; inspectability; keyboard operation",
@@ -143,6 +188,19 @@
       "pattern": "scan",
       "tempo": 1.0,
       "duration_ms": 1800,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "inspectable command sequence",
+      "primary_motion": "deterministic scanline draw-on",
+      "wordmark_reveal": "explicit left-to-right scan",
+      "stagger": 0.04,
       "animation_file": "assets/animations/prysai-developer-open.gif",
       "animation_poster": "assets/animations/prysai-developer-open-poster.png"
     },
@@ -166,6 +224,7 @@
       "tags": [
         "ai-field",
         "field",
+        "logo-growth",
         "field density"
       ],
       "public_analogue": "Public AI-product motion patterns using progressive disclosure, signal flow, and responsive feedback",
@@ -177,9 +236,11 @@
         "progressive disclosure",
         "confidence-bounded morphing"
       ],
-      "result": "The same source mark moves through field staging, then returns to a readable canonical state.",
+      "trajectory_id": "signal-convergence",
+      "trajectory_summary": "Move deterministic external signals into their measured Logo pixels until the mark assembles from the field.",
+      "result": "The supplied mark follows this foreground route: Move deterministic external signals into their measured Logo pixels until the mark assembles from the field.",
       "beats": [
-        "observe",
+        "seed",
         "converge",
         "land"
       ],
@@ -189,6 +250,19 @@
       "pattern": "field",
       "tempo": 0.92,
       "duration_ms": 1957,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "signal convergence into geometry",
+      "primary_motion": "seeded signals converge on each component",
+      "wordmark_reveal": "confidence-ordered component reveal",
+      "stagger": 0.05,
       "animation_file": "assets/animations/prysai-ai-field.gif",
       "animation_poster": "assets/animations/prysai-ai-field-poster.png"
     },
@@ -212,6 +286,7 @@
       "tags": [
         "fintech-trust",
         "ring",
+        "logo-growth",
         "progress mode"
       ],
       "public_analogue": "Predictable system feedback, hierarchy, and calm state-transition principles",
@@ -223,10 +298,12 @@
         "high-contrast completion cue",
         "failure-safe cancellation"
       ],
-      "result": "The same source mark moves through ring staging, then returns to a readable canonical state.",
+      "trajectory_id": "progress-confirm",
+      "trajectory_summary": "Use a bounded progress state to reveal the mark from its center, then settle into an unambiguous confirmation.",
+      "result": "The supplied mark follows this foreground route: Use a bounded progress state to reveal the mark from its center, then settle into an unambiguous confirmation.",
       "beats": [
-        "secure",
-        "process",
+        "orbit",
+        "close",
         "confirm"
       ],
       "qa": "state correctness; cancellation; contrast; announcement timing; no false success",
@@ -235,6 +312,19 @@
       "pattern": "ring",
       "tempo": 0.86,
       "duration_ms": 2093,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "progressive confirmation",
+      "primary_motion": "bounded progress ring then stable lock",
+      "wordmark_reveal": "monotonic component confirmation",
+      "stagger": 0.05,
       "animation_file": "assets/animations/prysai-fintech-trust.gif",
       "animation_poster": "assets/animations/prysai-fintech-trust-poster.png"
     },
@@ -257,6 +347,7 @@
       "tags": [
         "security-shield",
         "shield",
+        "logo-growth",
         "verification state"
       ],
       "public_analogue": "Accessible system motion with explicit focus, status feedback, and user control",
@@ -268,9 +359,11 @@
         "restrained lock transition",
         "interruptible animation"
       ],
-      "result": "The same source mark moves through shield staging, then returns to a readable canonical state.",
+      "trajectory_id": "boundary-unlock",
+      "trajectory_summary": "Establish the measured Logo boundary first, verify the interior, and unlock the wordmark last.",
+      "result": "The supplied mark follows this foreground route: Establish the measured Logo boundary first, verify the interior, and unlock the wordmark last.",
       "beats": [
-        "guard",
+        "boundary",
         "verify",
         "unlock"
       ],
@@ -280,6 +373,19 @@
       "pattern": "shield",
       "tempo": 0.8,
       "duration_ms": 2250,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "boundary-first construction",
+      "primary_motion": "perimeter trace followed by verified interior",
+      "wordmark_reveal": "protected sequential reveal",
+      "stagger": 0.07,
       "animation_file": "assets/animations/prysai-security-shield.gif",
       "animation_poster": "assets/animations/prysai-security-shield-poster.png"
     },
@@ -301,6 +407,7 @@
       "tags": [
         "commerce-energy",
         "burst",
+        "logo-growth",
         "interaction speed"
       ],
       "public_analogue": "Public commerce-system interaction feedback and clear-affordance principles",
@@ -312,10 +419,12 @@
         "responsive hit-area anchoring",
         "action-completion state machine"
       ],
-      "result": "The same source mark moves through burst staging, then returns to a readable canonical state.",
+      "trajectory_id": "burst-assembly",
+      "trajectory_summary": "Compress identity components at a shared origin, release them outward, and settle quickly into the lockup.",
+      "result": "The supplied mark follows this foreground route: Compress identity components at a shared origin, release them outward, and settle quickly into the lockup.",
       "beats": [
-        "anticipate",
-        "respond",
+        "compress",
+        "release",
         "idle"
       ],
       "qa": "input latency; hit-area stability; repeat action; focus; touch behavior",
@@ -324,6 +433,19 @@
       "pattern": "burst",
       "tempo": 1.2,
       "duration_ms": 1500,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "anticipation and release",
+      "primary_motion": "compressed spark with a fast stroke release",
+      "wordmark_reveal": "quick readable letter cascade",
+      "stagger": 0.035,
       "animation_file": "assets/animations/prysai-commerce-energy.gif",
       "animation_poster": "assets/animations/prysai-commerce-energy-poster.png"
     },
@@ -344,6 +466,7 @@
       "tags": [
         "automotive-precision",
         "track",
+        "logo-growth",
         "mass"
       ],
       "public_analogue": "Engineering-oriented physical continuity, hierarchy, and controlled acceleration",
@@ -355,10 +478,12 @@
         "directional light sweep",
         "constrained settle"
       ],
-      "result": "The same source mark moves through track staging, then returns to a readable canonical state.",
+      "trajectory_id": "kinematic-lock",
+      "trajectory_summary": "Carry each supplied component along one directional velocity path and lock it with a controlled scan.",
+      "result": "The supplied mark follows this foreground route: Carry each supplied component along one directional velocity path and lock it with a controlled scan.",
       "beats": [
-        "prime",
-        "drive",
+        "scan",
+        "draw",
         "settle"
       ],
       "qa": "jerk continuity; clipping; anchor correctness; responsive bounds",
@@ -367,6 +492,19 @@
       "pattern": "track",
       "tempo": 0.9,
       "duration_ms": 2000,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "kinematic path tracing",
+      "primary_motion": "single directional scan with velocity continuity",
+      "wordmark_reveal": "track-aligned wordmark draw-on",
+      "stagger": 0.045,
       "animation_file": "assets/animations/prysai-automotive-precision.gif",
       "animation_poster": "assets/animations/prysai-automotive-precision-poster.png"
     },
@@ -388,6 +526,7 @@
       "tags": [
         "sports-impact",
         "speed",
+        "logo-growth",
         "impact strength"
       ],
       "public_analogue": "Broadcast and performance-interface motion grammar",
@@ -399,10 +538,12 @@
         "controlled overshoot",
         "recovery-to-idle state"
       ],
-      "result": "The same source mark moves through speed staging, then returns to a readable canonical state.",
+      "trajectory_id": "impact-release",
+      "trajectory_summary": "Compress the full supplied mark, release it along its dominant axis, and recover to a readable final silhouette.",
+      "result": "The supplied mark follows this foreground route: Compress the full supplied mark, release it along its dominant axis, and recover to a readable final silhouette.",
       "beats": [
-        "load",
-        "impact",
+        "charge",
+        "strike",
         "recover"
       ],
       "qa": "peak silhouette; deformation limit; flashing risk; reduced motion",
@@ -411,6 +552,19 @@
       "pattern": "speed",
       "tempo": 1.35,
       "duration_ms": 1333,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "compression, strike, recovery",
+      "primary_motion": "high-velocity arc and controlled settle",
+      "wordmark_reveal": "impact-timed component release",
+      "stagger": 0.025,
       "animation_file": "assets/animations/prysai-sports-impact.gif",
       "animation_poster": "assets/animations/prysai-sports-impact-poster.png"
     },
@@ -432,6 +586,7 @@
       "tags": [
         "cinematic-title",
         "curtain",
+        "logo-growth",
         "depth"
       ],
       "public_analogue": "Title-sequence staging grammar, not a studio pipeline claim",
@@ -443,10 +598,12 @@
         "light-to-dark exposure curve",
         "beat-driven timing"
       ],
-      "result": "The same source mark moves through curtain staging, then returns to a readable canonical state.",
+      "trajectory_id": "aperture-title",
+      "trajectory_summary": "Open a central title aperture through the dark field, expose the lockup in layers, and hold the reading pause.",
+      "result": "The supplied mark follows this foreground route: Open a central title aperture through the dark field, expose the lockup in layers, and hold the reading pause.",
       "beats": [
-        "establish",
-        "title",
+        "dark",
+        "reveal",
         "hold"
       ],
       "qa": "final readability; crop safety; contrast; reduced motion; static fallback",
@@ -455,6 +612,19 @@
       "pattern": "curtain",
       "tempo": 0.65,
       "duration_ms": 2400,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "dark-field title reveal",
+      "primary_motion": "aperture opens from a single illuminated stroke",
+      "wordmark_reveal": "paced title-card letter reveal",
+      "stagger": 0.1,
       "animation_file": "assets/animations/prysai-cinematic-title.gif",
       "animation_poster": "assets/animations/prysai-cinematic-title-poster.png"
     },
@@ -477,6 +647,7 @@
       "tags": [
         "nature-flow",
         "wave",
+        "logo-growth",
         "flow amplitude"
       ],
       "public_analogue": "Organic motion built from continuous curves and variable velocity",
@@ -488,10 +659,12 @@
         "damped wave",
         "organic settle"
       ],
-      "result": "The same source mark moves through wave staging, then returns to a readable canonical state.",
+      "trajectory_id": "organic-current",
+      "trajectory_summary": "Carry each supplied component on a smooth low-frequency current before it roots into the canonical position.",
+      "result": "The supplied mark follows this foreground route: Carry each supplied component on a smooth low-frequency current before it roots into the canonical position.",
       "beats": [
         "breathe",
-        "flow",
+        "grow",
         "root"
       ],
       "qa": "smoothness; amplitude bounds; topology; loop seam; reduced motion",
@@ -500,6 +673,19 @@
       "pattern": "wave",
       "tempo": 0.72,
       "duration_ms": 2400,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "continuous organic contour",
+      "primary_motion": "low-frequency flow follows the mark curvature",
+      "wordmark_reveal": "breathing connected reveal",
+      "stagger": 0.08,
       "animation_file": "assets/animations/prysai-nature-flow.gif",
       "animation_poster": "assets/animations/prysai-nature-flow-poster.png"
     },
@@ -521,6 +707,7 @@
       "tags": [
         "gaming-world",
         "orbit",
+        "logo-growth",
         "effect density"
       ],
       "public_analogue": "Interactive-entertainment motion grammar; no game asset or signature is copied",
@@ -532,10 +719,12 @@
         "camera emphasis",
         "interaction-triggered replay"
       ],
-      "result": "The same source mark moves through orbit staging, then returns to a readable canonical state.",
+      "trajectory_id": "orbit-quest",
+      "trajectory_summary": "Spawn identity components on deterministic orbits, assemble them as quest rewards, and clear the field.",
+      "result": "The supplied mark follows this foreground route: Spawn identity components on deterministic orbits, assemble them as quest rewards, and clear the field.",
       "beats": [
         "spawn",
-        "orbit",
+        "assemble",
         "clear"
       ],
       "qa": "readability; deterministic replay; flashing limits; performance; reduced motion",
@@ -544,6 +733,19 @@
       "pattern": "orbit",
       "tempo": 1.1,
       "duration_ms": 1636,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "deterministic particle assembly",
+      "primary_motion": "orbiting sparks assemble the stable silhouette",
+      "wordmark_reveal": "reward-like sequential component reveal",
+      "stagger": 0.04,
       "animation_file": "assets/animations/prysai-gaming-world.gif",
       "animation_poster": "assets/animations/prysai-gaming-world-poster.png"
     },
@@ -565,6 +767,7 @@
       "tags": [
         "accessibility-first",
         "plain",
+        "logo-growth",
         "pause"
       ],
       "public_analogue": "Apple, Fluent, Spectrum, and other public systems' purposeful-motion principles",
@@ -576,10 +779,12 @@
         "focus-preserving transitions",
         "static canonical fallback"
       ],
-      "result": "The same source mark moves through plain staging, then returns to a readable canonical state.",
+      "trajectory_id": "semantic-fade",
+      "trajectory_summary": "Use semantic order and opacity only, preserving stable geometry, focus, and a static-safe canonical landing.",
+      "result": "The supplied mark follows this foreground route: Use semantic order and opacity only, preserving stable geometry, focus, and a static-safe canonical landing.",
       "beats": [
-        "show",
-        "signal",
+        "appear",
+        "form",
         "rest"
       ],
       "qa": "accessibility tree; focus; contrast; reduced motion; static equivalence",
@@ -588,6 +793,19 @@
       "pattern": "plain",
       "tempo": 0.55,
       "duration_ms": 2400,
+      "growth_sequence": [
+        "blank",
+        "spark",
+        "arc",
+        "bar",
+        "monogram",
+        "wordmark",
+        "canonical"
+      ],
+      "construction_style": "low-motion semantic construction",
+      "primary_motion": "short opacity changes with a static-safe landing",
+      "wordmark_reveal": "low-motion component fade",
+      "stagger": 0.12,
       "animation_file": "assets/animations/prysai-accessibility-first.gif",
       "animation_poster": "assets/animations/prysai-accessibility-first-poster.png"
     }

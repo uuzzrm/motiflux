@@ -115,7 +115,7 @@ def stage_compile(context: PipelineContext) -> StageResult:
         "source": {"mark": "mark.svg", "plan": "motion-plan.yaml", "theme": profile.id},
         "constraint_summary": {"pipeline": "source-preserving project compiler", "theme": profile.id},
         "geometry_metrics": geometry_report.get("geometry_metrics", {}),
-        "motion_metrics": {"duration_ms": plan["runtime"]["duration_ms"], "tempo": plan["runtime"]["tempo"], "secondary_effect": plan["runtime"]["secondary_effect"]},
+        "motion_metrics": {"duration_ms": plan["runtime"]["duration_ms"], "tempo": plan["runtime"]["tempo"], "secondary_effect": plan["runtime"]["secondary_effect"], "trajectory_id": plan["runtime"]["trajectory_id"]},
         "canonical_fingerprint": geometry_report.get("canonical_fingerprint", {}),
         "pixel_tolerance": {"status": "not-run"},
         "accessibility": {"reduced_motion": plan["runtime"]["reduced_motion"], "controls": plan["runtime"]["controls"]},
@@ -128,7 +128,7 @@ def stage_compile(context: PipelineContext) -> StageResult:
     context.provide("package", context.store.path("package"))
     context.provide("artifact:package", "package")
     context.provide("artifact:package_evidence", evidence_path)
-    return StageResult("compile", "complete", tuple([*package_files, package_mark, package_plan, evidence_path, source_evidence_path]), metadata={"theme": profile.id, "effect": plan["runtime"]["secondary_effect"]})
+    return StageResult("compile", "complete", tuple([*package_files, package_mark, package_plan, evidence_path, source_evidence_path]), metadata={"theme": profile.id, "effect": plan["runtime"]["secondary_effect"], "trajectory": plan["runtime"]["trajectory_id"]})
 
 
 def stage_verify_package(context: PipelineContext) -> StageResult:
@@ -143,7 +143,9 @@ def stage_verify_motion(context: PipelineContext) -> StageResult:
     plan = context.get("plan")
     mark_path = context.get("canonical-mark")
     duration = plan["runtime"]["duration_ms"]
-    telemetry_relative = context.store.write_json("evidence/motion/telemetry.json", {"schema_version": SCHEMA_VERSION, "samples": [{"time_ms": 0, "active_beat": "orient", "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 0}, "runtime_errors": []}, {"time_ms": duration, "active_beat": "resolve", "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 1}, "runtime_errors": []}], "risk_intervals": [{"id": "resolve", "kind": "canonical-handoff", "time_ms": duration}], "runtime_errors": [], "final_scene_fingerprint": context.get("geometry-report").get("canonical_fingerprint", {})}, producer="verify-motion")
+    beat_ids = [str(beat["id"]) for beat in plan.get("beats", []) if isinstance(beat, dict) and beat.get("id")]
+    first_beat, last_beat = (beat_ids[0], beat_ids[-1]) if beat_ids else ("orient", "resolve")
+    telemetry_relative = context.store.write_json("evidence/motion/telemetry.json", {"schema_version": SCHEMA_VERSION, "samples": [{"time_ms": 0, "active_beat": first_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 0}, "runtime_errors": []}, {"time_ms": duration, "active_beat": last_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 1}, "runtime_errors": []}], "risk_intervals": [{"id": last_beat, "kind": "canonical-handoff", "time_ms": duration}], "runtime_errors": [], "final_scene_fingerprint": context.get("geometry-report").get("canonical_fingerprint", {})}, producer="verify-motion")
     telemetry_path = context.store.path(telemetry_relative)
     motion_report = audit(telemetry_path, canonical_path=mark_path, duration_ms=duration)
     motion_path = context.store.write_json("evidence/motion/audit.json", motion_report, producer="verify-motion")

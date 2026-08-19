@@ -73,12 +73,12 @@ claim browser-pixel or accessibility-tree proof. See
 ## Showcase
 
 The source-preserving atlas feeds the same supplied Prysai image into 13 real
-browser animation players. The example request `artificial-intelligence logo
-animation` routes to `AI-field`, where organized signals converge around the
-same mark before it settles into the canonical image. Each card keeps the input
-image beside a playable source -> reveal -> transform -> settle -> canonical
-sequence. Algorithm stacks, beats, and QA focus remain secondary explanations
-of the animation being shown.
+logo-growth GIF outputs. The example request `artificial-intelligence logo
+animation` routes to `AI-field`, where the mark grows from a blank field through
+spark, arc, bar, monogram, and wordmark construction before the canonical hold.
+Each card keeps the input image beside a directly playable GIF. Algorithm
+stacks, beats, and QA focus remain secondary explanations of the construction
+being shown.
 
 [Open the interactive HTML grid](showcase/index.html) · [Download the PDF atlas](showcase/output/pdf/motiflux-theme-atlas.pdf)
 
@@ -100,7 +100,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-system-spatial.gif" alt="System-spatial Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>system-spatial</code><br><sub>TRIGGER KEYWORDS</sub><br><code>system</code> <code>product</code> <code>saas</code> <code>dashboard</code> <code>enterprise</code> <code>interface</code> <code>structured</code> <code>clear</code> <code>technology</code></p>
+<p><code>system-spatial</code><br><sub>TRIGGER KEYWORDS</sub><br><code>system</code> <code>product</code> <code>saas</code> <code>dashboard</code> <code>enterprise</code> <code>interface</code> <code>structured</code> <code>clear</code> <code>technology</code> <code>education</code> <code>learning</code> <code>teaching</code> <code>course</code> <code>knowledge</code> <code>教育</code> <code>学习</code> <code>课程</code> <code>教学</code> <code>知识</code></p>
 <p><sub>Communicate state change, hierarchy, and spatial continuity through semantic movement.</sub></p>
 </td>
 <td width="50%" valign="top">
@@ -307,9 +307,10 @@ the output package described by the skill contract.
 
 The `showcase/` atlas is a separate demonstration surface inspired by the
 source-to-output comparison pattern used by public logo-motion projects. It
-uses one supplied Prysai raster source across 13 routed themes. Its HTML output
-contains dependency-free `requestAnimationFrame` players with per-card play,
-pause, replay, timeline, reduced-motion, and hidden-page behavior. Its PDF is a
-static four-frame storyboard of those playable sequences, with algorithm notes
-kept as context. These materials do not claim private vendor algorithms,
-copied assets, or generic-package browser validation.
+uses one supplied Prysai raster source across 13 routed themes. Every checked-in
+GIF is a construction sequence, not a complete-logo transform: blank, spark,
+arc, bar, monogram, wordmark, canonical. Its HTML output contains dependency-
+free players with per-card play, pause, replay, timeline, reduced-motion, and
+hidden-page behavior. Its PDF records five representative growth frames, with
+algorithm notes kept as context. These materials do not claim private vendor
+algorithms, copied assets, or generic-package browser validation.

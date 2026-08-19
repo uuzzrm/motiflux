@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from motiflux_core import SCHEMA_VERSION, contract_errors, load_document, write_json
+from engine.runtime import compile_runtime
 
 
 RUNTIME_JS = r'''(() => {
@@ -119,9 +120,15 @@ def build(mark_path: Path, plan_path: Path, output_dir: Path) -> dict[str, Any]:
 </body>
 </html>
 '''
+    # Keep this compatibility adapter on the same runtime seam as the project
+    # pipeline so trajectory metadata changes executable foreground behavior.
+    runtime_files = compile_runtime(mark, plan)
+    document = runtime_files["motion.html"]
+    css = runtime_files["motion.css"]
+    js = runtime_files["motion.js"]
     (output_dir / "motion.html").write_text(document, encoding="utf-8")
-    (output_dir / "motion.css").write_text(RUNTIME_CSS, encoding="utf-8")
-    (output_dir / "motion.js").write_text(RUNTIME_JS, encoding="utf-8")
+    (output_dir / "motion.css").write_text(css, encoding="utf-8")
+    (output_dir / "motion.js").write_text(js, encoding="utf-8")
     evidence = {
         "schema_version": SCHEMA_VERSION,
         "status": "candidate",

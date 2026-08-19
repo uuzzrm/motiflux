@@ -1,6 +1,6 @@
 ---
 name: motiflux
-description: "Motiflux V1 reconstructs raster brand marks as editable SVG scene graphs and designs responsive, brand-derived motion systems for web delivery. Use for logo reconstruction, logo reveals, splash sequences, brand intros, loading states, idle motion, and hover interactions. Route requests through theme tags such as premium, product-system, developer, AI-generative, fintech, security, luxury, automotive, sports, commerce, cinematic, nature, gaming, and accessibility. Build from a visual constraint graph, choose geometry by explainability, author choreography as a dependency graph, handle crossings with topology-aware occlusion, and validate with landmark error, contour distance, temporal telemetry, accessibility checks, and semantic end-state fingerprints."
+description: "Motiflux V1 reconstructs supplied raster brand marks as editable SVG scene graphs and generates responsive logo motion for web delivery. Use for logo reveals, splash sequences, brand intros, loading states, idle motion, hover interactions, and image-to-animation showcases. Route industry and style language through 13 canonical themes, including education, product systems, developer, AI-generative, fintech, security, commerce, automotive, sports, cinematic, nature, gaming, premium, and accessibility. Select a distinct executable foreground trajectory for each theme, preserve the supplied identity geometry, and validate landmark error, contour distance, temporal telemetry, accessibility, and semantic canonical end-state fingerprints."
 ---
 
 # Motiflux V1
@@ -42,7 +42,9 @@ canonical profiles; `guides/motion-themes.md` for rationale and aliases;
 `schemas/*.schema.json` for contracts; and `tools/*.py` for adapters.
 
 `catalog/themes.json` is the single routing source consumed by the router,
-planner, runtime compiler, tests, and showcase. Markdown is explanatory only.
+planner, runtime compiler, tests, and showcase. Each profile MUST provide a
+unique `trajectory_id` and a concise `trajectory_summary`; these fields are
+executable design intent, not decorative metadata. Markdown is explanatory only.
 
 Run tools from the skill directory. Treat their JSON output as evidence, not as
 a replacement for design judgment. If an optional capability is unavailable,
@@ -87,7 +89,9 @@ and dependency references must resolve; and the compiled package must preserve
 the selected theme and canonical source mark.
 Theme profiles are executable inputs: the planner and runtime compiler turn
 their motion parameters into beats, controls, CSS, and JavaScript behavior.
-An algorithm list without a corresponding runtime effect is incomplete.
+The showcase renderer maps `trajectory_id` to a distinct foreground construction
+from the supplied Logo mask. An algorithm list or trajectory label without a
+corresponding runtime effect is incomplete.
 
 ## Theme router
 
@@ -107,7 +111,10 @@ Normalize the request into:
 
 Routing rules:
 
-1. Match explicit style or industry words before inferring from the logo.
+1. Match explicit style or industry words before inferring from the logo. For
+   Chinese requests, route 教育/学习/课程/教学/知识 to `system-spatial` with
+   the `knowledge-graph-lock` trajectory unless the user explicitly asks for
+   another primary style.
 2. Choose one primary theme.
 3. Add at most two modifiers such as quiet, bold, technical, organic, playful, cinematic, or accessible.
 4. Reject conflicting themes unless the user explicitly requests the collision.
@@ -142,7 +149,22 @@ Chinese aliases:
     游戏、电竞、奇幻、科幻、街机 -> gaming-world
     无障碍、低动效、包容、键盘、辅助 -> accessibility-first
 
-The selected theme changes choreography and implementation parameters, not the identity constraints of the source mark.
+The selected theme changes the foreground choreography and implementation
+parameters, not the identity constraints of the source mark. A showcase MUST
+make the selected trajectory visible in the Logo construction itself; changing
+only a background, color, particle field, or decorative guide does not count.
+
+## Reference-brand policy
+
+Use the user's supplied Logo as the default demonstration source. Do not fetch,
+embed, redraw, or animate a third-party company Logo merely because it is an
+industry example. A company name may be mentioned as a public design-principle
+analogue, but that is not permission to use its trademark or artwork. If a user
+supplies a third-party asset and requests a private experiment, preserve the
+asset provenance and ask for confirmation of permission before publication.
+Keep third-party reference assets out of the default showcase unless an explicit
+license or written permission is recorded. Never imply endorsement or claim an
+exact internal vendor recipe.
 
 ## Inputs and outputs
 

@@ -104,6 +104,9 @@ def validate_skill() -> tuple[str, str]:
     catalog_ids = [item.get("id") for item in catalog_themes if isinstance(item, dict)] if isinstance(catalog_themes, list) else []
     if len(catalog_ids) != 13 or len(set(catalog_ids)) != 13:
         fail("canonical theme catalog must contain exactly 13 unique IDs")
+    trajectory_ids = [item.get("trajectory_id") for item in catalog_themes if isinstance(item, dict)] if isinstance(catalog_themes, list) else []
+    if len(trajectory_ids) != 13 or len(set(trajectory_ids)) != 13 or not all(trajectory_ids):
+        fail("canonical theme catalog must contain exactly 13 unique foreground trajectories")
 
     skill = skill_path.read_text(encoding="utf-8")
     guide = guide_path.read_text(encoding="utf-8")
@@ -209,13 +212,17 @@ def validate_showcase() -> None:
     generator = (showcase / "generate_showcase.py").read_text(encoding="utf-8")
     if "catalog" not in generator.lower():
         fail("showcase generator must consume the canonical catalog")
+    if "_load_animation_frames" not in generator or "ImageSequence" not in generator:
+        fail("showcase PDF must consume real GIF keyframes")
     index = (showcase / "index.html").read_text(encoding="utf-8")
     if index.count('class="theme-card"') != 13:
         fail("showcase HTML must contain exactly 13 theme cards")
     if index.count("assets/prysai-mark-crop.jpg") != 14:
         fail("showcase HTML must use the same source derivative in the primary input and every card")
-    if index.count("assets/prysai-mark-transparent.png") != 13:
-        fail("showcase HTML must provide one output mark per theme card")
+    if index.count('class="growth-gif"') != 13:
+        fail("showcase HTML must provide one growth GIF per theme card")
+    if "blank / spark / arc / bar / monogram / wordmark / canonical" not in index:
+        fail("showcase HTML must expose the canonical logo-growth sequence")
     if "assets/animations/prysai-ai-field.gif" not in index:
         fail("showcase must include the primary image-to-animation output")
     animation_paths = sorted((showcase / "assets" / "animations").glob("prysai-*.gif"))

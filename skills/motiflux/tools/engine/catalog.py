@@ -15,11 +15,20 @@ CATALOG_SCHEMA_PATH = Path(__file__).resolve().parents[2] / "catalog" / "themes.
 WORD_RE = re.compile(r"[a-z0-9]+|[\u4e00-\u9fff]+", re.IGNORECASE)
 
 
+def normalize_text(value: str) -> str:
+    """Normalize punctuation and separators before matching theme phrases."""
+
+    folded = value.casefold().replace("_", " ")
+    return re.sub(r"[^a-z0-9\u4e00-\u9fff]+", " ", folded).strip()
+
+
 @dataclass(frozen=True)
 class ThemeProfile:
     id: str
     name: str
     aliases: tuple[str, ...]
+    trajectory_id: str
+    trajectory_summary: str
     public_analogue: str
     design_intent: str
     algorithm_stack: tuple[str, ...]
@@ -35,6 +44,8 @@ class ThemeProfile:
             id=str(value["id"]),
             name=str(value["name"]),
             aliases=tuple(str(item) for item in value.get("aliases", [])),
+            trajectory_id=str(value["trajectory_id"]),
+            trajectory_summary=str(value["trajectory_summary"]),
             public_analogue=str(value.get("public_analogue", "")),
             design_intent=str(value["design_intent"]),
             algorithm_stack=tuple(str(item) for item in value.get("algorithm_stack", [])),
@@ -50,6 +61,8 @@ class ThemeProfile:
             "id": self.id,
             "name": self.name,
             "aliases": list(self.aliases),
+            "trajectory_id": self.trajectory_id,
+            "trajectory_summary": self.trajectory_summary,
             "public_analogue": self.public_analogue,
             "design_intent": self.design_intent,
             "algorithm_stack": list(self.algorithm_stack),
@@ -83,22 +96,29 @@ class ThemeCatalog:
             raise ValueError(f"unknown Motiflux theme: {theme_id}") from error
 
     def route(self, query: str) -> dict[str, Any]:
-        folded = query.casefold()
-        query_words = {item.casefold() for item in WORD_RE.findall(query)}
+        normalized_query = normalize_text(query)
+        padded_query = f" {normalized_query} "
+        query_words = {item.casefold() for item in WORD_RE.findall(normalized_query)}
         scores: dict[str, int] = {}
         matches: dict[str, list[str]] = {}
         for profile in self._profiles:
             score = 0
             found: list[str] = []
-            if profile.id.casefold() in folded or profile.name.casefold() in folded:
+            profile_id = normalize_text(profile.id)
+            profile_name = normalize_text(profile.name)
+            if f" {profile_id} " in padded_query or f" {profile_name} " in padded_query:
                 score += 8
                 found.append(profile.name)
             for alias in profile.aliases:
-                alias_folded = alias.casefold()
-                if alias_folded in folded:
-                    score += 5 if " " in alias_folded else 3
+                alias_normalized = normalize_text(alias)
+                alias_words = alias_normalized.split()
+                if len(alias_words) > 1 and f" {alias_normalized} " in f" {normalized_query} ":
+                    score += 5
                     found.append(alias)
-                elif alias_folded in query_words:
+                elif any("\u4e00" <= character <= "\u9fff" for character in alias_normalized) and alias_normalized in normalized_query:
+                    score += 3
+                    found.append(alias)
+                elif len(alias_words) == 1 and alias_normalized in query_words:
                     score += 2
                     found.append(alias)
             scores[profile.id] = score
@@ -122,6 +142,8 @@ class ThemeCatalog:
                 "primary": primary.name,
                 "primary_id": primary.id,
                 "primary_name": primary.name,
+                "trajectory_id": primary.trajectory_id,
+                "trajectory_summary": primary.trajectory_summary,
                 "modifiers": modifiers,
                 "matched_tags": matches[primary.id],
                 "rejected_candidates": rejected,

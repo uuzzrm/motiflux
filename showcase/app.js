@@ -24,48 +24,72 @@
     return 1 - Math.pow(1 - p, 2.4);
   };
   function phaseFor(progress) {
-    if (progress < .16) return "source";
-    if (progress < .42) return "reveal";
-    if (progress < .78) return "transform";
-    if (progress < .96) return "settle";
+    if (progress < .08) return "blank";
+    if (progress < .18) return "spark";
+    if (progress < .38) return "arc";
+    if (progress < .52) return "bar";
+    if (progress < .66) return "monogram";
+    if (progress < .94) return "wordmark";
     return "canonical";
   }
   function render(player, progress) {
     const p = clamp(progress, 0, 1);
-    const eased = ease(p, player.effect);
-    const [startX, startY, startRotate, startScale] = presets[player.effect] || presets.plain;
-    const settle = p > .78 ? (p - .78) / .22 : 0;
-    const overshoot = (player.effect === "sports-impact" || player.effect === "speed" || player.effect === "burst") ? Math.sin(Math.min(1, p) * Math.PI) * .06 : 0;
-    const scale = startScale + (1 - startScale) * eased + overshoot;
     player.stage.style.setProperty("--motion-progress", p.toFixed(4));
-    player.stage.style.setProperty("--motion-x", ((1 - eased) * startX).toFixed(3));
-    player.stage.style.setProperty("--motion-y", ((1 - eased) * startY).toFixed(3));
-    player.stage.style.setProperty("--motion-scale", scale.toFixed(4));
-    player.stage.style.setProperty("--motion-rotate", `${((1 - eased) * startRotate).toFixed(3)}deg`);
-    player.stage.style.setProperty("--motion-opacity", (.06 + eased * .94).toFixed(4));
     player.stage.dataset.state = phaseFor(p);
     if (player.phase) player.phase.textContent = phaseFor(p);
     if (player.progress) player.progress.style.width = `${p * 100}%`;
     if (player.time) player.time.textContent = `${(p * player.duration / 1000).toFixed(1)}s`;
   }
+  function showGif(player, restart) {
+    if (!player.gif) return;
+    player.gif.src = restart ? `${player.src}?play=${Date.now()}` : player.src;
+    player.gif.hidden = false;
+    if (player.poster) player.poster.hidden = true;
+  }
+  function showPoster(player, source) {
+    if (!player.gif) return;
+    player.gif.hidden = true;
+    if (player.poster) {
+      player.poster.src = source || player.posterSrc;
+      player.poster.hidden = false;
+    }
+  }
+  function freezeCurrentFrame(player) {
+    if (!player.gif || !player.gif.complete || !player.gif.naturalWidth) { showPoster(player); return; }
+    const canvas = document.createElement("canvas");
+    canvas.width = player.gif.naturalWidth;
+    canvas.height = player.gif.naturalHeight;
+    try {
+      canvas.getContext("2d").drawImage(player.gif, 0, 0);
+      showPoster(player, canvas.toDataURL("image/png"));
+    } catch (error) {
+      // A local GIF should be readable; keep the canonical poster as a safe fallback.
+      showPoster(player);
+    }
+  }
   function stop(player) { player.playing = false; if (player.frame) cancelAnimationFrame(player.frame); player.frame = 0; }
   function tick(player, timestamp) {
     if (!player.playing || motion === "paused" || motion === "reduced") return;
     if (player.last === null) player.last = timestamp;
-    player.current += (timestamp - player.last) * player.tempo;
+    player.current += timestamp - player.last;
     player.last = timestamp;
     const progress = clamp(player.current / player.duration, 0, 1);
     render(player, progress);
-    if (progress >= 1) stop(player); else player.frame = requestAnimationFrame((next) => tick(player, next));
+    if (progress >= 1) { stop(player); render(player, 1); showPoster(player); } else player.frame = requestAnimationFrame((next) => tick(player, next));
   }
   function play(player) {
-    if (prefersReduced) { render(player, 1); return; }
+    if (prefersReduced) { render(player, 1); showPoster(player); return; }
+    // A portable GIF cannot seek. Resume by restarting it so the timer and pixels agree.
+    const restart = player.current > 0 || player.paused || player.current >= player.duration;
+    if (restart) { player.current = 0; render(player, 0); }
+    player.paused = false;
+    showGif(player, restart);
     player.playing = true; player.last = null; if (!player.frame) player.frame = requestAnimationFrame((next) => tick(player, next));
   }
-  function pause(player) { stop(player); }
-  function replay(player) { stop(player); player.current = 0; render(player, 0); play(player); }
+  function pause(player) { stop(player); player.paused = true; freezeCurrentFrame(player); }
+  function replay(player) { stop(player); player.current = 0; player.paused = false; render(player, 0); showGif(player, true); play(player); }
   stages.forEach((stage) => {
-    const player = { stage, effect: stage.dataset.effect || "plain", duration: Number(stage.dataset.durationMs || 1800), tempo: Number(stage.dataset.tempo || 1), current: 0, last: null, playing: false, frame: 0, phase: stage.querySelector("[data-motion-phase]"), progress: stage.closest(".motion-output")?.querySelector("[data-motion-progress]"), time: stage.closest(".motion-output")?.querySelector("[data-motion-time]") };
+    const player = { stage, effect: stage.dataset.effect || "plain", duration: Number(stage.dataset.durationMs || 1800), current: 0, last: null, playing: false, paused: false, frame: 0, src: stage.dataset.animationSrc || "", posterSrc: stage.dataset.posterSrc || "", gif: stage.querySelector(".growth-gif"), poster: stage.querySelector(".motion-freeze"), phase: stage.querySelector("[data-motion-phase]"), progress: stage.closest(".motion-output")?.querySelector("[data-motion-progress]"), time: stage.closest(".motion-output")?.querySelector("[data-motion-time]") };
     player.playButton = stage.closest(".motion-output")?.querySelector('[data-card-action="play"]');
     player.pauseButton = stage.closest(".motion-output")?.querySelector('[data-card-action="pause"]');
     player.replayButton = stage.closest(".motion-output")?.querySelector('[data-card-action="replay"]');
@@ -74,7 +98,7 @@
     player.replayButton?.addEventListener("click", () => { setMotion("running"); replay(player); });
     players.push(player);
     render(player, prefersReduced ? 1 : 0);
-    if (!prefersReduced) play(player);
+    if (prefersReduced) showPoster(player); else play(player);
   });
   function setMotion(next) {
     motion = next;

@@ -30,6 +30,8 @@ For the selected theme, write:
     public_analogue:
     design_intent:
     algorithm_stack: []
+    trajectory_id:
+    trajectory_summary:
     implementation:
     controls:
     exclusions: []
@@ -44,6 +46,10 @@ Tags: system, product, SaaS, dashboard, enterprise, interface, structured, clear
 Public analogues: Material Design motion, Fluent motion, Atlassian motion, and Carbon-style system thinking.
 
 Design intent: communicate state change, hierarchy, and spatial continuity.
+
+Foreground trajectory: `knowledge-graph-lock` - place semantic nodes, connect
+their relationships, and lock the supplied mark component by component. This
+also covers education, learning, teaching, course, and knowledge requests.
 
 Algorithm stack:
 
@@ -133,6 +139,9 @@ Tags: AI, machine learning, neural, data, model, generative, future, intelligent
 Public analogues: public AI product motion patterns using progressive disclosure, signal flow, and responsive feedback. Do not attribute an exact internal recipe.
 
 Design intent: suggest intelligence through organized transformation, not science-fiction decoration.
+
+Foreground trajectory: `signal-convergence` - deterministic external signals
+travel into measured Logo pixels, then the supplied wordmark assembles.
 
 Algorithm stack:
 

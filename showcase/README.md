@@ -1,13 +1,13 @@
 # Motiflux V1 showcase
 
 This showcase uses one supplied raster source - `assets/prysai-logo-white.jpg` -
-to make a direct visual comparison across 13 playable Motiflux theme animations.
+to make a direct visual comparison across 13 playable Motiflux logo-growth animations.
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
-the same source image on the left and runs a real source-to-animation sequence
-on the right: source, reveal, transform, settle, and canonical hold. The
-animation changes motion language and secondary visual treatment; it does not
-redraw or rename the Prysai identity.
+the same source image on the left and runs a real blank-to-canonical construction
+sequence on the right: blank, spark, arc, bar, monogram, wordmark, and canonical.
+Each theme changes construction timing and motion language; it does not redraw or
+rename the Prysai identity.
 
 ## Files
 
@@ -21,7 +21,7 @@ redraw or rename the Prysai identity.
   it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
 - `assets/prysai-mark-crop.jpg` and `assets/prysai-mark-transparent.png` - display-only derivatives made from the same source; no geometry edits.
-- `output/pdf/motiflux-theme-atlas.pdf` - printable four-frame storyboard atlas.
+- `output/pdf/motiflux-theme-atlas.pdf` - printable five-frame growth storyboard atlas.
 
 ## Regenerate
 
@@ -32,6 +32,6 @@ python showcase\generate_showcase.py
 ```
 
 The HTML presents the actual image-to-animation result first. The PDF includes
-the route example `artificial-intelligence` -> `AI-field` and records four key
+the route example `artificial-intelligence` -> `AI-field` and records five growth
 frames of each playable animation. Public design systems are principle analogues
 only; this material does not claim private vendor algorithms.

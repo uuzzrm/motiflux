@@ -7,21 +7,44 @@ from typing import Any
 from .catalog import ThemeProfile
 
 
+TRAJECTORY_BEATS = {
+    "knowledge-graph-lock": ("map", "connect", "lock"),
+    "contour-etch": ("trace", "etch", "resolve"),
+    "token-commit": ("parse", "commit", "publish"),
+    "signal-convergence": ("seed", "converge", "land"),
+    "progress-confirm": ("measure", "confirm", "settle"),
+    "boundary-unlock": ("guard", "verify", "unlock"),
+    "burst-assembly": ("compress", "release", "idle"),
+    "kinematic-lock": ("prime", "drive", "lock"),
+    "impact-release": ("load", "impact", "recover"),
+    "aperture-title": ("darken", "open", "hold"),
+    "organic-current": ("breathe", "flow", "root"),
+    "orbit-quest": ("spawn", "assemble", "clear"),
+    "semantic-fade": ("show", "signal", "rest"),
+}
+
+
 def build_plan(source_analysis: dict[str, Any], selection: dict[str, Any], profile: ThemeProfile, *, project_name: str, source_name: str) -> dict[str, Any]:
     records = source_analysis.get("observations", {}).get("elements", [])
     actor_ids = [str(item.get("id")) for item in records if isinstance(item, dict) and item.get("id")]
     if not actor_ids:
         actor_ids = ["mark"]
+    try:
+        beat_ids = TRAJECTORY_BEATS[profile.trajectory_id]
+    except KeyError as error:
+        raise ValueError(f"unimplemented trajectory: {profile.trajectory_id}") from error
     beat_defs = [
-        {"id": "orient", "intent": "establish the source mark and motion direction", "duration_weight": 1},
-        {"id": "form", "intent": f"apply the {profile.id} motion language to identity-bearing actors", "duration_weight": 2},
-        {"id": "resolve", "intent": "settle into the canonical mark without changing identity", "duration_weight": 1},
+        {"id": beat_ids[0], "intent": f"establish the {profile.trajectory_id} entry state", "duration_weight": 1},
+        {"id": beat_ids[1], "intent": f"apply the {profile.id} foreground construction to identity-bearing actors", "duration_weight": 2},
+        {"id": beat_ids[2], "intent": "settle into the canonical mark without changing identity", "duration_weight": 1},
     ]
+    property_channels = ["opacity", "transform", "secondary-effect", f"trajectory:{profile.trajectory_id}"]
     actors = [
         {
             "id": actor_id,
             "role": "identity-bearing actor" if index == 0 else "secondary source actor",
             "geometry_strategy": "preserve-source-vector",
+            "trajectory_strategy": profile.trajectory_id,
             "parent": None,
             "anchor": "source-bounds",
             "layer": index,
@@ -33,12 +56,12 @@ def build_plan(source_analysis: dict[str, Any], selection: dict[str, Any], profi
     dependencies = [
         {
             "actor": actor_id,
-            "beat": "form",
-            "starts_after": ["orient"],
+            "beat": beat_ids[1],
+            "starts_after": [beat_ids[0]],
             "may_overlap": [],
-            "must_finish_before": ["resolve"],
+            "must_finish_before": [beat_ids[2]],
             "anchor": "source-bounds",
-            "property_channels": ["opacity", "transform", "secondary-effect"],
+            "property_channels": property_channels,
         }
         for actor_id in actor_ids
     ]
@@ -49,12 +72,15 @@ def build_plan(source_analysis: dict[str, Any], selection: dict[str, Any], profi
             **selection["theme_selection"],
             "catalog_id": "motiflux-motion-themes",
             "primary_id": profile.id,
+            "trajectory_id": profile.trajectory_id,
+            "trajectory_summary": profile.trajectory_summary,
         },
         "motion_language": {
             "traits": [
                 {"name": "tempo", "value": profile.runtime.get("tempo", 1.0), "trace": profile.algorithm_stack[0]},
                 {"name": "settle", "value": profile.runtime.get("settle_damping", 0.82), "trace": "canonical end-state requirement"},
                 {"name": "secondary-effect", "value": profile.runtime.get("secondary_effect", "plain"), "trace": profile.algorithm_stack[-1]},
+                {"name": "foreground-trajectory", "value": profile.trajectory_id, "trace": profile.trajectory_summary},
             ],
             "design_intent": profile.design_intent,
             "implementation_controls": list(profile.controls),
@@ -73,6 +99,7 @@ def build_plan(source_analysis: dict[str, Any], selection: dict[str, Any], profi
             "tempo": profile.runtime.get("tempo", 1.0),
             "settle_damping": profile.runtime.get("settle_damping", 0.82),
             "secondary_effect": profile.runtime.get("secondary_effect", "plain"),
+            "trajectory_id": profile.trajectory_id,
             "controls": ["play", "pause", "replay", "tempo"],
         },
     }

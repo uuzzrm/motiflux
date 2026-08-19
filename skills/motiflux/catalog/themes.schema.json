@@ -13,11 +13,13 @@
       "minItems": 13,
       "items": {
         "type": "object",
-        "required": ["id", "name", "aliases", "design_intent", "algorithm_stack", "controls", "exclusions", "qa_focus", "runtime"],
+        "required": ["id", "name", "aliases", "trajectory_id", "trajectory_summary", "design_intent", "algorithm_stack", "controls", "exclusions", "qa_focus", "runtime"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
           "name": { "type": "string", "minLength": 1 },
           "aliases": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "trajectory_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "trajectory_summary": { "type": "string", "minLength": 1 },
           "public_analogue": { "type": "string" },
           "design_intent": { "type": "string", "minLength": 1 },
           "algorithm_stack": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },

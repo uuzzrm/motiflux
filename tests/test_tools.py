@@ -7,6 +7,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from PIL import Image, ImageSequence
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLS = ROOT / "skills" / "motiflux" / "tools"
@@ -80,6 +82,35 @@ class MotifluxToolTests(unittest.TestCase):
         self.assertEqual(selection["theme_selection"]["primary_id"], "ai-field")
         self.assertIn("artificial intelligence", selection["theme_selection"]["matched_tags"])
 
+    def test_normalized_routing_handles_hyphens_and_word_boundaries(self) -> None:
+        catalog = load_catalog()
+        self.assertEqual(catalog.route("machine-learning logo")["theme_selection"]["primary_id"], "ai-field")
+        self.assertEqual(catalog.route("artificial-intelligence logo")["theme_selection"]["primary_id"], "ai-field")
+        self.assertEqual(catalog.route("email logo")["theme_selection"]["primary_id"], "system-spatial")
+
+    def test_education_alias_routes_to_system_spatial(self) -> None:
+        selection = load_catalog().route("我想做一个教育课程 logo 动画")
+        self.assertEqual(selection["theme_selection"]["primary_id"], "system-spatial")
+        self.assertIn("教育", selection["theme_selection"]["matched_tags"])
+
+    def test_catalog_trajectories_are_unique_and_complete(self) -> None:
+        catalog = load_catalog()
+        trajectories = [profile.trajectory_id for profile in catalog.profiles]
+        self.assertEqual(len(trajectories), 13)
+        self.assertEqual(len(set(trajectories)), 13)
+        self.assertTrue(all(profile.trajectory_summary for profile in catalog.profiles))
+
+    def test_plans_encode_theme_specific_beats_and_channels(self) -> None:
+        catalog = load_catalog()
+        analysis = measure(EXAMPLE / "mark.svg")
+        ai_selection = catalog.route("AI logo animation")
+        system_selection = catalog.route("education logo animation")
+        ai_plan = build_plan(analysis, ai_selection, catalog.get("ai-field"), project_name="AI", source_name="mark.svg")
+        system_plan = build_plan(analysis, system_selection, catalog.get("system-spatial"), project_name="Education", source_name="mark.svg")
+        self.assertNotEqual([beat["id"] for beat in ai_plan["beats"]], [beat["id"] for beat in system_plan["beats"]])
+        self.assertIn("trajectory:signal-convergence", ai_plan["dependencies"][0]["property_channels"])
+        self.assertEqual(ai_plan["runtime"]["trajectory_id"], "signal-convergence")
+
     def test_plan_references_reject_dangling_actor_beat_and_theme(self) -> None:
         plan = {
             "theme_selection": {"primary_id": "missing-theme"},
@@ -108,6 +139,10 @@ class MotifluxToolTests(unittest.TestCase):
             self.assertTrue((Path(temp_dir) / "project" / "package" / "motion.html").is_file())
             self.assertEqual(result["stages"][1]["metadata"]["primary"], "ai-field")
             self.assertEqual(result["stages"][2]["status"], "complete")
+            runtime_html = (Path(temp_dir) / "project" / "package" / "motion.html").read_text(encoding="utf-8")
+            runtime_css = (Path(temp_dir) / "project" / "package" / "motion.css").read_text(encoding="utf-8")
+            self.assertIn('data-trajectory="signal-convergence"', runtime_html)
+            self.assertIn('[data-trajectory="signal-convergence"]', runtime_css)
             report = validate("project", Path(temp_dir) / "project" / "project.json")
             self.assertTrue(report["valid"], report["errors"])
             index = json.loads((Path(temp_dir) / "project" / "artifact-index.json").read_text(encoding="utf-8"))
@@ -186,6 +221,41 @@ class MotifluxToolTests(unittest.TestCase):
         self.assertIn("assets/animations/prysai-ai-field.gif", html)
         self.assertEqual(len(list(animation_dir.glob("prysai-*.gif"))), 13)
         self.assertGreater((animation_dir / "prysai-ai-field.gif").stat().st_size, 1000)
+
+    def test_showcase_gifs_are_blank_to_canonical_growth_sequences(self) -> None:
+        snapshot = json.loads((ROOT / "showcase" / "themes.json").read_text(encoding="utf-8"))
+        expected = ["blank", "spark", "arc", "bar", "monogram", "wordmark", "canonical"]
+        self.assertEqual(snapshot["themes"][3]["growth_sequence"], expected)
+        html = (ROOT / "showcase" / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(html.count('class="growth-gif"'), 13)
+        self.assertIn("blank / spark / arc / bar / monogram / wordmark / canonical", html)
+        with Image.open(ROOT / "showcase" / "assets" / "animations" / "prysai-ai-field.gif") as gif:
+            frames = [frame.convert("RGB") for frame in ImageSequence.Iterator(gif)]
+        self.assertGreater(len(frames), 1)
+        white_pixels = [sum(1 for pixel in frame.getdata() if min(pixel) > 190) for frame in frames]
+        self.assertEqual(white_pixels[0], 0)
+        self.assertLess(white_pixels[7], white_pixels[-1] * 0.45)
+        self.assertGreater(white_pixels[-1], white_pixels[0] + 1000)
+
+    def test_showcase_foregrounds_have_distinct_midframes_and_canonical_endpoints(self) -> None:
+        catalog = load_catalog()
+        animation_dir = ROOT / "showcase" / "assets" / "animations"
+        midframe_masks: list[bytes] = []
+        canonical = Image.open(ROOT / "showcase" / "assets" / "prysai-mark-transparent.png").convert("RGBA")
+        canonical.thumbnail((int(900 * .68), int(302 * .76)), Image.Resampling.LANCZOS)
+        expected = Image.new("L", (900, 302), 0)
+        expected.paste(canonical.getchannel("A"), ((900 - canonical.width) // 2, (302 - canonical.height) // 2))
+        expected_pixels = bytes(1 if value > 128 else 0 for value in expected.getdata())
+        for profile in catalog.profiles:
+            with Image.open(animation_dir / f"prysai-{profile.id}.gif") as gif:
+                frames = [frame.convert("RGB") for frame in ImageSequence.Iterator(gif)]
+            middle = frames[len(frames) // 2]
+            midframe_masks.append(bytes(1 if min(pixel) > 180 else 0 for pixel in middle.getdata()))
+            actual = bytes(1 if min(pixel) > 180 else 0 for pixel in frames[-1].getdata())
+            intersection = sum(left and right for left, right in zip(actual, expected_pixels))
+            union = sum(left or right for left, right in zip(actual, expected_pixels))
+            self.assertGreater(intersection / max(1, union), .97, profile.id)
+        self.assertEqual(len(set(midframe_masks)), 13)
 
     def test_github_gallery_uses_static_to_gif_cards(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
