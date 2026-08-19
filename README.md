@@ -75,7 +75,7 @@ claim browser-pixel or accessibility-tree proof. See
 The source-preserving atlas feeds the same supplied Prysai image into 13 real
 logo-growth GIF outputs. The example request `artificial-intelligence logo
 animation` routes to `AI-field`, where the mark grows from a blank field through
-spark, arc, bar, monogram, and wordmark construction before the canonical hold.
+the source dot (spark), arc, bar, monogram, and wordmark construction before the canonical hold.
 Each card keeps the input image beside a directly playable GIF. Algorithm
 stacks, beats, and QA focus remain secondary explanations of the construction
 being shown.
@@ -309,8 +309,8 @@ the output package described by the skill contract.
 The `showcase/` atlas is a separate demonstration surface inspired by the
 source-to-output comparison pattern used by public logo-motion projects. It
 uses one supplied Prysai raster source across 13 routed themes. Every checked-in
-GIF is a construction sequence, not a complete-logo transform: blank, spark,
-arc, bar, monogram, wordmark, canonical. Its HTML output contains dependency-
+GIF is a construction sequence, not a complete-logo transform: blank, source
+dot (spark), arc, bar, monogram, wordmark, canonical. Its HTML output contains dependency-
 free players with per-card play, pause, replay, timeline, reduced-motion, and
 hidden-page behavior. Its PDF records five representative growth frames, with
 algorithm notes kept as context. These materials do not claim private vendor

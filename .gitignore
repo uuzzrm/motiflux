@@ -23,3 +23,6 @@ showcase/output/previews/html-grid-v2.png
 
 # Browser validation artifacts stay local to the workspace
 output/playwright/
+
+# Local PDF render inspection files
+tmp/

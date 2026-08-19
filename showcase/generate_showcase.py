@@ -33,16 +33,17 @@ ANIMATION_FRAME_MS = 90
 GROWTH_SEQUENCE = ("blank", "spark", "arc", "bar", "monogram", "wordmark", "canonical")
 
 # The supplied raster has a stable, readable component layout: the icon sits on
-# the left, followed by the five wordmark components. These boxes are used only
+# the left, followed by the six wordmark components. These boxes are used only
 # to stage the existing pixels; they do not redraw or alter the supplied mark.
 LOGO_COMPONENT_BOXES = {
     "origin_dot": (150, 780, 430, 1090),
     "monogram_raw": (150, 160, 1130, 1150),
     "wordmark_01": (1120, 240, 1760, 1000),
     "wordmark_02": (1730, 380, 2110, 1000),
-    "wordmark_03": (2080, 380, 2670, 1160),
-    "wordmark_04": (2600, 380, 3070, 1000),
-    "wordmark_05": (3030, 170, 3770, 1000),
+    "wordmark_03": (2080, 380, 2638, 1160),
+    "wordmark_04": (2638, 380, 3070, 1000),
+    "wordmark_05": (3033, 380, 3560, 1000),
+    "wordmark_06": (3560, 170, 3780, 1000),
 }
 
 # These are animation grammars, not vendor recipes. The same component masks
@@ -63,6 +64,35 @@ GROWTH_PROFILES = {
     "nature-flow": {"construction_style": "continuous organic contour", "primary_motion": "low-frequency flow follows the mark curvature", "wordmark_reveal": "breathing connected reveal", "monogram_mode": "diagonal", "wordmark_mode": "fade", "arc_start": 160, "arc_direction": 1, "stagger": 0.08},
     "gaming-world": {"construction_style": "deterministic particle assembly", "primary_motion": "orbiting sparks assemble the stable silhouette", "wordmark_reveal": "reward-like sequential component reveal", "monogram_mode": "radial", "wordmark_mode": "diagonal", "arc_start": 300, "arc_direction": 1, "stagger": 0.04},
     "accessibility-first": {"construction_style": "low-motion semantic construction", "primary_motion": "short opacity changes with a static-safe landing", "wordmark_reveal": "low-motion component fade", "monogram_mode": "radial", "wordmark_mode": "fade", "arc_start": 205, "arc_direction": 1, "stagger": 0.12},
+}
+
+# Foreground construction is intentionally separate from the background
+# effect catalog. Each route changes how the supplied alpha components enter,
+# while all routes still land on the same canonical pixels.
+FOREGROUND_PROFILES = {
+    "knowledge-graph-lock": {"mode": "grid", "timing": "standard", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "steps"},
+    "contour-etch": {"mode": "contour", "timing": "slow", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "soft"},
+    "token-commit": {"mode": "token", "timing": "staggered", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "linear"},
+    "signal-convergence": {"mode": "convergence", "timing": "field", "letter_order": (1, 0, 2, 4, 3, 5), "easing": "ease_out"},
+    "progress-confirm": {"mode": "radial", "timing": "center", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "smooth"},
+    "boundary-unlock": {"mode": "boundary", "timing": "late", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "soft"},
+    "burst-assembly": {"mode": "burst", "timing": "rapid", "letter_order": (0, 2, 4, 1, 3, 5), "easing": "ease_out"},
+    "kinematic-lock": {"mode": "track", "timing": "standard", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "ease_out"},
+    "impact-release": {"mode": "impact", "timing": "rapid", "letter_order": (0, 2, 4, 1, 3, 5), "easing": "ease_out"},
+    "aperture-title": {"mode": "aperture", "timing": "late", "letter_order": (5, 4, 3, 2, 1, 0), "easing": "soft"},
+    "organic-current": {"mode": "organic", "timing": "slow", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "soft"},
+    "orbit-quest": {"mode": "orbit", "timing": "staggered", "letter_order": (0, 2, 4, 1, 3, 5), "easing": "ease_out"},
+    "semantic-fade": {"mode": "fade", "timing": "late", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "soft"},
+}
+
+PHASE_TIMINGS = {
+    "standard": {"dot": (.03, .18), "arc": (.13, .40), "bar": (.33, .54), "stem": (.46, .70), "wordmark": (.63, .94)},
+    "slow": {"dot": (.04, .22), "arc": (.16, .46), "bar": (.39, .60), "stem": (.53, .76), "wordmark": (.69, .96)},
+    "staggered": {"dot": (.02, .18), "arc": (.12, .39), "bar": (.31, .56), "stem": (.48, .73), "wordmark": (.65, .95)},
+    "field": {"dot": (.02, .20), "arc": (.11, .40), "bar": (.32, .55), "stem": (.47, .72), "wordmark": (.61, .95)},
+    "center": {"dot": (.04, .20), "arc": (.14, .43), "bar": (.35, .57), "stem": (.49, .72), "wordmark": (.64, .95)},
+    "late": {"dot": (.05, .23), "arc": (.18, .47), "bar": (.40, .62), "stem": (.54, .79), "wordmark": (.71, .97)},
+    "rapid": {"dot": (.01, .13), "arc": (.09, .31), "bar": (.25, .45), "stem": (.38, .61), "wordmark": (.55, .91)},
 }
 
 IMPLEMENTED_TRAJECTORIES = {
@@ -133,6 +163,10 @@ def load_data() -> dict:
             raise ValueError(f"missing growth profile for theme: {profile['id']}") from error
         if profile["trajectory_id"] not in IMPLEMENTED_TRAJECTORIES:
             raise ValueError(f"unimplemented trajectory: {profile['trajectory_id']}")
+        try:
+            foreground = FOREGROUND_PROFILES[profile["trajectory_id"]]
+        except KeyError as error:
+            raise ValueError(f"missing foreground profile: {profile['trajectory_id']}") from error
         themes.append({
             "id": profile["id"],
             "name": profile["name"],
@@ -158,6 +192,12 @@ def load_data() -> dict:
             "primary_motion": growth["primary_motion"],
             "wordmark_reveal": growth["wordmark_reveal"],
             "stagger": float(growth["stagger"]),
+            "foreground_mode": foreground["mode"],
+            "foreground_timing": foreground["timing"],
+            "foreground_order": list(foreground["letter_order"]),
+            "foreground_easing": foreground["easing"],
+            "arc_start": float(growth["arc_start"]),
+            "arc_direction": int(growth["arc_direction"]),
             "animation_file": f"assets/animations/prysai-{profile['id']}.gif",
             "animation_poster": f"assets/animations/prysai-{profile['id']}-poster.png",
         })
@@ -380,47 +420,68 @@ def _place_mask(mask: Image.Image, size: tuple[int, int], target_size: tuple[int
     return result
 
 
-def _build_growth_components(mark: Image.Image, size: tuple[int, int]) -> dict[str, Image.Image | list[Image.Image]]:
-    """Build staged masks from the supplied alpha; never invent logo geometry."""
+def _build_growth_components(mark: Image.Image, size: tuple[int, int]) -> dict[str, object]:
+    """Build semantic masks from the supplied alpha without redrawing the logo."""
 
     target = _contain(mark, (int(size[0] * .68), int(size[1] * .76)))
     position = _center_position(size, target.size)
     alpha = mark.getchannel("A")
     raw = {name: _mask_in_box(alpha, box) for name, box in LOGO_COMPONENT_BOXES.items()}
-    # The monogram box overlaps the lower-left dot. Remove that overlap so the
-    # first visible identity-bearing signal is genuinely the standalone dot.
+    # Keep the dot independent so the construction can begin with one exact
+    # source pixel cluster instead of a background-only flash.
     raw["monogram"] = ImageChops.subtract(raw["monogram_raw"], raw["origin_dot"])
-    components: dict[str, Image.Image | list[Image.Image]] = {
-        "origin_dot": _place_mask(raw["origin_dot"], size, target.size, position),
-        "monogram": _place_mask(raw["monogram"], size, target.size, position),
-        "wordmark": [
-            _place_mask(raw[name], size, target.size, position)
-            for name in ("wordmark_01", "wordmark_02", "wordmark_03", "wordmark_04", "wordmark_05")
-        ],
-        "final": _place_mask(alpha, size, target.size, position),
-        "position": position,
-        "target_size": target.size,
-    }
-    monogram = components["monogram"]
-    assert isinstance(monogram, Image.Image)
+
+    origin_dot = _place_mask(raw["origin_dot"], size, target.size, position)
+    monogram = _place_mask(raw["monogram"], size, target.size, position)
     bbox = monogram.getbbox() or (size[0] // 2 - 70, size[1] // 2 - 70, size[0] // 2 + 70, size[1] // 2 + 70)
     cx = (bbox[0] + bbox[2]) // 2
     cy = (bbox[1] + bbox[3]) // 2
+
+    # The arc and bar are measured gates over the original monogram. The
+    # remainder is the stem/bowl phase, so every intermediate pixel still
+    # belongs to the supplied raster.
     radius = max(24, min(bbox[2] - bbox[0], bbox[3] - bbox[1]) // 2)
     ring = Image.new("L", size, 0)
     ring_draw = ImageDraw.Draw(ring)
     outer = (cx - radius, cy - radius, cx + radius, cy + radius)
-    inner_radius = max(8, int(radius * .60))
+    inner_radius = max(8, int(radius * .58))
     inner = (cx - inner_radius, cy - inner_radius, cx + inner_radius, cy + inner_radius)
     ring_draw.ellipse(outer, fill=255)
     ring_draw.ellipse(inner, fill=0)
-    components["arc"] = ImageChops.multiply(monogram, ring)
+    arc_gate = Image.new("L", size, 0)
+    ImageDraw.Draw(arc_gate).rectangle((0, 0, size[0], cy + max(4, (bbox[3] - bbox[1]) // 20)), fill=255)
+    arc = ImageChops.multiply(monogram, ImageChops.multiply(ring, arc_gate))
+
+    bar_height = max(5, (bbox[3] - bbox[1]) // 15)
     bar_gate = Image.new("L", size, 0)
-    bar_height = max(5, (bbox[3] - bbox[1]) // 12)
     ImageDraw.Draw(bar_gate).rectangle((bbox[0], cy - bar_height, bbox[2], cy + bar_height), fill=255)
-    components["bar"] = ImageChops.multiply(monogram, bar_gate)
-    components["monogram_center"] = (cx, cy)
-    components["monogram_bbox"] = bbox
+    bar = ImageChops.multiply(monogram, bar_gate)
+    arc = ImageChops.subtract(arc, bar)
+    stem = ImageChops.subtract(ImageChops.subtract(monogram, arc), bar)
+
+    components: dict[str, object] = {
+        "origin_dot": origin_dot,
+        "arc": arc,
+        "bar": bar,
+        "stem": stem,
+        "monogram": monogram,
+        "wordmark": [
+            _place_mask(raw[name], size, target.size, position)
+            for name in (
+                "wordmark_01",
+                "wordmark_02",
+                "wordmark_03",
+                "wordmark_04",
+                "wordmark_05",
+                "wordmark_06",
+            )
+        ],
+        "final": _place_mask(alpha, size, target.size, position),
+        "position": position,
+        "target_size": target.size,
+        "monogram_center": (cx, cy),
+        "monogram_bbox": bbox,
+    }
     return components
 
 
@@ -589,6 +650,242 @@ def _composite_actor_sequence(
         _composite_logo_mask(canvas, moved, opacity=min(1.0, opacity * (.82 + .18 * local)), glow=local < .36)
 
 
+def _ease(value: float, name: str) -> float:
+    """Apply a named bounded easing used by the foreground contract."""
+
+    t = _clamp(value)
+    if name == "linear":
+        return t
+    if name == "steps":
+        return round(t * 6) / 6
+    if name == "ease_out":
+        return 1 - (1 - t) ** 3
+    if name == "soft":
+        return t * t * (3 - 2 * t)
+    return _smoothstep(t)
+
+
+def _phase_progress(progress: float, start: float, end: float, easing: str) -> float:
+    """Map global progress into one semantic construction phase."""
+
+    if end <= start:
+        return 1.0 if progress >= end else 0.0
+    return _ease((progress - start) / (end - start), easing)
+
+
+def _growth_stage(progress: float) -> str:
+    """Return the public storyboard stage for a normalized frame position."""
+
+    if progress < .03:
+        return "blank"
+    if progress < .16:
+        return "spark"
+    if progress < .33:
+        return "arc"
+    if progress < .47:
+        return "bar"
+    if progress < .64:
+        return "monogram"
+    if progress < .95:
+        return "wordmark"
+    return "canonical"
+
+
+def _phase_windows(theme: dict) -> dict[str, tuple[float, float]]:
+    timing = str(theme.get("foreground_timing", "standard"))
+    return dict(PHASE_TIMINGS.get(timing, PHASE_TIMINGS["standard"]))
+
+
+def _component_motion(
+    mask: Image.Image,
+    local: float,
+    mode: str,
+    component_index: int,
+    components: dict,
+) -> Image.Image:
+    """Move an exact component through a route-specific construction path."""
+
+    cx, cy = components["monogram_center"]
+    bbox = mask.getbbox() or (cx, cy, cx + 1, cy + 1)
+    actor_center = ((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2)
+    if mode == "burst":
+        angle = math.radians(component_index * 42 - 120)
+        radius = 64 + component_index * 12
+        return _transform_mask(
+            mask,
+            local,
+            start_offset=(cx - actor_center[0] + math.cos(angle) * radius, cy - actor_center[1] + math.sin(angle) * radius),
+            start_scale=(.34, .34),
+            rotation=8 if component_index % 2 else -8,
+        )
+    if mode == "impact":
+        return _transform_mask(
+            mask,
+            local,
+            start_offset=(-150 - component_index * 18, 0),
+            start_scale=(.12, 1.0),
+            rotation=-3 if component_index % 2 else 3,
+        )
+    if mode == "track":
+        return _transform_mask(mask, local, start_offset=(-240 - component_index * 22, 0), start_scale=(.98, .98))
+    if mode == "organic":
+        return _transform_mask(
+            mask,
+            local,
+            start_offset=(0, 68 - component_index * 12),
+            wave=(18, 11, .4 + component_index * .38),
+            rotation=2,
+        )
+    if mode == "orbit":
+        angle = math.radians(component_index * 58 - 86)
+        radius = 86 + (component_index % 3) * 30
+        return _transform_mask(
+            mask,
+            local,
+            start_offset=(cx - actor_center[0] + math.cos(angle) * radius, cy - actor_center[1] + math.sin(angle) * radius),
+            start_scale=(.72, .72),
+            rotation=12,
+        )
+    if mode == "token":
+        return _transform_mask(mask, local, start_offset=(-24 - component_index * 8, 0), start_scale=(.96, .96))
+    return mask
+
+
+def _aperture_mask(mask: Image.Image, local: float, center_x: int) -> Image.Image:
+    opening = int(mask.width * (.025 + .66 * _clamp(local)))
+    gate = Image.new("L", mask.size, 0)
+    ImageDraw.Draw(gate).rectangle((center_x - opening, 0, center_x + opening, mask.height), fill=255)
+    return ImageChops.multiply(mask, gate)
+
+
+def _component_reveal(
+    mask: Image.Image,
+    local: float,
+    mode: str,
+    component: str,
+    component_index: int,
+    components: dict,
+    theme: dict,
+) -> tuple[Image.Image, float, bool]:
+    """Return a source-derived reveal mask, opacity, and glow flag."""
+
+    if local <= .002:
+        return Image.new("L", mask.size, 0), 0.0, False
+    cx, cy = components["monogram_center"]
+    moved = _component_motion(mask, local, mode, component_index, components)
+    reveal_mode = "scan"
+    if component == "arc":
+        reveal_mode = "radial" if mode in {"radial", "orbit", "burst", "boundary"} else "scan"
+        if mode in {"convergence", "organic"}:
+            reveal_mode = "diagonal"
+    elif component == "stem":
+        reveal_mode = {"radial": "radial", "convergence": "diagonal", "organic": "diagonal"}.get(mode, "scan")
+    elif component == "wordmark":
+        reveal_mode = {
+            "fade": "fade",
+            "contour": "scan",
+            "boundary": "scan",
+            "convergence": "diagonal",
+            "organic": "diagonal",
+            "radial": "radial",
+            "orbit": "radial",
+        }.get(mode, "scan")
+
+    if mode == "aperture":
+        reveal = _aperture_mask(moved, local, cx)
+    elif mode in {"contour", "boundary"}:
+        outline = _mask_outline(moved, 5 if component != "wordmark" else 3)
+        trace = _progressive_mask(outline, local, "scan", center=(cx, cy))
+        fill = _progressive_mask(moved, _clamp((local - .48) / .52), "fade")
+        reveal = ImageChops.lighter(trace, fill)
+    elif mode == "fade":
+        reveal = moved
+    elif reveal_mode == "radial":
+        start = float(theme.get("arc_start", 205)) + component_index * 17
+        direction = int(theme.get("arc_direction", 1))
+        reveal = _progressive_mask(moved, local, "radial", center=(cx, cy), start=start, direction=direction)
+    else:
+        reveal = _progressive_mask(moved, local, reveal_mode, center=(cx, cy), start=float(theme.get("arc_start", 205)), direction=int(theme.get("arc_direction", 1)))
+    opacity = 1.0 if mode != "fade" else .18 + .82 * local
+    return reveal, opacity, local < .38 and mode not in {"fade", "boundary"}
+
+
+def _compose_growth_foreground(
+    canvas: Image.Image,
+    theme: dict,
+    progress: float,
+    components: dict,
+    component_limit: str | None = None,
+) -> None:
+    """Render dot, arc, bar, monogram remainder, and letters as separate phases."""
+
+    profile = FOREGROUND_PROFILES.get(
+        str(theme.get("trajectory_id", "")),
+        {"mode": "grid", "timing": "standard", "letter_order": (0, 1, 2, 3, 4, 5), "easing": "smooth"},
+    )
+    mode = str(theme.get("foreground_mode", profile["mode"]))
+    easing = str(theme.get("foreground_easing", profile["easing"]))
+    windows = _phase_windows(theme)
+    phase_components = (("dot", components["origin_dot"]), ("arc", components["arc"]), ("bar", components["bar"]), ("stem", components["stem"]))
+    for component_index, (name, mask) in enumerate(phase_components):
+        start, end = windows[name]
+        local = _phase_progress(progress, start, end, easing)
+        reveal, opacity, glow = _component_reveal(mask, local, mode, name, component_index, components, theme)
+        _composite_logo_mask(canvas, reveal, opacity=opacity, glow=glow)
+        if component_limit == name:
+            return
+
+    if component_limit in {"dot", "arc", "bar", "stem"}:
+        return
+
+    wordmarks = components["wordmark"]
+    order = list(theme.get("foreground_order", profile["letter_order"]))
+    word_start, word_end = windows["wordmark"]
+    stagger = min(.05, float(theme.get("stagger", .05)) * .65)
+    for position, letter_index in enumerate(order):
+        letter_start = word_start + position * stagger
+        local = _phase_progress(progress, letter_start, word_end, easing)
+        reveal, opacity, glow = _component_reveal(wordmarks[letter_index], local, mode, "wordmark", 4 + position, components, theme)
+        _composite_logo_mask(canvas, reveal, opacity=opacity, glow=glow)
+
+
+def build_growth_components(mark: Image.Image, size: tuple[int, int]) -> dict[str, object]:
+    """Public pure seam for tests and downstream render adapters."""
+
+    return _build_growth_components(mark, size)
+
+
+def render_growth_stage(
+    components: dict[str, object],
+    theme: dict,
+    stage: str,
+    progress: float = 1.0,
+) -> Image.Image:
+    """Render one foreground-only storyboard stage as an L mask."""
+
+    if stage not in {"blank", "spark", "arc", "bar", "monogram", "wordmark", "canonical"}:
+        raise ValueError(f"unknown growth stage: {stage}")
+    final = components["final"]
+    if not isinstance(final, Image.Image):
+        raise TypeError("growth components['final'] must be an image")
+    if stage == "canonical":
+        return final.copy()
+    result = Image.new("RGBA", final.size, (0, 0, 0, 0))
+    if stage == "blank":
+        return result.getchannel("A")
+    if stage == "spark":
+        _compose_growth_foreground(result, theme, 1.0, components, component_limit="dot")
+    elif stage == "arc":
+        _compose_growth_foreground(result, theme, 1.0, components, component_limit="arc")
+    elif stage == "bar":
+        _compose_growth_foreground(result, theme, 1.0, components, component_limit="bar")
+    elif stage == "monogram":
+        _compose_growth_foreground(result, theme, 1.0, components, component_limit="stem")
+    else:
+        _compose_growth_foreground(result, theme, _clamp(progress), components)
+    return result.getchannel("A")
+
+
 def _draw_trajectory_guides(layer: Image.Image, theme: dict, progress: float, components: dict, seed: int) -> None:
     """Draw the guide that explains the active foreground trajectory."""
 
@@ -686,97 +983,10 @@ def _render_trajectory_mask(
 ) -> None:
     """Render the theme-specific foreground construction from supplied masks."""
 
-    trajectory = theme.get("trajectory_id", "")
-    p = _smoothstep(progress)
-    final = components["final"]
-    actors = _actor_sequence(components)
-    cx, cy = components["monogram_center"]
-
-    if trajectory == "knowledge-graph-lock":
-        offsets = [(-120, -40), (-25, 68), (80, -58), (158, 62), (250, -48), (340, 58), (430, -38)]
-        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.62, .62)] * len(actors), stagger=theme["stagger"])
-    elif trajectory == "contour-etch":
-        outline = _mask_outline(final, 5)
-        trace = _progressive_mask(outline, _clamp((progress - .03) / .72), "scan")
-        _composite_logo_mask(canvas, trace, opacity=.92, glow=progress < .5)
-        fill_progress = _smoothstep(_clamp((progress - .48) / .48))
-        _composite_logo_mask(canvas, final, opacity=fill_progress)
-    elif trajectory == "token-commit":
-        order = [0, 2, 3, 4, 5, 6, 1]
-        _composite_actor_sequence(canvas, actors, p, order=order, start_offsets=[(-55, 0)] * len(actors), start_scales=[(1, 1)] * len(actors), stagger=theme["stagger"])
-    elif trajectory == "signal-convergence":
-        travel = _smoothstep(_clamp((progress - .02) / .70))
-        draw = ImageDraw.Draw(canvas, "RGBA")
-        for index, (start, target) in enumerate(zip(points, targets)):
-            x = round(start[0] + (target[0] - start[0]) * travel)
-            y = round(start[1] + (target[1] - start[1]) * travel)
-            radius = 1 + (index % 3 == 0)
-            alpha = int(230 * (1 - _clamp((progress - .62) / .24)))
-            draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=_rgba(theme["accent"], max(24, alpha)))
-        arrival = _smoothstep(_clamp((progress - .18) / .58))
-        if progress > .18:
-            convergence = Image.new("L", canvas.size, 0)
-            convergence_draw = ImageDraw.Draw(convergence)
-            radius = max(2, round(2 + 10 * arrival))
-            for target_x, target_y in targets:
-                convergence_draw.ellipse((target_x - radius, target_y - radius, target_x + radius, target_y + radius), fill=255)
-            settled = ImageChops.multiply(final, convergence)
-            _composite_logo_mask(canvas, settled, opacity=.98, glow=progress < .72)
-        fill = _smoothstep(_clamp((progress - .58) / .40))
-        _composite_logo_mask(canvas, final, opacity=fill, glow=False)
-    elif trajectory == "progress-confirm":
-        radius = max(canvas.size) * .78
-        gate = _sector_mask(canvas.size, (cx, cy), int(radius), -90, 360 * _clamp((progress - .05) / .86))
-        reveal = ImageChops.multiply(final, gate)
-        _composite_logo_mask(canvas, reveal, opacity=.98, glow=progress < .58)
-    elif trajectory == "boundary-unlock":
-        outline = _mask_outline(final, 6)
-        boundary = _progressive_mask(outline, _clamp((progress - .03) / .47), "fade")
-        _composite_logo_mask(canvas, boundary, opacity=.95, glow=progress < .55)
-        fill_gate = _radial_gate(canvas.size, (cx, cy), max(canvas.size) * (.08 + .88 * _clamp((progress - .36) / .54)), vertical=.62)
-        fill = ImageChops.multiply(final, fill_gate)
-        _composite_logo_mask(canvas, fill, opacity=_smoothstep(_clamp((progress - .36) / .54)))
-    elif trajectory == "burst-assembly":
-        origin_offsets = []
-        for actor in actors:
-            bbox = actor.getbbox() or (cx, cy, cx + 1, cy + 1)
-            actor_cx = (bbox[0] + bbox[2]) / 2
-            actor_cy = (bbox[1] + bbox[3]) / 2
-            origin_offsets.append((cx - actor_cx, cy - actor_cy))
-        _composite_actor_sequence(canvas, actors, p, start_offsets=origin_offsets, start_scales=[(.36, .36)] * len(actors), rotation=8, stagger=theme["stagger"])
-    elif trajectory == "kinematic-lock":
-        offsets = [(-190, 0), (-220, 0), (-250, -3), (-270, 1), (-290, -2), (-310, 2), (-330, -1)]
-        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.92, .92)] * len(actors), stagger=theme["stagger"])
-    elif trajectory == "impact-release":
-        if progress > .02:
-            if progress < .34:
-                scale_x = .08 + .22 * _smoothstep(progress / .34)
-            elif progress < .82:
-                scale_x = .30 + .82 * _smoothstep((progress - .34) / .48)
-            else:
-                scale_x = 1.0 - .035 * (1 - _smoothstep((progress - .82) / .18))
-            reshaped = _resize_mask_about_center(final, (cx + 130, cy), scale_x, 1.0)
-            _composite_logo_mask(canvas, reshaped, opacity=.98, glow=progress < .62)
-    elif trajectory == "aperture-title":
-        opening = int(canvas.width * (.035 + .60 * p))
-        gate = Image.new("L", canvas.size, 0)
-        ImageDraw.Draw(gate).rectangle((cx - opening, 0, cx + opening, canvas.height), fill=255)
-        reveal = ImageChops.multiply(final, gate)
-        _composite_logo_mask(canvas, reveal, opacity=_smoothstep(_clamp((progress - .02) / .82)), glow=progress < .62)
-    elif trajectory == "organic-current":
-        offsets = [(0, 88), (-28, 58), (-42, 34), (-54, 8), (-60, -26), (-66, -58), (-72, -90)]
-        _composite_actor_sequence(canvas, actors, p, start_offsets=offsets, start_scales=[(.88, .88)] * len(actors), wave=(24, 17, .3), rotation=2, stagger=theme["stagger"])
-    elif trajectory == "orbit-quest":
-        orbit_offsets = []
-        for index, actor in enumerate(actors):
-            angle = math.radians(index * 54 - 80)
-            radius = 105 + (index % 3) * 34
-            orbit_offsets.append((math.cos(angle) * radius, math.sin(angle) * radius))
-        _composite_actor_sequence(canvas, actors, p, start_offsets=orbit_offsets, start_scales=[(.72, .72)] * len(actors), rotation=14, stagger=theme["stagger"])
-    elif trajectory == "semantic-fade":
-        _composite_actor_sequence(canvas, actors, p, order=[0, 1, 2, 3, 4, 5, 6], opacity=1.0, stagger=theme["stagger"])
-    else:
+    trajectory = str(theme.get("trajectory_id", ""))
+    if trajectory not in IMPLEMENTED_TRAJECTORIES:
         raise ValueError(f"unimplemented trajectory: {trajectory}")
+    _compose_growth_foreground(canvas, theme, _clamp(progress), components)
 
 
 def _draw_growth_guides(layer: Image.Image, theme: dict, progress: float, components: dict, seed: int) -> None:
@@ -841,9 +1051,12 @@ def esc(value: object) -> str:
 
 def theme_card(theme: dict) -> str:
     algorithms = "".join(f"<li>{esc(item)}</li>" for item in theme["algorithm"])
-    tags = "".join(f"<span class=\"tag\">{esc(item)}</span>" for item in [*theme["tags"], theme["trajectory_id"]])
+    tags = "".join(f"<span class=\"tag\">{esc(item)}</span>" for item in [*theme["tags"], theme["trajectory_id"], theme["foreground_mode"]])
     beats = "<span>" + "</span><span>".join(esc(item) for item in theme["beats"]) + "</span>"
-    return f'''<article class="theme-card" data-theme="{esc(theme["id"])}" data-search="{esc(" ".join([theme["name"], theme["trigger"], *theme["tags"]]))}" style="--accent:{esc(theme["accent"])};--stage-bg:{esc(theme["background"])};--theme-index:{esc(theme["number"])}">
+    letter_names = ("P", "r", "y", "s", "a", "i")
+    letter_order = " > ".join(letter_names[index] for index in theme["foreground_order"])
+    search_terms = [theme["name"], theme["trigger"], *theme["tags"], theme["foreground_mode"], theme["foreground_timing"]]
+    return f'''<article class="theme-card" data-theme="{esc(theme["id"])}" data-search="{esc(" ".join(search_terms))}" style="--accent:{esc(theme["accent"])};--stage-bg:{esc(theme["background"])};--theme-index:{esc(theme["number"])}">
   <header class="card-head">
     <span class="card-number">{esc(theme["number"])}</span>
     <div>
@@ -882,6 +1095,7 @@ def theme_card(theme: dict) -> str:
     <div class="tag-row">{tags}</div>
      <p class="intent">{esc(theme["intent"])}</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>{esc(theme["trajectory_summary"])}</p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>{esc(theme["foreground_mode"])} / {esc(theme["foreground_timing"])} / {esc(theme["foreground_easing"])}</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: {esc(letter_order)}</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul>{algorithms}</ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats">{beats}</div><span class="detail-label qa-label">QA FOCUS</span><p>{esc(theme["qa"])}</p></div>
@@ -1013,6 +1227,10 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
  .intent { margin: 0 0 .7rem; color: #d6d7d0; font-family: Arial, Helvetica, sans-serif; font-size: .82rem; line-height: 1.48; }
  .trajectory-note { margin: 0 0 1rem; padding-left: .65rem; border-left: 2px solid var(--accent); color: #bfc2bb; font: .68rem/1.45 Arial, Helvetica, sans-serif; }
  .trajectory-note span { display: block; margin-bottom: .25rem; color: var(--accent); font: .56rem/1.2 "IBM Plex Mono", monospace; letter-spacing: .08em; }
+ .construction-note { margin: 0 0 1rem; padding: .55rem .65rem; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); color: #c9cbc4; font: .63rem/1.45 "IBM Plex Mono", monospace; }
+ .construction-note span { display: block; margin-bottom: .25rem; color: var(--accent); font-size: .54rem; letter-spacing: .08em; }
+ .construction-note strong { display: block; color: #f2f1e9; font-weight: 600; }
+ .construction-note small { display: block; margin-top: .25rem; color: var(--muted); font-size: .58rem; }
 .detail-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; border-top: 1px solid var(--line); padding-top: .8rem; }
 .detail-grid ul { margin: 0; padding-left: 1rem; color: #c1c5bd; font-size: .61rem; line-height: 1.5; }
 .detail-grid li::marker { color: var(--accent); }
@@ -1278,12 +1496,12 @@ def build_html(data: dict) -> None:
           <div class="io-arrow" aria-hidden="true">→</div>
           <figure class="io-frame io-output"><span class="cell-label">OUTPUT / LOGO GROWTH GIF</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo growing from blank through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
         </div>
-         <div class="io-footer"><span>Same identity source / spark → arc → bar → monogram → wordmark → canonical</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
+         <div class="io-footer"><span>Same identity source / spark (source dot) → arc → bar → monogram → wordmark → canonical</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
       </section>
       <section class="route-brief" aria-labelledby="route-title">
         <div class="route-cell"><span id="route-title" class="route-label">Example request</span><p class="route-value">“I want to make a logo animation for my artificial-intelligence company.”</p></div>
         <div class="route-cell"><span class="route-label">AI-field animation</span><p class="route-value"><strong>AI-field</strong><br>the supplied image becomes a signal-convergence reveal</p></div>
-         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Blank field → spark → P construction → wordmark → stable logo. Each card is a direct GIF output.</p></div>
+         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Blank field → spark (source dot) → arc → bar → P construction → wordmark → stable logo. Each card is a direct GIF output.</p></div>
       </section>
       <section id="theme-atlas" aria-labelledby="grid-title">
         <div class="controls">
@@ -1512,7 +1730,7 @@ def build_pdf(data: dict) -> Path:
     route_lines = [
         "Request: I want to make a logo animation for my artificial-intelligence company.",
         "Route: signal convergence / component growth / progressive disclosure.",
-        "Animation: blank field -> spark -> arc -> bar -> monogram -> wordmark",
+        "Animation: blank field -> spark (source dot) -> arc -> bar -> monogram -> wordmark",
         "-> canonical. The HTML and GIF are playable; this PDF records growth",
         "frames for the same supplied image.",
     ]
@@ -1559,8 +1777,8 @@ to make a direct visual comparison across {len(data["themes"])} playable Motiflu
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
 the same source image on the left and runs a real blank-to-canonical construction
-sequence on the right: blank, spark, arc, bar, monogram, wordmark, and canonical.
-Each theme changes construction timing and motion language; it does not redraw or
+sequence on the right: blank, spark (source dot), arc, bar, monogram, wordmark,
+and canonical. Each theme changes construction timing and motion language; it does not redraw or
 rename the Prysai identity.
 
 ## Files

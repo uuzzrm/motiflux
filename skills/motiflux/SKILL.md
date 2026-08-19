@@ -93,6 +93,31 @@ The showcase renderer maps `trajectory_id` to a distinct foreground construction
 from the supplied Logo mask. An algorithm list or trajectory label without a
 corresponding runtime effect is incomplete.
 
+## Foreground construction contract
+
+Identity-bearing source geometry is foreground: paths, monogram, wordmark/glyphs,
+accents, and occluders. Backgrounds, particles, glow, camera, color, and
+full-mark opacity are secondary and MUST NOT be the only theme difference.
+
+Every selected theme MUST execute a `foreground_plan` in `motion-plan.yaml` with
+`source_actors`, `stage_order`, per-stage `path_strategy`, `speed_profile`,
+visible `proof`, and a `static-canonical` fallback. Use source-derived stages:
+`seed`, measured `trace`, component `assemble`, `lockup`, then exact `canonical`.
+For this mark the concrete sequence is `seed -> arc -> bar -> monogram ->
+wordmark -> canonical`; map unavailable parts explicitly and never hallucinate.
+
+The 13 themes MUST have materially distinct `(stage_order, path_strategy,
+speed_profile)` tuples. A generic crop, global transform, complete-mark fade, or
+decorative field is not construction. If decomposition or traversal is uncertain,
+use measured intervals or the static fallback, return `candidate`, and record
+`foreground-decomposition`/`trajectory-execution` in `not_run` or `unresolved`.
+
+Evidence MUST include stage boundaries plus one mid-stage snapshot with
+`stage_id`, source actor IDs, foreground bounds/alpha mass, path, and speed.
+Compare variants on foreground alpha/vectors; the final semantic fingerprint
+MUST match the canonical source exactly. See `guides/motion-themes.md` for the
+matrix and execution examples.
+
 ## Theme router
 
 When the request includes a style, industry, reference system, audience, or
@@ -365,7 +390,8 @@ motion, provide keyboard-accessible controls, and avoid layout shift.
 
 At beat boundaries and risk intervals collect `time_ms`, `active_beat`,
 `actor_states`, `visible_bounds`, `progress_values`,
-`changed_pixels_or_alpha_mass`, and `runtime_errors`.
+    `changed_pixels_or_alpha_mass`, foreground stage/actors/path/speed, and
+    `runtime_errors`.
 
 Risk intervals include crossings, occluder changes, actor handoffs, spring extrema, viewport approaches, and loop seams.
 
@@ -398,6 +424,20 @@ Check monotonic progress, velocity/acceleration continuity, handoffs, visibility
 intervals, safe bounds, and loop seam compatibility.
 
 Use telemetry plus targeted frames. Do not rely on evenly spaced screenshots alone.
+
+### Foreground construction
+
+Require all of the following for `complete`:
+
+- the selected stage order and source actor IDs are present in the plan;
+- early frames contain only the declared early actors, not the complete wordmark;
+- stage snapshots prove the declared path and per-stage speed on identity-bearing
+  pixels or vectors;
+- the same-source variants have different foreground midframes or trajectories;
+- background, particles, color, camera, or global opacity never carry the only
+  theme distinction.
+
+If any item is unverified, keep the result `candidate` and name the missing proof.
 
 ### Canonical end state
 

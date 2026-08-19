@@ -34,10 +34,82 @@ For the selected theme, write:
     trajectory_summary:
     implementation:
     controls:
+    foreground:
+      source_actors: []
+      stage_order: []
+      path_strategy:
+      speed_profile:
+      fallback:
+      proof: []
     exclusions: []
     qa_focus: []
 
 Use one primary theme and no more than two modifiers. Public analogues describe published design-system principles; they do not prove that a named company uses the exact recipe.
+
+## Foreground construction contract
+
+The foreground is the supplied mark's identity-bearing geometry: paths, strokes,
+monogram, wordmark or glyphs, accents, and topology-bearing occluders. Backgrounds,
+particles, glow, camera movement, palette, and global opacity are secondary.
+They may support a theme, but they cannot be the theme's only difference.
+
+Every theme MUST declare and execute a distinct `(stage_order, path_strategy,
+speed_profile)` tuple. `runtime.tempo` is only a baseline; the speed profile MUST
+also describe per-stage duration, easing, overlap, or settle behavior. A generic
+circle/rectangle crop, full-mark fade, global transform, or decorative particle
+field is not a foreground construction unless it exposes measured source actors
+in the declared order.
+
+Use these stage roles and map them to real source actors:
+
+- `seed`: one or more source-derived anchors or a minimal identity fragment;
+- `trace`: a measured contour, arc, stroke, or component interval;
+- `assemble`: identity components join in the theme-specific order;
+- `lockup`: monogram, wordmark, glyph order, spacing, and occlusion settle;
+- `canonical`: the exact accepted source scene, held long enough to read.
+
+For a source with a symbol and wordmark, a concrete plan may be
+`seed -> arc -> bar -> monogram -> wordmark -> canonical`. If a component is not
+present or cannot be measured, map the stage to the available source actor and
+record the omission; never invent a replacement shape.
+
+The selected record MUST be serialized in `motion-plan.yaml` as `foreground` or
+`foreground_plan`, including source actor IDs, stage order, path strategy, speed
+profile, fallback, and proof points. Motion evidence MUST show stage-boundary and
+mid-stage foreground snapshots with actor IDs, bounds or alpha mass, progress, and
+speed. Compare same-source themes on foreground vectors or alpha, not backgrounds.
+
+If decomposition or traversal is unreliable, use measured source intervals as the
+fallback. If that is also unavailable, use `static-canonical` (or `opacity-only`
+for reduced motion), mark the result `candidate`, and record the missing
+`foreground-decomposition` or `trajectory-execution` evidence.
+
+## Theme foreground matrix
+
+Use the row as the minimum executable distinction for the selected theme. The
+existing algorithm stack and implementation notes refine the row; they do not
+replace it.
+
+| Theme | Foreground order | Path strategy | Speed profile | Minimum proof |
+| --- | --- | --- | --- | --- |
+| `system-spatial` | `seed -> nodes -> relations -> monogram -> wordmark -> canonical` | `knowledge-graph-lock`: anchor-to-anchor placement and connector order | hierarchy-weighted stagger; monotonic; slower at lock | nodes and relations precede the lockup |
+| `premium-quiet` | `seed -> outer contour -> monogram -> wordmark -> canonical` | `contour-etch`: measured perimeter traversal, then solid fill | slow etch, long stillness, low-amplitude settle | source contour leads; no generic crop |
+| `developer-open` | `seed -> tokens -> stems/paths -> glyphs -> wordmark -> canonical` | `token-commit`: deterministic actor or glyph commits | even token cadence with declared pauses; no opaque spring | replay preserves commit order |
+| `ai-field` | `signals -> points -> arcs -> monogram -> wordmark -> canonical` | `signal-convergence`: deterministic signals land in measured pixels | accelerate toward geometry, decelerate at lockup | signals land in source actors and clear before final |
+| `fintech-trust` | `origin -> progress ring -> monogram -> wordmark -> confirm -> canonical` | `progress-confirm`: guarded center/outward progress | steady processing; short bounded confirmation; calm settle | confirmation never precedes canonical geometry |
+| `security-shield` | `boundary -> aperture -> interior -> monogram -> wordmark -> canonical` | `boundary-unlock`: perimeter-first occlusion and aperture | guarded perimeter, quick verify, deliberate unlock | boundary precedes interior and remains interruptible |
+| `commerce-energy` | `seed -> burst components -> monogram -> wordmark -> action accent -> canonical` | `burst-assembly`: bounded release from a shared origin | anticipation, fast burst, rapid stable settle | action accent follows identity assembly |
+| `automotive-precision` | `track -> large forms -> monogram -> wordmark -> scan -> canonical` | `kinematic-lock`: one-axis path with velocity continuity | heavy actors slow; accents fast; jerk-limited handoffs | no teleportation or uncontrolled overshoot |
+| `sports-impact` | `compressed silhouette -> axis release -> monogram -> wordmark -> recovery -> canonical` | `impact-release`: bounded compression, directional release, recovery | sharp burst, controlled overshoot, short recovery | peak silhouette remains recognizable |
+| `cinematic-title` | `aperture -> contour -> monogram -> wordmark -> reading pause -> canonical` | `aperture-title`: staged aperture and depth reveal | slow exposure, deliberate silence, long reading pause | atmosphere never hides the identity moment |
+| `nature-flow` | `root -> curve flow -> monogram -> wordmark -> settle -> canonical` | `organic-current`: curvature-following low-frequency flow | variable drift with damped settle; no jitter | flow follows measured curves and stops at canonical |
+| `gaming-world` | `orbit tokens -> emblem -> monogram -> wordmark -> reward clear -> canonical` | `orbit-quest`: seeded orbits and deterministic reward assembly | spawn/accumulate, reward snap, then clear the field | hero actors remain readable and replay is deterministic |
+| `accessibility-first` | `semantic seed -> ordered components -> monogram -> wordmark -> static canonical` | `semantic-fade`: order-preserving opacity and minimal translation | opacity-first; short necessary movement; no overshoot | reduced motion preserves order, focus, and static equality |
+
+When the source lacks a listed component, substitute a measured source actor and
+record the mapping in `foreground.source_actors`. A theme is not complete when
+only its background, color, particles, camera, or labels differ from another
+variant.
 
 ## 1. System-spatial
 

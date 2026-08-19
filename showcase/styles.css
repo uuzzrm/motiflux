@@ -120,6 +120,10 @@ h1 { max-width: 900px; margin: 0; font-family: Arial, Helvetica, sans-serif; fon
  .intent { margin: 0 0 .7rem; color: #d6d7d0; font-family: Arial, Helvetica, sans-serif; font-size: .82rem; line-height: 1.48; }
  .trajectory-note { margin: 0 0 1rem; padding-left: .65rem; border-left: 2px solid var(--accent); color: #bfc2bb; font: .68rem/1.45 Arial, Helvetica, sans-serif; }
  .trajectory-note span { display: block; margin-bottom: .25rem; color: var(--accent); font: .56rem/1.2 "IBM Plex Mono", monospace; letter-spacing: .08em; }
+ .construction-note { margin: 0 0 1rem; padding: .55rem .65rem; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); color: #c9cbc4; font: .63rem/1.45 "IBM Plex Mono", monospace; }
+ .construction-note span { display: block; margin-bottom: .25rem; color: var(--accent); font-size: .54rem; letter-spacing: .08em; }
+ .construction-note strong { display: block; color: #f2f1e9; font-weight: 600; }
+ .construction-note small { display: block; margin-top: .25rem; color: var(--muted); font-size: .58rem; }
 .detail-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; border-top: 1px solid var(--line); padding-top: .8rem; }
 .detail-grid ul { margin: 0; padding-left: 1rem; color: #c1c5bd; font-size: .61rem; line-height: 1.5; }
 .detail-grid li::marker { color: var(--accent); }

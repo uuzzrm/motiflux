@@ -5,8 +5,8 @@ to make a direct visual comparison across 13 playable Motiflux logo-growth anima
 
 Open `index.html` locally for the interactive comparison grid. Each card keeps
 the same source image on the left and runs a real blank-to-canonical construction
-sequence on the right: blank, spark, arc, bar, monogram, wordmark, and canonical.
-Each theme changes construction timing and motion language; it does not redraw or
+sequence on the right: blank, spark (source dot), arc, bar, monogram, wordmark,
+and canonical. Each theme changes construction timing and motion language; it does not redraw or
 rename the Prysai identity.
 
 ## Files

@@ -80,6 +80,19 @@
       "primary_motion": "grid lock and radial construction",
       "wordmark_reveal": "left-to-right component stagger",
       "stagger": 0.06,
+      "foreground_mode": "grid",
+      "foreground_timing": "standard",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "steps",
+      "arc_start": 205.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-system-spatial.gif",
       "animation_poster": "assets/animations/prysai-system-spatial-poster.png"
     },
@@ -140,6 +153,19 @@
       "primary_motion": "slow optical trace with a held pause",
       "wordmark_reveal": "soft letter-by-letter fade",
       "stagger": 0.09,
+      "foreground_mode": "contour",
+      "foreground_timing": "slow",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "soft",
+      "arc_start": 228.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-premium-quiet.gif",
       "animation_poster": "assets/animations/prysai-premium-quiet-poster.png"
     },
@@ -201,6 +227,19 @@
       "primary_motion": "deterministic scanline draw-on",
       "wordmark_reveal": "explicit left-to-right scan",
       "stagger": 0.04,
+      "foreground_mode": "token",
+      "foreground_timing": "staggered",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "linear",
+      "arc_start": 180.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-developer-open.gif",
       "animation_poster": "assets/animations/prysai-developer-open-poster.png"
     },
@@ -263,6 +302,19 @@
       "primary_motion": "seeded signals converge on each component",
       "wordmark_reveal": "confidence-ordered component reveal",
       "stagger": 0.05,
+      "foreground_mode": "convergence",
+      "foreground_timing": "field",
+      "foreground_order": [
+        1,
+        0,
+        2,
+        4,
+        3,
+        5
+      ],
+      "foreground_easing": "ease_out",
+      "arc_start": 250.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-ai-field.gif",
       "animation_poster": "assets/animations/prysai-ai-field-poster.png"
     },
@@ -325,6 +377,19 @@
       "primary_motion": "bounded progress ring then stable lock",
       "wordmark_reveal": "monotonic component confirmation",
       "stagger": 0.05,
+      "foreground_mode": "radial",
+      "foreground_timing": "center",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "smooth",
+      "arc_start": 270.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-fintech-trust.gif",
       "animation_poster": "assets/animations/prysai-fintech-trust-poster.png"
     },
@@ -386,6 +451,19 @@
       "primary_motion": "perimeter trace followed by verified interior",
       "wordmark_reveal": "protected sequential reveal",
       "stagger": 0.07,
+      "foreground_mode": "boundary",
+      "foreground_timing": "late",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "soft",
+      "arc_start": 135.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-security-shield.gif",
       "animation_poster": "assets/animations/prysai-security-shield-poster.png"
     },
@@ -446,6 +524,19 @@
       "primary_motion": "compressed spark with a fast stroke release",
       "wordmark_reveal": "quick readable letter cascade",
       "stagger": 0.035,
+      "foreground_mode": "burst",
+      "foreground_timing": "rapid",
+      "foreground_order": [
+        0,
+        2,
+        4,
+        1,
+        3,
+        5
+      ],
+      "foreground_easing": "ease_out",
+      "arc_start": 200.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-commerce-energy.gif",
       "animation_poster": "assets/animations/prysai-commerce-energy-poster.png"
     },
@@ -505,6 +596,19 @@
       "primary_motion": "single directional scan with velocity continuity",
       "wordmark_reveal": "track-aligned wordmark draw-on",
       "stagger": 0.045,
+      "foreground_mode": "track",
+      "foreground_timing": "standard",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "ease_out",
+      "arc_start": 315.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-automotive-precision.gif",
       "animation_poster": "assets/animations/prysai-automotive-precision-poster.png"
     },
@@ -565,6 +669,19 @@
       "primary_motion": "high-velocity arc and controlled settle",
       "wordmark_reveal": "impact-timed component release",
       "stagger": 0.025,
+      "foreground_mode": "impact",
+      "foreground_timing": "rapid",
+      "foreground_order": [
+        0,
+        2,
+        4,
+        1,
+        3,
+        5
+      ],
+      "foreground_easing": "ease_out",
+      "arc_start": 225.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-sports-impact.gif",
       "animation_poster": "assets/animations/prysai-sports-impact-poster.png"
     },
@@ -625,6 +742,19 @@
       "primary_motion": "aperture opens from a single illuminated stroke",
       "wordmark_reveal": "paced title-card letter reveal",
       "stagger": 0.1,
+      "foreground_mode": "aperture",
+      "foreground_timing": "late",
+      "foreground_order": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "foreground_easing": "soft",
+      "arc_start": 225.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-cinematic-title.gif",
       "animation_poster": "assets/animations/prysai-cinematic-title-poster.png"
     },
@@ -686,6 +816,19 @@
       "primary_motion": "low-frequency flow follows the mark curvature",
       "wordmark_reveal": "breathing connected reveal",
       "stagger": 0.08,
+      "foreground_mode": "organic",
+      "foreground_timing": "slow",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "soft",
+      "arc_start": 160.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-nature-flow.gif",
       "animation_poster": "assets/animations/prysai-nature-flow-poster.png"
     },
@@ -746,6 +889,19 @@
       "primary_motion": "orbiting sparks assemble the stable silhouette",
       "wordmark_reveal": "reward-like sequential component reveal",
       "stagger": 0.04,
+      "foreground_mode": "orbit",
+      "foreground_timing": "staggered",
+      "foreground_order": [
+        0,
+        2,
+        4,
+        1,
+        3,
+        5
+      ],
+      "foreground_easing": "ease_out",
+      "arc_start": 300.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-gaming-world.gif",
       "animation_poster": "assets/animations/prysai-gaming-world-poster.png"
     },
@@ -806,6 +962,19 @@
       "primary_motion": "short opacity changes with a static-safe landing",
       "wordmark_reveal": "low-motion component fade",
       "stagger": 0.12,
+      "foreground_mode": "fade",
+      "foreground_timing": "late",
+      "foreground_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "foreground_easing": "soft",
+      "arc_start": 205.0,
+      "arc_direction": 1,
       "animation_file": "assets/animations/prysai-accessibility-first.gif",
       "animation_poster": "assets/animations/prysai-accessibility-first-poster.png"
     }
