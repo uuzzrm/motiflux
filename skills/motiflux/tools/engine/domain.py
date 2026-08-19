@@ -54,6 +54,157 @@ class ArtifactRef:
 
 
 @dataclass(frozen=True)
+class SceneActor:
+    """One identity-bearing or supporting actor in a normalized scene."""
+
+    id: str
+    tag: str
+    role: str
+    layer: int
+    bounds: tuple[float, ...] = ()
+    parent: str | None = None
+    paint: dict[str, Any] = field(default_factory=dict)
+    transform: str = ""
+    geometry_ref: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "tag": self.tag,
+            "role": self.role,
+            "layer": self.layer,
+            "bounds": list(self.bounds),
+            "parent": self.parent,
+            "paint": self.paint,
+            "transform": self.transform,
+            "geometry_ref": self.geometry_ref,
+        }
+
+
+@dataclass(frozen=True)
+class SceneGraph:
+    """Normalized source scene consumed by planning and geometry verification."""
+
+    schema_version: str
+    status: Status
+    source_format: str
+    viewbox: tuple[float, ...] = ()
+    actors: tuple[SceneActor, ...] = ()
+    canonical_fingerprint: dict[str, Any] = field(default_factory=dict)
+    capabilities: tuple[str, ...] = ()
+    not_run: tuple[str, ...] = ()
+    unresolved: tuple[str, ...] = ()
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": self.schema_version,
+            "status": self.status,
+            "source": {"format": self.source_format, "viewbox": list(self.viewbox)},
+            "actors": [actor.to_dict() for actor in self.actors],
+            "canonical_fingerprint": self.canonical_fingerprint,
+            "capabilities": list(self.capabilities),
+            "not_run": list(self.not_run),
+            "unresolved": list(self.unresolved),
+        }
+
+
+@dataclass(frozen=True)
+class MotionBeat:
+    """A named temporal intent in a motion graph."""
+
+    id: str
+    intent: str
+    duration_weight: float
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "intent": self.intent,
+            "duration_weight": self.duration_weight,
+        }
+
+
+@dataclass(frozen=True)
+class MotionEdge:
+    """An actor-to-beat dependency and its property channels."""
+
+    actor: str
+    beat: str
+    starts_after: tuple[str, ...] = ()
+    may_overlap: tuple[str, ...] = ()
+    must_finish_before: tuple[str, ...] = ()
+    property_channels: tuple[str, ...] = ()
+    anchor: str = "source-bounds"
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "actor": self.actor,
+            "beat": self.beat,
+            "starts_after": list(self.starts_after),
+            "may_overlap": list(self.may_overlap),
+            "must_finish_before": list(self.must_finish_before),
+            "property_channels": list(self.property_channels),
+            "anchor": self.anchor,
+        }
+
+
+@dataclass(frozen=True)
+class MotionGraph:
+    """Typed, source-aware motion graph passed to a renderer."""
+
+    schema_version: str
+    status: Status
+    project: dict[str, Any]
+    theme_selection: dict[str, Any]
+    motion_language: dict[str, Any]
+    constraints: tuple[dict[str, Any], ...]
+    actor_ids: tuple[str, ...]
+    beats: tuple[MotionBeat, ...]
+    edges: tuple[MotionEdge, ...]
+    runtime: dict[str, Any]
+    actors: tuple[SceneActor, ...] = ()
+    source_fingerprint: dict[str, Any] = field(default_factory=dict)
+    not_run: tuple[str, ...] = ()
+    unresolved: tuple[str, ...] = ()
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": self.schema_version,
+            "status": self.status,
+            "project": self.project,
+            "theme_selection": self.theme_selection,
+            "motion_language": self.motion_language,
+            "constraints": list(self.constraints),
+            "actor_ids": list(self.actor_ids),
+            "actors": [actor.to_dict() for actor in self.actors],
+            "beats": [beat.to_dict() for beat in self.beats],
+            "dependencies": [edge.to_dict() for edge in self.edges],
+            "runtime": self.runtime,
+            "source_fingerprint": self.source_fingerprint,
+            "not_run": list(self.not_run),
+            "unresolved": list(self.unresolved),
+        }
+
+    def to_plan(self) -> dict[str, Any]:
+        """Return a renderer-compatible plan without exposing graph internals."""
+
+        actor_records = [actor.to_dict() for actor in self.actors]
+        if not actor_records:
+            actor_records = [{"id": actor_id} for actor_id in self.actor_ids]
+        return {
+            "schema_version": self.schema_version,
+            "project": self.project,
+            "theme_selection": self.theme_selection,
+            "motion_language": self.motion_language,
+            "constraints": list(self.constraints),
+            "actors": actor_records,
+            "beats": [beat.to_dict() for beat in self.beats],
+            "dependencies": [edge.to_dict() for edge in self.edges],
+            "runtime": self.runtime,
+        }
+
+
+@dataclass(frozen=True)
 class StageResult:
     """The observable result of one pipeline stage.
 

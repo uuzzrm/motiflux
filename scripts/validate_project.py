@@ -249,6 +249,13 @@ def validate_github_gallery() -> None:
         fail("README GitHub gallery markers must be in order")
     gallery = readme[start:end]
 
+    if '<table class="motiflux-gallery">' not in gallery:
+        fail("GitHub gallery must use the generated two-column card grid")
+    if gallery.count("<h3>") != 13:
+        fail("GitHub gallery must contain exactly one card heading per theme")
+    if gallery.count("STATIC SOURCE") != 13 or gallery.count("PLAYING GIF") != 13:
+        fail("GitHub gallery cards must expose one static source and one playing GIF")
+
     catalog = json.loads((SKILL_ROOT / "catalog" / "themes.json").read_text(encoding="utf-8"))
     themes = catalog.get("themes", [])
     if not isinstance(themes, list) or len(themes) != 13:

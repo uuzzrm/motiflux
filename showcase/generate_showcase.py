@@ -740,6 +740,7 @@ def build_html(data: dict) -> None:
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Motiflux V1 theme atlas: one supplied Prysai mark routed through thirteen logo-motion systems.">
   <title>Motiflux V1 / Theme Atlas</title>
+  <link rel="icon" type="image/jpeg" href="assets/prysai-logo-white.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-motion="running">
@@ -1073,9 +1074,9 @@ redraw or rename the Prysai identity.
 - `index.html` - dependency-free interactive grid with filtering and motion controls.
 - `assets/animations/prysai-ai-field.gif` - the primary image-to-animation output
   for the example request; every theme also has a portable GIF export.
-- The repository root `README.md` contains a generated GitHub-native gallery:
-  every row places the same static source image beside its theme GIF and trigger
-  keywords, so the image-to-animation result is visible without opening HTML.
+- The repository root `README.md` contains a generated GitHub-native card grid:
+  every card places the same static source image on the left beside its theme GIF
+  on the right, with the route trigger keywords below.
 - `themes.json` - derived display snapshot generated from the canonical catalog;
   it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.
@@ -1099,28 +1100,43 @@ only; this material does not claim private vendor algorithms.
 
 
 def github_gallery(data: dict) -> str:
-    """Build the GitHub-rendered source-image to GIF comparison table."""
+    """Build a GitHub-native two-column card grid of source image -> GIF."""
+
+    image_path = "showcase/assets/prysai-mark-crop.jpg"
+    cards: list[str] = []
+    for theme in data["themes"]:
+        theme_id = esc(theme["id"])
+        name = esc(theme["name"])
+        animation_path = f"showcase/{theme['animation_file']}"
+        keywords = " ".join(f"<code>{esc(keyword)}</code>" for keyword in theme["keywords"])
+        cards.append(
+            f'''<td width="50%" valign="top">
+<h3>{esc(theme["number"])} · {name}</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="{image_path}" alt="Static Prysai source mark for {name}" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="{animation_path}" alt="{name} Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>{theme_id}</code><br><sub>TRIGGER KEYWORDS</sub><br>{keywords}</p>
+<p><sub>{esc(theme["intent"])}</sub></p>
+</td>'''
+        )
 
     rows = [
         "## GitHub-native image → animation gallery",
         "",
-        "The same supplied Prysai source is shown on the left of every row. The right side is the actual portable GIF generated for that routed theme; keywords are the triggers an AI agent can use to select the route.",
+        "Every card uses the same supplied Prysai source on the left and the portable GIF generated for that theme on the right. The GIF is a real checked-in output, so GitHub can play it directly without JavaScript or a separate deployment.",
         "",
-        "| # | Static source | Animated result | Theme / trigger keywords |",
-        "| --- | --- | --- | --- |",
+        '<table class="motiflux-gallery">',
     ]
-    for theme in data["themes"]:
-        theme_id = esc(theme["id"])
-        name = esc(theme["name"])
-        image_path = "showcase/assets/prysai-mark-crop.jpg"
-        animation_path = f"showcase/{theme['animation_file']}"
-        keywords = "<br>".join(f"<code>{esc(keyword)}</code>" for keyword in theme["keywords"])
-        rows.append(
-            f'| {esc(theme["number"])} | '
-            f'<img src="{image_path}" alt="Static Prysai source mark" width="240"> | '
-            f'<img src="{animation_path}" alt="{name} Prysai logo animation" width="480"> | '
-            f'**{name}**<br><code>{theme_id}</code><br>{keywords} |'
-        )
+    for index in range(0, len(cards), 2):
+        rows.append("<tr>")
+        rows.extend(cards[index:index + 2])
+        if index + 1 == len(cards):
+            rows.append('<td width="50%" valign="top"></td>')
+        rows.append("</tr>")
+    rows.extend(["</table>", "", "<sub>LEFT = unchanged source image · RIGHT = generated animated result</sub>"])
     return "\n".join(rows)
 
 

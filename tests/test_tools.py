@@ -22,7 +22,7 @@ from engine.catalog import load_catalog  # noqa: E402
 from engine.planner import build_plan, validate_references  # noqa: E402
 from engine.project_pipeline import run_project  # noqa: E402
 from engine.pipeline import PipelineContext, PipelineRunner, StageDefinition  # noqa: E402
-from engine.domain import StageResult  # noqa: E402
+from engine.domain import MotionBeat, MotionEdge, MotionGraph, SceneActor, StageResult  # noqa: E402
 from engine.runtime_probe import probe_runtime  # noqa: E402
 from validate_artifact import validate  # noqa: E402
 
@@ -186,6 +186,43 @@ class MotifluxToolTests(unittest.TestCase):
         self.assertIn("assets/animations/prysai-ai-field.gif", html)
         self.assertEqual(len(list(animation_dir.glob("prysai-*.gif"))), 13)
         self.assertGreater((animation_dir / "prysai-ai-field.gif").stat().st_size, 1000)
+
+    def test_github_gallery_uses_static_to_gif_cards(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        start = readme.index("<!-- GITHUB_GALLERY:START -->")
+        end = readme.index("<!-- GITHUB_GALLERY:END -->")
+        gallery = readme[start:end]
+        self.assertIn('<table class="motiflux-gallery">', gallery)
+        self.assertEqual(gallery.count("<h3>"), 13)
+        self.assertEqual(gallery.count("STATIC SOURCE"), 13)
+        self.assertEqual(gallery.count("PLAYING GIF"), 13)
+
+    def test_motion_graph_plan_preserves_scene_actor_bindings(self) -> None:
+        actor = SceneActor(
+            id="mark",
+            tag="path",
+            role="identity-bearing actor",
+            layer=0,
+            bounds=(0, 0, 100, 40),
+            geometry_ref="mark.svg#mark",
+        )
+        graph = MotionGraph(
+            schema_version="1.0",
+            status="complete",
+            project={"name": "test"},
+            theme_selection={"primary_id": "ai-field"},
+            motion_language={"traits": []},
+            constraints=(),
+            actor_ids=("mark",),
+            actors=(actor,),
+            beats=(MotionBeat("form", "apply motion", 1.0),),
+            edges=(MotionEdge("mark", "form", property_channels=("transform",)),),
+            runtime={"duration_ms": 1000},
+        )
+        plan_actor = graph.to_plan()["actors"][0]
+        self.assertEqual(plan_actor["id"], "mark")
+        self.assertEqual(plan_actor["tag"], "path")
+        self.assertEqual(plan_actor["geometry_ref"], "mark.svg#mark")
 
 
 if __name__ == "__main__":

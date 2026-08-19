@@ -88,23 +88,170 @@ of the animation being shown.
 
 ## GitHub-native image → animation gallery
 
-The same supplied Prysai source is shown on the left of every row. The right side is the actual portable GIF generated for that routed theme; keywords are the triggers an AI agent can use to select the route.
+Every card uses the same supplied Prysai source on the left and the portable GIF generated for that theme on the right. The GIF is a real checked-in output, so GitHub can play it directly without JavaScript or a separate deployment.
 
-| # | Static source | Animated result | Theme / trigger keywords |
-| --- | --- | --- | --- |
-| 01 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-system-spatial.gif" alt="System-spatial Prysai logo animation" width="480"> | **System-spatial**<br><code>system-spatial</code><br><code>system</code><br><code>product</code><br><code>saas</code><br><code>dashboard</code><br><code>enterprise</code><br><code>interface</code><br><code>structured</code><br><code>clear</code><br><code>technology</code> |
-| 02 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-premium-quiet.gif" alt="Premium-quiet Prysai logo animation" width="480"> | **Premium-quiet**<br><code>premium-quiet</code><br><code>premium</code><br><code>luxury</code><br><code>fashion</code><br><code>beauty</code><br><code>editorial</code><br><code>quiet</code><br><code>elegant</code><br><code>minimal</code> |
-| 03 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-developer-open.gif" alt="Developer-open Prysai logo animation" width="480"> | **Developer-open**<br><code>developer-open</code><br><code>developer</code><br><code>open source</code><br><code>opensource</code><br><code>api</code><br><code>cli</code><br><code>code</code><br><code>tooling</code><br><code>technical</code><br><code>precise</code> |
-| 04 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-ai-field.gif" alt="AI-field Prysai logo animation" width="480"> | **AI-field**<br><code>ai-field</code><br><code>ai</code><br><code>artificial intelligence</code><br><code>machine learning</code><br><code>ml</code><br><code>neural</code><br><code>data</code><br><code>model</code><br><code>generative</code><br><code>future</code><br><code>intelligent</code> |
-| 05 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-fintech-trust.gif" alt="Fintech-trust Prysai logo animation" width="480"> | **Fintech-trust**<br><code>fintech-trust</code><br><code>fintech</code><br><code>banking</code><br><code>bank</code><br><code>payments</code><br><code>payment</code><br><code>trust</code><br><code>finance</code><br><code>institutional</code><br><code>reliable</code><br><code>secure finance</code> |
-| 06 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-security-shield.gif" alt="Security-shield Prysai logo animation" width="480"> | **Security-shield**<br><code>security-shield</code><br><code>security</code><br><code>privacy</code><br><code>identity</code><br><code>authentication</code><br><code>auth</code><br><code>defense</code><br><code>shield</code><br><code>compliance</code><br><code>protection</code> |
-| 07 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-commerce-energy.gif" alt="Commerce-energy Prysai logo animation" width="480"> | **Commerce-energy**<br><code>commerce-energy</code><br><code>commerce</code><br><code>retail</code><br><code>shopping</code><br><code>marketplace</code><br><code>consumer</code><br><code>sale</code><br><code>conversion</code><br><code>friendly</code> |
-| 08 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-automotive-precision.gif" alt="Automotive-precision Prysai logo animation" width="480"> | **Automotive-precision**<br><code>automotive-precision</code><br><code>automotive</code><br><code>mobility</code><br><code>transport</code><br><code>engineering</code><br><code>performance</code><br><code>industrial</code><br><code>mechanical</code> |
-| 09 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-sports-impact.gif" alt="Sports-impact Prysai logo animation" width="480"> | **Sports-impact**<br><code>sports-impact</code><br><code>sports</code><br><code>fitness</code><br><code>competition</code><br><code>speed</code><br><code>impact</code><br><code>bold</code><br><code>dynamic</code><br><code>athletics</code> |
-| 10 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-cinematic-title.gif" alt="Cinematic-title Prysai logo animation" width="480"> | **Cinematic-title**<br><code>cinematic-title</code><br><code>cinematic</code><br><code>film</code><br><code>movie</code><br><code>title</code><br><code>trailer</code><br><code>story</code><br><code>dramatic</code><br><code>suspense</code> |
-| 11 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-nature-flow.gif" alt="Nature-flow Prysai logo animation" width="480"> | **Nature-flow**<br><code>nature-flow</code><br><code>nature</code><br><code>organic</code><br><code>wellness</code><br><code>sustainable</code><br><code>water</code><br><code>wind</code><br><code>growth</code><br><code>calm</code><br><code>health</code> |
-| 12 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-gaming-world.gif" alt="Gaming-world Prysai logo animation" width="480"> | **Gaming-world**<br><code>gaming-world</code><br><code>gaming</code><br><code>esports</code><br><code>fantasy</code><br><code>sci-fi</code><br><code>character</code><br><code>quest</code><br><code>arcade</code><br><code>playful</code> |
-| 13 | <img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark" width="240"> | <img src="showcase/assets/animations/prysai-accessibility-first.gif" alt="Accessibility-first Prysai logo animation" width="480"> | **Accessibility-first**<br><code>accessibility-first</code><br><code>accessible</code><br><code>accessibility</code><br><code>reduced motion</code><br><code>calm</code><br><code>inclusive</code><br><code>low motion</code><br><code>keyboard</code><br><code>assistive</code> |
+<table class="motiflux-gallery">
+<tr>
+<td width="50%" valign="top">
+<h3>01 · System-spatial</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for System-spatial" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-system-spatial.gif" alt="System-spatial Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>system-spatial</code><br><sub>TRIGGER KEYWORDS</sub><br><code>system</code> <code>product</code> <code>saas</code> <code>dashboard</code> <code>enterprise</code> <code>interface</code> <code>structured</code> <code>clear</code> <code>technology</code></p>
+<p><sub>Communicate state change, hierarchy, and spatial continuity through semantic movement.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>02 · Premium-quiet</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Premium-quiet" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-premium-quiet.gif" alt="Premium-quiet Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>premium-quiet</code><br><sub>TRIGGER KEYWORDS</sub><br><code>premium</code> <code>luxury</code> <code>fashion</code> <code>beauty</code> <code>editorial</code> <code>quiet</code> <code>elegant</code> <code>minimal</code></p>
+<p><sub>Create perceived value through restraint, material presence, optical alignment, and deliberate timing.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>03 · Developer-open</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Developer-open" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-developer-open.gif" alt="Developer-open Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>developer-open</code><br><sub>TRIGGER KEYWORDS</sub><br><code>developer</code> <code>open source</code> <code>opensource</code> <code>api</code> <code>cli</code> <code>code</code> <code>tooling</code> <code>technical</code> <code>precise</code></p>
+<p><sub>Make transformation legible to technical users through explicit phases and reproducible state.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>04 · AI-field</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for AI-field" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-ai-field.gif" alt="AI-field Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>ai-field</code><br><sub>TRIGGER KEYWORDS</sub><br><code>ai</code> <code>artificial intelligence</code> <code>machine learning</code> <code>ml</code> <code>neural</code> <code>data</code> <code>model</code> <code>generative</code> <code>future</code> <code>intelligent</code></p>
+<p><sub>Suggest intelligence through organized transformation rather than science-fiction decoration.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>05 · Fintech-trust</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Fintech-trust" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-fintech-trust.gif" alt="Fintech-trust Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>fintech-trust</code><br><sub>TRIGGER KEYWORDS</sub><br><code>fintech</code> <code>banking</code> <code>bank</code> <code>payments</code> <code>payment</code> <code>trust</code> <code>finance</code> <code>institutional</code> <code>reliable</code> <code>secure finance</code></p>
+<p><sub>Communicate reliability, controlled movement, and successful resolution.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>06 · Security-shield</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Security-shield" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-security-shield.gif" alt="Security-shield Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>security-shield</code><br><sub>TRIGGER KEYWORDS</sub><br><code>security</code> <code>privacy</code> <code>identity</code> <code>authentication</code> <code>auth</code> <code>defense</code> <code>shield</code> <code>compliance</code> <code>protection</code></p>
+<p><sub>Convey boundary, verification, and controlled access.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>07 · Commerce-energy</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Commerce-energy" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-commerce-energy.gif" alt="Commerce-energy Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>commerce-energy</code><br><sub>TRIGGER KEYWORDS</sub><br><code>commerce</code> <code>retail</code> <code>shopping</code> <code>marketplace</code> <code>consumer</code> <code>sale</code> <code>conversion</code> <code>friendly</code></p>
+<p><sub>Create approachability and action without making the brand feel unstable.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>08 · Automotive-precision</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Automotive-precision" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-automotive-precision.gif" alt="Automotive-precision Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>automotive-precision</code><br><sub>TRIGGER KEYWORDS</sub><br><code>automotive</code> <code>mobility</code> <code>transport</code> <code>engineering</code> <code>performance</code> <code>industrial</code> <code>mechanical</code></p>
+<p><sub>Express mass, direction, precision, and mechanical confidence.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>09 · Sports-impact</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Sports-impact" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-sports-impact.gif" alt="Sports-impact Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>sports-impact</code><br><sub>TRIGGER KEYWORDS</sub><br><code>sports</code> <code>fitness</code> <code>competition</code> <code>speed</code> <code>impact</code> <code>bold</code> <code>dynamic</code> <code>athletics</code></p>
+<p><sub>Create energy through anticipation, compression, release, and recovery.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>10 · Cinematic-title</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Cinematic-title" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-cinematic-title.gif" alt="Cinematic-title Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>cinematic-title</code><br><sub>TRIGGER KEYWORDS</sub><br><code>cinematic</code> <code>film</code> <code>movie</code> <code>title</code> <code>trailer</code> <code>story</code> <code>dramatic</code> <code>suspense</code></p>
+<p><sub>Reveal meaning through attention control, scale, silence, and composition.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>11 · Nature-flow</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Nature-flow" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-nature-flow.gif" alt="Nature-flow Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>nature-flow</code><br><sub>TRIGGER KEYWORDS</sub><br><code>nature</code> <code>organic</code> <code>wellness</code> <code>sustainable</code> <code>water</code> <code>wind</code> <code>growth</code> <code>calm</code> <code>health</code></p>
+<p><sub>Imply growth, breath, flow, and connection without losing mark structure.</sub></p>
+</td>
+<td width="50%" valign="top">
+<h3>12 · Gaming-world</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Gaming-world" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-gaming-world.gif" alt="Gaming-world Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>gaming-world</code><br><sub>TRIGGER KEYWORDS</sub><br><code>gaming</code> <code>esports</code> <code>fantasy</code> <code>sci-fi</code> <code>character</code> <code>quest</code> <code>arcade</code> <code>playful</code></p>
+<p><sub>Create personality, reward, and world-building around a recognizable mark.</sub></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>13 · Accessibility-first</h3>
+<table>
+<tr>
+<td align="center" valign="top" width="36%"><img src="showcase/assets/prysai-mark-crop.jpg" alt="Static Prysai source mark for Accessibility-first" width="150"><br><sub>STATIC SOURCE</sub></td>
+<td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-accessibility-first.gif" alt="Accessibility-first Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
+</tr>
+</table>
+<p><code>accessibility-first</code><br><sub>TRIGGER KEYWORDS</sub><br><code>accessible</code> <code>accessibility</code> <code>reduced motion</code> <code>calm</code> <code>inclusive</code> <code>low motion</code> <code>keyboard</code> <code>assistive</code></p>
+<p><sub>Preserve orientation and feedback while minimizing vestibular, cognitive, and visual load.</sub></p>
+</td>
+<td width="50%" valign="top"></td>
+</tr>
+</table>
+
+<sub>LEFT = unchanged source image · RIGHT = generated animated result</sub>
 
 <!-- GITHUB_GALLERY:END -->
 

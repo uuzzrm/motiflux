@@ -14,9 +14,9 @@ redraw or rename the Prysai identity.
 - `index.html` - dependency-free interactive grid with filtering and motion controls.
 - `assets/animations/prysai-ai-field.gif` - the primary image-to-animation output
   for the example request; every theme also has a portable GIF export.
-- The repository root `README.md` contains a generated GitHub-native gallery:
-  every row places the same static source image beside its theme GIF and trigger
-  keywords, so the image-to-animation result is visible without opening HTML.
+- The repository root `README.md` contains a generated GitHub-native card grid:
+  every card places the same static source image on the left beside its theme GIF
+  on the right, with the route trigger keywords below.
 - `themes.json` - derived display snapshot generated from the canonical catalog;
   it is not used for routing.
 - `assets/prysai-logo-white.jpg` - supplied source image, copied unchanged.

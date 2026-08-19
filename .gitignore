@@ -20,3 +20,6 @@ work/
 # Showcase source outputs are checked in; only local render intermediates are ignored
 showcase/tmp/
 showcase/output/previews/html-grid-v2.png
+
+# Browser validation artifacts stay local to the workspace
+output/playwright/
