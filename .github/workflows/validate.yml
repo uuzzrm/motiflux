@@ -25,3 +25,5 @@ jobs:
         run: |
           python skills/motiflux/tools/motiflux.py project examples/basic-mark/mark.svg "AI logo animation" work/ci-project
           python skills/motiflux/tools/motiflux.py validate project work/ci-project/project.json
+          python skills/motiflux/tools/motiflux.py validate artifact-index work/ci-project/artifact-index.json
+          python skills/motiflux/tools/motiflux.py probe work/ci-project/package

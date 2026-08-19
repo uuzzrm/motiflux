@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import sys
 import tempfile
 import unittest
@@ -20,6 +21,9 @@ from engine.artifacts import ArtifactStore  # noqa: E402
 from engine.catalog import load_catalog  # noqa: E402
 from engine.planner import build_plan, validate_references  # noqa: E402
 from engine.project_pipeline import run_project  # noqa: E402
+from engine.pipeline import PipelineContext, PipelineRunner, StageDefinition  # noqa: E402
+from engine.domain import StageResult  # noqa: E402
+from engine.runtime_probe import probe_runtime  # noqa: E402
 from validate_artifact import validate  # noqa: E402
 
 
@@ -106,6 +110,15 @@ class MotifluxToolTests(unittest.TestCase):
             self.assertEqual(result["stages"][2]["status"], "complete")
             report = validate("project", Path(temp_dir) / "project" / "project.json")
             self.assertTrue(report["valid"], report["errors"])
+            index = json.loads((Path(temp_dir) / "project" / "artifact-index.json").read_text(encoding="utf-8"))
+            self.assertGreaterEqual(index["count"], 1)
+            source_record = next(item for item in index["artifacts"] if item["path"] == "source-analysis.json")
+            payload = (Path(temp_dir) / "project" / source_record["path"]).read_bytes()
+            self.assertEqual(source_record["bytes"], len(payload))
+            self.assertEqual(source_record["sha256"], hashlib.sha256(payload).hexdigest())
+            self.assertEqual(result["architecture_version"], "1.1")
+            self.assertEqual(result["execution"]["runner"], "PipelineRunner")
+            self.assertIn("runtime_probe", result["artifacts"])
 
     def test_project_pipeline_keeps_raster_reconstruction_as_candidate(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -117,6 +130,45 @@ class MotifluxToolTests(unittest.TestCase):
             self.assertEqual(stages["reconstruct"]["status"], "candidate")
             self.assertIn("reconstruct-raster-source", result["not_run"])
             self.assertEqual(stages["compile"]["status"], "blocked")
+            self.assertIn("missing-prerequisite:canonical-mark", result["not_run"])
+
+    def test_artifact_index_rejects_changed_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "project"
+            run_project(EXAMPLE / "mark.svg", "AI logo animation", output)
+            index_path = output / "artifact-index.json"
+            first = validate("artifact-index", index_path)
+            self.assertTrue(first["valid"], first["errors"])
+            source_path = output / "source-analysis.json"
+            source_path.write_text(source_path.read_text(encoding="utf-8") + "tampered\n", encoding="utf-8")
+            second = validate("artifact-index", index_path)
+            self.assertFalse(second["valid"])
+            self.assertTrue(any("hash mismatch" in error or "size mismatch" in error for error in second["errors"]))
+
+    def test_pipeline_runner_blocks_missing_prerequisites_and_does_not_call_handler(self) -> None:
+        calls: list[str] = []
+
+        def handler(context: PipelineContext) -> StageResult:
+            calls.append("called")
+            return StageResult("downstream", "complete")
+
+        runner = PipelineRunner((StageDefinition("downstream", ("missing",), (), handler),))
+        with tempfile.TemporaryDirectory() as temp_dir:
+            context = PipelineContext.create(EXAMPLE / "mark.svg", "test", Path(temp_dir), ArtifactStore(Path(temp_dir)), load_catalog())
+            result = runner.run(context)[0]
+        self.assertEqual(result.status, "blocked")
+        self.assertEqual(calls, [])
+        self.assertIn("missing-prerequisite:missing", result.not_run)
+
+    def test_runtime_probe_reports_node_and_browser_evidence_separately(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "package"
+            build(EXAMPLE / "mark.svg", EXAMPLE / "motion-plan.yaml", output)
+            report = probe_runtime(output, node_executable=None)
+        self.assertEqual(report["status"], "candidate")
+        self.assertTrue(report["checks"]["static-contract"]["passed"])
+        self.assertIn("browser-runtime-check", report["not_run"])
+        self.assertIn("node-runtime-harness", report["not_run"])
 
     def test_showcase_contains_thirteen_motion_players_and_runtime_contract(self) -> None:
         html = (ROOT / "showcase" / "index.html").read_text(encoding="utf-8")

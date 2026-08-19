@@ -6,6 +6,18 @@ modules.
 """
 
 from .catalog import ThemeCatalog, ThemeProfile, load_catalog
-from .domain import ProjectManifest, StageResult
+from .domain import ArtifactRef, CapabilityReport, ProjectManifest, StageResult
+from .pipeline import PipelineContext, PipelineRunner, StageDefinition
 
-__all__ = ["ProjectManifest", "StageResult", "ThemeCatalog", "ThemeProfile", "load_catalog"]
+__all__ = [
+    "ArtifactRef",
+    "CapabilityReport",
+    "PipelineContext",
+    "PipelineRunner",
+    "ProjectManifest",
+    "StageDefinition",
+    "StageResult",
+    "ThemeCatalog",
+    "ThemeProfile",
+    "load_catalog",
+]

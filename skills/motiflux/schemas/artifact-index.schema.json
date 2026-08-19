@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/artifact-index.schema.json",
+  "title": "Motiflux artifact index",
+  "type": "object",
+  "required": ["schema_version", "index_version", "root", "count", "artifacts"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "index_version": { "const": "1.1" },
+    "root": { "const": "." },
+    "count": { "type": "integer", "minimum": 0 },
+    "excluded": { "type": "array", "items": { "type": "string" } },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes", "producer", "media_type"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "producer": { "type": "string", "minLength": 1 },
+          "media_type": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

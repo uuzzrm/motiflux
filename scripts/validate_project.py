@@ -28,9 +28,12 @@ ENGINE_NAMES = {
     "artifacts.py",
     "catalog.py",
     "domain.py",
+    "pipeline.py",
     "planner.py",
     "project_pipeline.py",
     "runtime.py",
+    "runtime_probe.py",
+    "stages.py",
 }
 
 
@@ -69,11 +72,12 @@ def validate_manifest() -> None:
 def validate_skill() -> tuple[str, str]:
     skill_path = SKILL_ROOT / "SKILL.md"
     guide_path = SKILL_ROOT / "guides" / "motion-themes.md"
+    kernel_guide_path = SKILL_ROOT / "guides" / "project-kernel.md"
     agent_path = SKILL_ROOT / "agents" / "openai.yaml"
     schema_paths = sorted((SKILL_ROOT / "schemas").glob("*.schema.json"))
     tool_paths = sorted((SKILL_ROOT / "tools").glob("*.py"))
     engine_paths = sorted((SKILL_ROOT / "tools" / "engine").glob("*.py"))
-    for path in (skill_path, guide_path, agent_path, *schema_paths, *tool_paths, *engine_paths):
+    for path in (skill_path, guide_path, kernel_guide_path, agent_path, *schema_paths, *tool_paths, *engine_paths):
         require_file(path)
     if {path.name for path in tool_paths} != TOOL_NAMES:
         fail("skill tools must contain exactly the declared adapter set")
@@ -84,6 +88,8 @@ def validate_skill() -> tuple[str, str]:
         "evidence.schema.json",
         "theme-selection.schema.json",
         "project.schema.json",
+        "artifact-index.schema.json",
+        "runtime-probe.schema.json",
     }:
         fail("skill schemas must contain the declared artifact contracts")
     if {path.name for path in engine_paths} != ENGINE_NAMES:
@@ -101,6 +107,7 @@ def validate_skill() -> tuple[str, str]:
 
     skill = skill_path.read_text(encoding="utf-8")
     guide = guide_path.read_text(encoding="utf-8")
+    kernel_guide = kernel_guide_path.read_text(encoding="utf-8")
     agent = agent_path.read_text(encoding="utf-8")
 
     if not skill.startswith("---\n") or "\n---" not in skill[4:]:
@@ -138,9 +145,15 @@ def validate_skill() -> tuple[str, str]:
         "tools/motiflux.py project",
         "project manifest",
         "project pipeline",
+        "tools/motiflux.py probe",
+        "artifact-index.json",
+        "PipelineRunner",
     ):
         if required not in skill:
             fail(f"SKILL.md is missing required concept: {required}")
+    for required in ("Stage graph", "requires", "provides", "Artifact index", "runtime-probe"):
+        if required not in kernel_guide:
+            fail(f"project kernel guide is missing required concept: {required}")
 
     theme_count = len(re.findall(r"^##\s+\d+\.\s+", guide, re.MULTILINE))
     if theme_count < 10:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 import sys
 from pathlib import Path
 
@@ -10,6 +11,7 @@ from audit_motion import audit
 from build_web_package import build
 from compare_shape import compare
 from engine.project_pipeline import run_project
+from engine.runtime_probe import probe_runtime
 from measure_mark import measure
 from motiflux_core import write_json
 from route_theme import route
@@ -56,6 +58,13 @@ def main() -> None:
     package_parser.add_argument("package", type=Path)
     package_parser.add_argument("--output", type=Path)
 
+    probe_parser = subparsers.add_parser(
+        "probe",
+        help="run offline runtime contract checks against a generated package",
+    )
+    probe_parser.add_argument("package", type=Path)
+    probe_parser.add_argument("--output", type=Path)
+
     project_parser = subparsers.add_parser(
         "project",
         help="run the source-aware project pipeline and write a project manifest",
@@ -67,6 +76,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "project":
         result, output = run_project(args.source, args.request, args.output), None
+    elif args.command == "probe":
+        result, output = probe_runtime(args.package.resolve(), node_executable=shutil.which("node")), args.output
     elif args.command == "measure":
         result, output = measure(args.input.resolve()), args.output
     elif args.command == "compare":

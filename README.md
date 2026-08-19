@@ -14,12 +14,14 @@ Status: private development · Motiflux V1 · plugin release `1.0.0`
 - `skills/motiflux/guides/motion-themes.md` — 13 theme routes with algorithm
   stacks, implementation controls, exclusions, and QA focus.
 - `skills/motiflux/agents/openai.yaml` — UI metadata for skill discovery.
+- `skills/motiflux/guides/project-kernel.md` — AI-facing stage graph, module
+  interfaces, artifact integrity, and extension protocol.
 - `skills/motiflux/schemas/` — machine-readable contracts for plans, evidence,
-  telemetry, and source observations.
+  telemetry, source observations, artifact indexes, and runtime probes.
 - `skills/motiflux/catalog/themes.json` — the single machine-readable catalog
   for 13 routable motion themes.
 - `skills/motiflux/tools/` — offline `measure`, `route`, `project`, `compare`,
-  `audit`, `build`, and `validate` command seams.
+  `audit`, `build`, `probe`, and `validate` command seams.
 - `examples/basic-mark/` — a deterministic end-to-end fixture.
 - `showcase/` — a source-preserving 13-theme comparison grid, supplied Prysai
   asset, and generated PDF atlas.
@@ -46,6 +48,27 @@ Theme selection changes choreography and implementation parameters; it must not
 change identity constraints of the source mark. Public design systems are used
 only as principle references, never as claims about private vendor algorithms or
 copied assets.
+
+## Architecture
+
+The public interface is the unified project command. Internally, a dependency-
+checked stage registry keeps the execution graph explicit:
+
+```text
+analyze → route → plan → reconstruct → verify-geometry
+                                      ↓
+                         compile → verify-package → verify-motion
+                                      ↓
+                         artifact-index + project manifest
+```
+
+Each stage declares its prerequisites and products. Missing prerequisites block
+dependent stages and remain visible in the manifest. Every generated file is
+indexed with SHA-256, byte size, media type, and producing stage. The local
+runtime probe can verify static package markers and a Node harness; it does not
+claim browser-pixel or accessibility-tree proof. See
+[`project-kernel.md`](skills/motiflux/guides/project-kernel.md) and
+[`ADR-006`](docs/decisions/ADR-006-dependency-checked-pipeline-and-artifact-index.md).
 
 ## Showcase
 
@@ -110,13 +133,17 @@ python skills\motiflux\tools\motiflux.py build examples\basic-mark\mark.svg exam
 python skills\motiflux\tools\motiflux.py route "AI security startup"
 python skills\motiflux\tools\motiflux.py project examples\basic-mark\mark.svg "AI logo animation" work\project
 python skills\motiflux\tools\motiflux.py validate project work\project\project.json
+python skills\motiflux\tools\motiflux.py validate artifact-index work\project\artifact-index.json
+python skills\motiflux\tools\motiflux.py probe work\project\package
 python showcase\generate_showcase.py
 ```
 
-The project command runs `analyze -> route -> plan -> reconstruct -> compile ->
-verify -> package` and writes a traceable `project.json`. SVG input can compile
+The project command runs `analyze -> route -> plan -> reconstruct ->
+verify-geometry -> compile -> verify-package -> verify-motion` and writes a
+traceable `project.json` plus `artifact-index.json`. SVG input can compile
 through the deterministic fixture; raster input remains an honest `candidate`
-until a real raster-to-vector adapter is available.
+and blocks vector-dependent stages until a real raster-to-vector adapter is
+available.
 
 The output is deliberately evidence-preserving. A valid semantic SVG comparison
 does not claim browser pixels, raster contours, or accessibility-tree proof.

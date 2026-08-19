@@ -1,4 +1,10 @@
-"""Small domain records shared by the Motiflux project pipeline."""
+"""Small domain records shared by the Motiflux project pipeline.
+
+These records are the internal language of the kernel.  Command adapters may
+continue to return dictionaries for compatibility, but stage orchestration,
+artifact indexing, and evidence aggregation use these records so the seams do
+not depend on ad-hoc mapping keys.
+"""
 
 from __future__ import annotations
 
@@ -7,6 +13,44 @@ from typing import Any, Literal
 
 
 Status = Literal["complete", "candidate", "blocked"]
+
+
+@dataclass(frozen=True)
+class CapabilityReport:
+    """Report whether an optional local capability is available."""
+
+    id: str
+    available: bool
+    provider: str
+    details: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "available": self.available,
+            "provider": self.provider,
+            "details": self.details,
+        }
+
+
+@dataclass(frozen=True)
+class ArtifactRef:
+    """Content-addressed metadata for one emitted project artifact."""
+
+    path: str
+    sha256: str
+    bytes: int
+    producer: str
+    media_type: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "path": self.path,
+            "sha256": self.sha256,
+            "bytes": self.bytes,
+            "producer": self.producer,
+            "media_type": self.media_type,
+        }
 
 
 @dataclass(frozen=True)
@@ -24,6 +68,8 @@ class StageResult:
     not_run: tuple[str, ...] = ()
     unresolved: tuple[str, ...] = ()
     metadata: dict[str, Any] = field(default_factory=dict)
+    requires: tuple[str, ...] = ()
+    provides: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -33,6 +79,8 @@ class StageResult:
             "not_run": list(self.not_run),
             "unresolved": list(self.unresolved),
             "metadata": self.metadata,
+            "requires": list(self.requires),
+            "provides": list(self.provides),
         }
 
 
@@ -49,6 +97,10 @@ class ProjectManifest:
     status: Status
     not_run: tuple[str, ...] = ()
     unresolved: tuple[str, ...] = ()
+    architecture_version: str = "1.1"
+    artifact_index: str = "artifact-index.json"
+    capabilities: dict[str, dict[str, Any]] = field(default_factory=dict)
+    execution: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -61,6 +113,10 @@ class ProjectManifest:
             "status": self.status,
             "not_run": list(self.not_run),
             "unresolved": list(self.unresolved),
+            "architecture_version": self.architecture_version,
+            "artifact_index": self.artifact_index,
+            "capabilities": self.capabilities,
+            "execution": self.execution,
         }
 
 

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/uuzzrm/motiflux/schemas/runtime-probe.schema.json",
+  "title": "Motiflux offline runtime probe",
+  "type": "object",
+  "required": ["schema_version", "status", "scope", "package", "checks", "capabilities", "not_run", "unresolved"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "status": { "enum": ["complete", "candidate", "blocked"] },
+    "scope": { "const": "offline-runtime-contract" },
+    "package": { "type": "string", "minLength": 1 },
+    "checks": { "type": "object" },
+    "capabilities": { "type": "object" },
+    "not_run": { "type": "array", "items": { "type": "string" } },
+    "unresolved": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

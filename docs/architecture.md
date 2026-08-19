@@ -16,13 +16,13 @@ runtime controls.
           +----------------------+----------------------+
           |                      |                      |
           v                      v                      v
-   theme catalog          project pipeline         artifact contracts
- catalog/themes.json   tools/engine/*.py        schemas/*.schema.json
+   theme catalog          stage registry           artifact contracts
+ catalog/themes.json   PipelineRunner/*.py      schemas/*.schema.json
           |                      |                      |
           +--------------+-------+--------------+-------+
                          v                      v
                 adapters / core          validators
-             measure + build          compare + audit
+          measure + build + probe    compare + audit + index
                          |                      |
                          +--------------+-------+
                                         v
@@ -40,12 +40,15 @@ can be used independently or through the standard project pipeline.
 | `compare` | Compare candidate and canonical SVG semantics | geometry evidence |
 | `audit` | Check telemetry, progress, bounds, fingerprints, and accessibility | motion evidence |
 | `build` | Assemble a dependency-free web package with runtime hooks | output package |
+| `probe` | Check static runtime contracts and optional local Node execution | runtime-probe evidence |
 | `project` | Run analyze -> route -> plan -> reconstruct -> compile -> verify -> package | `project.json` |
 
 `catalog/themes.json` is the routing authority. `tools/engine/project_pipeline.py`
-is the deep internal module that composes adapters behind the small `project`
-interface. It writes a manifest even when reconstruction or browser proof is
-unavailable, preserving `candidate`, `blocked`, `not_run`, and `unresolved`.
+is the compatibility façade behind the small `project` interface;
+`tools/engine/pipeline.py` owns the dependency-checked stage registry and
+`tools/engine/artifacts.py` owns the content index. The pipeline writes a
+manifest even when reconstruction or browser proof is unavailable, preserving
+`candidate`, `blocked`, `not_run`, and `unresolved`.
 
 `tools/motiflux_core.py` is an internal seam shared by these adapters. It owns
 SVG parsing, semantic fingerprints, structured-document loading, safe writes, and
@@ -62,8 +65,9 @@ they should use the four CLI seams or the artifact files.
    raster input without that adapter remains a candidate.
 4. `build` compiles the selected profile into a dependency-free runtime package.
 5. The runtime emits telemetry and `audit` turns it into evidence.
-6. `project.json` links every stage and artifact. Missing proof remains visible
-   as `not_run` or `unresolved`.
+6. `artifact-index.json` hashes every emitted file except the index and
+   manifest; `project.json` links stages, capabilities, execution order, and
+   named artifacts. Missing proof remains visible as `not_run` or `unresolved`.
 
 The showcase is a separate display adapter: it consumes the same catalog and
 the supplied source raster, then renders a playable image-to-animation grid.
@@ -85,6 +89,9 @@ substitute for runtime evidence.
 - Prefer replacement over layering. If a new algorithm is added, give it a
   contract and a test fixture; do not add another undocumented branch to the
   orchestrator.
+- Keep the façade thin. Add stage behavior behind `PipelineRunner`, and add
+  artifact writes through `ArtifactStore` so provenance and integrity remain
+  automatic.
 
 ## Extension protocol
 
@@ -96,5 +103,7 @@ To add a new algorithm family:
 3. Add an implementation adapter or template behind an existing CLI seam.
 4. Add one positive and one failure fixture.
 5. Update the relevant guide and ADR if the seam changes.
-6. Keep the main skill concise; link to the new reference instead of duplicating
+6. If the change affects stage ordering, artifacts, capabilities, or evidence
+   meaning, update `guides/project-kernel.md` and add an ADR.
+7. Keep the main skill concise; link to the new reference instead of duplicating
    the algorithm description.

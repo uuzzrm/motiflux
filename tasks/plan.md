@@ -101,3 +101,64 @@ machine-readable contracts, examples, tests, and an updated orchestrator; one
 source/request pair can produce a traceable project manifest and package; all
 available checks pass; and the project still preserves the original functional
 invariants.
+
+## Architecture hardening: V1.1 kernel
+
+The first kernel pass created useful contracts and a one-command path, but the
+runner still centralizes stage logic and does not expose a durable execution
+model. This phase deepens the internal modules without changing the public
+artifact names or the existing CLI contract.
+
+### Architecture decisions
+
+- Keep `run_project(source, request, output)` as the small external interface;
+  move stage execution behind a dependency-checked `PipelineRunner`.
+- Give every stage a typed context, declared prerequisites, capability report,
+  and artifact references. The manifest records hashes and sizes so an agent can
+  inspect what actually changed.
+- Separate compilation, package validation, and runtime verification. A static
+  local probe may prove the JavaScript contract; it must not be described as
+  browser-pixel or accessibility-tree evidence.
+- Treat adapters as replaceable at the internal seam: the default offline
+  adapters remain deterministic, while optional Node/browser probes can add
+  evidence without changing stage decisions.
+- Preserve existing artifact paths, theme IDs, status vocabulary, raster
+  candidate behavior, and canonical end-state requirements.
+
+### Dependency graph
+
+```text
+source/request
+      ↓
+analyze → route → plan → reconstruct → geometry-verify
+                                      ↓
+                                  compile → package-verify → runtime-verify
+                                      ↓             ↓              ↓
+                                  artifact index → project manifest ← evidence
+```
+
+### Architecture hardening tasks
+
+- [x] Task 20: Define typed pipeline context, stage interface, capability
+  reports, and artifact references.
+- [x] Task 21: Replace the monolithic project runner with a dependency-checked
+  stage registry while preserving the current public `run_project` interface.
+- [x] Task 22: Add deterministic artifact indexing with SHA-256, byte size, and
+  producer metadata; include it in the project manifest.
+- [x] Task 23: Add a runtime verification seam with an offline static/Node
+  adapter and explicit browser evidence gap.
+- [x] Task 24: Strengthen project validation and end-to-end tests around stage
+  order, skipped prerequisites, artifact hashes, and runtime probe output.
+- [x] Task 25: Update SKILL.md, architecture docs, ADRs, README, and task
+  checklist so future agents can navigate the new interfaces without reading
+  implementation internals.
+
+### Architecture hardening checkpoint
+
+- [x] Existing CLI commands and artifact filenames remain compatible.
+- [x] SVG and raster project runs preserve their current status semantics.
+- [x] A failed prerequisite cannot execute a downstream stage.
+- [x] Every emitted artifact is indexed and hash-verifiable.
+- [x] Runtime verification distinguishes static/Node evidence from browser and
+  accessibility evidence that was not run.
+- [x] Full tests, skill/plugin validation, and project validation pass.

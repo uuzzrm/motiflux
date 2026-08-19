@@ -32,10 +32,12 @@ these narrow seams:
 | runtime telemetry | `tools/motiflux.py audit` | motion evidence |
 | web delivery | `tools/motiflux.py build` | dependency-free package |
 | complete source/request job | `tools/motiflux.py project` | `project.json` manifest |
+| offline runtime contract | `tools/motiflux.py probe` | runtime-probe evidence |
 
 Read the direct resource for the active phase: `catalog/themes.json` for
 canonical profiles; `guides/motion-themes.md` for rationale and aliases;
 `guides/algorithm-catalog.md` for algorithm proof gates;
+`guides/project-kernel.md` for stage interfaces and execution semantics;
 `guides/output-contract.md` and `guides/runtime-contract.md` for delivery;
 `schemas/*.schema.json` for contracts; and `tools/*.py` for adapters.
 
@@ -58,7 +60,8 @@ one model and remain inspectable in an artifact.
 For a complete source/request job, use the project pipeline in this order:
 
 ```text
-analyze -> route -> plan -> reconstruct -> compile -> verify -> package
+    analyze -> route -> plan -> reconstruct -> verify-geometry
+      -> compile -> verify-package -> verify-motion
 ```
 
 Run it through the stable command seam:
@@ -67,11 +70,16 @@ Run it through the stable command seam:
 tools/motiflux.py project <source> <request> <output>
 ```
 
-The command writes a `project manifest` at `<output>/project.json`, links each
-stage to its artifacts, and preserves `complete`, `candidate`, or `blocked`,
-plus `not_run` and `unresolved`. It does not replace artifact contracts. Raster
-input without a real raster-to-vector adapter remains a candidate; never label
-a placeholder vector complete.
+The command writes a `project manifest` at `<output>/project.json`, an
+`artifact-index.json` with SHA-256, size, and producer records, and one artifact
+per stage. `PipelineRunner` executes the registry and `stages.py` supplies the
+default handlers. Each stage declares `requires` and `provides`; a missing
+prerequisite blocks that stage and every dependent stage rather than running a
+partial implementation. The manifest also records capability reports and execution
+order. It preserves `complete`, `candidate`, or `blocked`, plus `not_run` and
+`unresolved`. It does not replace artifact contracts. Raster input without a
+real raster-to-vector adapter remains a candidate; never label a placeholder
+vector complete.
 
 Before delivery, validate cross-artifact references in addition to JSON shape:
 theme IDs must exist in `catalog/themes.json`; actor, beat, parent, occlusion,
@@ -345,6 +353,16 @@ Build a dependency-free delivery adapter only after the motion plan validates:
 tools/motiflux.py validate motion-plan motion-plan.yaml
 tools/motiflux.py build mark.svg motion-plan.yaml <output-dir>
 ```
+
+After compilation, run the scoped offline runtime probe:
+
+```text
+tools/motiflux.py probe <output-dir>
+```
+
+This may prove static runtime markers, JavaScript syntax, and the local Node
+harness. It does not prove browser layout, pixels, console behavior in a real
+browser, or the accessibility tree. Those remain explicit `not_run` items.
 
 ## VALIDATE
 

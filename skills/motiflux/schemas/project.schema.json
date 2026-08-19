@@ -9,11 +9,15 @@
     "project_id": { "type": "string", "minLength": 1 },
     "request": { "type": "string", "minLength": 1 },
     "source": { "type": "object", "required": ["path", "format"], "additionalProperties": true },
-    "stages": { "type": "array", "minItems": 7, "items": { "type": "object", "required": ["stage", "status", "artifacts", "not_run", "unresolved", "metadata"], "properties": { "stage": { "type": "string" }, "status": { "enum": ["complete", "candidate", "blocked"] }, "artifacts": { "type": "array", "items": { "type": "string" } }, "not_run": { "type": "array", "items": { "type": "string" } }, "unresolved": { "type": "array", "items": { "type": "string" } }, "metadata": { "type": "object" } }, "additionalProperties": true } },
+    "stages": { "type": "array", "minItems": 7, "items": { "type": "object", "required": ["stage", "status", "artifacts", "not_run", "unresolved", "metadata"], "properties": { "stage": { "type": "string" }, "status": { "enum": ["complete", "candidate", "blocked"] }, "artifacts": { "type": "array", "items": { "type": "string" } }, "not_run": { "type": "array", "items": { "type": "string" } }, "unresolved": { "type": "array", "items": { "type": "string" } }, "metadata": { "type": "object" }, "requires": { "type": "array", "items": { "type": "string" } }, "provides": { "type": "array", "items": { "type": "string" } } }, "additionalProperties": true } },
     "artifacts": { "type": "object", "additionalProperties": { "type": "string" } },
     "status": { "enum": ["complete", "candidate", "blocked"] },
     "not_run": { "type": "array", "items": { "type": "string" } },
-    "unresolved": { "type": "array", "items": { "type": "string" } }
+    "unresolved": { "type": "array", "items": { "type": "string" } },
+    "architecture_version": { "type": "string", "minLength": 1 },
+    "artifact_index": { "type": "string", "minLength": 1 },
+    "capabilities": { "type": "object" },
+    "execution": { "type": "object" }
   },
   "additionalProperties": true
 }

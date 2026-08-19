@@ -32,3 +32,12 @@
 - [x] Skill validator
 - [x] GitHub Actions
 - [x] Private remote SHA verification
+
+## Architecture hardening: V1.1 kernel
+
+- [x] Define typed pipeline context, stage interface, capability reports, and artifact references.
+- [x] Replace the monolithic project runner with a dependency-checked stage registry.
+- [x] Add deterministic artifact indexing with SHA-256 and producer metadata.
+- [x] Add offline static/Node runtime verification with an explicit browser evidence gap.
+- [x] Strengthen validators and end-to-end tests for stage order, prerequisites, hashes, and runtime probes.
+- [x] Update skill navigation, architecture documentation, ADRs, README, and CI.
