@@ -28,7 +28,7 @@
     {
       "id": "system-spatial",
       "gif": "assets/animations/prysai-system-spatial.gif",
-      "sha256": "433e5f953cf83401481ad0bdb40347d60796f58e66d734fcbc51b73754e3148e",
+      "sha256": "54c7110fb86c45645eef2e8888eec16b4ff5ca83aa598da3d0efd51331a735e9",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 1800,
       "canonical_frame_sha256": "086c30695a1a380620498e65f40e13d5158e183430729c1796628fce0f2fda27",
@@ -49,24 +49,24 @@
         },
         "spark": {
           "frame_index": 5,
-          "progress": 0.14,
-          "render_progress": 0.14,
+          "progress": 0.13,
+          "render_progress": 0.13,
           "label": "origin dot",
-          "bright_pixel_count": 573,
+          "bright_pixel_count": 475,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "measured actor-to-actor grid locks",
           "speed_profile": "hierarchy stagger with a slow final lock",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 135116,
-          "encoded_identity_unique_count": 531,
-          "encoded_identity_coverage": 0.017555
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448
         },
         "arc": {
-          "frame_index": 11,
-          "progress": 0.31,
-          "render_progress": 0.31,
+          "frame_index": 10,
+          "progress": 0.28,
+          "render_progress": 0.28,
           "label": "circular arc",
           "bright_pixel_count": 3682,
           "source_actor_ids": [
@@ -76,16 +76,16 @@
           "path_strategy": "measured actor-to-actor grid locks",
           "speed_profile": "hierarchy stagger with a slow final lock",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 909189,
-          "encoded_identity_unique_count": 3571,
-          "encoded_identity_coverage": 0.118061
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
         },
         "bar": {
-          "frame_index": 17,
-          "progress": 0.47,
-          "render_progress": 0.47,
+          "frame_index": 16,
+          "progress": 0.42,
+          "render_progress": 0.42,
           "label": "horizontal bar",
-          "bright_pixel_count": 4325,
+          "bright_pixel_count": 4324,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -99,11 +99,11 @@
           "encoded_identity_coverage": 0.138758
         },
         "monogram": {
-          "frame_index": 24,
-          "progress": 0.64,
-          "render_progress": 0.64,
+          "frame_index": 21,
+          "progress": 0.58,
+          "render_progress": 0.58,
           "label": "P / monogram",
-          "bright_pixel_count": 8220,
+          "bright_pixel_count": 7465,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -113,9 +113,9 @@
           "path_strategy": "measured actor-to-actor grid locks",
           "speed_profile": "hierarchy stagger with a slow final lock",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 2027712,
-          "encoded_identity_unique_count": 7967,
-          "encoded_identity_coverage": 0.263398
+          "encoded_identity_alpha_mass": 1842476,
+          "encoded_identity_unique_count": 7239,
+          "encoded_identity_coverage": 0.23933
         },
         "wordmark": {
           "frame_index": 36,
@@ -178,23 +178,23 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "e6789c20529b5f59d22b1b35c0d2b0283b79be5cbad5da91697aa24c7cdefc80",
-          "alpha_mass": 123593,
-          "unique_count": 610,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
           "bbox": {
             "x": 175,
             "y": 179,
-            "width": 30,
+            "width": 31,
             "height": 31
           },
           "centroid": {
-            "x": 190.0374,
-            "y": 194.0099
+            "x": 190.0387,
+            "y": 194.01
           },
-          "encoded_identity_alpha_mass": 135116,
-          "encoded_identity_unique_count": 531,
-          "encoded_identity_coverage": 0.017555,
-          "trajectory_fingerprint": "cac99cec1286fbbbb4c4868a7f9acaf221718b6be6765ef57dc9b203dea6b9ff"
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "05e635077bdc436588c276e09545319448effdad82ee45c4277d9ae6759c770f"
         },
         {
           "frame_index": 9,
@@ -213,18 +213,18 @@
             "x": 226.0385,
             "y": 119.2355
           },
-          "encoded_identity_alpha_mass": 707805,
-          "encoded_identity_unique_count": 2780,
-          "encoded_identity_coverage": 0.09191,
+          "encoded_identity_alpha_mass": 894735,
+          "encoded_identity_unique_count": 3514,
+          "encoded_identity_coverage": 0.116177,
           "trajectory_fingerprint": "0604c24a7a03c7ccdfa333c03812a1a5297162f48a0326c6ae14e5f32bcf9004"
         },
         {
           "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "1b8c83c50c150107b9878f38763340ae516610eb4f640c1875e6596158d7db39",
-          "alpha_mass": 1057404,
-          "unique_count": 4733,
+          "foreground_mask_sha256": "ca479131c1440040e0adab623ce4d2c93e59b6e81b1f7ccccec6be2c7c4ee1ea",
+          "alpha_mass": 1067344,
+          "unique_count": 4804,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -232,21 +232,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 237.4913,
-            "y": 120.8222
+            "x": 237.8092,
+            "y": 121.0608
           },
-          "encoded_identity_alpha_mass": 1007842,
-          "encoded_identity_unique_count": 3961,
-          "encoded_identity_coverage": 0.130955,
-          "trajectory_fingerprint": "1cc73aaa3180bb759acd6c24e474565d472e83c3cf4f56b5c19559b70a3f5145"
+          "encoded_identity_alpha_mass": 1067417,
+          "encoded_identity_unique_count": 4196,
+          "encoded_identity_coverage": 0.138725,
+          "trajectory_fingerprint": "dd8ebe5fc24fe4d4b521f2a037e80b844f4d84f60eea399d0014b96551b202d9"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "be51b67f63d5072539771818717d3425baeec43ebc97a4ffc14bb1fe6c52833a",
-          "alpha_mass": 1211339,
-          "unique_count": 5582,
+          "foreground_mask_sha256": "79e033e5c804baca8f46bfb31875a2b3fbdcb1001987c3021359c61e5bece843",
+          "alpha_mass": 1605554,
+          "unique_count": 7238,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -254,79 +254,79 @@
             "height": 130
           },
           "centroid": {
-            "x": 239.0038,
-            "y": 126.4592
+            "x": 238.6374,
+            "y": 139.5173
           },
-          "encoded_identity_alpha_mass": 1148808,
-          "encoded_identity_unique_count": 4516,
-          "encoded_identity_coverage": 0.149304,
-          "trajectory_fingerprint": "92ab0fceb28ec3b7c6d9566c7e5ced774be2145c08be6184f0dab8ce5b013f4e"
+          "encoded_identity_alpha_mass": 1524133,
+          "encoded_identity_unique_count": 5989,
+          "encoded_identity_coverage": 0.198003,
+          "trajectory_fingerprint": "9bcb50e3299cccf24e1cb42e75c740aaa91148a7ce6c60816bc9199aad6b7dfd"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "6b6f52acc9515f33da8d420d2bae1129600d4614c02cbe0bd6cc17f0b68c1058",
-          "alpha_mass": 1928775,
-          "unique_count": 8757,
+          "foreground_mask_sha256": "f14874a0b43ede2deb41adbdd4125221911f3775ff59521feeaa3b0b285381a7",
+          "alpha_mass": 2560288,
+          "unique_count": 16657,
           "bbox": {
             "x": 175,
-            "y": 79,
-            "width": 139,
-            "height": 131
+            "y": 78,
+            "width": 214,
+            "height": 133
           },
           "centroid": {
-            "x": 245.0094,
-            "y": 144.9094
+            "x": 269.2101,
+            "y": 144.8449
           },
-          "encoded_identity_alpha_mass": 1842243,
-          "encoded_identity_unique_count": 7238,
-          "encoded_identity_coverage": 0.239296,
-          "trajectory_fingerprint": "9548591031657f3e4df45439dd47b5cd199f8a2055985f9b9c85c7846a49d372"
+          "encoded_identity_alpha_mass": 2353057,
+          "encoded_identity_unique_count": 9244,
+          "encoded_identity_coverage": 0.305617,
+          "trajectory_fingerprint": "dc762ce79d355d8baa4111667a5d38cd671ff879b8299d05489883ddd8d6e68b"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "6c948303b3838aeb239a2ee0d114bf47682faa97d15bb7f1b091e57d0e1f791b",
-          "alpha_mass": 3585829,
-          "unique_count": 19929,
+          "foreground_mask_sha256": "9a121be575b1fd64ddfe4b2236f25919d59ed6c075267bf3629820c75d968b05",
+          "alpha_mass": 4159358,
+          "unique_count": 18986,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 343,
-            "height": 150
+            "width": 356,
+            "height": 143
           },
           "centroid": {
-            "x": 311.4208,
-            "y": 143.3046
+            "x": 337.61,
+            "y": 147.1925
           },
-          "encoded_identity_alpha_mass": 3622308,
-          "encoded_identity_unique_count": 14229,
-          "encoded_identity_coverage": 0.470427,
-          "trajectory_fingerprint": "7d14067cdef1e8ccbd1f7bd710dbbbb84cc6fa72775d7f7e270fdb8612de41e2"
+          "encoded_identity_alpha_mass": 4067394,
+          "encoded_identity_unique_count": 15977,
+          "encoded_identity_coverage": 0.528218,
+          "trajectory_fingerprint": "3bf1ed905d8a167f22a0a76fd85bb239aabeb06922266adef56e2fb8a3dc9464"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "988c2ef154b654911a5ee6e73f9ac6e20992968b63f4afa1fc0e51e5c1e961c1",
-          "alpha_mass": 5589756,
-          "unique_count": 25785,
+          "foreground_mask_sha256": "22ed94b88b462d552020e4bbc669ffdcd069ae767118512a7da10321b5f56f74",
+          "alpha_mass": 5826902,
+          "unique_count": 26838,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 496,
+            "width": 509,
             "height": 143
           },
           "centroid": {
-            "x": 402.656,
-            "y": 149.2293
+            "x": 413.4872,
+            "y": 149.3923
           },
           "encoded_identity_alpha_mass": 5249249,
           "encoded_identity_unique_count": 20621,
           "encoded_identity_coverage": 0.681754,
-          "trajectory_fingerprint": "e427e162f4a89566f9e8649b9f5f8c9e216e68e1c3ea0518e7a9fef3dc677971"
+          "trajectory_fingerprint": "6e49fa855982e1fce03685a1929facbc4b3401b98eef69cc439b71398b816449"
         },
         {
           "frame_index": 37,
@@ -356,7 +356,7 @@
     {
       "id": "premium-quiet",
       "gif": "assets/animations/prysai-premium-quiet.gif",
-      "sha256": "9974c622e390f0af977518fbb740f1888211c9d614e43a5ff3d0f652a7eca246",
+      "sha256": "a3e19d63e86f66426f23812458ed70d8761f049f3e4ac1de5d63bec02dfc0896",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2400,
       "canonical_frame_sha256": "2f9b33e2c533a9c4eb8d665d5a025f84e1e751a15b83aebfa0d765b3ea772b78",
@@ -376,27 +376,27 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 7,
-          "progress": 0.18,
-          "render_progress": 0.18,
+          "frame_index": 6,
+          "progress": 0.15,
+          "render_progress": 0.15,
           "label": "origin dot",
-          "bright_pixel_count": 524,
+          "bright_pixel_count": 497,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "source contour trace followed by fill",
           "speed_profile": "slow trace with a deliberate reading pause",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 123437,
-          "encoded_identity_unique_count": 485,
-          "encoded_identity_coverage": 0.016035
+          "encoded_identity_alpha_mass": 117066,
+          "encoded_identity_unique_count": 460,
+          "encoded_identity_coverage": 0.015208
         },
         "arc": {
-          "frame_index": 14,
-          "progress": 0.38,
-          "render_progress": 0.38,
+          "frame_index": 13,
+          "progress": 0.34,
+          "render_progress": 0.34,
           "label": "circular arc",
-          "bright_pixel_count": 3746,
+          "bright_pixel_count": 3682,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -404,14 +404,14 @@
           "path_strategy": "source contour trace followed by fill",
           "speed_profile": "slow trace with a deliberate reading pause",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 924264,
-          "encoded_identity_unique_count": 3631,
-          "encoded_identity_coverage": 0.120045
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
         },
         "bar": {
-          "frame_index": 21,
-          "progress": 0.56,
-          "render_progress": 0.56,
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
           "label": "horizontal bar",
           "bright_pixel_count": 4324,
           "source_actor_ids": [
@@ -427,9 +427,9 @@
           "encoded_identity_coverage": 0.138758
         },
         "monogram": {
-          "frame_index": 27,
-          "progress": 0.74,
-          "render_progress": 0.74,
+          "frame_index": 23,
+          "progress": 0.61,
+          "render_progress": 0.61,
           "label": "P / monogram",
           "bright_pixel_count": 7471,
           "source_actor_ids": [
@@ -441,9 +441,9 @@
           "path_strategy": "source contour trace followed by fill",
           "speed_profile": "slow trace with a deliberate reading pause",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1850319,
-          "encoded_identity_unique_count": 7270,
-          "encoded_identity_coverage": 0.240354
+          "encoded_identity_alpha_mass": 1849617,
+          "encoded_identity_unique_count": 7267,
+          "encoded_identity_coverage": 0.240255
         },
         "wordmark": {
           "frame_index": 36,
@@ -506,53 +506,31 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "d712cfc8cf9fe02b0e4ed7a85cb33584baf108c42910df0a8c88ac32efde2710",
-          "alpha_mass": 79000,
-          "unique_count": 491,
+          "foreground_mask_sha256": "298a9cf705dcecc26218c1835fb91deabb5cf2a1e40e60e6233b65f027e2b2f1",
+          "alpha_mass": 116481,
+          "unique_count": 602,
           "bbox": {
-            "x": 176,
+            "x": 175,
             "y": 179,
-            "width": 30,
-            "height": 30
+            "width": 31,
+            "height": 31
           },
           "centroid": {
-            "x": 191.4483,
-            "y": 192.5415
+            "x": 190.4142,
+            "y": 194.1751
           },
-          "encoded_identity_alpha_mass": 110712,
-          "encoded_identity_unique_count": 435,
-          "encoded_identity_coverage": 0.014382,
-          "trajectory_fingerprint": "0da8c4b18252e6cd9081e854ef7a66d35c049ce538989ca7ba8f61b09c91d1fd"
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "880c295cffd84065eede885c75688bb01d5aa380638d9c2a249b38b03d33ea16"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "90b605c9883bf9b9fbb7e504e7b7399bc8615b748b7c63bd9cf2a240e59a438a",
-          "alpha_mass": 253426,
-          "unique_count": 1183,
-          "bbox": {
-            "x": 175,
-            "y": 80,
-            "width": 96,
-            "height": 130
-          },
-          "centroid": {
-            "x": 221.055,
-            "y": 141.2663
-          },
-          "encoded_identity_alpha_mass": 388538,
-          "encoded_identity_unique_count": 1526,
-          "encoded_identity_coverage": 0.050451,
-          "trajectory_fingerprint": "89eef44968d4c416ead5016cbcca4baaa12ece13034151116bff5d3f3e5c1565"
-        },
-        {
-          "frame_index": 14,
-          "progress": 0.375,
-          "render_progress": 0.375,
-          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
-          "alpha_mass": 955051,
-          "unique_count": 4188,
+          "foreground_mask_sha256": "8d9bf6558539c58841a74e1b36391646ed54bf7ab923d8c59c2a3a963cf1fc69",
+          "alpha_mass": 513834,
+          "unique_count": 2299,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -560,21 +538,43 @@
             "height": 130
           },
           "centroid": {
-            "x": 240.2203,
-            "y": 118.3532
+            "x": 250.9834,
+            "y": 122.757
           },
-          "encoded_identity_alpha_mass": 924264,
-          "encoded_identity_unique_count": 3631,
-          "encoded_identity_coverage": 0.120045,
-          "trajectory_fingerprint": "48474ea0a256e5750a7df037a1701b9408915bffc40f30e376b5eb78bdc7f344"
+          "encoded_identity_alpha_mass": 551984,
+          "encoded_identity_unique_count": 2168,
+          "encoded_identity_coverage": 0.071677,
+          "trajectory_fingerprint": "4ddfee01b48313cc2b2101e929de1e1d6df583bb6f73f036ca0961ec8ef55ec3"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "7179bf4135ca3e4dee63a3e51fb3854a1475994605d707ddf18c4d5d512cd1b6",
+          "alpha_mass": 967558,
+          "unique_count": 4268,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 239.5822,
+            "y": 118.6345
+          },
+          "encoded_identity_alpha_mass": 969230,
+          "encoded_identity_unique_count": 3809,
+          "encoded_identity_coverage": 0.12593,
+          "trajectory_fingerprint": "f2ff8dcc53394f8bed019e835186e2c924b414ebb8471f8cba4726b28dc6dc4e"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
-          "alpha_mass": 1124376,
-          "unique_count": 5093,
+          "foreground_mask_sha256": "f5c9dd4e0e06ba469b42c9f3c47a8409eea81a4c6a519f2ed092af6eeb41a2b1",
+          "alpha_mass": 1124472,
+          "unique_count": 5130,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -582,79 +582,79 @@
             "height": 130
           },
           "centroid": {
-            "x": 240.9101,
-            "y": 122.3723
+            "x": 240.9122,
+            "y": 122.3702
           },
           "encoded_identity_alpha_mass": 1067659,
           "encoded_identity_unique_count": 4197,
           "encoded_identity_coverage": 0.138758,
-          "trajectory_fingerprint": "b65fe09562341832990e20cddc95bf495caa47c0e212f12c02117eac024a5ce2"
+          "trajectory_fingerprint": "1efd18cc32b22959019ab6ca6201c275c0ddd7a35a1412e8e057d3905a260a59"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "5c4a0025ed170a87a3a8cd23f40e238e60ae5d0bb7989f083d2f9383631dda9e",
-          "alpha_mass": 1220517,
-          "unique_count": 5599,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
           "bbox": {
             "x": 175,
-            "y": 80,
+            "y": 79,
             "width": 139,
-            "height": 130
+            "height": 131
           },
           "centroid": {
-            "x": 242.4618,
-            "y": 127.0376
+            "x": 245.3468,
+            "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1251750,
-          "encoded_identity_unique_count": 4920,
-          "encoded_identity_coverage": 0.162661,
-          "trajectory_fingerprint": "2d1f0b330962cbbba3fe60161d5dce2b5eae3f8aebde0ca44119cbecd05c2f4c"
+          "encoded_identity_alpha_mass": 1849617,
+          "encoded_identity_unique_count": 7267,
+          "encoded_identity_coverage": 0.240255,
+          "trajectory_fingerprint": "2cdc75770907585134244a32f52314b68afebe1284b6033e467c2ad705e29a4e"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "e3544fa252f3f1c6a1804c52262ef15a9fa30d73c4d9749bb7c859f9ee167447",
-          "alpha_mass": 2053643,
-          "unique_count": 12637,
+          "foreground_mask_sha256": "4f41fad39173a8d79d2b5455cbfb63ec651aaceec687c906d17cc9d2a289cda4",
+          "alpha_mass": 3297352,
+          "unique_count": 15006,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 254,
+            "width": 294,
             "height": 131
           },
           "centroid": {
-            "x": 253.8107,
-            "y": 144.1604
+            "x": 299.4632,
+            "y": 143.9176
           },
-          "encoded_identity_alpha_mass": 2217828,
-          "encoded_identity_unique_count": 8714,
-          "encoded_identity_coverage": 0.288095,
-          "trajectory_fingerprint": "4ea3431fe385a98cf002271b36055a90391d9dc9bcd577a0531eb8cb7656a408"
+          "encoded_identity_alpha_mass": 3308193,
+          "encoded_identity_unique_count": 12995,
+          "encoded_identity_coverage": 0.429629,
+          "trajectory_fingerprint": "05746fb0e7e3e6c80303ffdfa474d74ffccc0460e77dc0297c1d89edc20f70b1"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "5d62e7e73af15a1f2a8b6c8f3f4cad1c8c4a340e29e03ceee11dac0f509165f5",
-          "alpha_mass": 5044830,
-          "unique_count": 23184,
+          "foreground_mask_sha256": "f34f2437c9b5aab8053306a90638bc65ea5284b5adf3f3b70dafa6ea3475a359",
+          "alpha_mass": 5461656,
+          "unique_count": 28390,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 441,
+            "width": 534,
             "height": 143
           },
           "centroid": {
-            "x": 377.7127,
-            "y": 148.9284
+            "x": 399.04,
+            "y": 149.6256
           },
-          "encoded_identity_alpha_mass": 4416561,
-          "encoded_identity_unique_count": 17350,
-          "encoded_identity_coverage": 0.573611,
-          "trajectory_fingerprint": "9496c1d6d11eb9eaed82c2d9acb92d66146e623857165e78ca7e771b1a36bbfd"
+          "encoded_identity_alpha_mass": 4983168,
+          "encoded_identity_unique_count": 19576,
+          "encoded_identity_coverage": 0.647205,
+          "trajectory_fingerprint": "8a83db4252633387f5132c4f942c22cdcef58fa912f077f06c70fd537688a314"
         },
         {
           "frame_index": 37,
@@ -684,7 +684,7 @@
     {
       "id": "developer-open",
       "gif": "assets/animations/prysai-developer-open.gif",
-      "sha256": "f445bb9c1b5fa7489f183429890a70b5fcfdcb45e222d4d31a84b5ac8ac2be3c",
+      "sha256": "73720ad790055d97c22eb35ef0de74b945d3b6edb6015ad0ba9c21efd5ab1f44",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 1800,
       "canonical_frame_sha256": "da87f8f6822ef4ac81ecea4ae102c2545874be6af9def45a3db5a2d5170c1554",
@@ -705,26 +705,26 @@
         },
         "spark": {
           "frame_index": 5,
-          "progress": 0.14,
-          "render_progress": 0.14,
+          "progress": 0.13,
+          "render_progress": 0.13,
           "label": "origin dot",
-          "bright_pixel_count": 476,
+          "bright_pixel_count": 474,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "deterministic left-to-right actor commits",
           "speed_profile": "even token cadence with short pauses",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 111498,
-          "encoded_identity_unique_count": 438,
-          "encoded_identity_coverage": 0.014481
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448
         },
         "arc": {
-          "frame_index": 12,
-          "progress": 0.32,
-          "render_progress": 0.32,
+          "frame_index": 11,
+          "progress": 0.29,
+          "render_progress": 0.29,
           "label": "circular arc",
-          "bright_pixel_count": 3910,
+          "bright_pixel_count": 3679,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -732,16 +732,16 @@
           "path_strategy": "deterministic left-to-right actor commits",
           "speed_profile": "even token cadence with short pauses",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 966711,
-          "encoded_identity_unique_count": 3798,
-          "encoded_identity_coverage": 0.125566
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
         },
         "bar": {
-          "frame_index": 17,
-          "progress": 0.46,
-          "render_progress": 0.46,
+          "frame_index": 16,
+          "progress": 0.42,
+          "render_progress": 0.42,
           "label": "horizontal bar",
-          "bright_pixel_count": 4323,
+          "bright_pixel_count": 4322,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -755,11 +755,11 @@
           "encoded_identity_coverage": 0.138758
         },
         "monogram": {
-          "frame_index": 23,
-          "progress": 0.63,
-          "render_progress": 0.63,
+          "frame_index": 21,
+          "progress": 0.57,
+          "render_progress": 0.57,
           "label": "P / monogram",
-          "bright_pixel_count": 7578,
+          "bright_pixel_count": 7466,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -769,9 +769,9 @@
           "path_strategy": "deterministic left-to-right actor commits",
           "speed_profile": "even token cadence with short pauses",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1877037,
-          "encoded_identity_unique_count": 7375,
-          "encoded_identity_coverage": 0.243826
+          "encoded_identity_alpha_mass": 1849617,
+          "encoded_identity_unique_count": 7267,
+          "encoded_identity_coverage": 0.240255
         },
         "wordmark": {
           "frame_index": 36,
@@ -834,31 +834,31 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "a38c8369b4d5898bc52548ccfb9a512ab5c667d595d95f604d0eff3e15807eed",
-          "alpha_mass": 123598,
-          "unique_count": 617,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
           "bbox": {
-            "x": 176,
+            "x": 175,
             "y": 179,
-            "width": 30,
+            "width": 31,
             "height": 31
           },
           "centroid": {
-            "x": 190.0395,
+            "x": 190.0387,
             "y": 194.01
           },
-          "encoded_identity_alpha_mass": 111498,
-          "encoded_identity_unique_count": 438,
-          "encoded_identity_coverage": 0.014481,
-          "trajectory_fingerprint": "145096144cb67124f8fa7dea6576332d77a0aee0d1fc371de00eb93fc2239731"
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "0821cfb4ebad5420cb6787f731524bb0d736e1c494c9e80dd8014b7f65ca72ab"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "d9662cf5b853c86d58418f1bc7690bef68cb7e8431241644a10a69d4d668e19a",
-          "alpha_mass": 666581,
-          "unique_count": 2952,
+          "foreground_mask_sha256": "f69dad7ad6654423157f89d80fe145805de27410522a85dfc90d41840b105215",
+          "alpha_mass": 773523,
+          "unique_count": 3389,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -866,21 +866,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 253.4624,
-            "y": 120.2672
+            "x": 248.8467,
+            "y": 118.1342
           },
-          "encoded_identity_alpha_mass": 724649,
-          "encoded_identity_unique_count": 2846,
-          "encoded_identity_coverage": 0.094092,
-          "trajectory_fingerprint": "491b7aa4e9a9f615c97c10a838bb493eaffdde86d96d89e6a00a4bee836a2ef3"
+          "encoded_identity_alpha_mass": 859620,
+          "encoded_identity_unique_count": 3376,
+          "encoded_identity_coverage": 0.111614,
+          "trajectory_fingerprint": "ab4c42e603465ec48fbf37d778ba723c6ad63425be46ffbfea9cd5b579782a42"
         },
         {
           "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "f6ea677366fc49b3e348c7efc781d9d594cfddb93b14df062e84ebaf6160b24b",
-          "alpha_mass": 1019471,
-          "unique_count": 4536,
+          "foreground_mask_sha256": "561126db27a53bb225896ab95055c05bd1e18af417f964b7ae667487fbfa52d2",
+          "alpha_mass": 1039023,
+          "unique_count": 4647,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -888,21 +888,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 243.8534,
-            "y": 120.1407
+            "x": 243.6146,
+            "y": 120.6585
           },
-          "encoded_identity_alpha_mass": 982173,
-          "encoded_identity_unique_count": 3859,
-          "encoded_identity_coverage": 0.127583,
-          "trajectory_fingerprint": "b0a40291bbacbb0b1da303d115476a482cd86a30619ed9d76b8f701f1d88a859"
+          "encoded_identity_alpha_mass": 1047699,
+          "encoded_identity_unique_count": 4118,
+          "encoded_identity_coverage": 0.136146,
+          "trajectory_fingerprint": "0549b041f7b3b8a86d144f2357a57c2e48f6d1d9fd3e271b0afae735acbfd244"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "b13931f2628a309eeb64d30a6e979d4935131bfcfd16fe5b3ae7c663ee81654e",
-          "alpha_mass": 1271541,
-          "unique_count": 5809,
+          "foreground_mask_sha256": "dc93f32e08054ea0a7b2e2880cafb2a10375107d4d100c8c23bb9aa2f9dbbb8a",
+          "alpha_mass": 1529431,
+          "unique_count": 6962,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -910,79 +910,79 @@
             "height": 130
           },
           "centroid": {
-            "x": 244.9296,
-            "y": 128.42
+            "x": 249.7832,
+            "y": 135.818
           },
-          "encoded_identity_alpha_mass": 1206368,
-          "encoded_identity_unique_count": 4742,
-          "encoded_identity_coverage": 0.156776,
-          "trajectory_fingerprint": "f63bdc8a72df6c320d17c8972e45eacdd6ab99548c0d6d986967441382105add"
+          "encoded_identity_alpha_mass": 1455230,
+          "encoded_identity_unique_count": 5719,
+          "encoded_identity_coverage": 0.189077,
+          "trajectory_fingerprint": "35646e1ee715118ebd9147855d3d8c7b0d6dc1049a320ec62c3af904e42a6752"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
-          "alpha_mass": 1939273,
-          "unique_count": 8834,
+          "foreground_mask_sha256": "33e0ddf99e076cd38b5950da3139f4d1b7da59cb2549b72b4bf30e631be648ae",
+          "alpha_mass": 2197212,
+          "unique_count": 13294,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 139,
+            "width": 255,
             "height": 131
           },
           "centroid": {
-            "x": 245.3468,
-            "y": 144.9781
+            "x": 263.2009,
+            "y": 143.8485
           },
-          "encoded_identity_alpha_mass": 1877037,
-          "encoded_identity_unique_count": 7375,
-          "encoded_identity_coverage": 0.243826,
-          "trajectory_fingerprint": "805ea76606f2d1f6ccdcea666e1450e08c34d40582932a4c02b62d1daa79fbb6"
+          "encoded_identity_alpha_mass": 2137274,
+          "encoded_identity_unique_count": 8397,
+          "encoded_identity_coverage": 0.277614,
+          "trajectory_fingerprint": "f3e26e928c7b5557ef04f89e2bcbc21a4a7c5665bd4b8acc51308ad762f3c687"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "7bfb132609b8976434ed198de37d8a9c722f310ea41eb40d130495e8e951a319",
-          "alpha_mass": 3682676,
-          "unique_count": 20308,
+          "foreground_mask_sha256": "4a4a832b79f8f61d94e07e58d1242f7461e67ba5e1b4273a394bd1e803647f6e",
+          "alpha_mass": 3944942,
+          "unique_count": 18025,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 394,
+            "width": 380,
             "height": 131
           },
           "centroid": {
-            "x": 318.1451,
-            "y": 143.3623
+            "x": 331.3855,
+            "y": 144.3002
           },
-          "encoded_identity_alpha_mass": 3653938,
-          "encoded_identity_unique_count": 14353,
-          "encoded_identity_coverage": 0.474526,
-          "trajectory_fingerprint": "5b747cfbab3c723ed5e4abce435485f5fa62960ece25dfdfca295c3fd9dad249"
+          "encoded_identity_alpha_mass": 3930370,
+          "encoded_identity_unique_count": 15439,
+          "encoded_identity_coverage": 0.510431,
+          "trajectory_fingerprint": "8231c5fb1be1bc7376a3d99c0808d3959a238150175c128a945460d6c20629d7"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "8393ea99cf835dceffd2d8188b40d9a33b8c7efcd4704436ab209b3180d2e5ca",
-          "alpha_mass": 5772186,
-          "unique_count": 26520,
+          "foreground_mask_sha256": "f3b71c06bf5edc6eae4f54831d25c19a1538501780c3cd3e3117ab26c9d5fefc",
+          "alpha_mass": 5944437,
+          "unique_count": 29204,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 518,
+            "width": 565,
             "height": 143
           },
           "centroid": {
-            "x": 413.1112,
-            "y": 149.2747
+            "x": 420.498,
+            "y": 149.3149
           },
-          "encoded_identity_alpha_mass": 5339058,
-          "encoded_identity_unique_count": 20973,
-          "encoded_identity_coverage": 0.693391,
-          "trajectory_fingerprint": "dc09fca401240a7f3f222d9e08c66b959bd9ffd9344ace523e2329459b9e5f98"
+          "encoded_identity_alpha_mass": 5438042,
+          "encoded_identity_unique_count": 21362,
+          "encoded_identity_coverage": 0.706252,
+          "trajectory_fingerprint": "f31c5e16c3af56cf9d4b008ffc1847f8683300063371a973f866236a09da8c9b"
         },
         {
           "frame_index": 37,
@@ -1012,8 +1012,8 @@
     {
       "id": "ai-field",
       "gif": "assets/animations/prysai-ai-field.gif",
-      "sha256": "4b8861245a3103782e0cfd902dfcfc33c8811475d78ceae97f4ff0a766e917f6",
-      "encoded_frame_count": 38,
+      "sha256": "60287b305bc2299cfd1d3a462884c765c1a4dec96fc3a2af8cc973997e089725",
+      "encoded_frame_count": 37,
       "encoded_duration_ms": 1960,
       "canonical_frame_sha256": "33178c59090b463188ad2ffbc1b01a41e7be1142d4f14d664e2cd870bc973ca6",
       "stages": {
@@ -1032,25 +1032,25 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 6,
-          "progress": 0.15,
-          "render_progress": 0.15,
+          "frame_index": 5,
+          "progress": 0.14,
+          "render_progress": 0.14,
           "label": "origin dot",
-          "bright_pixel_count": 597,
+          "bright_pixel_count": 475,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "seeded signals converge into measured actors",
           "speed_profile": "accelerate into geometry and decelerate at lockup",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 140009,
-          "encoded_identity_unique_count": 550,
-          "encoded_identity_coverage": 0.018184
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
         },
         "arc": {
-          "frame_index": 12,
-          "progress": 0.33,
-          "render_progress": 0.33,
+          "frame_index": 11,
+          "progress": 0.3,
+          "render_progress": 0.3,
           "label": "circular arc",
           "bright_pixel_count": 3681,
           "source_actor_ids": [
@@ -1065,9 +1065,9 @@
           "encoded_identity_coverage": 0.118061
         },
         "bar": {
-          "frame_index": 18,
-          "progress": 0.48,
-          "render_progress": 0.48,
+          "frame_index": 16,
+          "progress": 0.44,
+          "render_progress": 0.44,
           "label": "horizontal bar",
           "bright_pixel_count": 4323,
           "source_actor_ids": [
@@ -1083,9 +1083,9 @@
           "encoded_identity_coverage": 0.138824
         },
         "monogram": {
-          "frame_index": 24,
-          "progress": 0.65,
-          "render_progress": 0.65,
+          "frame_index": 21,
+          "progress": 0.59,
+          "render_progress": 0.59,
           "label": "P / monogram",
           "bright_pixel_count": 7469,
           "source_actor_ids": [
@@ -1102,7 +1102,7 @@
           "encoded_identity_coverage": 0.240354
         },
         "wordmark": {
-          "frame_index": 36,
+          "frame_index": 35,
           "progress": 0.97,
           "render_progress": 0.97,
           "label": "Prysai wordmark",
@@ -1127,7 +1127,7 @@
           "encoded_identity_coverage": 0.796872
         },
         "canonical": {
-          "frame_index": 37,
+          "frame_index": 36,
           "progress": 1.0,
           "render_progress": 1.0,
           "label": "complete Logo",
@@ -1159,7 +1159,7 @@
           "trajectory_fingerprint": "77b3079cac117672bb8f76fe8b230ea96a383ddba44ca4d07c94490e913f37a9"
         },
         {
-          "frame_index": 5,
+          "frame_index": 4,
           "progress": 0.125,
           "render_progress": 0.125,
           "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
@@ -1197,18 +1197,18 @@
             "x": 240.2203,
             "y": 118.3532
           },
-          "encoded_identity_alpha_mass": 892359,
-          "encoded_identity_unique_count": 3505,
-          "encoded_identity_coverage": 0.115879,
+          "encoded_identity_alpha_mass": 899244,
+          "encoded_identity_unique_count": 3532,
+          "encoded_identity_coverage": 0.116772,
           "trajectory_fingerprint": "001d646c820713eed8f0f4d951c2a841efae31609f1f8014c86f6c6f83f1b3ce"
         },
         {
           "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "14de380ffd0b4925dd8fe5687884b117e366eaae90b8990187ea5d37ee16b526",
-          "alpha_mass": 1118230,
-          "unique_count": 5066,
+          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
+          "alpha_mass": 1124376,
+          "unique_count": 5093,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1216,21 +1216,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 241.1353,
-            "y": 122.2974
+            "x": 240.9101,
+            "y": 122.3723
           },
-          "encoded_identity_alpha_mass": 1056663,
-          "encoded_identity_unique_count": 4154,
-          "encoded_identity_coverage": 0.137336,
-          "trajectory_fingerprint": "ec4a5f1715011e63557dc968b074ad01ebcfad09e7830247519ee697c821f1bf"
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824,
+          "trajectory_fingerprint": "fa22ab0520ed6f7229cf2ea5d1580196896ca985c7a8f1c4b1b6eda9fa43199c"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "1d46561bb53c63a2b1d472c0731bdeeddedc8cf7177850d1f983c32ad2431c62",
-          "alpha_mass": 1286598,
-          "unique_count": 5874,
+          "foreground_mask_sha256": "9c097e3864e9c1e54cc780ece07d2754edebf8284e890c663488e4610a336074",
+          "alpha_mass": 1920915,
+          "unique_count": 8676,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1238,65 +1238,65 @@
             "height": 130
           },
           "centroid": {
-            "x": 244.771,
-            "y": 128.9372
+            "x": 245.6029,
+            "y": 144.8889
           },
           "encoded_identity_alpha_mass": 1068127,
           "encoded_identity_unique_count": 4199,
           "encoded_identity_coverage": 0.138824,
-          "trajectory_fingerprint": "b3c1af07b6e09c6ba4b0da8de1e8a21c410ff2cfda1b9684e67edd6d9fd03048"
+          "trajectory_fingerprint": "3d59e2b7fe838658d71950b670c62174708f7e1b14efbf23fe29c673eff32ef0"
         },
         {
-          "frame_index": 23,
+          "frame_index": 22,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
-          "alpha_mass": 1939273,
-          "unique_count": 8834,
+          "foreground_mask_sha256": "548e685e153f5e57a2bbce759ee8e6c13add307253e89aded3108a3a9df42859",
+          "alpha_mass": 2161216,
+          "unique_count": 12621,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 139,
+            "width": 255,
             "height": 131
           },
           "centroid": {
-            "x": 245.3468,
-            "y": 144.9781
+            "x": 261.1021,
+            "y": 144.0795
           },
           "encoded_identity_alpha_mass": 1850319,
           "encoded_identity_unique_count": 7270,
           "encoded_identity_coverage": 0.240354,
-          "trajectory_fingerprint": "ffad11593d83995bd7806c528e423174cfb831341ae4eb0f7b8b0325ab53bff0"
+          "trajectory_fingerprint": "16ac925009f6913d1051d4b6a3bd86df4154ceb609838688d78e17449529ff8e"
         },
         {
-          "frame_index": 28,
+          "frame_index": 27,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "5a993ee8ed8f25bbdfcafcbdcb50a450045f3ceb01d1004167e6485161ee410f",
-          "alpha_mass": 3542631,
-          "unique_count": 16144,
+          "foreground_mask_sha256": "479aad509024a4149547f2f759f189c09afd3fa5b174c2bc13fee3ccf5214cbc",
+          "alpha_mass": 3905400,
+          "unique_count": 17760,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 294,
-            "height": 131
+            "width": 379,
+            "height": 143
           },
           "centroid": {
-            "x": 309.2685,
-            "y": 143.0347
+            "x": 328.1153,
+            "y": 146.7938
           },
-          "encoded_identity_alpha_mass": 3339788,
-          "encoded_identity_unique_count": 13119,
-          "encoded_identity_coverage": 0.433729,
-          "trajectory_fingerprint": "a1f304a49b3c018fd2f73b8cdf25fc61e8dda3c972437dc089fb2ea83ed06346"
+          "encoded_identity_alpha_mass": 3327332,
+          "encoded_identity_unique_count": 13070,
+          "encoded_identity_coverage": 0.432109,
+          "trajectory_fingerprint": "3916fe29513968e3d83689b027d3b5149e644e7be06513a278c865872dbe07e6"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "7fa36664a8ec987c0c98667f7b9e15d577ec85937f520965e6c7b6e9904b694c",
-          "alpha_mass": 6018927,
-          "unique_count": 27708,
+          "foreground_mask_sha256": "99151a628cbc58cd7bb2bf48b227244f829d0db91b839733388c43b4c336151c",
+          "alpha_mass": 6018928,
+          "unique_count": 27709,
           "bbox": {
             "x": 175,
             "y": 79,
@@ -1304,16 +1304,16 @@
             "height": 143
           },
           "centroid": {
-            "x": 422.0536,
+            "x": 422.0537,
             "y": 149.6888
           },
-          "encoded_identity_alpha_mass": 4921229,
-          "encoded_identity_unique_count": 19333,
-          "encoded_identity_coverage": 0.639171,
-          "trajectory_fingerprint": "ad966f782e3dc97f4e249a3c0119de0089e92623db382f709ac05b3bddfbef56"
+          "encoded_identity_alpha_mass": 5225658,
+          "encoded_identity_unique_count": 20529,
+          "encoded_identity_coverage": 0.678712,
+          "trajectory_fingerprint": "85f9dde7e097b40996963e66fea57de7f0663f0bd1f6abaca344801f4def4cc3"
         },
         {
-          "frame_index": 37,
+          "frame_index": 36,
           "progress": 1.0,
           "render_progress": 1.0,
           "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
@@ -1335,12 +1335,12 @@
           "trajectory_fingerprint": "30938e71d8f8e59803d4c4ef417367079b8c911345f143ad72d8af32d513c1db"
         }
       ],
-      "canonical_frame": 37
+      "canonical_frame": 36
     },
     {
       "id": "fintech-trust",
       "gif": "assets/animations/prysai-fintech-trust.gif",
-      "sha256": "48c3737edc071961217c09db57718d1e7d953540c71ce73c8d5d9d087319ba51",
+      "sha256": "85fa9c994ad6fecb5f1de1988430b1e28047b307a3d2a6744fcb77f7668ca125",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2090,
       "canonical_frame_sha256": "ee4f5bb6605097b74c4190c889f3bf5840cf32b590edea8bce17879d94dad945",
@@ -1361,26 +1361,26 @@
         },
         "spark": {
           "frame_index": 6,
-          "progress": 0.17,
-          "render_progress": 0.17,
+          "progress": 0.15,
+          "render_progress": 0.15,
           "label": "origin dot",
-          "bright_pixel_count": 499,
+          "bright_pixel_count": 497,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "center-outward progress gates the supplied actors",
           "speed_profile": "steady processing with a bounded confirmation settle",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 117358,
-          "encoded_identity_unique_count": 461,
-          "encoded_identity_coverage": 0.015241
+          "encoded_identity_alpha_mass": 116848,
+          "encoded_identity_unique_count": 459,
+          "encoded_identity_coverage": 0.015175
         },
         "arc": {
-          "frame_index": 13,
-          "progress": 0.35,
-          "render_progress": 0.35,
+          "frame_index": 12,
+          "progress": 0.32,
+          "render_progress": 0.32,
           "label": "circular arc",
-          "bright_pixel_count": 3743,
+          "bright_pixel_count": 3680,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -1388,16 +1388,16 @@
           "path_strategy": "center-outward progress gates the supplied actors",
           "speed_profile": "steady processing with a bounded confirmation settle",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 924639,
-          "encoded_identity_unique_count": 3632,
-          "encoded_identity_coverage": 0.120078
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
         },
         "bar": {
-          "frame_index": 17,
-          "progress": 0.47,
-          "render_progress": 0.47,
+          "frame_index": 16,
+          "progress": 0.43,
+          "render_progress": 0.43,
           "label": "horizontal bar",
-          "bright_pixel_count": 4321,
+          "bright_pixel_count": 4322,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -1411,11 +1411,11 @@
           "encoded_identity_coverage": 0.138758
         },
         "monogram": {
-          "frame_index": 24,
-          "progress": 0.64,
-          "render_progress": 0.64,
+          "frame_index": 21,
+          "progress": 0.58,
+          "render_progress": 0.58,
           "label": "P / monogram",
-          "bright_pixel_count": 7862,
+          "bright_pixel_count": 7463,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -1425,9 +1425,9 @@
           "path_strategy": "center-outward progress gates the supplied actors",
           "speed_profile": "steady processing with a bounded confirmation settle",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1930298,
-          "encoded_identity_unique_count": 7584,
-          "encoded_identity_coverage": 0.250736
+          "encoded_identity_alpha_mass": 1844781,
+          "encoded_identity_unique_count": 7248,
+          "encoded_identity_coverage": 0.239627
         },
         "wordmark": {
           "frame_index": 36,
@@ -1490,31 +1490,31 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "d1f6820e16784f785cf0e52d36d099ce4ef59d0d52819dc370b48c11e53342ea",
-          "alpha_mass": 91584,
-          "unique_count": 535,
+          "foreground_mask_sha256": "35f3c0f210d4c048709b83bb4e296a4e84e9c0ab4d47a0458fe16652c97a3881",
+          "alpha_mass": 115672,
+          "unique_count": 599,
           "bbox": {
             "x": 175,
-            "y": 180,
+            "y": 179,
             "width": 31,
-            "height": 30
+            "height": 31
           },
           "centroid": {
-            "x": 189.9214,
-            "y": 195.7088
+            "x": 189.6698,
+            "y": 194.2501
           },
           "encoded_identity_alpha_mass": 111243,
           "encoded_identity_unique_count": 437,
           "encoded_identity_coverage": 0.014448,
-          "trajectory_fingerprint": "6faff6c97338e61da902a61b1a09231a9fc9de810f150f0dbe520448035b6659"
+          "trajectory_fingerprint": "086db02136457a2f48fc2392a1f4f91d4949a1dd58b8152c2837713ea6b65f2a"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "08158009667405ae619e48188a67ef163ded7e1b415a30ba43771b672ee76b2b",
-          "alpha_mass": 538230,
-          "unique_count": 2431,
+          "foreground_mask_sha256": "05e8a82fc88c68ea766cb58ac6769a993afc6943f1ebdccc1a644bae822b0969",
+          "alpha_mass": 538041,
+          "unique_count": 2433,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1522,21 +1522,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 256.9072,
-            "y": 125.9555
+            "x": 256.9489,
+            "y": 125.9553
           },
-          "encoded_identity_alpha_mass": 503829,
-          "encoded_identity_unique_count": 1979,
-          "encoded_identity_coverage": 0.065428,
-          "trajectory_fingerprint": "a18e088b6409271afe1e977b71288e7c4d76aa0c10e9f25bf039e1f432f7c424"
+          "encoded_identity_alpha_mass": 695772,
+          "encoded_identity_unique_count": 2733,
+          "encoded_identity_coverage": 0.090356,
+          "trajectory_fingerprint": "7527c765e57ab7b89a7b9c7b4175a9ed326e0767ec56f4980612d286cb367ee0"
         },
         {
           "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "e4acf6f7d5151654d8bc2ac652fb7945d1cb0a097e13b353924c074dbfb0dd61",
-          "alpha_mass": 993876,
-          "unique_count": 4389,
+          "foreground_mask_sha256": "f2f1ffd7d31a61ee88fba87c750a274f2516e4700e300ca4cfa1b7ad8c7824b8",
+          "alpha_mass": 1048408,
+          "unique_count": 4685,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1544,21 +1544,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 239.6828,
-            "y": 119.4976
+            "x": 238.3372,
+            "y": 120.6139
           },
-          "encoded_identity_alpha_mass": 1056937,
-          "encoded_identity_unique_count": 4155,
-          "encoded_identity_coverage": 0.137369,
-          "trajectory_fingerprint": "08f312ef9b4e5d78df0d094a1c9de15ef5cb0b9e81c15ab92e86006af78c80f2"
+          "encoded_identity_alpha_mass": 1062036,
+          "encoded_identity_unique_count": 4175,
+          "encoded_identity_coverage": 0.13803,
+          "trajectory_fingerprint": "9a6641efb8b02280d69b9c533bd8863f6eb74a8869063fa90cc5ce90296296d7"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "25c24fc2e907be356ff6edca1c932f0234695a82a527957c1af09d010ef58c6b",
-          "alpha_mass": 1124456,
-          "unique_count": 5124,
+          "foreground_mask_sha256": "fb4bf564a3cf29734364e7e2cccd5a8cd6a02b636857a4a118dacc315929eb8a",
+          "alpha_mass": 1250707,
+          "unique_count": 5693,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1566,65 +1566,65 @@
             "height": 130
           },
           "centroid": {
-            "x": 240.9119,
-            "y": 122.3709
+            "x": 244.0309,
+            "y": 127.6162
           },
-          "encoded_identity_alpha_mass": 1067659,
-          "encoded_identity_unique_count": 4197,
-          "encoded_identity_coverage": 0.138758,
-          "trajectory_fingerprint": "ccabede8c36979781c1a0eeeca579f632268fe66441b0cb83e11f13c924eadae"
+          "encoded_identity_alpha_mass": 1187588,
+          "encoded_identity_unique_count": 4668,
+          "encoded_identity_coverage": 0.154329,
+          "trajectory_fingerprint": "5846820e22af632b75c565af3405b03dbd594ac7398867b6c01bfd9b41d73bb8"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
-          "alpha_mass": 1939273,
-          "unique_count": 8834,
+          "foreground_mask_sha256": "fa537a7616511de302d2f74cbbf2cb1eddd65788405d54b90b83b24ece5c85da",
+          "alpha_mass": 2038433,
+          "unique_count": 11475,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 139,
+            "width": 254,
             "height": 131
           },
           "centroid": {
-            "x": 245.3468,
-            "y": 144.9781
+            "x": 252.9219,
+            "y": 144.7606
           },
-          "encoded_identity_alpha_mass": 1833063,
-          "encoded_identity_unique_count": 7202,
-          "encoded_identity_coverage": 0.238106,
-          "trajectory_fingerprint": "d84a9b746c925b5eb8e4223d282d189a1eadccbbde19fb98e60fd45417fd4105"
+          "encoded_identity_alpha_mass": 1951959,
+          "encoded_identity_unique_count": 7669,
+          "encoded_identity_coverage": 0.253546,
+          "trajectory_fingerprint": "2b97557a74e884dd2a8d2c86e9a3311186dbd1dc1403e7626ff6e73dfcf3814f"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "d577b0539e3bac412e4202bc73ee11b6ca67db434bdb2c347d5fc8c7e7e5323a",
-          "alpha_mass": 3542630,
-          "unique_count": 16143,
+          "foreground_mask_sha256": "98058908d60263d43d961f01f57e0a700c8854205c0667bf879431221f88c36e",
+          "alpha_mass": 3700812,
+          "unique_count": 19524,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 294,
+            "width": 379,
             "height": 131
           },
           "centroid": {
-            "x": 309.2684,
-            "y": 143.0347
+            "x": 317.7392,
+            "y": 144.1586
           },
-          "encoded_identity_alpha_mass": 3380293,
-          "encoded_identity_unique_count": 13278,
-          "encoded_identity_coverage": 0.438986,
-          "trajectory_fingerprint": "bd6a4ad527f931f2b236774c9d20475e386af679af4ad6d66d5f9b2b50cea712"
+          "encoded_identity_alpha_mass": 3640722,
+          "encoded_identity_unique_count": 14301,
+          "encoded_identity_coverage": 0.472807,
+          "trajectory_fingerprint": "2271a4daa7215d49f0e7aa1cd99a99440e175419b9e86d59a4339666d314e4f3"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "37006c34e79c451d9bfc795c8d89d2c8f2d8a7bc525b4ab5649f77b05015f2f3",
-          "alpha_mass": 5635005,
-          "unique_count": 25907,
+          "foreground_mask_sha256": "ad8bde6b438e2fdf44a9fd8e9fcc9526171fbac7197d3365b0ba966671c5a8da",
+          "alpha_mass": 5750637,
+          "unique_count": 26491,
           "bbox": {
             "x": 175,
             "y": 79,
@@ -1632,13 +1632,13 @@
             "height": 143
           },
           "centroid": {
-            "x": 405.5992,
-            "y": 150.393
+            "x": 410.3232,
+            "y": 150.021
           },
-          "encoded_identity_alpha_mass": 5140468,
-          "encoded_identity_unique_count": 20193,
-          "encoded_identity_coverage": 0.667603,
-          "trajectory_fingerprint": "f8c8983f3ebb7c38ee93663fefd94fc77d40bcae63a2798bb147d5e69fcb3817"
+          "encoded_identity_alpha_mass": 5299812,
+          "encoded_identity_unique_count": 20819,
+          "encoded_identity_coverage": 0.6883,
+          "trajectory_fingerprint": "452feaf5da5c7b4bca0f6e5390647eeb7ee9d288b5b5cdda4ca4c5a216f1b17f"
         },
         {
           "frame_index": 37,
@@ -1668,7 +1668,7 @@
     {
       "id": "security-shield",
       "gif": "assets/animations/prysai-security-shield.gif",
-      "sha256": "941d267fdb56800304f899f1c818bb11b896ef290b4228a999b07e8903290354",
+      "sha256": "4950c33b3b410bfa7ce8c98cf717916fe27ab2cdd97ccf5c51cba155645caa23",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2250,
       "canonical_frame_sha256": "1ec42ce758965b661913eebd41c895963d87ebf3c41c64853a74b12d52428e9b",
@@ -1688,27 +1688,27 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 7,
-          "progress": 0.18,
-          "render_progress": 0.18,
+          "frame_index": 6,
+          "progress": 0.16,
+          "render_progress": 0.16,
           "label": "origin dot",
-          "bright_pixel_count": 507,
+          "bright_pixel_count": 475,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "perimeter-first trace then interior unlock",
           "speed_profile": "guarded boundary, quick verify, deliberate release",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 119374,
-          "encoded_identity_unique_count": 469,
-          "encoded_identity_coverage": 0.015506
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448
         },
         "arc": {
-          "frame_index": 14,
-          "progress": 0.39,
-          "render_progress": 0.39,
+          "frame_index": 13,
+          "progress": 0.35,
+          "render_progress": 0.35,
           "label": "circular arc",
-          "bright_pixel_count": 3689,
+          "bright_pixel_count": 3688,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -1716,16 +1716,16 @@
           "path_strategy": "perimeter-first trace then interior unlock",
           "speed_profile": "guarded boundary, quick verify, deliberate release",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 908955,
-          "encoded_identity_unique_count": 3570,
-          "encoded_identity_coverage": 0.118028
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
         },
         "bar": {
-          "frame_index": 21,
-          "progress": 0.58,
-          "render_progress": 0.58,
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
           "label": "horizontal bar",
-          "bright_pixel_count": 4336,
+          "bright_pixel_count": 4335,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -1734,14 +1734,14 @@
           "path_strategy": "perimeter-first trace then interior unlock",
           "speed_profile": "guarded boundary, quick verify, deliberate release",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1068359,
-          "encoded_identity_unique_count": 4200,
-          "encoded_identity_coverage": 0.138857
+          "encoded_identity_alpha_mass": 1068593,
+          "encoded_identity_unique_count": 4201,
+          "encoded_identity_coverage": 0.13889
         },
         "monogram": {
-          "frame_index": 26,
-          "progress": 0.71,
-          "render_progress": 0.71,
+          "frame_index": 23,
+          "progress": 0.61,
+          "render_progress": 0.61,
           "label": "P / monogram",
           "bright_pixel_count": 7493,
           "source_actor_ids": [
@@ -1753,16 +1753,16 @@
           "path_strategy": "perimeter-first trace then interior unlock",
           "speed_profile": "guarded boundary, quick verify, deliberate release",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1851016,
-          "encoded_identity_unique_count": 7273,
-          "encoded_identity_coverage": 0.240454
+          "encoded_identity_alpha_mass": 1851709,
+          "encoded_identity_unique_count": 7276,
+          "encoded_identity_coverage": 0.240553
         },
         "wordmark": {
           "frame_index": 36,
           "progress": 0.985,
           "render_progress": 0.985,
           "label": "Prysai wordmark",
-          "bright_pixel_count": 25202,
+          "bright_pixel_count": 25212,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -1778,9 +1778,9 @@
           "path_strategy": "perimeter-first trace then interior unlock",
           "speed_profile": "guarded boundary, quick verify, deliberate release",
           "foreground_alpha_mass": 6531849,
-          "encoded_identity_alpha_mass": 6133190,
-          "encoded_identity_unique_count": 24096,
-          "encoded_identity_coverage": 0.796641
+          "encoded_identity_alpha_mass": 6137246,
+          "encoded_identity_unique_count": 24112,
+          "encoded_identity_coverage": 0.79717
         },
         "canonical": {
           "frame_index": 37,
@@ -1818,45 +1818,45 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "98b70167e7e74d2590ceff5878f64c938b32a5acf6106dec57ec81d7625f0b83",
-          "alpha_mass": 47640,
-          "unique_count": 403,
+          "foreground_mask_sha256": "5337c7d55c2a1256ccf5b4338d62cba0976a014bfa3e5c0eb21f89cb37cdf57c",
+          "alpha_mass": 102608,
+          "unique_count": 574,
           "bbox": {
-            "x": 176,
-            "y": 183,
-            "width": 29,
-            "height": 27
+            "x": 175,
+            "y": 180,
+            "width": 31,
+            "height": 30
           },
           "centroid": {
-            "x": 190.0371,
-            "y": 194.8747
+            "x": 190.0383,
+            "y": 195.2749
           },
           "encoded_identity_alpha_mass": 111243,
           "encoded_identity_unique_count": 437,
           "encoded_identity_coverage": 0.014448,
-          "trajectory_fingerprint": "c4520730422d8fed3851ca806858ce660a64b46881bd04f18dfa7a9817b39c08"
+          "trajectory_fingerprint": "8d4e373e7990e0520ed3c7c0561913c9ddafc56ae6329985a1e7a090110017bf"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "33fe3a5e7c53b8f9250f5ef7a0c9ed665a728f780da303f81f5b340da7e74aed",
-          "alpha_mass": 218021,
-          "unique_count": 1050,
+          "foreground_mask_sha256": "068b23e0d8ff5e3bcb62e43792f857f51d518e70a049a443866b821104ee3eef",
+          "alpha_mass": 274793,
+          "unique_count": 1301,
           "bbox": {
             "x": 175,
-            "y": 86,
-            "width": 133,
-            "height": 124
+            "y": 82,
+            "width": 135,
+            "height": 128
           },
           "centroid": {
-            "x": 210.4493,
-            "y": 165.8642
+            "x": 218.4202,
+            "y": 156.4792
           },
-          "encoded_identity_alpha_mass": 284794,
-          "encoded_identity_unique_count": 1119,
-          "encoded_identity_coverage": 0.036995,
-          "trajectory_fingerprint": "0683c6a876b84afbe372c0e25e3ef8f198a2e52c597e1ef14cd54d3a988b18a8"
+          "encoded_identity_alpha_mass": 407997,
+          "encoded_identity_unique_count": 1603,
+          "encoded_identity_coverage": 0.052997,
+          "trajectory_fingerprint": "4fb88e50c733bce4d0ef06f6271409d8d23d2c2c5275077361f8b09cf6c796a3"
         },
         {
           "frame_index": 14,
@@ -1875,18 +1875,18 @@
             "x": 240.2203,
             "y": 118.3532
           },
-          "encoded_identity_alpha_mass": 908955,
-          "encoded_identity_unique_count": 3570,
-          "encoded_identity_coverage": 0.118028,
+          "encoded_identity_alpha_mass": 947700,
+          "encoded_identity_unique_count": 3723,
+          "encoded_identity_coverage": 0.123087,
           "trajectory_fingerprint": "72a33988bde0652adb5c6a91e61c08f5a74566fa29d78efba1f8915587a06158"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "9ca341ac9b28ca307f7899e4cd559f4b6c056d02e6eff32ede74a96dd46dc004",
-          "alpha_mass": 1085663,
-          "unique_count": 4913,
+          "foreground_mask_sha256": "8f2a8d9662374553b7d5e8b57d65d562df66d6d99395c5f20fd57da42465b9c2",
+          "alpha_mass": 1141231,
+          "unique_count": 5222,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -1894,79 +1894,79 @@
             "height": 130
           },
           "centroid": {
-            "x": 242.205,
-            "y": 121.8023
+            "x": 240.6489,
+            "y": 123.5855
           },
-          "encoded_identity_alpha_mass": 1032189,
-          "encoded_identity_unique_count": 4058,
-          "encoded_identity_coverage": 0.134162,
-          "trajectory_fingerprint": "34705921f4b493097fcba33272fb1ca1753e63944a1b990c2b8aa1a622ccae79"
+          "encoded_identity_alpha_mass": 1080247,
+          "encoded_identity_unique_count": 4247,
+          "encoded_identity_coverage": 0.140411,
+          "trajectory_fingerprint": "ddc73b8de547e7c8af6bcd46d9701a83acedeac6265a650a4c8c2143bb715369"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "0097c7b38a12bdfe0903ae0e38871f2a92854e86074962a5d690c3ecd8101771",
-          "alpha_mass": 1403589,
-          "unique_count": 6418,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
           "bbox": {
             "x": 175,
-            "y": 80,
+            "y": 79,
             "width": 139,
-            "height": 130
+            "height": 131
           },
           "centroid": {
-            "x": 241.3585,
-            "y": 135.6719
+            "x": 245.3468,
+            "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1558786,
-          "encoded_identity_unique_count": 6126,
-          "encoded_identity_coverage": 0.202532,
-          "trajectory_fingerprint": "d8139be9cdb6a8fdf4488f34bfba6d4cf71412cdb0094903d9005d729bbdc615"
+          "encoded_identity_alpha_mass": 1851709,
+          "encoded_identity_unique_count": 7276,
+          "encoded_identity_coverage": 0.240553,
+          "trajectory_fingerprint": "eeab7a7074a75cbfaaf3f78e3078364b7d09a7bf60f9c5289779935a9c3b9ba1"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "3e698b9aca649c3882dba9006493a821ddf492573deeb3d7641ff1c319421526",
-          "alpha_mass": 2514577,
-          "unique_count": 11444,
+          "foreground_mask_sha256": "e2dd8bb64cf5deb490f9d770c6b09a461d1ea66a9d28782805ddea4f2f86b99e",
+          "alpha_mass": 3246779,
+          "unique_count": 14763,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 238,
+            "width": 272,
             "height": 131
           },
           "centroid": {
-            "x": 271.7996,
-            "y": 147.865
+            "x": 297.4298,
+            "y": 143.8431
           },
-          "encoded_identity_alpha_mass": 2784286,
-          "encoded_identity_unique_count": 10938,
-          "encoded_identity_coverage": 0.361623,
-          "trajectory_fingerprint": "f2608efc204c4ae58463eb193b674c37e1670b08399e8c5dd8c9ea8b96b130c1"
+          "encoded_identity_alpha_mass": 3229940,
+          "encoded_identity_unique_count": 12688,
+          "encoded_identity_coverage": 0.41948,
+          "trajectory_fingerprint": "33367e86f89aeab46d44b8cffe7d9d9102bb88eec776a54f8af1f6d62b85a3db"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "3df59a494504eb320dd4cee1c07b2faea152b49400deb0fcfbb792baa2ebc1ee",
-          "alpha_mass": 4906113,
-          "unique_count": 22553,
+          "foreground_mask_sha256": "67b3ee6ab55e924192f2c9783ef1e5bc6c3eb8d6e224f13ef9a0b50bcfdd27e3",
+          "alpha_mass": 5213747,
+          "unique_count": 24029,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 441,
+            "width": 518,
             "height": 143
           },
           "centroid": {
-            "x": 372.2569,
-            "y": 149.4439
+            "x": 385.8809,
+            "y": 148.6093
           },
-          "encoded_identity_alpha_mass": 4562436,
-          "encoded_identity_unique_count": 17922,
-          "encoded_identity_coverage": 0.592522,
-          "trajectory_fingerprint": "b6ef7fd35f711b5ab027d276b68619e7e016c8f42c44f1fd4990b8fdf189b440"
+          "encoded_identity_alpha_mass": 4858452,
+          "encoded_identity_unique_count": 19085,
+          "encoded_identity_coverage": 0.630972,
+          "trajectory_fingerprint": "4295ad7997d3d42a84b149c6d44a366b9d7195544aa5b9cc472b5362ab2c8fb7"
         },
         {
           "frame_index": 37,
@@ -1996,7 +1996,7 @@
     {
       "id": "commerce-energy",
       "gif": "assets/animations/prysai-commerce-energy.gif",
-      "sha256": "74e9e8e3a5ba440c318189a2f283d2d5571b2ce2380cae546f8325c1dfc58748",
+      "sha256": "d2ac60c486d657ccdc11f81850822c4c5835b4ec90e109b27998b39ccc279aba",
       "encoded_frame_count": 37,
       "encoded_duration_ms": 1500,
       "canonical_frame_sha256": "4705bd11795c39818e17dd58868d4934969178d3ffdf291e8053b37b113ac337",
@@ -2016,9 +2016,9 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 4,
-          "progress": 0.1,
-          "render_progress": 0.1,
+          "frame_index": 3,
+          "progress": 0.09,
+          "render_progress": 0.09,
           "label": "origin dot",
           "bright_pixel_count": 475,
           "source_actor_ids": [
@@ -2032,11 +2032,11 @@
           "encoded_identity_coverage": 0.014481
         },
         "arc": {
-          "frame_index": 9,
-          "progress": 0.24,
-          "render_progress": 0.24,
+          "frame_index": 8,
+          "progress": 0.22,
+          "render_progress": 0.22,
           "label": "circular arc",
-          "bright_pixel_count": 3679,
+          "bright_pixel_count": 3678,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -2044,16 +2044,16 @@
           "path_strategy": "compressed actors release from a shared origin",
           "speed_profile": "short anticipation, fast release, rapid settle",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 904662,
-          "encoded_identity_unique_count": 3553,
-          "encoded_identity_coverage": 0.117466
+          "encoded_identity_alpha_mass": 903653,
+          "encoded_identity_unique_count": 3549,
+          "encoded_identity_coverage": 0.117334
         },
         "bar": {
-          "frame_index": 13,
-          "progress": 0.35,
-          "render_progress": 0.35,
+          "frame_index": 12,
+          "progress": 0.33,
+          "render_progress": 0.33,
           "label": "horizontal bar",
-          "bright_pixel_count": 4321,
+          "bright_pixel_count": 4320,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -2062,9 +2062,9 @@
           "path_strategy": "compressed actors release from a shared origin",
           "speed_profile": "short anticipation, fast release, rapid settle",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1056862,
-          "encoded_identity_unique_count": 4152,
-          "encoded_identity_coverage": 0.13727
+          "encoded_identity_alpha_mass": 1056611,
+          "encoded_identity_unique_count": 4151,
+          "encoded_identity_coverage": 0.137237
         },
         "monogram": {
           "frame_index": 15,
@@ -2146,6 +2146,28 @@
           "frame_index": 4,
           "progress": 0.125,
           "render_progress": 0.125,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 31,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0387,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "bc30f3ec5e3b4aecdb6a39105a7fca6ad4b95846c2beaee08b62b540c472aadb"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
           "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
           "alpha_mass": 955051,
           "unique_count": 4188,
@@ -2159,32 +2181,10 @@
             "x": 240.2203,
             "y": 118.3532
           },
-          "encoded_identity_alpha_mass": 111477,
-          "encoded_identity_unique_count": 438,
-          "encoded_identity_coverage": 0.014481,
-          "trajectory_fingerprint": "2b0094796fe82e6b238712dbf042b53161bd1454ab35c4dfc22bbacaf5b14d8b"
-        },
-        {
-          "frame_index": 9,
-          "progress": 0.25,
-          "render_progress": 0.25,
-          "foreground_mask_sha256": "fe48ac9309cb9f5e909225fc9acde5e50965c5a4b15c533aa6e2152d4a5cb562",
-          "alpha_mass": 1037301,
-          "unique_count": 4625,
-          "bbox": {
-            "x": 175,
-            "y": 80,
-            "width": 135,
-            "height": 130
-          },
-          "centroid": {
-            "x": 237.7895,
-            "y": 120.3606
-          },
           "encoded_identity_alpha_mass": 904662,
           "encoded_identity_unique_count": 3553,
           "encoded_identity_coverage": 0.117466,
-          "trajectory_fingerprint": "dae57c3927815fb0294c73db6f0ef8c5c6819d2e31159f2b31d37bf64939ea8e"
+          "trajectory_fingerprint": "23cda9a285b548dc76d47883e693093d1dbc37cbc5d8445e71916a48a11b98fe"
         },
         {
           "frame_index": 14,
@@ -2203,9 +2203,9 @@
             "x": 245.3468,
             "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1838805,
-          "encoded_identity_unique_count": 7222,
-          "encoded_identity_coverage": 0.238767,
+          "encoded_identity_alpha_mass": 1220013,
+          "encoded_identity_unique_count": 4793,
+          "encoded_identity_coverage": 0.158462,
           "trajectory_fingerprint": "ad47a437a3f2162573d8af512547397e50d8e5135a73a7c9b59a2ad16d49a26f"
         },
         {
@@ -2324,7 +2324,7 @@
     {
       "id": "automotive-precision",
       "gif": "assets/animations/prysai-automotive-precision.gif",
-      "sha256": "bd55bd863ca6b8bb258a18a1c41c689aa68e5dba8817a102929b89e3c3c44fbc",
+      "sha256": "7e25d3660078022a00f9191177bdeef8dac813c8d48b9f530bff2919bd4e452a",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2000,
       "canonical_frame_sha256": "e47464ef2880aa5052e03085f4347e1dbf53797cae7ba3837758c66c243d324a",
@@ -2345,26 +2345,26 @@
         },
         "spark": {
           "frame_index": 5,
-          "progress": 0.14,
-          "render_progress": 0.14,
+          "progress": 0.13,
+          "render_progress": 0.13,
           "label": "origin dot",
-          "bright_pixel_count": 1122,
+          "bright_pixel_count": 475,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "single-axis actor travel with velocity continuity",
           "speed_profile": "heavy forms slow; scan accent remains fast",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 272877,
-          "encoded_identity_unique_count": 1072,
-          "encoded_identity_coverage": 0.035442
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
         },
         "arc": {
-          "frame_index": 11,
-          "progress": 0.31,
-          "render_progress": 0.31,
+          "frame_index": 10,
+          "progress": 0.28,
+          "render_progress": 0.28,
           "label": "circular arc",
-          "bright_pixel_count": 3838,
+          "bright_pixel_count": 3681,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -2372,16 +2372,16 @@
           "path_strategy": "single-axis actor travel with velocity continuity",
           "speed_profile": "heavy forms slow; scan accent remains fast",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 947492,
-          "encoded_identity_unique_count": 3723,
-          "encoded_identity_coverage": 0.123087
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
         },
         "bar": {
-          "frame_index": 17,
-          "progress": 0.47,
-          "render_progress": 0.47,
+          "frame_index": 16,
+          "progress": 0.42,
+          "render_progress": 0.42,
           "label": "horizontal bar",
-          "bright_pixel_count": 4655,
+          "bright_pixel_count": 4326,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -2390,16 +2390,16 @@
           "path_strategy": "single-axis actor travel with velocity continuity",
           "speed_profile": "heavy forms slow; scan accent remains fast",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1150570,
-          "encoded_identity_unique_count": 4523,
-          "encoded_identity_coverage": 0.149535
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824
         },
         "monogram": {
-          "frame_index": 24,
-          "progress": 0.64,
-          "render_progress": 0.64,
+          "frame_index": 21,
+          "progress": 0.58,
+          "render_progress": 0.58,
           "label": "P / monogram",
-          "bright_pixel_count": 10573,
+          "bright_pixel_count": 7470,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -2409,9 +2409,9 @@
           "path_strategy": "single-axis actor travel with velocity continuity",
           "speed_profile": "heavy forms slow; scan accent remains fast",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 2597786,
-          "encoded_identity_unique_count": 10205,
-          "encoded_identity_coverage": 0.337389
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354
         },
         "wordmark": {
           "frame_index": 36,
@@ -2487,9 +2487,9 @@
             "x": 190.0387,
             "y": 194.01
           },
-          "encoded_identity_alpha_mass": 272877,
-          "encoded_identity_unique_count": 1072,
-          "encoded_identity_coverage": 0.035442,
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
           "trajectory_fingerprint": "9e9d1ecf6ea4d61b0c0ff6b6018c18bd8c023e346c69d484088e6d7a84ea17a5"
         },
         {
@@ -2518,31 +2518,31 @@
           "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "9838d7bcc1499507d92c9271a921041bbf2b1d26a0773851ec1de6d8d16bd298",
-          "alpha_mass": 1115049,
-          "unique_count": 5036,
+          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
+          "alpha_mass": 1124376,
+          "unique_count": 5093,
           "bbox": {
             "x": 175,
             "y": 80,
-            "width": 135,
+            "width": 139,
             "height": 130
           },
           "centroid": {
-            "x": 240.343,
-            "y": 122.1516
+            "x": 240.9101,
+            "y": 122.3723
           },
           "encoded_identity_alpha_mass": 1068127,
           "encoded_identity_unique_count": 4199,
           "encoded_identity_coverage": 0.138824,
-          "trajectory_fingerprint": "1981a338fff37466b36064d8ec902a00357678370ef934e226d2d870b17e2017"
+          "trajectory_fingerprint": "5935862c75bedc0e040e222c421ca47b9f6f48e4f6f50a1bec98ad4abcef71dc"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "4480da083add802eb5eae84ae1c5f2f677539f6b4709f60bf7883b0c83ba6a90",
-          "alpha_mass": 1675414,
-          "unique_count": 7608,
+          "foreground_mask_sha256": "ef6191503243d6bfa6aa53fed9efb43973ea39bb87bf7234a9d702b864942c4b",
+          "alpha_mass": 1925969,
+          "unique_count": 8744,
           "bbox": {
             "x": 175,
             "y": 79,
@@ -2550,79 +2550,79 @@
             "height": 131
           },
           "centroid": {
-            "x": 238.7505,
-            "y": 140.9333
+            "x": 244.922,
+            "y": 144.8904
           },
-          "encoded_identity_alpha_mass": 1597417,
-          "encoded_identity_unique_count": 6277,
-          "encoded_identity_coverage": 0.207525,
-          "trajectory_fingerprint": "3d7932f4ca4d8de610cf92e097b68ffbad5bb8ef85a25359319b8b23b4c64b45"
+          "encoded_identity_alpha_mass": 1839131,
+          "encoded_identity_unique_count": 7226,
+          "encoded_identity_coverage": 0.2389,
+          "trajectory_fingerprint": "7a158f7678786693c8a09e49f98adf478a4934bed92930c2ef2b687cae9838cf"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
-          "alpha_mass": 1939273,
-          "unique_count": 8834,
+          "foreground_mask_sha256": "1075256cf9e1446601b2e20213333a299ac1a07f24cf2e73f16dec622dc2cb6b",
+          "alpha_mass": 2873461,
+          "unique_count": 13029,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 139,
+            "width": 225,
             "height": 131
           },
           "centroid": {
-            "x": 245.3468,
-            "y": 144.9781
+            "x": 281.8168,
+            "y": 142.8749
           },
-          "encoded_identity_alpha_mass": 1850319,
-          "encoded_identity_unique_count": 7270,
-          "encoded_identity_coverage": 0.240354,
-          "trajectory_fingerprint": "4121ccc0a2c27bdb2e70a75c8e7e8541913f49ed6ab8d9577c82fd8bf4b72150"
+          "encoded_identity_alpha_mass": 2852429,
+          "encoded_identity_unique_count": 11205,
+          "encoded_identity_coverage": 0.37045,
+          "trajectory_fingerprint": "0a25b95778a2df6142e7ef8a042af2328401552eb3ae8ab9aec56e70d81ba0cf"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "6fe2d7a477cb26e1acd0d97b796c5623bd4ed9552c9f3edc10cb577092aa3fe6",
-          "alpha_mass": 4180091,
-          "unique_count": 19109,
+          "foreground_mask_sha256": "8688d9b975ad3d4ee2713c5a36384b4f2e756d78c673b98fc18b190478a3f36a",
+          "alpha_mass": 4432641,
+          "unique_count": 20341,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 352,
+            "width": 380,
             "height": 143
           },
           "centroid": {
-            "x": 338.4584,
-            "y": 147.5484
+            "x": 349.5598,
+            "y": 147.3975
           },
-          "encoded_identity_alpha_mass": 4174607,
-          "encoded_identity_unique_count": 16399,
-          "encoded_identity_coverage": 0.542169,
-          "trajectory_fingerprint": "d070d710aafd4d40cee51b22d20bc50e8d9f810df06572eabc1bdc09f56ca434"
+          "encoded_identity_alpha_mass": 4266116,
+          "encoded_identity_unique_count": 16759,
+          "encoded_identity_coverage": 0.554071,
+          "trajectory_fingerprint": "920721fad00d6d24d71830b55666f87e3f3d6812cdea35a78372d9dde6e1c9cf"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "81fb730ccb2d1a8b5c408a0268fae5dadcd6a45fbab4727a2fe4d04095e04030",
-          "alpha_mass": 6038501,
-          "unique_count": 27804,
+          "foreground_mask_sha256": "1ab41972cea592e893514a7ddc0926b74f7bd8d8329fe41ae8045ade4dc30140",
+          "alpha_mass": 6489748,
+          "unique_count": 34120,
           "bbox": {
             "x": 175,
-            "y": 79,
-            "width": 518,
-            "height": 143
+            "y": 71,
+            "width": 565,
+            "height": 151
           },
           "centroid": {
-            "x": 422.9009,
-            "y": 149.7397
+            "x": 442.7347,
+            "y": 149.6397
           },
           "encoded_identity_alpha_mass": 5679965,
           "encoded_identity_unique_count": 22314,
           "encoded_identity_coverage": 0.737726,
-          "trajectory_fingerprint": "43d827154c76546d0d6dd933aac06ad24148e4ed0a85a662df6ddd5f21c6d184"
+          "trajectory_fingerprint": "ad99c9fecc96a7202f96f712117a085370676eb864126283ec01a2ff77599d18"
         },
         {
           "frame_index": 37,
@@ -2652,8 +2652,8 @@
     {
       "id": "sports-impact",
       "gif": "assets/animations/prysai-sports-impact.gif",
-      "sha256": "22a464c258623e2b5f12664d776ddb2e455e8701f5580aca018fdd9fb5846b80",
-      "encoded_frame_count": 36,
+      "sha256": "a1e9bcfc0c7eae5e3da9bcbcd945d8fa4aae457910673305bd2a99b05baac0af",
+      "encoded_frame_count": 37,
       "encoded_duration_ms": 1330,
       "canonical_frame_sha256": "e49a8ab89b7e9d7bfb47349eb907284ad200a966c4630984c899a80bd5a54a94",
       "stages": {
@@ -2672,25 +2672,25 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 4,
-          "progress": 0.1,
-          "render_progress": 0.1,
+          "frame_index": 3,
+          "progress": 0.09,
+          "render_progress": 0.09,
           "label": "origin dot",
-          "bright_pixel_count": 586,
+          "bright_pixel_count": 474,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "horizontal compression followed by directional release",
           "speed_profile": "sharp impact with controlled recovery",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 135112,
-          "encoded_identity_unique_count": 531,
-          "encoded_identity_coverage": 0.017555
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448
         },
         "arc": {
           "frame_index": 9,
-          "progress": 0.27,
-          "render_progress": 0.27,
+          "progress": 0.25,
+          "render_progress": 0.25,
           "label": "circular arc",
           "bright_pixel_count": 3679,
           "source_actor_ids": [
@@ -2705,9 +2705,9 @@
           "encoded_identity_coverage": 0.118028
         },
         "bar": {
-          "frame_index": 15,
-          "progress": 0.42,
-          "render_progress": 0.42,
+          "frame_index": 14,
+          "progress": 0.39,
+          "render_progress": 0.39,
           "label": "horizontal bar",
           "bright_pixel_count": 4321,
           "source_actor_ids": [
@@ -2723,11 +2723,11 @@
           "encoded_identity_coverage": 0.138758
         },
         "monogram": {
-          "frame_index": 20,
-          "progress": 0.58,
-          "render_progress": 0.58,
+          "frame_index": 19,
+          "progress": 0.54,
+          "render_progress": 0.54,
           "label": "P / monogram",
-          "bright_pixel_count": 7463,
+          "bright_pixel_count": 7468,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -2737,12 +2737,12 @@
           "path_strategy": "horizontal compression followed by directional release",
           "speed_profile": "sharp impact with controlled recovery",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1839142,
-          "encoded_identity_unique_count": 7224,
-          "encoded_identity_coverage": 0.238834
+          "encoded_identity_alpha_mass": 1842797,
+          "encoded_identity_unique_count": 7239,
+          "encoded_identity_coverage": 0.23933
         },
         "wordmark": {
-          "frame_index": 34,
+          "frame_index": 35,
           "progress": 0.98,
           "render_progress": 0.98,
           "label": "Prysai wordmark",
@@ -2767,7 +2767,7 @@
           "encoded_identity_coverage": 0.796872
         },
         "canonical": {
-          "frame_index": 35,
+          "frame_index": 36,
           "progress": 1.0,
           "render_progress": 1.0,
           "label": "complete Logo",
@@ -2802,23 +2802,23 @@
           "frame_index": 4,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "7f30c0a0f0c6652705e875f0b2c61cb33068555b97499a37a23c27cb64a5e835",
-          "alpha_mass": 141582,
-          "unique_count": 721,
+          "foreground_mask_sha256": "76125eea04f387be00c3b38681ec3fa68b601d64f749034748ec1a64bf1b67d7",
+          "alpha_mass": 123657,
+          "unique_count": 623,
           "bbox": {
             "x": 175,
-            "y": 81,
+            "y": 109,
             "width": 130,
-            "height": 129
+            "height": 101
           },
           "centroid": {
-            "x": 199.615,
-            "y": 180.2872
+            "x": 190.0863,
+            "y": 193.9754
           },
-          "encoded_identity_alpha_mass": 135112,
-          "encoded_identity_unique_count": 531,
-          "encoded_identity_coverage": 0.017555,
-          "trajectory_fingerprint": "0e1ba5866869df6f07454c4fa30e7bc4b0a4c049401bb857e4b693e2bb4efb98"
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "38a5973198742c771716a9583976f4f0fefb25e21cd52a1f54ffc20b98876a1e"
         },
         {
           "frame_index": 9,
@@ -2843,7 +2843,7 @@
           "trajectory_fingerprint": "a1df8d1be170ec38780670d529ed2496ac5eb59d96eb11fa4ec68b6edba5673c"
         },
         {
-          "frame_index": 13,
+          "frame_index": 14,
           "progress": 0.375,
           "render_progress": 0.375,
           "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
@@ -2881,57 +2881,57 @@
             "x": 245.3468,
             "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1842797,
-          "encoded_identity_unique_count": 7239,
-          "encoded_identity_coverage": 0.23933,
+          "encoded_identity_alpha_mass": 1844244,
+          "encoded_identity_unique_count": 7245,
+          "encoded_identity_coverage": 0.239528,
           "trajectory_fingerprint": "994732c68975b153177bc77ff5efbe8c5418a4f3b57000c887a5e3748f42868e"
         },
         {
           "frame_index": 22,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "0baab22c2624cde1bbc61e9b53b7af2983826975f2306c46b1b6dada9ee13352",
-          "alpha_mass": 3044073,
-          "unique_count": 13812,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 238,
+            "width": 139,
             "height": 131
           },
           "centroid": {
-            "x": 288.4765,
-            "y": 141.9883
+            "x": 245.3468,
+            "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1945673,
-          "encoded_identity_unique_count": 7644,
-          "encoded_identity_coverage": 0.252719,
-          "trajectory_fingerprint": "da86428be22c0fc44ce3dd4c4aab96c1b37d3f8d49c881a600592332a7fdd718"
+          "encoded_identity_alpha_mass": 1848414,
+          "encoded_identity_unique_count": 7262,
+          "encoded_identity_coverage": 0.24009,
+          "trajectory_fingerprint": "bd19dad12a24f871c14bfd5a4e8945b6893eb29645136770668485b5c799a775"
         },
         {
-          "frame_index": 26,
+          "frame_index": 27,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "8688d9b975ad3d4ee2713c5a36384b4f2e756d78c673b98fc18b190478a3f36a",
-          "alpha_mass": 4432641,
-          "unique_count": 20341,
+          "foreground_mask_sha256": "5a993ee8ed8f25bbdfcafcbdcb50a450045f3ceb01d1004167e6485161ee410f",
+          "alpha_mass": 3542631,
+          "unique_count": 16144,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 380,
-            "height": 143
+            "width": 294,
+            "height": 131
           },
           "centroid": {
-            "x": 349.5598,
-            "y": 147.3975
+            "x": 309.2685,
+            "y": 143.0347
           },
-          "encoded_identity_alpha_mass": 3339345,
-          "encoded_identity_unique_count": 13117,
-          "encoded_identity_coverage": 0.433663,
-          "trajectory_fingerprint": "e8c202bc7b00f763bcf4813a971676e4ccec001c5fbf653db0511530e72a2976"
+          "encoded_identity_alpha_mass": 2887564,
+          "encoded_identity_unique_count": 11343,
+          "encoded_identity_coverage": 0.375012,
+          "trajectory_fingerprint": "b66c5bc602689328d573ede23a865101f66a70dd6b042b6f8f204b90d363066e"
         },
         {
-          "frame_index": 31,
+          "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
           "foreground_mask_sha256": "81fb730ccb2d1a8b5c408a0268fae5dadcd6a45fbab4727a2fe4d04095e04030",
@@ -2947,13 +2947,13 @@
             "x": 422.9009,
             "y": 149.7397
           },
-          "encoded_identity_alpha_mass": 5154780,
-          "encoded_identity_unique_count": 20249,
-          "encoded_identity_coverage": 0.669455,
+          "encoded_identity_alpha_mass": 4845157,
+          "encoded_identity_unique_count": 19033,
+          "encoded_identity_coverage": 0.629252,
           "trajectory_fingerprint": "e86067e9ca305bc6c548d392a4f5843c74b017de0cd84fcfaea83231f1fcd27b"
         },
         {
-          "frame_index": 35,
+          "frame_index": 36,
           "progress": 1.0,
           "render_progress": 1.0,
           "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
@@ -2975,12 +2975,12 @@
           "trajectory_fingerprint": "0a4d878e0c76d06970cf5c334965c7faed340ec1aabfc77a126bfcbd36ce042b"
         }
       ],
-      "canonical_frame": 35
+      "canonical_frame": 36
     },
     {
       "id": "cinematic-title",
       "gif": "assets/animations/prysai-cinematic-title.gif",
-      "sha256": "413f35e6c9511958344f27d115283c6b408925dc32c1e15d50e4cc4dec21c877",
+      "sha256": "229c13e61aac73abd811f52d0e8257a8ec06018db13c850980f0ae1b7f20698f",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2400,
       "canonical_frame_sha256": "ccedc5fab7a0628f81ee21c23ae210468b1d3b2df31c00acf4769fa297d3edd9",
@@ -3000,27 +3000,27 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 7,
-          "progress": 0.18,
-          "render_progress": 0.18,
+          "frame_index": 6,
+          "progress": 0.16,
+          "render_progress": 0.16,
           "label": "origin dot",
-          "bright_pixel_count": 546,
+          "bright_pixel_count": 474,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "center aperture gates contour and lockup layers",
           "speed_profile": "slow exposure followed by a long title hold",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 128061,
-          "encoded_identity_unique_count": 503,
-          "encoded_identity_coverage": 0.01663
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448
         },
         "arc": {
-          "frame_index": 14,
-          "progress": 0.38,
-          "render_progress": 0.38,
+          "frame_index": 13,
+          "progress": 0.35,
+          "render_progress": 0.35,
           "label": "circular arc",
-          "bright_pixel_count": 3680,
+          "bright_pixel_count": 3681,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -3033,11 +3033,11 @@
           "encoded_identity_coverage": 0.118028
         },
         "bar": {
-          "frame_index": 21,
-          "progress": 0.58,
-          "render_progress": 0.58,
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
           "label": "horizontal bar",
-          "bright_pixel_count": 4323,
+          "bright_pixel_count": 4395,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3046,16 +3046,16 @@
           "path_strategy": "center aperture gates contour and lockup layers",
           "speed_profile": "slow exposure followed by a long title hold",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1067659,
-          "encoded_identity_unique_count": 4197,
-          "encoded_identity_coverage": 0.138758
+          "encoded_identity_alpha_mass": 1084955,
+          "encoded_identity_unique_count": 4265,
+          "encoded_identity_coverage": 0.141006
         },
         "monogram": {
-          "frame_index": 26,
-          "progress": 0.69,
-          "render_progress": 0.69,
+          "frame_index": 23,
+          "progress": 0.61,
+          "render_progress": 0.61,
           "label": "P / monogram",
-          "bright_pixel_count": 8212,
+          "bright_pixel_count": 7469,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3065,9 +3065,9 @@
           "path_strategy": "center aperture gates contour and lockup layers",
           "speed_profile": "slow exposure followed by a long title hold",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 2029149,
-          "encoded_identity_unique_count": 7972,
-          "encoded_identity_coverage": 0.263563
+          "encoded_identity_alpha_mass": 1849851,
+          "encoded_identity_unique_count": 7268,
+          "encoded_identity_coverage": 0.240288
         },
         "wordmark": {
           "frame_index": 36,
@@ -3130,45 +3130,45 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "8c6b1a7fb4531b91608e275c873e02b5285e624a768cc07708f4b94f1f29bfe9",
-          "alpha_mass": 109843,
-          "unique_count": 598,
+          "foreground_mask_sha256": "fbff352cad3f85aaa8f94c57f09d7e249e020c2a34fc0e515e99dcb7715720e1",
+          "alpha_mass": 123586,
+          "unique_count": 609,
           "bbox": {
-            "x": 177,
+            "x": 176,
             "y": 179,
-            "width": 28,
+            "width": 29,
             "height": 31
           },
           "centroid": {
-            "x": 190.2362,
+            "x": 190.0382,
             "y": 194.0099
           },
           "encoded_identity_alpha_mass": 111243,
           "encoded_identity_unique_count": 437,
           "encoded_identity_coverage": 0.014448,
-          "trajectory_fingerprint": "8420cab8f9722e010990124c597243fc8565151b74abea673c7b1ddd3dcdfde7"
+          "trajectory_fingerprint": "547b38709a176d3e169ae4216d9a7c1487fedea9fec54e688eb46b8b60a08e66"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "17480cbce3110a5f548094858008044abcf40cf5789cb2d3f6293d1308e5904d",
-          "alpha_mass": 280224,
-          "unique_count": 1295,
+          "foreground_mask_sha256": "ac146da4e92fc7a4502ac3503fbdcfcb6a34f08541a043b9862be553ed567269",
+          "alpha_mass": 319308,
+          "unique_count": 1461,
           "bbox": {
             "x": 175,
             "y": 80,
-            "width": 86,
+            "width": 89,
             "height": 130
           },
           "centroid": {
-            "x": 222.1049,
-            "y": 138.0877
+            "x": 225.2293,
+            "y": 132.8462
           },
-          "encoded_identity_alpha_mass": 357750,
-          "encoded_identity_unique_count": 1405,
-          "encoded_identity_coverage": 0.046451,
-          "trajectory_fingerprint": "4f88a26d0b8c2be92571f2d7aedbf2219e06c7b3114f3554429eecce6f074b2b"
+          "encoded_identity_alpha_mass": 423950,
+          "encoded_identity_unique_count": 1665,
+          "encoded_identity_coverage": 0.055047,
+          "trajectory_fingerprint": "a70d319f3b31e785d7e10294689cc5bad5e7c9c21776d2dff935f05cb47b8e2c"
         },
         {
           "frame_index": 14,
@@ -3187,40 +3187,40 @@
             "x": 240.2203,
             "y": 118.3532
           },
-          "encoded_identity_alpha_mass": 908955,
-          "encoded_identity_unique_count": 3570,
-          "encoded_identity_coverage": 0.118028,
+          "encoded_identity_alpha_mass": 936054,
+          "encoded_identity_unique_count": 3677,
+          "encoded_identity_coverage": 0.121566,
           "trajectory_fingerprint": "2bb6ef26ee7aac0ac16a599b8eb0741d726027260aae9a4424a381be253a9094"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "b416bcc65f8f44626258649b3f180198f20053d412975077efc06c243549afa8",
-          "alpha_mass": 1087180,
-          "unique_count": 4901,
+          "foreground_mask_sha256": "4edabd09518889540532de1b5cd6d903b485886041390ec5ab89ce0bb143c460",
+          "alpha_mass": 1154786,
+          "unique_count": 5252,
           "bbox": {
             "x": 175,
             "y": 80,
-            "width": 135,
+            "width": 139,
             "height": 130
           },
           "centroid": {
-            "x": 239.1321,
-            "y": 121.5391
+            "x": 241.4391,
+            "y": 123.9269
           },
-          "encoded_identity_alpha_mass": 1032166,
-          "encoded_identity_unique_count": 4057,
-          "encoded_identity_coverage": 0.134129,
-          "trajectory_fingerprint": "27cbfe0a5a6f0372f113def2f372615693541001076af0240721b7dbfb428bd3"
+          "encoded_identity_alpha_mass": 1096404,
+          "encoded_identity_unique_count": 4310,
+          "encoded_identity_coverage": 0.142493,
+          "trajectory_fingerprint": "c7b6e684649e2bf02c40635a282f0d0dd3d3ecfe38056df3fc4c3ed29a5c48d1"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "e0b1c8866d198e1af10f494962ba82b4b4b10bec8da01da8bc3be99c82e619e9",
-          "alpha_mass": 1354609,
-          "unique_count": 6160,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
           "bbox": {
             "x": 175,
             "y": 79,
@@ -3228,57 +3228,57 @@
             "height": 131
           },
           "centroid": {
-            "x": 244.0093,
-            "y": 131.9938
+            "x": 245.3468,
+            "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1354381,
-          "encoded_identity_unique_count": 5323,
-          "encoded_identity_coverage": 0.175984,
-          "trajectory_fingerprint": "1138226d35fbf9e55cbcc32354e70420a511f70e61bde18bc7d7b0b230c60819"
+          "encoded_identity_alpha_mass": 1849851,
+          "encoded_identity_unique_count": 7268,
+          "encoded_identity_coverage": 0.240288,
+          "trajectory_fingerprint": "7b3fe8c16fc2157c36e0df836807e5bbbf832c11ebaa6e25fd51f801469707ad"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "a2eca43cd6c6dd2508c55995af145000a6f010291a447249c2cc717e695600fe",
-          "alpha_mass": 3134648,
-          "unique_count": 16376,
+          "foreground_mask_sha256": "4a6e4fa951985ecf9fa733a8154130d218b560b31452bca536474db9bbcd2f84",
+          "alpha_mass": 3417981,
+          "unique_count": 15505,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 290,
+            "width": 286,
             "height": 131
           },
           "centroid": {
-            "x": 292.5932,
-            "y": 141.9361
+            "x": 304.804,
+            "y": 142.6961
           },
-          "encoded_identity_alpha_mass": 3058367,
-          "encoded_identity_unique_count": 12014,
-          "encoded_identity_coverage": 0.397196,
-          "trajectory_fingerprint": "39f87f0c080fe748929d47f5cf699f64cd591ed82113e8064e84cd4e044eb30e"
+          "encoded_identity_alpha_mass": 3386613,
+          "encoded_identity_unique_count": 13303,
+          "encoded_identity_coverage": 0.439812,
+          "trajectory_fingerprint": "3d77fecb4e9443783cb0bc81df4e14269701495c931ee4fd214717f64c82633c"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "a12ede4baed970f3ac50f9ff0b01fed07d738f5d7ab768c796f9e285c4090a70",
-          "alpha_mass": 5184460,
-          "unique_count": 27257,
+          "foreground_mask_sha256": "95df409a5cb01463a27557d3cc4f18f13e30f3f6530fcbe30b02dc7529d0e421",
+          "alpha_mass": 5272753,
+          "unique_count": 28906,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 502,
+            "width": 504,
             "height": 143
           },
           "centroid": {
-            "x": 384.1711,
-            "y": 148.5169
+            "x": 388.514,
+            "y": 148.5846
           },
-          "encoded_identity_alpha_mass": 4766095,
-          "encoded_identity_unique_count": 18722,
-          "encoded_identity_coverage": 0.61897,
-          "trajectory_fingerprint": "b61b7dc34addf7f725180e467606c9b3bb5fb153de9b2d5470596050aba5b1a5"
+          "encoded_identity_alpha_mass": 4878698,
+          "encoded_identity_unique_count": 19165,
+          "encoded_identity_coverage": 0.633617,
+          "trajectory_fingerprint": "6f1f0b4526ee40f68664b5172a94e81b3ec8c65335669b2cc86e198881dfc4f1"
         },
         {
           "frame_index": 37,
@@ -3308,7 +3308,7 @@
     {
       "id": "nature-flow",
       "gif": "assets/animations/prysai-nature-flow.gif",
-      "sha256": "086b49a010438df8a99d05d2e6477c96dbc18c8f5db49689c9050cc3db015239",
+      "sha256": "e1fae580881ec59604589f9c6944e34089934b37e0f59689ddaaf1927331d601",
       "encoded_frame_count": 38,
       "encoded_duration_ms": 2400,
       "canonical_frame_sha256": "3128abd112bc51f8a8c222b51a411a7003f1754bf0b09143005370465c695485",
@@ -3328,9 +3328,9 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 7,
-          "progress": 0.18,
-          "render_progress": 0.18,
+          "frame_index": 6,
+          "progress": 0.16,
+          "render_progress": 0.16,
           "label": "origin dot",
           "bright_pixel_count": 475,
           "source_actor_ids": [
@@ -3344,11 +3344,11 @@
           "encoded_identity_coverage": 0.014481
         },
         "arc": {
-          "frame_index": 14,
-          "progress": 0.38,
-          "render_progress": 0.38,
+          "frame_index": 13,
+          "progress": 0.35,
+          "render_progress": 0.35,
           "label": "circular arc",
-          "bright_pixel_count": 3750,
+          "bright_pixel_count": 3682,
           "source_actor_ids": [
             "origin_dot",
             "arc"
@@ -3356,16 +3356,16 @@
           "path_strategy": "curvature-following drift into source positions",
           "speed_profile": "low-frequency flow with damped settle",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 926131,
-          "encoded_identity_unique_count": 3638,
-          "encoded_identity_coverage": 0.120276
+          "encoded_identity_alpha_mass": 909422,
+          "encoded_identity_unique_count": 3572,
+          "encoded_identity_coverage": 0.118094
         },
         "bar": {
-          "frame_index": 21,
-          "progress": 0.56,
-          "render_progress": 0.56,
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
           "label": "horizontal bar",
-          "bright_pixel_count": 4987,
+          "bright_pixel_count": 4949,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3374,16 +3374,16 @@
           "path_strategy": "curvature-following drift into source positions",
           "speed_profile": "low-frequency flow with damped settle",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1234195,
-          "encoded_identity_unique_count": 4851,
-          "encoded_identity_coverage": 0.16038
+          "encoded_identity_alpha_mass": 1223565,
+          "encoded_identity_unique_count": 4809,
+          "encoded_identity_coverage": 0.158991
         },
         "monogram": {
-          "frame_index": 26,
-          "progress": 0.7,
-          "render_progress": 0.7,
+          "frame_index": 23,
+          "progress": 0.61,
+          "render_progress": 0.61,
           "label": "P / monogram",
-          "bright_pixel_count": 8600,
+          "bright_pixel_count": 7471,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3393,9 +3393,9 @@
           "path_strategy": "curvature-following drift into source positions",
           "speed_profile": "low-frequency flow with damped settle",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 2129205,
-          "encoded_identity_unique_count": 8365,
-          "encoded_identity_coverage": 0.276556
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354
         },
         "wordmark": {
           "frame_index": 36,
@@ -3458,45 +3458,45 @@
           "frame_index": 5,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "1fec5e36db8f01f8d6f4d09bdba363d7e854ec5cb715848b27258d1d821bf277",
-          "alpha_mass": 104020,
-          "unique_count": 573,
+          "foreground_mask_sha256": "9772b7cf6eda120e249eaeaaf03cee352677fb320c86a51e3d60f51a7d203538",
+          "alpha_mass": 123594,
+          "unique_count": 611,
           "bbox": {
             "x": 175,
-            "y": 180,
+            "y": 179,
             "width": 30,
-            "height": 30
+            "height": 31
           },
           "centroid": {
-            "x": 188.9202,
-            "y": 194.4355
+            "x": 190.0375,
+            "y": 194.01
           },
           "encoded_identity_alpha_mass": 111477,
           "encoded_identity_unique_count": 438,
           "encoded_identity_coverage": 0.014481,
-          "trajectory_fingerprint": "43d044c5e80d3e31cf348ed845e07ea5694da80903b9c0344002a40300322e07"
+          "trajectory_fingerprint": "524d3eca213b6801fffab3fda3be780855d66ac42f14b8131840dc7b82f0ac87"
         },
         {
           "frame_index": 9,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "18d4460fbb917eb424369e7d68debc4776a01ac4775d2254b38a30f5f45be934",
-          "alpha_mass": 186374,
-          "unique_count": 944,
+          "foreground_mask_sha256": "5ac0ac47d3a8c025edcb89d2fb05fa77997e5a4c8edb59cf698e5a368f5ad8da",
+          "alpha_mass": 241075,
+          "unique_count": 1178,
           "bbox": {
             "x": 175,
-            "y": 86,
-            "width": 48,
-            "height": 124
+            "y": 84,
+            "width": 53,
+            "height": 126
           },
           "centroid": {
-            "x": 192.1364,
-            "y": 170.0167
+            "x": 195.0874,
+            "y": 157.5777
           },
-          "encoded_identity_alpha_mass": 337503,
-          "encoded_identity_unique_count": 1326,
-          "encoded_identity_coverage": 0.043839,
-          "trajectory_fingerprint": "750ecd2ee81699554d9ba2cfc4d4237bd4d3ef5fabdee5f47b3cd1d3149875c0"
+          "encoded_identity_alpha_mass": 426614,
+          "encoded_identity_unique_count": 1676,
+          "encoded_identity_coverage": 0.05541,
+          "trajectory_fingerprint": "4dc9f1f5e7b2482e6b61021929fa7576bc0487f37d91514dacebc1fe2018df3c"
         },
         {
           "frame_index": 14,
@@ -3515,18 +3515,18 @@
             "x": 240.2203,
             "y": 118.3532
           },
-          "encoded_identity_alpha_mass": 926131,
-          "encoded_identity_unique_count": 3638,
-          "encoded_identity_coverage": 0.120276,
+          "encoded_identity_alpha_mass": 947466,
+          "encoded_identity_unique_count": 3722,
+          "encoded_identity_coverage": 0.123054,
           "trajectory_fingerprint": "e2e8016cde2beb8b49b5c0b94de5149af4945c48f6d9afa7a707bcbf17931b03"
         },
         {
           "frame_index": 18,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "1a246f50f431e95f3f79b2d32fd346a98a461462fe2b72ad5a5d07e6b53d2432",
-          "alpha_mass": 1117872,
-          "unique_count": 5063,
+          "foreground_mask_sha256": "e03452adc24891d32c03a905f18e748e22d352843f5bd1565628e5d0c094d1b9",
+          "alpha_mass": 1338537,
+          "unique_count": 6064,
           "bbox": {
             "x": 175,
             "y": 80,
@@ -3534,79 +3534,79 @@
             "height": 130
           },
           "centroid": {
-            "x": 240.574,
-            "y": 122.2235
+            "x": 237.4386,
+            "y": 131.7861
           },
-          "encoded_identity_alpha_mass": 1061539,
-          "encoded_identity_unique_count": 4173,
-          "encoded_identity_coverage": 0.137964,
-          "trajectory_fingerprint": "6ac9e40ae6c2117350142d89ba8316c278a783597600b2b25966e1a68eab063c"
+          "encoded_identity_alpha_mass": 1274496,
+          "encoded_identity_unique_count": 5009,
+          "encoded_identity_coverage": 0.165603,
+          "trajectory_fingerprint": "74b65d50577afa3e73f5e355d8b28433212fe8f59dbeed46599db44660366085"
         },
         {
           "frame_index": 23,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "35fc31c6abd84115374f227cf103a05de1b0afbb27a6b0cd1ccbdb400995ffd0",
-          "alpha_mass": 1675391,
-          "unique_count": 7591,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
           "bbox": {
             "x": 175,
-            "y": 80,
+            "y": 79,
             "width": 139,
-            "height": 130
+            "height": 131
           },
           "centroid": {
-            "x": 238.7504,
-            "y": 140.9339
+            "x": 245.3468,
+            "y": 144.9781
           },
-          "encoded_identity_alpha_mass": 1635360,
-          "encoded_identity_unique_count": 6426,
-          "encoded_identity_coverage": 0.212451,
-          "trajectory_fingerprint": "8ece4dd8f001ff0093862d4ad2421dfbe87963781d78a8e78f3be29498674b73"
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354,
+          "trajectory_fingerprint": "6d7cabda57c530ae70ad3175d2f9ee040b842ce4a1d0746b0e433d2e180ed455"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "4ef472b15767d2f0d7321488ea4fa788da6c090de9767177bf8c24e5191b7e5f",
-          "alpha_mass": 2982513,
-          "unique_count": 13488,
+          "foreground_mask_sha256": "aaca19c1b5f6772c308e9e57b8a58f52686e2754332a2cf4a1bc7e6e93384406",
+          "alpha_mass": 3513744,
+          "unique_count": 19556,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 233,
-            "height": 131
+            "width": 292,
+            "height": 132
           },
           "centroid": {
-            "x": 286.0857,
-            "y": 142.4202
+            "x": 307.6325,
+            "y": 143.5596
           },
-          "encoded_identity_alpha_mass": 3137550,
-          "encoded_identity_unique_count": 12324,
-          "encoded_identity_coverage": 0.407445,
-          "trajectory_fingerprint": "c1b9a5000bd94fe8a5cb11929b2491adf5997a66cf038f6a1d5ceb06d4e144ca"
+          "encoded_identity_alpha_mass": 3315125,
+          "encoded_identity_unique_count": 13022,
+          "encoded_identity_coverage": 0.430522,
+          "trajectory_fingerprint": "34829fff3777e7114ce85f4e849bd3dd4063a4721565e37081efcfe1d2f40777"
         },
         {
           "frame_index": 32,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "7be148f58eda3190cb219c38743bd3d85b78fabdbf55b52c10d67ce0fc5808a1",
-          "alpha_mass": 5208567,
-          "unique_count": 27371,
+          "foreground_mask_sha256": "1a92e14ba585ae7bc9ebfe07c55a4b324f5608271112de8779aab47227e8db98",
+          "alpha_mass": 5411531,
+          "unique_count": 28656,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 481,
+            "width": 498,
             "height": 143
           },
           "centroid": {
-            "x": 385.326,
-            "y": 148.4344
+            "x": 394.5026,
+            "y": 148.4537
           },
-          "encoded_identity_alpha_mass": 4694104,
-          "encoded_identity_unique_count": 18441,
-          "encoded_identity_coverage": 0.60968,
-          "trajectory_fingerprint": "e5ee2ace73a7c2f9f1dcc58dd97456be628ae0c1cb2515460755ed52236640e7"
+          "encoded_identity_alpha_mass": 4941698,
+          "encoded_identity_unique_count": 19414,
+          "encoded_identity_coverage": 0.641849,
+          "trajectory_fingerprint": "34a3d77388e2fb6c74d4274acfed520cdcc5015983fa6ec606f7f443295e5a84"
         },
         {
           "frame_index": 37,
@@ -3636,7 +3636,7 @@
     {
       "id": "gaming-world",
       "gif": "assets/animations/prysai-gaming-world.gif",
-      "sha256": "65853c1b4010ffeba591248706802d121893c1566f36d5d95f1c0a07cdf08847",
+      "sha256": "589e6ca4b51f5f58e43be296c58c6e4b2f819cd843c561a3ba66df5d15e07541",
       "encoded_frame_count": 39,
       "encoded_duration_ms": 1640,
       "canonical_frame_sha256": "d72f00e0fde63f46585ab9a692c8e6ae0f78e7cb6f96272ac5eaec8671bde30a",
@@ -3657,24 +3657,24 @@
         },
         "spark": {
           "frame_index": 5,
-          "progress": 0.13,
-          "render_progress": 0.13,
+          "progress": 0.12,
+          "render_progress": 0.12,
           "label": "origin dot",
-          "bright_pixel_count": 502,
+          "bright_pixel_count": 474,
           "source_actor_ids": [
             "origin_dot"
           ],
           "path_strategy": "deterministic orbital arrivals into actor targets",
           "speed_profile": "spawn, accumulate, snap to reward, clear",
           "foreground_alpha_mass": 123605,
-          "encoded_identity_alpha_mass": 114035,
-          "encoded_identity_unique_count": 448,
-          "encoded_identity_coverage": 0.014811
+          "encoded_identity_alpha_mass": 107169,
+          "encoded_identity_unique_count": 421,
+          "encoded_identity_coverage": 0.013919
         },
         "arc": {
-          "frame_index": 11,
-          "progress": 0.3,
-          "render_progress": 0.3,
+          "frame_index": 10,
+          "progress": 0.27,
+          "render_progress": 0.27,
           "label": "circular arc",
           "bright_pixel_count": 3681,
           "source_actor_ids": [
@@ -3684,16 +3684,16 @@
           "path_strategy": "deterministic orbital arrivals into actor targets",
           "speed_profile": "spawn, accumulate, snap to reward, clear",
           "foreground_alpha_mass": 955051,
-          "encoded_identity_alpha_mass": 904881,
-          "encoded_identity_unique_count": 3554,
-          "encoded_identity_coverage": 0.117499
+          "encoded_identity_alpha_mass": 904646,
+          "encoded_identity_unique_count": 3553,
+          "encoded_identity_coverage": 0.117466
         },
         "bar": {
-          "frame_index": 17,
-          "progress": 0.46,
-          "render_progress": 0.46,
+          "frame_index": 16,
+          "progress": 0.42,
+          "render_progress": 0.42,
           "label": "horizontal bar",
-          "bright_pixel_count": 4323,
+          "bright_pixel_count": 4321,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3702,16 +3702,16 @@
           "path_strategy": "deterministic orbital arrivals into actor targets",
           "speed_profile": "spawn, accumulate, snap to reward, clear",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1055434,
-          "encoded_identity_unique_count": 4149,
-          "encoded_identity_coverage": 0.137171
+          "encoded_identity_alpha_mass": 1056184,
+          "encoded_identity_unique_count": 4152,
+          "encoded_identity_coverage": 0.13727
         },
         "monogram": {
-          "frame_index": 24,
-          "progress": 0.64,
-          "render_progress": 0.64,
+          "frame_index": 22,
+          "progress": 0.58,
+          "render_progress": 0.58,
           "label": "P / monogram",
-          "bright_pixel_count": 7467,
+          "bright_pixel_count": 7468,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -3799,9 +3799,9 @@
             "x": 190.0387,
             "y": 194.01
           },
-          "encoded_identity_alpha_mass": 114035,
-          "encoded_identity_unique_count": 448,
-          "encoded_identity_coverage": 0.014811,
+          "encoded_identity_alpha_mass": 107169,
+          "encoded_identity_unique_count": 421,
+          "encoded_identity_coverage": 0.013919,
           "trajectory_fingerprint": "e8c1e8b6c03c4751c3c557540922141fbd931a61fd494413116d3b82ac4551d3"
         },
         {
@@ -3852,89 +3852,89 @@
           "frame_index": 19,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "47bade10923b190eca530c12aa6adc517d613089900a5d28dec17e457896b582",
-          "alpha_mass": 1939028,
-          "unique_count": 8723,
+          "foreground_mask_sha256": "44e3cafa3920c5b3bb316a1665600fea25b91410cad889fe6523fb907f2f5027",
+          "alpha_mass": 1838790,
+          "unique_count": 8391,
           "bbox": {
             "x": 175,
-            "y": 80,
+            "y": 79,
             "width": 139,
-            "height": 130
+            "height": 131
           },
           "centroid": {
-            "x": 245.3457,
-            "y": 144.9821
+            "x": 243.6244,
+            "y": 143.0674
           },
-          "encoded_identity_alpha_mass": 1845543,
-          "encoded_identity_unique_count": 7251,
-          "encoded_identity_coverage": 0.239726,
-          "trajectory_fingerprint": "f9e8d3eaf05eff274acc31bdacd4e5f1ce50326ce8a09167842502d0e4e26b57"
+          "encoded_identity_alpha_mass": 1749025,
+          "encoded_identity_unique_count": 6872,
+          "encoded_identity_coverage": 0.227196,
+          "trajectory_fingerprint": "5cb01c369f63f050fb9d747a43d3508c1624a1e4381dc3a2e6672d09f92e97cf"
         },
         {
           "frame_index": 24,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
-          "alpha_mass": 1939273,
-          "unique_count": 8834,
+          "foreground_mask_sha256": "9d75b45eaa6cb454a2276bfe389855854f75ff3a78e949fd9d4fff382a7c6f9c",
+          "alpha_mass": 2290350,
+          "unique_count": 15612,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 139,
+            "width": 254,
             "height": 131
           },
           "centroid": {
-            "x": 245.3468,
-            "y": 144.9781
+            "x": 264.3328,
+            "y": 145.9363
           },
-          "encoded_identity_alpha_mass": 1845543,
-          "encoded_identity_unique_count": 7251,
-          "encoded_identity_coverage": 0.239726,
-          "trajectory_fingerprint": "f694035a9ff437051f6ec5873c972c1677b6bd5a4ed8dd5ea1c945167315515c"
+          "encoded_identity_alpha_mass": 2453978,
+          "encoded_identity_unique_count": 9640,
+          "encoded_identity_coverage": 0.318709,
+          "trajectory_fingerprint": "5798d59f4ec3d6a74559e52ed46993f4e14340e1fb6024869c73fb61bad99576"
         },
         {
           "frame_index": 28,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "1a8f266583f7425b293753260fa6ea4bf93b58a3b2f5e06e44ab96c3e3c347ca",
-          "alpha_mass": 3186866,
-          "unique_count": 17405,
+          "foreground_mask_sha256": "b8b95d90fc7f23aed516242d4f8c1faff8f2f972b95eda7f36d72e0baafba5aa",
+          "alpha_mass": 4044849,
+          "unique_count": 23852,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 286,
-            "height": 131
+            "width": 376,
+            "height": 149
           },
           "centroid": {
-            "x": 295.0715,
-            "y": 143.0594
+            "x": 333.0427,
+            "y": 144.5323
           },
-          "encoded_identity_alpha_mass": 2883256,
-          "encoded_identity_unique_count": 11326,
-          "encoded_identity_coverage": 0.37445,
-          "trajectory_fingerprint": "606dda188cd2be876fa17ee51df6504bbfc4d43307ed0e2fed73ee2d17384413"
+          "encoded_identity_alpha_mass": 3335777,
+          "encoded_identity_unique_count": 13103,
+          "encoded_identity_coverage": 0.4332,
+          "trajectory_fingerprint": "9d796738a1843c6aef011716b2f02e63d397f93a6347ce774537debc04b4b554"
         },
         {
           "frame_index": 33,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "8f48766bde59626b87768cd4107d0c4bedac8e4947f9bc978aecb3995cab874a",
-          "alpha_mass": 5604361,
-          "unique_count": 29997,
+          "foreground_mask_sha256": "3fe240a438c9d7a7bce8518880aa151cca91d0c8931d10a1dd7b0bae4e854df5",
+          "alpha_mass": 6007298,
+          "unique_count": 27643,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 534,
+            "width": 518,
             "height": 143
           },
           "centroid": {
-            "x": 403.9703,
-            "y": 150.127
+            "x": 421.7687,
+            "y": 149.8564
           },
-          "encoded_identity_alpha_mass": 4980877,
-          "encoded_identity_unique_count": 19566,
-          "encoded_identity_coverage": 0.646874,
-          "trajectory_fingerprint": "d278d4154cc9ceb0a15e54d0211f3d42b659585e76a479c96ab7d9a530fa5fee"
+          "encoded_identity_alpha_mass": 5626945,
+          "encoded_identity_unique_count": 22104,
+          "encoded_identity_coverage": 0.730783,
+          "trajectory_fingerprint": "1b70c77daaed2387c0442317d9dd3ade5481e6a00905f36e3b78589d4e69b00d"
         },
         {
           "frame_index": 38,
@@ -3964,8 +3964,8 @@
     {
       "id": "accessibility-first",
       "gif": "assets/animations/prysai-accessibility-first.gif",
-      "sha256": "7cee8507db1caf05a930cca7ab0b5a50671a98b4bc4086075bb91fd5500d9bd9",
-      "encoded_frame_count": 36,
+      "sha256": "1a505e4274164ee233b5cb4e14b05779c2d50602bfeb1080ff25e4cf81113016",
+      "encoded_frame_count": 35,
       "encoded_duration_ms": 2400,
       "canonical_frame_sha256": "9dd35d3d6f1281790cd70c20d3a28eda4f2356eeb8750169047322ae6395d8b4",
       "stages": {
@@ -3984,9 +3984,9 @@
           "encoded_identity_coverage": 0.0
         },
         "spark": {
-          "frame_index": 5,
-          "progress": 0.14,
-          "render_progress": 0.14,
+          "frame_index": 4,
+          "progress": 0.13,
+          "render_progress": 0.13,
           "label": "origin dot",
           "bright_pixel_count": 478,
           "source_actor_ids": [
@@ -4000,9 +4000,9 @@
           "encoded_identity_coverage": 0.014481
         },
         "arc": {
-          "frame_index": 10,
-          "progress": 0.29,
-          "render_progress": 0.29,
+          "frame_index": 9,
+          "progress": 0.27,
+          "render_progress": 0.27,
           "label": "circular arc",
           "bright_pixel_count": 3687,
           "source_actor_ids": [
@@ -4017,11 +4017,11 @@
           "encoded_identity_coverage": 0.118061
         },
         "bar": {
-          "frame_index": 15,
-          "progress": 0.43,
-          "render_progress": 0.43,
+          "frame_index": 14,
+          "progress": 0.4,
+          "render_progress": 0.4,
           "label": "horizontal bar",
-          "bright_pixel_count": 4329,
+          "bright_pixel_count": 4331,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -4030,16 +4030,16 @@
           "path_strategy": "ordered opacity with stable source geometry",
           "speed_profile": "opacity-first and no overshoot",
           "foreground_alpha_mass": 1124376,
-          "encoded_identity_alpha_mass": 1063193,
-          "encoded_identity_unique_count": 4178,
-          "encoded_identity_coverage": 0.138129
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824
         },
         "monogram": {
           "frame_index": 16,
-          "progress": 0.46,
-          "render_progress": 0.46,
+          "progress": 0.47,
+          "render_progress": 0.47,
           "label": "P / monogram",
-          "bright_pixel_count": 4331,
+          "bright_pixel_count": 7479,
           "source_actor_ids": [
             "origin_dot",
             "arc",
@@ -4049,12 +4049,12 @@
           "path_strategy": "ordered opacity with stable source geometry",
           "speed_profile": "opacity-first and no overshoot",
           "foreground_alpha_mass": 1939273,
-          "encoded_identity_alpha_mass": 1068127,
-          "encoded_identity_unique_count": 4199,
-          "encoded_identity_coverage": 0.138824
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354
         },
         "wordmark": {
-          "frame_index": 33,
+          "frame_index": 32,
           "progress": 0.93,
           "render_progress": 0.93,
           "label": "Prysai wordmark",
@@ -4079,7 +4079,7 @@
           "encoded_identity_coverage": 0.733825
         },
         "canonical": {
-          "frame_index": 35,
+          "frame_index": 34,
           "progress": 1.0,
           "render_progress": 1.0,
           "label": "complete Logo",
@@ -4114,8 +4114,8 @@
           "frame_index": 4,
           "progress": 0.125,
           "render_progress": 0.125,
-          "foreground_mask_sha256": "da8bb2e361434afc4c51ac5987ac9c47a1f72af5fc663729b20968075b4a030b",
-          "alpha_mass": 117401,
+          "foreground_mask_sha256": "332bcc39e3b2bafcf8023e23f6c1a030db222d77b0ebd9c7097bd5b89b923ff3",
+          "alpha_mass": 122708,
           "unique_count": 618,
           "bbox": {
             "x": 175,
@@ -4124,20 +4124,20 @@
             "height": 31
           },
           "centroid": {
-            "x": 190.0399,
-            "y": 194.01
+            "x": 190.0391,
+            "y": 194.0101
           },
-          "encoded_identity_alpha_mass": 111243,
-          "encoded_identity_unique_count": 437,
-          "encoded_identity_coverage": 0.014448,
-          "trajectory_fingerprint": "0c517994330b53ca7e60e46b219fab9c54a67836346938717c08ffef400a1165"
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "99c597c939199415e46fc127030af79cf7dfbf7f672b53ff6fb7501a748fa7eb"
         },
         {
-          "frame_index": 9,
+          "frame_index": 8,
           "progress": 0.25,
           "render_progress": 0.25,
-          "foreground_mask_sha256": "67d90ab72dfaae881f78718a96b57d9931d517a7f0fa66900fa665f2821828ac",
-          "alpha_mass": 775998,
+          "foreground_mask_sha256": "a8bda483c699d5ed26d6e28e02d4a01fee1feb179e3132abda2c1a4bf21da1b0",
+          "alpha_mass": 879960,
           "unique_count": 4188,
           "bbox": {
             "x": 175,
@@ -4146,20 +4146,20 @@
             "height": 130
           },
           "centroid": {
-            "x": 238.4989,
-            "y": 120.9486
+            "x": 239.5829,
+            "y": 119.3127
           },
-          "encoded_identity_alpha_mass": 111477,
-          "encoded_identity_unique_count": 438,
-          "encoded_identity_coverage": 0.014481,
-          "trajectory_fingerprint": "d491c5424c47bcea98a1d2c0bc163738e493fc4bf3a98d0b05302c1093402932"
+          "encoded_identity_alpha_mass": 908954,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028,
+          "trajectory_fingerprint": "47048391eaab5b949d2e7622a7356ed20120492a791c16d139a27ee1984d3fd2"
         },
         {
           "frame_index": 13,
           "progress": 0.375,
           "render_progress": 0.375,
-          "foreground_mask_sha256": "51834ec7ab864bda4325fda36a0074a1099edcfaf216fe4841d24b70f0d613a9",
-          "alpha_mass": 1043999,
+          "foreground_mask_sha256": "79622e9aa09bba4dafcddd65a43e090000fe486a294b790b0a758c396faed8ad",
+          "alpha_mass": 1093139,
           "unique_count": 5093,
           "bbox": {
             "x": 175,
@@ -4168,21 +4168,21 @@
             "height": 130
           },
           "centroid": {
-            "x": 240.6101,
-            "y": 120.627
+            "x": 240.7988,
+            "y": 121.7245
           },
-          "encoded_identity_alpha_mass": 909189,
-          "encoded_identity_unique_count": 3571,
-          "encoded_identity_coverage": 0.118061,
-          "trajectory_fingerprint": "42fb62e00ee10fd721d748ddae1cc23a33643ef064a9fe5b36be3095f5dec909"
+          "encoded_identity_alpha_mass": 1063193,
+          "encoded_identity_unique_count": 4178,
+          "encoded_identity_coverage": 0.138129,
+          "trajectory_fingerprint": "f13cf90f5e0da17362413276ab2e63025aef45672f0f359d4cf35a501847b7b3"
         },
         {
-          "frame_index": 18,
+          "frame_index": 17,
           "progress": 0.5,
           "render_progress": 0.5,
-          "foreground_mask_sha256": "d47d5de8dae218760aded23a394da6638c7d4892341a4d9a8a66f4ab6d475eee",
-          "alpha_mass": 2132108,
-          "unique_count": 20690,
+          "foreground_mask_sha256": "d7c54df7aba4d9a55662ad3f3671c92200172b2495e00d65917293e1eac2bdee",
+          "alpha_mass": 2041014,
+          "unique_count": 20683,
           "bbox": {
             "x": 175,
             "y": 79,
@@ -4190,20 +4190,20 @@
             "height": 141
           },
           "centroid": {
-            "x": 262.5766,
-            "y": 144.9411
+            "x": 258.0415,
+            "y": 145.3073
           },
           "encoded_identity_alpha_mass": 1850319,
           "encoded_identity_unique_count": 7270,
           "encoded_identity_coverage": 0.240354,
-          "trajectory_fingerprint": "160801eb7ac93f0d0e6f3b687f2902943b47d50b5bb08e518b4b34c2ba5dcd35"
+          "trajectory_fingerprint": "bcb51215c8841a773cd52e29b88b1af27be0c1041e300d348b534b24752af08a"
         },
         {
-          "frame_index": 22,
+          "frame_index": 21,
           "progress": 0.625,
           "render_progress": 0.625,
-          "foreground_mask_sha256": "7a947394837cc9023691446ac63e7c644985b511ead2fc8641a379796b16d0fd",
-          "alpha_mass": 3515182,
+          "foreground_mask_sha256": "579da8ce11dc303b03c4defce36faaf50a18a4a3e0241e6bd2179019ad033b31",
+          "alpha_mass": 3272059,
           "unique_count": 23486,
           "bbox": {
             "x": 175,
@@ -4212,20 +4212,20 @@
             "height": 141
           },
           "centroid": {
-            "x": 312.2994,
-            "y": 143.4355
+            "x": 302.9342,
+            "y": 142.9574
           },
           "encoded_identity_alpha_mass": 2885867,
           "encoded_identity_unique_count": 11336,
           "encoded_identity_coverage": 0.374781,
-          "trajectory_fingerprint": "ca099c8ac3d84f6fcc76d27413b8e7884636a80b6337c6c6dd2e9c368a10b50d"
+          "trajectory_fingerprint": "5e25439c19cab0cd4dbaa975ae6f8fa8ac1c2193565064cb859b244d6328f021"
         },
         {
           "frame_index": 26,
           "progress": 0.75,
           "render_progress": 0.75,
-          "foreground_mask_sha256": "540b5d38c4b2dd203e46f93e4707f31c48fc40ef865bf944e18e4b60f2fdfa09",
-          "alpha_mass": 4803499,
+          "foreground_mask_sha256": "bead93a6ae04c31c000fb85d47b670c9e814af8501799bb8f05340f217bad19d",
+          "alpha_mass": 4570681,
           "unique_count": 27376,
           "bbox": {
             "x": 175,
@@ -4234,38 +4234,38 @@
             "height": 143
           },
           "centroid": {
-            "x": 372.5351,
-            "y": 148.2021
+            "x": 361.7687,
+            "y": 147.8344
           },
           "encoded_identity_alpha_mass": 4164652,
           "encoded_identity_unique_count": 16357,
           "encoded_identity_coverage": 0.540781,
-          "trajectory_fingerprint": "fd6a1ba1da609899e56d6be910948250f7687f5c6195f637b10b06e702cd4c45"
+          "trajectory_fingerprint": "e47e3b5493255a36ea932acceb9bb81caddbc08ab819cd6e04e5a73002aaf70a"
         },
         {
-          "frame_index": 31,
+          "frame_index": 30,
           "progress": 0.875,
           "render_progress": 0.875,
-          "foreground_mask_sha256": "49a1b2457b3738ff748f5682bf2393d99c6b2a19b85e30a26bd4f5e2c472ed8a",
-          "alpha_mass": 5965037,
-          "unique_count": 30166,
+          "foreground_mask_sha256": "caea45b9cf62e737cd40fe77f9bc80fe32a27706e063618c11547cba4484c2e5",
+          "alpha_mass": 5930198,
+          "unique_count": 30098,
           "bbox": {
             "x": 175,
             "y": 79,
-            "width": 550,
+            "width": 549,
             "height": 143
           },
           "centroid": {
-            "x": 427.1258,
-            "y": 149.4667
+            "x": 425.4632,
+            "y": 149.5076
           },
-          "encoded_identity_alpha_mass": 5652854,
-          "encoded_identity_unique_count": 22201,
-          "encoded_identity_coverage": 0.73399,
-          "trajectory_fingerprint": "b4b27992d6c954a3af1e50a6a4439c871ce35ee81985ac64b1e72d60544a6677"
+          "encoded_identity_alpha_mass": 4828512,
+          "encoded_identity_unique_count": 18964,
+          "encoded_identity_coverage": 0.626971,
+          "trajectory_fingerprint": "5c117d6d0894747391de698bc729ba609dceb0d0dd2276e3ccf82c78fca92749"
         },
         {
-          "frame_index": 35,
+          "frame_index": 34,
           "progress": 1.0,
           "render_progress": 1.0,
           "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
@@ -4287,7 +4287,7 @@
           "trajectory_fingerprint": "262eec7e36bcef52a244e283044684c4479dba3add1fd8b0fb407a24e94c8b35"
         }
       ],
-      "canonical_frame": 35
+      "canonical_frame": 34
     }
   ],
   "unresolved": [
@@ -4304,19 +4304,19 @@
       {
         "progress": 0.125,
         "theme_count": 13,
-        "unique_foreground_mask_count": 11,
+        "unique_foreground_mask_count": 8,
         "unique_trajectory_fingerprint_count": 13
       },
       {
         "progress": 0.25,
         "theme_count": 13,
-        "unique_foreground_mask_count": 10,
+        "unique_foreground_mask_count": 9,
         "unique_trajectory_fingerprint_count": 13
       },
       {
         "progress": 0.375,
         "theme_count": 13,
-        "unique_foreground_mask_count": 9,
+        "unique_foreground_mask_count": 8,
         "unique_trajectory_fingerprint_count": 13
       },
       {
@@ -4340,7 +4340,7 @@
       {
         "progress": 0.875,
         "theme_count": 13,
-        "unique_foreground_mask_count": 12,
+        "unique_foreground_mask_count": 13,
         "unique_trajectory_fingerprint_count": 13
       },
       {

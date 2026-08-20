@@ -470,24 +470,24 @@ PHASE_TIMINGS = {
     # Each next actor starts after the previous actor's source-pixel reveal has
     # finished. The route can still differ through its path and easing, but the
     # public storyboard remains a readable construction sequence.
-    "standard": {"dot": (.03, .14), "arc": (.17, .32), "bar": (.35, .49), "stem": (.52, .66), "wordmark": (.70, .96)},
-    "slow": {"dot": (.04, .17), "arc": (.20, .38), "bar": (.41, .56), "stem": (.59, .72), "wordmark": (.74, .98)},
-    "staggered": {"dot": (.02, .14), "arc": (.17, .32), "bar": (.35, .46), "stem": (.49, .63), "wordmark": (.67, .96)},
-    "field": {"dot": (.02, .15), "arc": (.18, .33), "bar": (.36, .48), "stem": (.51, .65), "wordmark": (.69, .97)},
-    "center": {"dot": (.04, .17), "arc": (.20, .35), "bar": (.38, .47), "stem": (.50, .64), "wordmark": (.68, .97)},
-    "late": {"dot": (.05, .18), "arc": (.22, .39), "bar": (.42, .58), "stem": (.62, .71), "wordmark": (.75, .99)},
-    "rapid": {"dot": (.01, .10), "arc": (.13, .24), "bar": (.27, .35), "stem": (.38, .42), "wordmark": (.47, .94)},
+    "standard": {"dot": (.03, .13), "arc": (.16, .28), "bar": (.31, .42), "stem": (.45, .58), "wordmark": (.60, .96)},
+    "slow": {"dot": (.04, .15), "arc": (.18, .34), "bar": (.37, .46), "stem": (.47, .61), "wordmark": (.65, .98)},
+    "staggered": {"dot": (.02, .13), "arc": (.16, .29), "bar": (.32, .42), "stem": (.45, .57), "wordmark": (.60, .96)},
+    "field": {"dot": (.02, .14), "arc": (.17, .30), "bar": (.33, .44), "stem": (.47, .59), "wordmark": (.62, .97)},
+    "center": {"dot": (.04, .15), "arc": (.18, .32), "bar": (.35, .43), "stem": (.46, .58), "wordmark": (.61, .97)},
+    "late": {"dot": (.05, .16), "arc": (.19, .35), "bar": (.38, .46), "stem": (.47, .61), "wordmark": (.66, .99)},
+    "rapid": {"dot": (.01, .09), "arc": (.12, .22), "bar": (.25, .33), "stem": (.36, .42), "wordmark": (.45, .94)},
     # Sports keeps a short recovery beat between the strike and wordmark so
     # its 0.75 evidence frame cannot collapse into commerce's rapid cascade.
-    "impact": {"dot": (.01, .10), "arc": (.13, .27), "bar": (.30, .42), "stem": (.46, .58), "wordmark": (.63, .98)},
-    "orbit": {"dot": (.02, .13), "arc": (.16, .30), "bar": (.33, .46), "stem": (.50, .64), "wordmark": (.69, .98)},
+    "impact": {"dot": (.01, .09), "arc": (.12, .25), "bar": (.28, .39), "stem": (.43, .54), "wordmark": (.68, .98)},
+    "orbit": {"dot": (.02, .12), "arc": (.15, .27), "bar": (.30, .42), "stem": (.45, .58), "wordmark": (.62, .98)},
     # Start the low-motion wordmark earlier so its semantic fade remains a
     # visibly distinct route at the encoded GIF midpoint.
-    "accessible": {"dot": (.03, .14), "arc": (.17, .29), "bar": (.32, .43), "stem": (.46, .48), "wordmark": (.52, .93)},
-    "organic": {"dot": (.04, .18), "arc": (.21, .38), "bar": (.41, .56), "stem": (.59, .70), "wordmark": (.74, .98)},
+    "accessible": {"dot": (.03, .13), "arc": (.16, .27), "bar": (.30, .40), "stem": (.43, .47), "wordmark": (.50, .93)},
+    "organic": {"dot": (.04, .16), "arc": (.19, .35), "bar": (.38, .46), "stem": (.47, .61), "wordmark": (.66, .98)},
     # The title route keeps the aperture phase visible before exposing the
     # wordmark as a deliberate title-card hold.
-    "title": {"dot": (.05, .18), "arc": (.21, .38), "bar": (.41, .58), "stem": (.62, .69), "wordmark": (.73, .99)},
+    "title": {"dot": (.05, .16), "arc": (.19, .35), "bar": (.38, .46), "stem": (.47, .61), "wordmark": (.65, .99)},
 }
 
 IMPLEMENTED_TRAJECTORIES = {
@@ -1076,6 +1076,14 @@ def _route_trace_points(
         elif variant.startswith("polar"):
             shift = (component_index * 3) % max(1, len(points))
             points = points[shift:] + points[:shift]
+            if variant == "polar-orbit":
+                # Keep the orbit route visibly distinct from signal convergence at
+                # the same progress: each glyph gets a different phase and a
+                # shallow vertical lift, while all paint remains clipped to its
+                # observed source actor.
+                bbox = mask.getbbox() or (0, 0, 1, 1)
+                height = max(2, bbox[3] - bbox[1])
+                points = [(x, round(y + math.cos(index * .7 + component_index) * height * .32)) for index, (x, y) in enumerate(points)]
         elif variant.startswith("diagonal") or variant == "scan-slope":
             height = max(2, (mask.getbbox() or (0, 0, 1, 1))[3] - (mask.getbbox() or (0, 0, 1, 1))[1])
             points = [(x, round(y + (index / max(1, len(points) - 1) - .5) * height * .45)) for index, (x, y) in enumerate(points)]
@@ -1486,6 +1494,19 @@ def _source_fill_reveal(
         return _progressive_mask(mask, local, "radial", center=center, start=start, direction=direction)
 
     bbox = mask.getbbox() or (center[0], center[1], center[0] + 1, center[1] + 1)
+    if variant == "polar-orbit":
+        # Orbital arrivals use a phase-shifted radial gate. This keeps the
+        # route visibly different from signal convergence even when both are
+        # sampled at the same wordmark progress, while the gate remains clipped
+        # to the observed glyph mask.
+        return _progressive_mask(
+            mask,
+            local,
+            "radial",
+            center=center,
+            start=start + 72 + component_index * 13,
+            direction=1,
+        )
     if variant.startswith("polar"):
         return _progressive_mask(mask, local, "radial", center=center, start=start, direction=direction)
     if variant.startswith("wave"):
@@ -3546,14 +3567,17 @@ JS = r'''(() => {
   function routeCommand() {
     const route = routeCards.get(routeSelect?.value) || routeCards.values().next().value;
     const format = document.querySelector('[data-param="format"]')?.value || "gif";
+    if (format === "html-svg") return "NOT_RUN: HTML/SVG export requires an accepted SVG source or approved raster reconstruction adapter.";
+    // A single-route GIF uses the isolated export seam. PDF is an atlas export
+    // by contract, so it must run the full generator and cannot keep --theme;
+    // otherwise the generator returns before writing the atlas.
     const parts = ["python showcase/generate_showcase.py"];
     if (format === "gif") parts.push(`--theme ${route?.id || "ai-field"}`);
     if (tuning.background === "solid") parts.push(`--background '${tuning.color}'`);
     if (tuning.duration) parts.push(`--duration-ms ${Math.round(tuning.duration * 1000)}`);
     if (tuning.speed !== 1) parts.push(`--speed ${tuning.speed}`);
     if (!tuning.particles) parts.push("--no-particles");
-    if (format === "pdf") return `${parts.join(" ")}  # writes showcase/output/pdf/motiflux-theme-atlas.pdf`;
-    if (format === "html-svg") return "NOT_RUN: HTML/SVG export requires an accepted SVG source or approved raster reconstruction adapter.";
+    if (format === "pdf") return `${parts.join(" ")}  # writes all 13 GIF routes plus showcase/output/pdf/motiflux-theme-atlas.pdf`;
     return parts.join(" ");
   }
   async function copyExportCommand() {
@@ -3611,7 +3635,7 @@ JS = r'''(() => {
     if (routeExportNote) routeExportNote.textContent = selectedFormat() === "HTML/SVG"
       ? "not_run · requires accepted SVG or an approved raster reconstruction adapter"
       : selectedFormat() === "PDF atlas"
-        ? "baked target · regenerates the seven-stage atlas and repository showcase outputs"
+        ? "baked target · regenerates all 13 routes, the seven-stage atlas, and repository showcase outputs"
         : "baked target · writes the selected route export manifest and GIF";
     if (exportPlan) exportPlan.textContent = `source: supplied Prysai JPG · route: ${route?.name || "selected"} · actor map: candidate / needs-review · tuning: ${surface}, ${background}, ${duration}, ${speed}, ${direction.toLowerCase()}, ${particles} · output: ${selectedFormat()} · gaps: raster role acceptance and browser/accessibility proof remain open`;
   }

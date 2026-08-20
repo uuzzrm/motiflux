@@ -201,9 +201,9 @@
     player.paused = true;
     showCheckpoint(player, progress);
   }
-  function showCanonical(player) {
+  function showCanonical(player, preserveClock = false) {
     if (!player.gif) return;
-    player.current = player.duration;
+    if (!preserveClock) player.current = player.duration;
     render(player, 1);
     player.gif.hidden = true;
     player.stage.dataset.playback = "canonical";
@@ -250,7 +250,7 @@
     // its blank frame while the storyboard is still reporting the final state.
     // showCanonical() clamps the visible state to the exact final frame. Call
     // it only once at the handoff so the separate final hold can advance.
-    if (player.current >= player.duration && player.stage.dataset.playback !== "canonical") showCanonical(player);
+    if (player.current >= player.duration && player.stage.dataset.playback !== "canonical") showCanonical(player, true);
     if (player.current >= player.duration + player.finalHoldMs) {
       player.current = 0;
       render(player, 0);
@@ -267,7 +267,9 @@
   }
   async function play(player, forceRestart = false) {
     if (motion === "reduced") { stop(player); player.current = player.duration; render(player, 1); showCanonical(player); return; }
-    // A portable GIF cannot seek. Resume by restarting it so the timer and pixels agree.
+    // A portable GIF cannot seek. A paused player therefore restarts the
+    // checked-in GIF from frame zero; the status text makes that limitation
+    // explicit instead of presenting a false resume guarantee.
     const restart = forceRestart || player.current > 0 || player.paused || player.current >= player.duration;
     if (restart) { player.current = 0; render(player, 0); }
     player.paused = false;
@@ -459,14 +461,17 @@
   function routeCommand() {
     const route = routeCards.get(routeSelect?.value) || routeCards.values().next().value;
     const format = document.querySelector('[data-param="format"]')?.value || "gif";
+    if (format === "html-svg") return "NOT_RUN: HTML/SVG export requires an accepted SVG source or approved raster reconstruction adapter.";
+    // A single-route GIF uses the isolated export seam. PDF is an atlas export
+    // by contract, so it must run the full generator and cannot keep --theme;
+    // otherwise the generator returns before writing the atlas.
     const parts = ["python showcase/generate_showcase.py"];
     if (format === "gif") parts.push(`--theme ${route?.id || "ai-field"}`);
     if (tuning.background === "solid") parts.push(`--background '${tuning.color}'`);
     if (tuning.duration) parts.push(`--duration-ms ${Math.round(tuning.duration * 1000)}`);
     if (tuning.speed !== 1) parts.push(`--speed ${tuning.speed}`);
     if (!tuning.particles) parts.push("--no-particles");
-    if (format === "pdf") return `${parts.join(" ")}  # writes showcase/output/pdf/motiflux-theme-atlas.pdf`;
-    if (format === "html-svg") return "NOT_RUN: HTML/SVG export requires an accepted SVG source or approved raster reconstruction adapter.";
+    if (format === "pdf") return `${parts.join(" ")}  # writes all 13 GIF routes plus showcase/output/pdf/motiflux-theme-atlas.pdf`;
     return parts.join(" ");
   }
   async function copyExportCommand() {
@@ -524,7 +529,7 @@
     if (routeExportNote) routeExportNote.textContent = selectedFormat() === "HTML/SVG"
       ? "not_run · requires accepted SVG or an approved raster reconstruction adapter"
       : selectedFormat() === "PDF atlas"
-        ? "baked target · regenerates the seven-stage atlas and repository showcase outputs"
+        ? "baked target · regenerates all 13 routes, the seven-stage atlas, and repository showcase outputs"
         : "baked target · writes the selected route export manifest and GIF";
     if (exportPlan) exportPlan.textContent = `source: supplied Prysai JPG · route: ${route?.name || "selected"} · actor map: candidate / needs-review · tuning: ${surface}, ${background}, ${duration}, ${speed}, ${direction.toLowerCase()}, ${particles} · output: ${selectedFormat()} · gaps: raster role acceptance and browser/accessibility proof remain open`;
   }
