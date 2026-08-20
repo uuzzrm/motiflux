@@ -1,500 +1,418 @@
 ---
 name: motiflux
-description: "Motiflux V1 reconstructs supplied raster brand marks as editable SVG scene graphs and generates responsive logo motion for web delivery. Use for logo reveals, splash sequences, brand intros, loading states, idle motion, hover interactions, and image-to-animation showcases. Route industry and style language through 13 canonical themes, including education, product systems, developer, AI-generative, fintech, security, commerce, automotive, sports, cinematic, nature, gaming, premium, and accessibility. Select a distinct executable foreground trajectory for each theme, preserve the supplied identity geometry, and validate landmark error, contour distance, temporal telemetry, accessibility, and semantic canonical end-state fingerprints."
+description: "Motiflux V1 is an AI-first skill for source-aware logo animation, prompt routing, bounded raster observation, deterministic theme trajectories, tuning, and export guidance. Preserve editable SVG actors; for PNG, JPG, and WebP, keep source pixels authoritative, expose reviewable candidates, and never imply automatic raster-to-equivalent-SVG reconstruction."
 ---
 
 # Motiflux V1
 
-## AI execution contract
+## Shortest prompt formula
+
+Use this shortest prompt formula, in this order:
+
+```text
+source + identity invariant -> surface -> one theme keyword -> observed foreground sequence -> duration/speed/direction -> background/particles -> reduced motion -> output format -> evidence required
+```
+
+Interpret each slot literally. `source + identity invariant` names the supplied
+file and what must remain unchanged; `surface` names the delivery context;
+`one theme keyword` selects one catalog route; `observed foreground sequence`
+names only measured or explicitly accepted source actors; `duration/speed/direction`
+sets timing and entry intent; `background/particles` sets secondary presentation;
+`reduced motion` sets the accessible fallback; `output format` names requested
+media; and `evidence required` names the checks that must actually run. A solid
+background must include a color. If its color is omitted, resolve
+`#0B0D12` and record `runtime.background.source: default`; do not present that
+default as user-supplied intent. Direction is currently a preview entry cue
+unless a source-specific adapter proves a full actor path. Pre-rendered GIF and
+PDF cannot respond to the system reduced-motion setting, so request/provide the
+canonical poster or another static output as the fallback.
+
+## Mission and evidence rules
 
 Act as a design-and-verification system. Convert a supplied mark and brand
-context into an editable vector scene, a motion plan, a responsive web package,
-and an evidence ledger. Optimize in this order: identity landmarks; contour and
-negative-space fidelity; editable scene structure and topology; motion
-legibility; responsive and accessible behavior; compact implementation.
+context into the narrowest honest artifact set: source observations, a motion
+plan, a responsive package when allowed, and an evidence ledger. Preserve SVG
+structure/topology. For raster input, keep source pixels authoritative and
+expose geometric actor candidates without claiming semantic recognition, OCR,
+or equivalent editable vector reconstruction.
 
 Use `MUST` for completion requirements, `SHOULD` for defaults, and `MAY` for
-optional behavior. If a MUST is not verified, return `candidate` and preserve
-the missing item in `not_run` or `unresolved`. Never turn missing evidence into
-a pass. Do not infer provenance or licensing from this file.
+optional behavior. Keep these status layers separate:
+
+- `candidate`: overall evidence is useful but open;
+- `complete`: overall required evidence is closed;
+- `needs-review`: a source role or actor binding is still a hypothesis;
+- `preview`, `baked`, `verified`: output lifecycle states;
+- `not_run`, `unresolved`: missing proof or unsupported execution.
+
+One status never implies another. An unverified MUST keeps the result
+`candidate` and the relevant item in `not_run` or `unresolved`.
+
+Treat role review and artifact delivery as independent state machines. For a
+component, `observed` means that pixels or source geometry were measured;
+`candidate` means that a geometric role was proposed; `needs-review` means
+that the proposal or actor binding is still unconfirmed; and `accepted` means
+that the source or a human reviewer explicitly confirmed it. A top-level
+`candidate` means that required evidence is still open. Never promote a role,
+file, or route merely because a prompt named it.
+
+## AI-readable truth model
+
+Keep these record classes separate: `source-fact` (file and supplied pixels),
+`geometric-observation` (masks, bounds, components, groups), `role-hypothesis`
+(proposal plus confidence/evidence), `accepted-binding` (source or human
+confirmation), and `render-evidence` (files and checks actually produced).
+Never infer a later class from an earlier one. The raster handoff is:
+
+```text
+decode -> measure -> group -> propose -> review/accept -> bind or fallback
+```
+
+The minimum component record is `geometry_strategy: pixel-observation-only`
+plus `role_review.proposed_role`, `accepted_role`, `confidence`,
+`review_status`, and `evidence`. Keep `accepted_role: null` for
+`observed`/`candidate`/`needs-review`; a prompt cannot confirm a role. This is
+bounded geometric observation, never OCR, semantic recognition, or equivalent
+editable-SVG reconstruction. Unsafe decomposition uses measured source pixels
+and `static-canonical`.
+
+## Canonical execution order
+
+Treat the request as seven ordered handoffs. A later handoff cannot promote an
+earlier hypothesis, replace a user decision, or supply evidence for a step that
+did not run:
+
+```text
+source observation -> role review -> theme route -> animation plan
+  -> user confirmation/tuning -> export delivery -> evidence
+```
+
+1. **Source observation.** Record the input path/format, identity invariant,
+   dimensions, pixels or SVG actors, and observation limitations in
+   `source-analysis.json`. Raster output is `observed` only for measured
+   geometry.
+2. **Role review.** For each candidate component, write `role_review` with
+   `proposed_role`, `accepted_role`, `confidence`, `review_status`, and
+   measured `evidence`. Keep `accepted_role: null` for `observed`, `candidate`,
+   and `needs-review`; only source annotation or explicit human review can
+   produce `accepted`.
+3. **Theme route.** Match the user's industry, product, audience, style, and
+   motion language to one catalog profile. Record the exact `primary_id`,
+   `trajectory_id`, `matched_tags`, modifiers, and rejected candidates. Do not
+   route from raster appearance as if it were semantic recognition.
+4. **Animation plan.** Write `foreground_plan` with confirmed/measured
+   `source_actors`, stable `stage_order`, `path_strategy`, `speed_profile`,
+   visible proof, the theme's executable variant, runtime controls, and
+   `fallback: static-canonical`. Do not invent a missing dot, arc, bar, letter,
+   or wordmark.
+5. **User confirmation/tuning.** Present the observation boundary, selected
+   route, actor/stage plan, controls, requested outputs, and open gaps in a
+   compact confirmation record. Wait for approval or a correction when the
+   request is plan-only or an unresolved decision changes identity, route,
+   stage order, or proof. Apply one tuning change at a time and preserve the
+   source, route, and canonical fingerprint unless the user changes them.
+6. **Export delivery.** Select a named adapter for each approved format. A
+   browser control is `preview`; a generator-written file is `baked`; an
+   unavailable adapter has `path: null` and `not_run`. Never treat a requested
+   format as permission to fabricate an adapter or path.
+7. **Evidence.** Inspect the written artifact and applicable source, stage,
+   canonical, runtime, browser, and accessibility checks. Use `verified` only
+   for checks that actually passed; otherwise retain `candidate` and list
+   `not_run` or `unresolved`.
+
+The compact handoff SHOULD preserve this nesting:
+
+```yaml
+source_observation: {status: observed|not_run, source_facts: [], limitations: []}
+role_review: {status: accepted|needs-review, components: []}
+theme_selection: {primary_id: canonical-id, trajectory_id: canonical-trajectory, matched_tags: [], rejected_candidates: []}
+foreground_plan: {source_actors: [], stage_order: [], fallback: static-canonical}
+confirmation: {status: pending|approved|revised|declined, scope: route|plan|tuning|role-review, source: user|explicit-request|default}
+runtime: {duration_ms: 2200, tempo: 1.0, background: {}, particles: true, reduced_motion: static-canonical}
+export: [{format: gif, path: null, lifecycle: preview|baked|verified}]
+evidence: {status: complete|candidate, not_run: [], unresolved: []}
+```
+
+The lifecycle field answers “what happened”; evidence answers “what is
+proven.” A GIF may be `baked` while the result remains `candidate`. Follow the
+guides for request assembly and export/tuning details.
+
+## User confirmation and tuning gate
+
+Before export, show a compact confirmation record containing source identity,
+observation boundary, route, foreground plan, runtime controls, outputs, and open
+gaps. Ask for `approve plan`, `change route`, `change tuning`, `correct actor
+mapping`, `preview only`, or `decline` when the choice is unresolved. Approval
+does not turn raster hypotheses into semantic roles; explicit source or human
+review is still required. Recompute only affected downstream records and keep
+the source, stage order, route, and canonical fingerprint stable for tuning-only
+changes. See `guides/prompting.md` for the record shape and copy-ready gate.
 
 ## Architecture map
 
-The skill is the orchestration module. Keep implementation complexity behind
-these narrow seams:
+Keep complexity behind stable seams:
 
-| Phase need | Stable seam | Output |
+| Need | Command or module | Main artifact |
 | --- | --- | --- |
-| source observations | `tools/motiflux.py measure` | `source-analysis.json` |
-| theme selection | `tools/motiflux.py route` | `theme_selection` |
-| artifact contract | `tools/motiflux.py validate` | structured validity report |
-| semantic geometry | `tools/motiflux.py compare` | geometry evidence |
-| runtime telemetry | `tools/motiflux.py audit` | motion evidence |
+| source observation | `tools/motiflux.py measure`, `engine/raster.py` | `source-analysis.json` |
+| theme routing | `tools/motiflux.py route` | `theme_selection` |
+| artifact validation | `tools/motiflux.py validate` | validity report |
+| geometry comparison | `tools/motiflux.py compare` | geometry evidence |
+| motion audit | `tools/motiflux.py audit` | motion evidence |
 | web delivery | `tools/motiflux.py build` | dependency-free package |
-| complete source/request job | `tools/motiflux.py project` | `project.json` manifest |
-| offline runtime contract | `tools/motiflux.py probe` | runtime-probe evidence |
+| complete job | `tools/motiflux.py project` | `project.json` |
+| runtime contract | `tools/motiflux.py probe` | runtime-probe evidence |
 
-Read the direct resource for the active phase: `catalog/themes.json` for
-canonical profiles; `guides/motion-themes.md` for rationale and aliases;
-`guides/algorithm-catalog.md` for algorithm proof gates;
-`guides/project-kernel.md` for stage interfaces and execution semantics;
-`guides/output-contract.md` and `guides/runtime-contract.md` for delivery;
-`schemas/*.schema.json` for contracts; and `tools/*.py` for adapters.
+The canonical catalog is `catalog/themes.json`. It is consumed by routing,
+planning, runtime compilation, tests, and the showcase. Every profile MUST
+have a unique `trajectory_id` and `trajectory_summary`; metadata without an
+executable foreground effect is incomplete. Represent decisions with linked
+`constraint_graph`, `scene_graph`, `motion_graph`, and `evidence_ledger` models.
 
-`catalog/themes.json` is the single routing source consumed by the router,
-planner, runtime compiler, tests, and showcase. Each profile MUST provide a
-unique `trajectory_id` and a concise `trajectory_summary`; these fields are
-executable design intent, not decorative metadata. Markdown is explanatory only.
+## Canonical project pipeline
 
-Run tools from the skill directory. Treat their JSON output as evidence, not as
-a replacement for design judgment. If an optional capability is unavailable,
-record the substitution or missing check; do not invent a result.
-
-Represent every task with four linked models: `constraint_graph` for landmarks,
-contours, gaps, symmetry, and color; `scene_graph` for actors, parents, layers,
-anchors, and occlusion; `motion_graph` for beats, dependencies, overlaps, and
-interaction states; and `evidence_ledger` for geometry, motion, accessibility,
-substitutions, `not_run`, and `unresolved`. Every design decision MUST trace to
-one model and remain inspectable in an artifact.
-
-## Project pipeline
-
-For a complete source/request job, use the project pipeline in this order:
-
-```text
-    analyze -> route -> plan -> reconstruct -> verify-geometry
-      -> compile -> verify-package -> verify-motion
-```
-
-Run it through the stable command seam:
+For a new source/request job, run the stable seam:
 
 ```text
 tools/motiflux.py project <source> <request> <output>
 ```
 
-The command writes a `project manifest` at `<output>/project.json`, an
-`artifact-index.json` with SHA-256, size, and producer records, and one artifact
-per stage. `PipelineRunner` executes the registry and `stages.py` supplies the
-default handlers. Each stage declares `requires` and `provides`; a missing
-prerequisite blocks that stage and every dependent stage rather than running a
-partial implementation. The manifest also records capability reports and execution
-order. It preserves `complete`, `candidate`, or `blocked`, plus `not_run` and
-`unresolved`. It does not replace artifact contracts. Raster input without a
-real raster-to-vector adapter remains a candidate; never label a placeholder
-vector complete.
+The phase graph is `analyze -> route -> plan -> reconstruct -> verify-geometry -> compile -> verify-package -> verify-motion -> deliver`.
 
-Before delivery, validate cross-artifact references in addition to JSON shape:
-theme IDs must exist in `catalog/themes.json`; actor, beat, parent, occlusion,
-and dependency references must resolve; and the compiled package must preserve
-the selected theme and canonical source mark.
-Theme profiles are executable inputs: the planner and runtime compiler turn
-their motion parameters into beats, controls, CSS, and JavaScript behavior.
-The showcase renderer maps `trajectory_id` to a distinct foreground construction
-from the supplied Logo mask. An algorithm list or trajectory label without a
-corresponding runtime effect is incomplete.
+`PipelineRunner` records stage prerequisites, products, capabilities, order,
+status, `not_run`, and `unresolved`. It also writes an artifact index with
+SHA-256, size, and producer records. Theme IDs, actor IDs, beat IDs, parent,
+occlusion, and dependency references MUST resolve. Raster input without a real
+raster-to-vector adapter remains `candidate`; never label a placeholder vector
+complete.
+
+The project manifest is `<output>/project.json`; the companion
+`artifact-index.json` is the file-level integrity record. `foreground_plan`,
+`foreground_evidence`, `static-canonical`, and `complete evidence` are
+contract vocabulary, not claims that a missing adapter ran.
+
+The single-route showcase manifest is documented in
+`guides/export-and-tuning.md`; it does not replace `<output>/project.json`,
+`artifact-index.json`, or `showcase/output/growth-evidence.json`.
 
 ## Foreground construction contract
 
-Identity-bearing source geometry is foreground: paths, monogram, wordmark/glyphs,
-accents, and occluders. Backgrounds, particles, glow, camera, color, and
-full-mark opacity are secondary and MUST NOT be the only theme difference.
+Identity-bearing source geometry is foreground: paths, monogram, wordmark,
+glyphs, accents, and occluders. Backgrounds, particles, glow, camera, color,
+and full-mark opacity are secondary and MUST NOT be the only theme difference.
 
-Every selected theme MUST execute a `foreground_plan` in `motion-plan.yaml` with
+Every selected theme MUST provide a `foreground_plan` containing
 `source_actors`, `stage_order`, per-stage `path_strategy`, `speed_profile`,
-visible `proof`, and a `static-canonical` fallback. Use source-derived stages:
-`seed`, measured `trace`, component `assemble`, `lockup`, then exact `canonical`.
-For this mark the concrete sequence is `seed -> arc -> bar -> monogram ->
-wordmark -> canonical`; map unavailable parts explicitly and never hallucinate.
+visible `proof`, an executable `foreground_variant`, and a `static-canonical`
+fallback. Use the stable machine
+sequence `seed -> trace -> assemble -> lockup -> canonical`; the showcase may
+label those stages `blank -> origin dot -> circular arc -> horizontal bar ->
+P / monogram -> Prysai wordmark -> complete Logo` when those candidate roles
+exist. Do not invent a missing dot, arc, bar, monogram, wordmark, or glyph.
 
-The 13 themes MUST have materially distinct `(stage_order, path_strategy,
-speed_profile)` tuples. A generic crop, global transform, complete-mark fade, or
-decorative field is not construction. If decomposition or traversal is uncertain,
-use measured intervals or the static fallback, return `candidate`, and record
-`foreground-decomposition`/`trajectory-execution` in `not_run` or `unresolved`.
-
-Evidence MUST include stage boundaries plus one mid-stage snapshot with
-`stage_id`, source actor IDs, foreground bounds/alpha mass, path, and speed.
-Compare variants on foreground alpha/vectors; the final semantic fingerprint
-MUST match the canonical source exactly. See `guides/motion-themes.md` for the
-matrix and execution examples.
+The 13 themes MUST change how measured actors enter, travel, and settle. A
+generic crop, global transform, complete-mark fade, or decorative field is not
+foreground construction. A `foreground_variant` such as `scan-forward`,
+`polar-counter`, `diagonal-reverse`, `wave-phase-a`, or `opacity-stable` is an
+executable source-pixel reveal grammar, not a tag: it must be visible in
+same-source midframes and must still land on the exact canonical source.
+Evidence MUST include stage boundaries and one or more
+progress-point snapshots with `stage_id`, source actors, foreground bounds or
+alpha mass, path, speed, and a trajectory fingerprint. The canonical stage MUST
+match the source exactly. For the checked-in atlas, use
+`showcase/output/growth-evidence.json` for progress-point frame indices,
+foreground mask hashes, and cross-theme trajectory comparison.
 
 ## Theme router
 
-When the request includes a style, industry, reference system, audience, or
-motion adjective, read `guides/motion-themes.md` and run the `route` seam before
-composing. Use `guides/algorithm-catalog.md` to justify the selected stack.
+When a request contains industry, style, audience, reference system, or motion
+language, read `guides/motion-themes.md`, then run `route`. Use
+`guides/algorithm-catalog.md` to justify the stack. Normalize to:
 
-Normalize the request into:
-
-    theme_selection:
-      primary:
-      modifiers: []
-      matched_tags: []
-      rejected_candidates: []
-      public_reference_basis: []
-      algorithm_stack: []
-
-Routing rules:
-
-1. Match explicit style or industry words before inferring from the logo. For
-   Chinese requests, route 教育/学习/课程/教学/知识 to `system-spatial` with
-   the `knowledge-graph-lock` trajectory unless the user explicitly asks for
-   another primary style.
-2. Choose one primary theme.
-3. Add at most two modifiers such as quiet, bold, technical, organic, playful, cinematic, or accessible.
-4. Reject conflicting themes unless the user explicitly requests the collision.
-5. If no theme reaches a clear match, use system-spatial with quiet and accessible modifiers.
-6. Record matched language, selected algorithm types, implementation controls, and rejected candidates in motion-plan.yaml.
-7. Never claim that a public company uses the exact internal algorithm; describe it as a public design-system analogue.
-
-Normalize case, punctuation, spaces, and hyphens before matching. Public-system aliases are routed as follows:
-
-    Material or Google Material -> system-spatial
-    Apple HIG -> premium-quiet + accessibility-first
-    Microsoft Fluent -> system-spatial + accessibility-first
-    Adobe Spectrum -> system-spatial + accessibility-first
-    Atlassian -> developer-open + system-spatial
-    Shopify Polaris -> commerce-energy + system-spatial
-    GitHub Primer -> developer-open + system-spatial
-    Airbnb Lottie -> developer-open with vector-animation runtime
-
-Chinese aliases:
-
-    科技、产品、SaaS、企业系统 -> system-spatial
-    奢侈、时尚、美妆、极简、高级感 -> premium-quiet
-    开发者、开源、代码、API、工具 -> developer-open
-    人工智能、AI、生成式、数据、未来感 -> AI-field
-    金融、支付、银行、可信、稳健 -> fintech-trust
-    安全、隐私、认证、防护、盾牌 -> security-shield
-    电商、零售、购物、消费、促销 -> commerce-energy
-    汽车、交通、工业、工程、性能 -> automotive-precision
-    体育、健身、竞技、速度、冲击 -> sports-impact
-    电影、片头、预告、叙事、戏剧 -> cinematic-title
-    自然、有机、健康、环保、成长 -> nature-flow
-    游戏、电竞、奇幻、科幻、街机 -> gaming-world
-    无障碍、低动效、包容、键盘、辅助 -> accessibility-first
-
-The selected theme changes the foreground choreography and implementation
-parameters, not the identity constraints of the source mark. A showcase MUST
-make the selected trajectory visible in the Logo construction itself; changing
-only a background, color, particle field, or decorative guide does not count.
-
-## Reference-brand policy
-
-Use the user's supplied Logo as the default demonstration source. Do not fetch,
-embed, redraw, or animate a third-party company Logo merely because it is an
-industry example. A company name may be mentioned as a public design-principle
-analogue, but that is not permission to use its trademark or artwork. If a user
-supplies a third-party asset and requests a private experiment, preserve the
-asset provenance and ask for confirmation of permission before publication.
-Keep third-party reference assets out of the default showcase unless an explicit
-license or written permission is recorded. Never imply endorsement or claim an
-exact internal vendor recipe.
-
-## Inputs and outputs
-
-Require one PNG, JPG, WebP, or SVG source plus supplied brand context. Ask only
-when ambiguity changes the intended surface, identity, or motion behavior.
-Default surface: a responsive web intro that settles into a static mark.
-
-Follow `guides/output-contract.md` for the required filenames. Use these machine
-contracts when writing artifacts:
-
-- `schemas/source-analysis.schema.json`;
-- `schemas/motion-plan.schema.json`;
-- `schemas/telemetry.schema.json`;
-- `schemas/evidence.schema.json`.
-
-Validate generated artifacts with `tools/motiflux.py validate` before delivery.
-The generic builder is a delivery adapter; it does not prove brand-specific
-choreography, browser pixels, or accessibility-tree behavior.
-
-## Workflow
-
-    OBSERVE
-      -> MODEL
-      -> RECONSTRUCT
-      -> COMPOSE
-      -> INSTRUMENT
-      -> VALIDATE
-      -> DELIVER
-
-Do not compose motion before the reconstructed scene reaches geometry acceptance.
-
-The executable vertical slice is:
-
-```text
-measure -> model -> reconstruct -> compare -> compose -> build -> audit -> deliver
+```yaml
+theme_selection:
+  primary: one canonical theme ID
+  primary_id: one canonical theme ID
+  trajectory_id: catalog trajectory ID
+  modifiers: []
+  matched_tags: []
+  rejected_candidates: []
+  public_reference_basis: []
+  algorithm_stack: []
 ```
 
-The project pipeline is the preferred one-command path when intermediate
-artifacts do not already exist. Use the lower-level seams when an existing
-artifact needs isolated inspection or when a missing adapter must remain
-explicitly `not_run`.
+Rules:
 
-Use `measure` before modeling, `compare` before motion, `build` only after a
-contract-valid plan exists, and `audit` before claiming motion completion.
+1. Match explicit industry/style language before inferring from the logo.
+2. Choose one primary theme and at most two modifiers.
+3. Record rejected conflicts instead of silently blending them.
+4. If no route is clear, use `system-spatial` with quiet and accessible modifiers.
+5. Set `primary_id` and `trajectory_id` from the same catalog profile; do not
+   invent either identifier from prose.
+6. Record matched language, algorithm types, controls, and rejected candidates
+   in `motion-plan.yaml`. The route and algorithm stack describe a plan, not
+   proof that a renderer executed it.
+7. A public company or system is a principle analogue only; never claim its
+   private recipe or endorsement.
+
+Theme keywords are routing signals, not evidence about the supplied mark. Use
+the most explicit industry or product context first, then style and motion
+modifiers. Return the exact catalog `id`, `trajectory_id`, `matched_tags`, and
+`rejected_candidates`; do not create a new theme ID from an adjective. A theme
+must change the source-derived foreground route. A palette, particle field,
+camera move, or label-only change is a tuning change, not a new trajectory.
+
+The 13 canonical keyword categories are: system/product/education,
+premium/luxury, developer/open source, AI/data, fintech/trust, security/privacy,
+commerce/retail, automotive/engineering, sports/competition, cinematic/title,
+nature/organic, gaming/world-building, and accessibility/reduced motion.
+`education` is an alias within `system-spatial`, not a fourteenth route. Choose
+one category using this precedence: explicit industry or product context first;
+explicit accessibility or motion constraints second; broad style words only as a
+tiebreaker. Select one primary canonical ID, add at most two modifiers, and
+record rejected candidates. If no category is clear, use `system-spatial` with
+quiet and accessible modifiers.
+
+Canonical Chinese aliases include:
+
+```text
+教育/学习/课程/教学/知识 -> system-spatial; 科技/产品/SaaS/企业系统 -> system-spatial; 奢侈/时尚/美妆/极简/高级感 -> premium-quiet
+开发者/开源/代码/API/工具 -> developer-open; 人工智能/AI/生成式/生成式AI/AI科技/数据/未来感 -> ai-field; 金融/支付/银行/可信/稳健 -> fintech-trust
+安全/隐私/认证/防护/盾牌 -> security-shield; 电商/零售/购物/消费/促销 -> commerce-energy; 汽车/交通/工业/工程/性能 -> automotive-precision
+体育/健身/竞技/速度/冲击 -> sports-impact; 电影/片头/预告/叙事/戏剧 -> cinematic-title; 自然/有机/健康/环保/成长 -> nature-flow
+游戏/电竞/奇幻/科幻/街机 -> gaming-world; 无障碍/低动效/包容/键盘/辅助 -> accessibility-first
+```
+
+The router changes foreground choreography, not identity constraints. Public
+aliases such as Material, Fluent, Spectrum, Primer, Polaris, HIG, Atlassian,
+and Lottie may inform principles, but do not authorize copied artwork or
+private implementation claims.
+
+## Reference-brand and source policy
+
+Use the user's supplied logo as the default demonstration source. Do not fetch,
+embed, redraw, or animate a third-party company logo merely as an industry
+example. If a third-party asset is supplied for a private experiment, retain
+its provenance and request permission before publication. Keep unlicensed
+third-party reference assets out of the default showcase.
+
+## Inputs, prompts, and output boundaries
+
+Require one PNG, JPG, WebP, or SVG source plus brand context. Keep the field
+order from the shortest formula: source, surface, one route, observed
+foreground, runtime, accessibility, outputs, and evidence. Read
+`guides/prompting.md` for request assembly and `guides/export-and-tuning.md` for
+keywords, pure backgrounds, tuning, and lifecycle states.
+
+An omitted value is a recorded default or an open question, never permission to
+invent identity. For `solid background`/`纯色背景` without a color, write
+`background: {mode: solid, color: "#0B0D12", source: default}`. A user color is
+`source: prompt`; transparent/theme modes stay explicit. Use measurable forms
+such as `2200ms`, `speed 1.25x`, `no particles`, and `static-canonical reduced
+motion`. Change one tuning field at a time and preserve actors, stage order, and
+the canonical fingerprint. Browser changes are preview-only until an exporter
+writes a file.
+
+Keep `request`, `observation`, `plan`, and `evidence` separate. A prompt, route,
+algorithm stack, preview, or hash supports a decision but does not prove
+semantic role recognition, browser behavior, or a complete trajectory.
 
 ## OBSERVE
 
-Measure dimensions, color mode, alpha, background, foreground clusters,
-antialiasing/compression, identity corners/extrema/junctions/terminals/centers,
-negative spaces, symmetry, repetition, alignment, and mark/wordmark/letter/
-accent/container roles.
-
-Write evidence/source-analysis.json.
-
-For SVG input, run:
+Measure dimensions, color/alpha, background, foreground mask, clusters, bounds,
+centroids, layout, landmarks, and negative space; write `source-analysis.json`.
+For SVG run `tools/motiflux.py measure <source.svg>`. For PNG/JPG/WebP, the
+adapter produces bounded geometric candidates only:
 
 ```text
-tools/motiflux.py measure <source.svg> --output evidence/source-analysis.json
+decode -> foreground mask -> connected components -> layout groups
+  -> role hypotheses -> review/accept or static-canonical fallback
 ```
 
-For PNG, JPG, or WebP, a header-only result is a candidate. Pixel decoding,
-color clustering, landmark detection, and topology analysis remain `not_run`
-unless an approved image adapter is available.
+Raster observation is not brand recognition, OCR, or equivalent SVG
+reconstruction. Keep `proposed_role`, `accepted_role`, `confidence`,
+`review_status`, and `evidence` together. Until explicit source/human review,
+`role` and `selected_role` remain `unknown`, `accepted_role` remains `null`,
+`review_status` remains `needs-review`, and generic runtime uses
+`static-canonical`. Showcase candidate growth is a separate reviewable demo.
 
 ## MODEL
 
-### Build constraint graph
-
-Assign each constraint `id`, `kind` (`landmark`, `contour`, `gap`, `symmetry`,
-or `color`), `importance` (`identity`, `structural`, or `cosmetic`), target,
-tolerance, and dependencies. Identity constraints outrank raster noise.
-
-Identity constraints dominate cosmetic pixel agreement.
-
-### Build scene graph
-
-Create one actor per independently transformable or occluding part. Store `id`,
-`role`, `geometry_strategy`, `parent`, `anchor`, `layer`, `occludes`, and
-`occluded_by` in `motion-plan.yaml`.
-
-Use stable semantic ids. Avoid child-index selectors.
-
-### Define motion language
-
-Derive three motion traits from the mark and context. Record tempo,
-acceleration, overlap, deformation limit, direction, and stillness for each in
-the plan. Every interpolation and effect must trace to a trait.
+Build `constraint_graph`, `scene_graph`, `motion_graph`, and `evidence_ledger`.
+Store actor IDs, roles, geometry strategy, parent, anchor, layer, occlusion,
+topology, timing traits, and tolerances. SVG keeps source IDs/topology; raster
+uses `pixel-observation-only` and does not gain semantic roles from prompts,
+confidence scores, or layout heuristics.
 
 ## RECONSTRUCT
 
-### Choose geometry by explainability
-
-Choose the smallest model that explains constraints: primitive; transformed
-primitive family; centerline plus width profile; sparse Bezier contour; or
-simplified measured outline.
-
-Escalate only when identity or structural constraints fail.
-
-Prefer editable text when an available font matches sufficiently. Convert to paths only when exact glyph identity or per-glyph deformation requires it.
-
-### Preserve topology
-
-Preserve contour winding, hole count, component count, crossing order, open versus closed state, joins, and terminals.
-
-Do not encode a crossing only as a convenient compound path when later occlusion requires independent control.
-
-### Define draw traversal
-
-For a drawn reveal, store `actor`, `start_landmark`, `end_landmark`, `direction`,
-`measured_length`, and `visible_intervals`.
-
-Use browser measurement or geometry tooling to derive real lengths at build time.
-
-### Geometry acceptance
-
-Compute weighted landmark error, symmetric contour/Chamfer distance,
-negative-space area/centroid error, topology, and actor/segment/control-point
-counts.
-
-Render at source scale and one enlarged inspection scale.
-
-Accept geometry when:
-
-    topology_match: true
-    identity_landmarks: within_declared_tolerance
-    negative_spaces: within_declared_tolerance
-    visible_kinks: 0
-    unexplained_complexity: 0
-
-Do not use one universal overlap score. Derive tolerances from source resolution and feature size.
-
-### Refinement stop rule
-
-After each revision, compare weighted constraint error with the previous accepted candidate.
-
-Stop when:
-
-- all acceptance conditions pass;
-- two consecutive revisions improve total weighted error by less than 1%;
-- remaining error comes from source ambiguity;
-- the next revision would add complexity without fixing identity.
-
-If acceptance fails, deliver a candidate with unresolved constraints.
-
-Run semantic comparison before composing motion:
-
-```text
-tools/motiflux.py compare mark.svg canonical.svg --output evidence/geometry/semantic.json
-```
-
-Semantic vector equality does not imply raster contour or browser-pixel equality.
-Keep those proof types separate.
+Choose the smallest explainable model: source vectors, measured outlines, or
+bounded raster masks. Preserve winding, holes, crossings, component count,
+joins, terminals, and negative space. Compare with landmark, Chamfer/contour,
+topology, and complexity checks using `tools/motiflux.py compare`; semantic
+vector equality does not prove raster or browser-pixel equality. If acceptance
+fails, keep `candidate` and list unresolved constraints.
 
 ## COMPOSE
 
-### Build named beats
-
-Name beats such as `orient`, `form`, `bind`, and `resolve`. Weight duration from
-visual distance, actor area, curvature, reading order, and context; do not use a
-fixed global phase ratio.
-
-### Build dependency graph
-
-For each action record actor, beat, `starts_after`, `may_overlap`,
-`must_finish_before`, anchor, and property channels.
-
-Prevent lockstep through dependencies, not arbitrary delays.
-
-### Derive interpolation
-
-Choose monotonic cubic for directed reveals, critically damped spring for
-controlled settling, linear for uniform channels, and stepped for intentional
-discrete states. Store tempo, settle damping, and stage safe-area variables;
-never assume one curve fits every property.
-
-### Responsive stage
-
-Derive scale from available width/height minus inline/block safe areas and set
-those areas from maximum transformed actor bounds. Do not use a fixed multiplier.
-
-### Crossing topology
-
-For self-crossing or braided marks: identify nodes and over/under order; split
-visibility as needed; reveal with clips or ordered occluders; preserve one global
-progress variable; derive local progress from measured arcs; and verify no
-nonlocal branch appears early.
-
-Use a moving cursor accent only when it belongs to the brand language. It MUST NOT hide a topology or timing defect.
-
-### Web runtime
-
-Follow `guides/runtime-contract.md`. The delivery MUST be dependency-free unless
-dependencies are approved, expose the required readiness and control globals,
-render the canonical mark after finish, pause when hidden, respect reduced
-motion, provide keyboard-accessible controls, and avoid layout shift.
+Declare beats, actors, `starts_after`, `may_overlap`, `must_finish_before`,
+anchors, and property channels. Use monotonic cubic for reveals, damped spring
+for settling, linear for uniform channels, and stepped interpolation for
+discrete states. For self-crossing marks, model over/under order and split
+visibility with clips/occluders under one progress variable. Decorative glints
+must not conceal topology or timing defects.
 
 ## INSTRUMENT
 
-At beat boundaries and risk intervals collect `time_ms`, `active_beat`,
-`actor_states`, `visible_bounds`, `progress_values`,
-    `changed_pixels_or_alpha_mass`, foreground stage/actors/path/speed, and
-    `runtime_errors`.
-
-Risk intervals include crossings, occluder changes, actor handoffs, spring extrema, viewport approaches, and loop seams.
-
-Build a dependency-free delivery adapter only after the motion plan validates:
-
-```text
-tools/motiflux.py validate motion-plan motion-plan.yaml
-tools/motiflux.py build mark.svg motion-plan.yaml <output-dir>
-```
-
-After compilation, run the scoped offline runtime probe:
-
-```text
-tools/motiflux.py probe <output-dir>
-```
-
-This may prove static runtime markers, JavaScript syntax, and the local Node
-harness. It does not prove browser layout, pixels, console behavior in a real
-browser, or the accessibility tree. Those remain explicit `not_run` items.
+At beat boundaries record time, active beat, actor states, bounds, progress,
+foreground stage/actors, path/speed, alpha mass, and runtime errors. Include
+crossings, occluders, handoffs, spring extrema, viewport bounds, and loop seams.
+Run `build` then the scoped `probe`; Node proof is not browser-pixel or
+accessibility proof. The runtime exposes ready/seek/finish/play/pause/replay,
+hidden-page pause, keyboard controls, and a static canonical reduced-motion
+fallback.
 
 ## VALIDATE
 
-### Geometry
-
-Verify constraint tolerances, topology, enlarged edges, and scene complexity.
-
-### Temporal behavior
-
-Check monotonic progress, velocity/acceleration continuity, handoffs, visibility
-intervals, safe bounds, and loop seam compatibility.
-
-Use telemetry plus targeted frames. Do not rely on evenly spaced screenshots alone.
-
-### Foreground construction
-
-Require all of the following for `complete`:
-
-- the selected stage order and source actor IDs are present in the plan;
-- early frames contain only the declared early actors, not the complete wordmark;
-- stage snapshots prove the declared path and per-stage speed on identity-bearing
-  pixels or vectors;
-- the same-source variants have different foreground midframes or trajectories;
-- background, particles, color, camera, or global opacity never carry the only
-  theme distinction.
-
-If any item is unverified, keep the result `candidate` and name the missing proof.
-
-### Canonical end state
-
-Define a semantic fingerprint with `viewBox`, `actor_ids`, `path_data_hashes`,
-`paint_attributes`, `transform_matrices`, and `layer_order`.
-
-At runtime finish, serialize the final scene, compare its fingerprint with the
-canonical mark, require exact geometry/paint/transform/layer equality, then
-render both states through the same browser. Apply a declared antialiasing
-tolerance (default 0.25% differing pixels and maximum channel delta 8); semantic
-inequality always fails.
-
-Vector semantics are authoritative; pixel tolerance absorbs renderer noise.
-
-### Accessibility and runtime
-
-Verify reduced motion, keyboard controls, visible focus, no console errors,
-unapproved external requests, layout shift, and incorrect replay or tempo
-behavior. Apply the browser/runtime contract from `guides/runtime-contract.md`.
-
-Audit structured telemetry with:
-
-```text
-tools/motiflux.py audit telemetry.json --duration-ms <duration>
-```
-
-An audit with missing canonical, browser, or accessibility evidence remains a
-candidate even when available progress samples are monotonic.
+Check geometry, topology, monotonic progress, continuity, handoffs, visibility,
+bounds, replay, tempo, reduced motion, focus, keyboard, console, external
+requests, and layout shift. Same-source themes must differ in foreground
+midframes or trajectories; decoration alone is insufficient. At finish require
+an exact semantic fingerprint match. Missing browser/accessibility/canonical
+evidence keeps the result `candidate`; complete evidence has no open checks.
 
 ## DELIVER
 
-Write evidence.json:
+Write `evidence.json` with source, metrics, `foreground_evidence`, canonical
+fingerprint, accessibility, substitutions, `not_run`, and `unresolved`. Keep
+unsupported formats in `not_run` and validate with `tools/motiflux.py validate`.
+Report each output independently:
 
-    status: complete | candidate
-    source:
-    constraint_summary:
-    geometry_metrics:
-    motion_metrics:
-    canonical_fingerprint:
-    pixel_tolerance:
-    accessibility:
-    substituted_tools: []
-    not_run: []
-    unresolved: []
+```yaml
+outputs:
+  - format: gif
+    path: actual-path-or-null
+    lifecycle: preview|baked|verified
+    evidence: complete|candidate
+not_run: []
+unresolved: []
+```
 
-Return `complete` only when the package exists; identity, topology, scene graph,
-motion graph, telemetry, canonical fingerprint, rendered end state,
-accessibility, and runtime checks pass; and `not_run` and `unresolved` are empty.
-Otherwise return `candidate` and preserve every missing or uncertain item.
+`preview` is a browser/prompt change; `baked` is a file written by a named
+generator; `verified` means that file and applicable checks passed. The showcase
+GIF is the encoded trajectory, the poster is the canonical static fallback, and
+the PDF is a seven-checkpoint storyboard. None proves raster role acceptance or
+browser `prefers-reduced-motion` behavior. The checkpoint slider swaps baked PNGs
+and Prompt Lab copy never executes a shell command.
 
-## Invariants
+## Runtime and delivery references
 
-- Identity constraints outrank raster noise.
-- Geometry is accepted before choreography.
-- Scene actors encode transform and occlusion responsibilities.
-- Timing emerges from beat content and dependencies.
-- Crossing behavior is solved as visibility topology.
-- Runtime telemetry accompanies visual judgment.
-- Canonical vector semantics outrank pixel coincidence.
-- Missing evidence remains missing.
+Read these only when the active task needs them:
+
+- `guides/output-contract.md` for filenames and artifact shape;
+- `guides/runtime-contract.md` for browser controls and static fallback;
+- `guides/prompting.md` for AI-readable request assembly and route examples;
+- `guides/export-and-tuning.md` for pure backgrounds, keywords, and export state;
+- `guides/motion-themes.md` and `guides/algorithm-catalog.md` for the 13 routes;
+- `guides/project-kernel.md` for stage graph and artifact index;
+- `schemas/*.schema.json` for machine-readable contracts.

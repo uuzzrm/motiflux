@@ -1,11 +1,15 @@
 # Motiflux
 
-Motiflux is an AI skill for turning a brand mark into an editable SVG scene and a
-responsive, validated motion package. It treats logo animation as a constrained
-design-and-verification problem: identity, topology, motion language, runtime
-behavior, accessibility, and the canonical final state are all explicit.
+Motiflux is an AI skill for turning a supplied brand mark into a source-aware
+logo-animation plan and responsive, validated motion package. SVG input can
+preserve and compile editable source actors; PNG/JPG/WebP input is observed as
+pixels and can produce a reviewable source-preserving showcase, but it is not
+claimed to be an equivalent editable SVG. Identity, topology, motion language,
+runtime behavior, accessibility, and the canonical final state are explicit.
 
-Status: private development · Motiflux V1 · plugin release `1.0.0`
+Status: public preview · Motiflux V1 · plugin release `1.0.0`
+
+Live showcase: [uuzzrm.github.io/motiflux](https://uuzzrm.github.io/motiflux/) · [source repository](https://github.com/uuzzrm/motiflux)
 
 ## What is included
 
@@ -13,6 +17,9 @@ Status: private development · Motiflux V1 · plugin release `1.0.0`
 - `skills/motiflux/SKILL.md` — the core AI workflow and completion contract.
 - `skills/motiflux/guides/motion-themes.md` — 13 theme routes with algorithm
   stacks, implementation controls, exclusions, and QA focus.
+- `skills/motiflux/guides/prompting.md` and `export-and-tuning.md` — AI-readable
+  request order, keyword routing, pure-color tuning, preview-versus-bake
+  boundaries, and output verification.
 - `skills/motiflux/agents/openai.yaml` — UI metadata for skill discovery.
 - `skills/motiflux/guides/project-kernel.md` — AI-facing stage graph, module
   interfaces, artifact integrity, and extension protocol.
@@ -135,7 +142,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-ai-field.gif" alt="AI-field Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>ai-field</code><br><sub>TRIGGER KEYWORDS</sub><br><code>ai</code> <code>artificial intelligence</code> <code>machine learning</code> <code>ml</code> <code>neural</code> <code>data</code> <code>model</code> <code>generative</code> <code>future</code> <code>intelligent</code></p>
+<p><code>ai-field</code><br><sub>TRIGGER KEYWORDS</sub><br><code>ai</code> <code>ai technology</code> <code>artificial intelligence</code> <code>machine learning</code> <code>ml</code> <code>neural</code> <code>data</code> <code>model</code> <code>generative</code> <code>future</code> <code>intelligent</code> <code>人工智能</code> <code>生成式</code> <code>生成式AI</code> <code>AI科技</code> <code>人工智能技术</code></p>
 <p><sub>Suggest intelligence through organized transformation rather than science-fiction decoration.</sub></p>
 </td>
 </tr>
@@ -148,7 +155,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-fintech-trust.gif" alt="Fintech-trust Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>fintech-trust</code><br><sub>TRIGGER KEYWORDS</sub><br><code>fintech</code> <code>banking</code> <code>bank</code> <code>payments</code> <code>payment</code> <code>trust</code> <code>finance</code> <code>institutional</code> <code>reliable</code> <code>secure finance</code></p>
+<p><code>fintech-trust</code><br><sub>TRIGGER KEYWORDS</sub><br><code>fintech</code> <code>banking</code> <code>bank</code> <code>payments</code> <code>payment</code> <code>trust</code> <code>finance</code> <code>institutional</code> <code>reliable</code> <code>secure finance</code> <code>金融</code> <code>银行</code> <code>支付</code> <code>金融科技</code> <code>可信</code> <code>稳健</code></p>
 <p><sub>Communicate reliability, controlled movement, and successful resolution.</sub></p>
 </td>
 <td width="50%" valign="top">
@@ -159,7 +166,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-security-shield.gif" alt="Security-shield Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>security-shield</code><br><sub>TRIGGER KEYWORDS</sub><br><code>security</code> <code>privacy</code> <code>identity</code> <code>authentication</code> <code>auth</code> <code>defense</code> <code>shield</code> <code>compliance</code> <code>protection</code></p>
+<p><code>security-shield</code><br><sub>TRIGGER KEYWORDS</sub><br><code>security</code> <code>privacy</code> <code>identity</code> <code>authentication</code> <code>auth</code> <code>defense</code> <code>shield</code> <code>compliance</code> <code>protection</code> <code>安全</code> <code>隐私</code> <code>认证</code> <code>防护</code> <code>盾牌</code> <code>合规</code></p>
 <p><sub>Convey boundary, verification, and controlled access.</sub></p>
 </td>
 </tr>
@@ -172,7 +179,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-commerce-energy.gif" alt="Commerce-energy Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>commerce-energy</code><br><sub>TRIGGER KEYWORDS</sub><br><code>commerce</code> <code>retail</code> <code>shopping</code> <code>marketplace</code> <code>consumer</code> <code>sale</code> <code>conversion</code> <code>friendly</code></p>
+<p><code>commerce-energy</code><br><sub>TRIGGER KEYWORDS</sub><br><code>commerce</code> <code>retail</code> <code>shopping</code> <code>marketplace</code> <code>consumer</code> <code>sale</code> <code>conversion</code> <code>friendly</code> <code>电商</code> <code>零售</code> <code>购物</code> <code>消费</code> <code>促销</code></p>
 <p><sub>Create approachability and action without making the brand feel unstable.</sub></p>
 </td>
 <td width="50%" valign="top">
@@ -183,7 +190,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-automotive-precision.gif" alt="Automotive-precision Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>automotive-precision</code><br><sub>TRIGGER KEYWORDS</sub><br><code>automotive</code> <code>mobility</code> <code>transport</code> <code>engineering</code> <code>performance</code> <code>industrial</code> <code>mechanical</code></p>
+<p><code>automotive-precision</code><br><sub>TRIGGER KEYWORDS</sub><br><code>automotive</code> <code>mobility</code> <code>transport</code> <code>engineering</code> <code>performance</code> <code>industrial</code> <code>mechanical</code> <code>汽车</code> <code>交通</code> <code>工业</code> <code>工程</code> <code>性能</code> <code>机械</code></p>
 <p><sub>Express mass, direction, precision, and mechanical confidence.</sub></p>
 </td>
 </tr>
@@ -196,7 +203,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-sports-impact.gif" alt="Sports-impact Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>sports-impact</code><br><sub>TRIGGER KEYWORDS</sub><br><code>sports</code> <code>fitness</code> <code>competition</code> <code>speed</code> <code>impact</code> <code>bold</code> <code>dynamic</code> <code>athletics</code></p>
+<p><code>sports-impact</code><br><sub>TRIGGER KEYWORDS</sub><br><code>sports</code> <code>fitness</code> <code>competition</code> <code>speed</code> <code>impact</code> <code>bold</code> <code>dynamic</code> <code>athletics</code> <code>体育</code> <code>健身</code> <code>竞技</code> <code>速度</code> <code>冲击</code></p>
 <p><sub>Create energy through anticipation, compression, release, and recovery.</sub></p>
 </td>
 <td width="50%" valign="top">
@@ -207,7 +214,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-cinematic-title.gif" alt="Cinematic-title Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>cinematic-title</code><br><sub>TRIGGER KEYWORDS</sub><br><code>cinematic</code> <code>film</code> <code>movie</code> <code>title</code> <code>trailer</code> <code>story</code> <code>dramatic</code> <code>suspense</code></p>
+<p><code>cinematic-title</code><br><sub>TRIGGER KEYWORDS</sub><br><code>cinematic</code> <code>film</code> <code>movie</code> <code>title</code> <code>trailer</code> <code>story</code> <code>dramatic</code> <code>suspense</code> <code>电影</code> <code>片头</code> <code>预告</code> <code>叙事</code> <code>戏剧</code></p>
 <p><sub>Reveal meaning through attention control, scale, silence, and composition.</sub></p>
 </td>
 </tr>
@@ -220,7 +227,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-nature-flow.gif" alt="Nature-flow Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>nature-flow</code><br><sub>TRIGGER KEYWORDS</sub><br><code>nature</code> <code>organic</code> <code>wellness</code> <code>sustainable</code> <code>water</code> <code>wind</code> <code>growth</code> <code>calm</code> <code>health</code></p>
+<p><code>nature-flow</code><br><sub>TRIGGER KEYWORDS</sub><br><code>nature</code> <code>organic</code> <code>wellness</code> <code>sustainable</code> <code>water</code> <code>wind</code> <code>growth</code> <code>calm</code> <code>health</code> <code>自然</code> <code>有机</code> <code>健康</code> <code>环保</code> <code>成长</code></p>
 <p><sub>Imply growth, breath, flow, and connection without losing mark structure.</sub></p>
 </td>
 <td width="50%" valign="top">
@@ -231,7 +238,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-gaming-world.gif" alt="Gaming-world Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>gaming-world</code><br><sub>TRIGGER KEYWORDS</sub><br><code>gaming</code> <code>esports</code> <code>fantasy</code> <code>sci-fi</code> <code>character</code> <code>quest</code> <code>arcade</code> <code>playful</code></p>
+<p><code>gaming-world</code><br><sub>TRIGGER KEYWORDS</sub><br><code>gaming</code> <code>esports</code> <code>fantasy</code> <code>sci-fi</code> <code>character</code> <code>quest</code> <code>arcade</code> <code>playful</code> <code>游戏</code> <code>电竞</code> <code>奇幻</code> <code>科幻</code> <code>街机</code></p>
 <p><sub>Create personality, reward, and world-building around a recognizable mark.</sub></p>
 </td>
 </tr>
@@ -244,7 +251,7 @@ Every card uses the same supplied Prysai source on the left and the portable GIF
 <td align="center" valign="top" width="64%"><img src="showcase/assets/animations/prysai-accessibility-first.gif" alt="Accessibility-first Prysai logo animation GIF" width="270"><br><sub>PLAYING GIF</sub></td>
 </tr>
 </table>
-<p><code>accessibility-first</code><br><sub>TRIGGER KEYWORDS</sub><br><code>accessible</code> <code>accessibility</code> <code>reduced motion</code> <code>calm</code> <code>inclusive</code> <code>low motion</code> <code>keyboard</code> <code>assistive</code></p>
+<p><code>accessibility-first</code><br><sub>TRIGGER KEYWORDS</sub><br><code>accessible</code> <code>accessibility</code> <code>reduced motion</code> <code>calm</code> <code>inclusive</code> <code>low motion</code> <code>低动效</code> <code>低运动</code> <code>键盘</code> <code>keyboard</code> <code>assistive</code></p>
 <p><sub>Preserve orientation and feedback while minimizing vestibular, cognitive, and visual load.</sub></p>
 </td>
 <td width="50%" valign="top"></td>
@@ -262,13 +269,12 @@ From the repository root:
 ```powershell
 python -m pip install -r requirements-ci.txt
 python scripts/validate_project.py
-python H:\Codex\home\skills\.system\skill-creator\scripts\quick_validate.py skills\motiflux
-python H:\Codex\home\skills\.system\plugin-creator\scripts\validate_plugin.py .
 python -m unittest discover -s tests -v
 ```
 
-The two paths into `H:\Codex\home` are local development helpers. The first
-command is the repository's portable check and is the one used by GitHub Actions.
+The commands above are repository-local and portable; GitHub Actions runs the
+same project validator and test suite. On a Codex host, run the host-provided
+skill and plugin validators separately when available.
 
 ## Tool pipeline
 
@@ -297,12 +303,13 @@ The output is deliberately evidence-preserving. A valid semantic SVG comparison
 does not claim browser pixels, raster contours, or accessibility-tree proof.
 Those remain explicit `not_run` items until the corresponding adapter runs.
 
-## Development boundary
+## Public preview boundary
 
-This repository is intentionally private while Motiflux V1 is being developed.
-No public release, GitHub Pages deployment, or production runtime is implied by
-the repository itself. A consuming project supplies the source mark and produces
-the output package described by the skill contract.
+Motiflux V1 is published as a public development preview. The GitHub Pages entry
+is a static showcase of the checked-in GIF, poster, checkpoint, PDF, prompt, and
+evidence outputs; it does not run shell commands or claim that browser controls
+have created a new export. A consuming project supplies its own source mark and
+produces the output package described by the skill contract.
 
 ## Showcase boundary
 
@@ -312,6 +319,7 @@ uses one supplied Prysai raster source across 13 routed themes. Every checked-in
 GIF is a construction sequence, not a complete-logo transform: blank, source
 dot (spark), arc, bar, monogram, wordmark, canonical. Its HTML output contains dependency-
 free players with per-card play, pause, replay, timeline, reduced-motion, and
-hidden-page behavior. Its PDF records five representative growth frames, with
-algorithm notes kept as context. These materials do not claim private vendor
-algorithms, copied assets, or generic-package browser validation.
+hidden-page behavior. Its PDF records all seven visible growth stages, and
+`showcase/output/growth-evidence.json` records deterministic stage frame indices
+and GIF hashes. These materials do not claim private vendor algorithms, copied
+assets, or generic-package browser validation.

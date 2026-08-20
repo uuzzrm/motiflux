@@ -4,6 +4,15 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
 # Python caches and local environments
 __pycache__/
 *.py[cod]

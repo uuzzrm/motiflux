@@ -8,7 +8,7 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
-from motiflux_core import SCHEMA_VERSION, contract_errors, load_document, write_json
+from motiflux_core import SCHEMA_VERSION, contract_errors, evidence_semantic_errors, load_document, write_json
 
 
 SCHEMA_DIR = Path(__file__).resolve().parents[1] / "schemas"
@@ -28,6 +28,8 @@ def validate(kind: str, artifact_path: Path) -> dict[str, Any]:
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     artifact = load_document(artifact_path)
     errors = contract_errors(artifact, schema)
+    if kind == "evidence" and not errors:
+        errors.extend(evidence_semantic_errors(artifact))
     if kind == "artifact-index" and not errors:
         errors.extend(validate_index_integrity(artifact_path, artifact))
     return {

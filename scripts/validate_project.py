@@ -73,11 +73,13 @@ def validate_skill() -> tuple[str, str]:
     skill_path = SKILL_ROOT / "SKILL.md"
     guide_path = SKILL_ROOT / "guides" / "motion-themes.md"
     kernel_guide_path = SKILL_ROOT / "guides" / "project-kernel.md"
+    prompting_guide_path = SKILL_ROOT / "guides" / "prompting.md"
+    export_guide_path = SKILL_ROOT / "guides" / "export-and-tuning.md"
     agent_path = SKILL_ROOT / "agents" / "openai.yaml"
     schema_paths = sorted((SKILL_ROOT / "schemas").glob("*.schema.json"))
     tool_paths = sorted((SKILL_ROOT / "tools").glob("*.py"))
     engine_paths = sorted((SKILL_ROOT / "tools" / "engine").glob("*.py"))
-    for path in (skill_path, guide_path, kernel_guide_path, agent_path, *schema_paths, *tool_paths, *engine_paths):
+    for path in (skill_path, guide_path, kernel_guide_path, prompting_guide_path, export_guide_path, agent_path, *schema_paths, *tool_paths, *engine_paths):
         require_file(path)
     if {path.name for path in tool_paths} != TOOL_NAMES:
         fail("skill tools must contain exactly the declared adapter set")
@@ -92,7 +94,7 @@ def validate_skill() -> tuple[str, str]:
         "runtime-probe.schema.json",
     }:
         fail("skill schemas must contain the declared artifact contracts")
-    if {path.name for path in engine_paths} != ENGINE_NAMES:
+    if {path.name for path in engine_paths} != ENGINE_NAMES | {"raster.py"}:
         fail("project engine must contain the declared internal modules")
 
     catalog_path = SKILL_ROOT / "catalog" / "themes.json"
@@ -111,6 +113,8 @@ def validate_skill() -> tuple[str, str]:
     skill = skill_path.read_text(encoding="utf-8")
     guide = guide_path.read_text(encoding="utf-8")
     kernel_guide = kernel_guide_path.read_text(encoding="utf-8")
+    prompting_guide = prompting_guide_path.read_text(encoding="utf-8")
+    export_guide = export_guide_path.read_text(encoding="utf-8")
     agent = agent_path.read_text(encoding="utf-8")
 
     if not skill.startswith("---\n") or "\n---" not in skill[4:]:
@@ -122,6 +126,14 @@ def validate_skill() -> tuple[str, str]:
         fail("skill frontmatter description must be non-empty")
     if len(skill.splitlines()) > 500:
         fail("SKILL.md must remain under 500 lines")
+
+    for guide_name, content in (("prompting.md", prompting_guide), ("export-and-tuning.md", export_guide)):
+        if not content.startswith("# "):
+            fail(f"{guide_name} must start with a Markdown heading")
+        if "runtime.duration_ms" not in content and guide_name == "export-and-tuning.md":
+            fail("export-and-tuning.md must document runtime.duration_ms")
+        if "foreground_plan" not in content and guide_name == "prompting.md":
+            fail("prompting.md must document foreground_plan")
 
     for required in (
         "constraint_graph",
@@ -151,6 +163,10 @@ def validate_skill() -> tuple[str, str]:
         "tools/motiflux.py probe",
         "artifact-index.json",
         "PipelineRunner",
+        "foreground_plan",
+        "static-canonical",
+        "foreground_evidence",
+        "complete evidence",
     ):
         if required not in skill:
             fail(f"SKILL.md is missing required concept: {required}")
@@ -192,6 +208,7 @@ def validate_showcase() -> None:
         showcase / "assets" / "prysai-mark-transparent.png",
         showcase / "assets" / "animations" / "prysai-ai-field.gif",
         showcase / "output" / "pdf" / "motiflux-theme-atlas.pdf",
+        showcase / "output" / "growth-evidence.json",
     )
     for path in required:
         require_file(path)
@@ -217,14 +234,16 @@ def validate_showcase() -> None:
     index = (showcase / "index.html").read_text(encoding="utf-8")
     if index.count('class="theme-card"') != 13:
         fail("showcase HTML must contain exactly 13 theme cards")
-    if index.count("assets/prysai-mark-crop.jpg") != 14:
-        fail("showcase HTML must use the same source derivative in the primary input and every card")
+    if index.count("assets/prysai-mark-crop.jpg") != 15:
+        fail("showcase HTML must use the same source derivative in the hero preview, primary input, and every card")
     if index.count('class="growth-gif"') != 13:
         fail("showcase HTML must provide one growth GIF per theme card")
     if "blank / spark / arc / bar / monogram / wordmark / canonical" not in index:
         fail("showcase HTML must expose the canonical logo-growth sequence")
     if "assets/animations/prysai-ai-field.gif" not in index:
         fail("showcase must include the primary image-to-animation output")
+    if "output/growth-evidence.json" not in index:
+        fail("showcase must link deterministic growth evidence")
     animation_paths = sorted((showcase / "assets" / "animations").glob("prysai-*.gif"))
     if len(animation_paths) != 13:
         fail("showcase must export one portable GIF per theme")
@@ -288,7 +307,7 @@ def validate_github_gallery() -> None:
 
 def validate_content(skill: str, guide: str) -> None:
     # Construct the comparison strings from pieces so this guard itself does not
-    # become a source of the historical identifiers it is designed to reject.
+    # become a source of the reserved markers it is designed to reject.
     forbidden = [
         "".join(("P", "2", "M")),
         "".join(("Pixel", "2", "Motion")),

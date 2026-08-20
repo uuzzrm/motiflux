@@ -1,0 +1,7790 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate",
+  "source": {
+    "path": "showcase/assets/prysai-mark-crop.jpg",
+    "format": "jpeg",
+    "width": 3950,
+    "height": 1323,
+    "color_mode": "RGB",
+    "has_alpha": false
+  },
+  "observations": {
+    "elements": [
+      {
+        "id": "raster-component-001",
+        "tag": "raster-component",
+        "bounds": [
+          929,
+          65,
+          38,
+          39
+        ],
+        "centroid": {
+          "x": 948.0931,
+          "y": 84.3272
+        },
+        "area": 1192,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "origin-dot",
+            "score": 0.7933,
+            "confidence": "medium"
+          },
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "arc",
+            "score": 0.4154,
+            "confidence": "low"
+          },
+          {
+            "role": "monogram",
+            "score": 0.3623,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1665,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "origin-dot",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-002",
+        "tag": "raster-component",
+        "bounds": [
+          315,
+          82,
+          131,
+          159
+        ],
+        "centroid": {
+          "x": 369.0095,
+          "y": 149.2485
+        },
+        "area": 12254,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.6416,
+            "confidence": "medium"
+          },
+          {
+            "role": "monogram",
+            "score": 0.5497,
+            "confidence": "low"
+          },
+          {
+            "role": "arc",
+            "score": 0.3776,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1677,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-003",
+        "tag": "raster-component",
+        "bounds": [
+          73,
+          57,
+          208,
+          209
+        ],
+        "centroid": {
+          "x": 176.6079,
+          "y": 157.5847
+        },
+        "area": 20124,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "origin-dot",
+            "score": 0.5568,
+            "confidence": "medium"
+          },
+          {
+            "role": "arc",
+            "score": 0.5058,
+            "confidence": "low"
+          },
+          {
+            "role": "monogram",
+            "score": 0.4395,
+            "confidence": "low"
+          },
+          {
+            "role": "wordmark",
+            "score": 0.1825,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1276,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "origin-dot",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "symbol",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-004",
+        "tag": "raster-component",
+        "bounds": [
+          464,
+          117,
+          75,
+          124
+        ],
+        "centroid": {
+          "x": 490.0785,
+          "y": 170.7422
+        },
+        "area": 5532,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.6905,
+            "confidence": "medium"
+          },
+          {
+            "role": "monogram",
+            "score": 0.5751,
+            "confidence": "medium"
+          },
+          {
+            "role": "arc",
+            "score": 0.293,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.2173,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-005",
+        "tag": "raster-component",
+        "bounds": [
+          931,
+          119,
+          35,
+          122
+        ],
+        "centroid": {
+          "x": 948.5,
+          "y": 180
+        },
+        "area": 4270,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "bar",
+            "score": 0.5453,
+            "confidence": "low"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.4647,
+            "confidence": "low"
+          },
+          {
+            "role": "monogram",
+            "score": 0.2362,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "arc",
+            "score": 0.0939,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-006",
+        "tag": "raster-component",
+        "bounds": [
+          684,
+          117,
+          102,
+          125
+        ],
+        "centroid": {
+          "x": 736.8419,
+          "y": 180.5107
+        },
+        "area": 7952,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.6562,
+            "confidence": "medium"
+          },
+          {
+            "role": "monogram",
+            "score": 0.4836,
+            "confidence": "low"
+          },
+          {
+            "role": "arc",
+            "score": 0.3359,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.169,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-007",
+        "tag": "raster-component",
+        "bounds": [
+          799,
+          117,
+          115,
+          125
+        ],
+        "centroid": {
+          "x": 862.0644,
+          "y": 183.0545
+        },
+        "area": 9900,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.6168,
+            "confidence": "medium"
+          },
+          {
+            "role": "monogram",
+            "score": 0.4277,
+            "confidence": "low"
+          },
+          {
+            "role": "arc",
+            "score": 0.3407,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1665,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-008",
+        "tag": "raster-component",
+        "bounds": [
+          553,
+          119,
+          131,
+          167
+        ],
+        "centroid": {
+          "x": 613.1134,
+          "y": 196.1597
+        },
+        "area": 9854,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "wordmark",
+            "score": 0.7208,
+            "confidence": "medium"
+          },
+          {
+            "role": "origin-dot",
+            "score": 0.6325,
+            "confidence": "medium"
+          },
+          {
+            "role": "monogram",
+            "score": 0.54,
+            "confidence": "low"
+          },
+          {
+            "role": "arc",
+            "score": 0.4327,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1443,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "wordmark",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      },
+      {
+        "id": "raster-component-009",
+        "tag": "raster-component",
+        "bounds": [
+          57,
+          224,
+          42,
+          42
+        ],
+        "centroid": {
+          "x": 77.898,
+          "y": 245.1325
+        },
+        "area": 1377,
+        "role": "unknown",
+        "role_candidates": [
+          {
+            "role": "origin-dot",
+            "score": 0.9672,
+            "confidence": "medium"
+          },
+          {
+            "role": "arc",
+            "score": 0.4203,
+            "confidence": "low"
+          },
+          {
+            "role": "monogram",
+            "score": 0.3656,
+            "confidence": "low"
+          },
+          {
+            "role": "unknown",
+            "score": 0.18,
+            "confidence": "low"
+          },
+          {
+            "role": "bar",
+            "score": 0.1585,
+            "confidence": "low"
+          },
+          {
+            "role": "wordmark",
+            "score": 0.0367,
+            "confidence": "low"
+          }
+        ],
+        "role_review": {
+          "proposed_role": "origin-dot",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry, layout grouping, and deterministic role scores only"
+        },
+        "layout_group": "symbol",
+        "group_confidence": "medium",
+        "geometry_strategy": "pixel-observation-only",
+        "reconstruction_status": "needs-review"
+      }
+    ],
+    "colors": [
+      {
+        "rgb": [
+          240,
+          240,
+          240
+        ],
+        "count": 71208,
+        "share": 0.9828
+      },
+      {
+        "rgb": [
+          176,
+          176,
+          176
+        ],
+        "count": 249,
+        "share": 0.0034
+      },
+      {
+        "rgb": [
+          128,
+          128,
+          128
+        ],
+        "count": 174,
+        "share": 0.0024
+      },
+      {
+        "rgb": [
+          192,
+          192,
+          192
+        ],
+        "count": 133,
+        "share": 0.0018
+      },
+      {
+        "rgb": [
+          112,
+          112,
+          112
+        ],
+        "count": 122,
+        "share": 0.0017
+      },
+      {
+        "rgb": [
+          48,
+          48,
+          48
+        ],
+        "count": 69,
+        "share": 0.001
+      },
+      {
+        "rgb": [
+          16,
+          16,
+          16
+        ],
+        "count": 65,
+        "share": 0.0009
+      },
+      {
+        "rgb": [
+          32,
+          32,
+          32
+        ],
+        "count": 59,
+        "share": 0.0008
+      }
+    ],
+    "landmarks": [
+      {
+        "id": "raster-left",
+        "kind": "extremum",
+        "x": 57,
+        "y": 171.5,
+        "importance": "structural"
+      },
+      {
+        "id": "raster-right",
+        "kind": "extremum",
+        "x": 967,
+        "y": 171.5,
+        "importance": "structural"
+      },
+      {
+        "id": "raster-top",
+        "kind": "extremum",
+        "x": 512,
+        "y": 57,
+        "importance": "structural"
+      },
+      {
+        "id": "raster-bottom",
+        "kind": "extremum",
+        "x": 512,
+        "y": 286,
+        "importance": "structural"
+      },
+      {
+        "id": "raster-center",
+        "kind": "center",
+        "x": 512,
+        "y": 171.5,
+        "importance": "identity-candidate"
+      },
+      {
+        "id": "raster-content-bounds",
+        "kind": "container",
+        "value": [
+          57,
+          57,
+          910,
+          229
+        ],
+        "importance": "structural"
+      },
+      {
+        "id": "raster-image-bounds",
+        "kind": "container",
+        "value": [
+          0,
+          0,
+          1024,
+          343
+        ],
+        "importance": "structural"
+      }
+    ],
+    "negative_spaces": [],
+    "topology": {
+      "connectivity": 8,
+      "component_count": 9,
+      "foreground_pixels": 72455,
+      "foreground_coverage": 0.2063
+    },
+    "recognition": {
+      "mode": "bounded-geometric-observation",
+      "review_status": "needs-review",
+      "input_boundary": "decoded pixels and layout heuristics only; no semantic or vector reconstruction claim",
+      "component_count": 9,
+      "role_counts": {
+        "unknown": 9
+      },
+      "layout_groups": [
+        "symbol",
+        "wordmark"
+      ],
+      "confidence_policy": {
+        "high": "not assigned by this adapter",
+        "medium": "geometry is suggestive and still requires review",
+        "low": "do not use as a semantic role without review",
+        "accepted_role": "only an explicit reviewer annotation may promote a role"
+      },
+      "motion_binding_rules": {
+        "origin-dot": "scale-and-opacity reveal from the observed centroid",
+        "arc": "ordered angular or contour prefix over the observed source mask",
+        "bar": "continuous endpoint-to-endpoint scan over the observed stroke",
+        "monogram": "component-local contour or convergence reveal using source pixels",
+        "wordmark": "reading-order glyph/component cascade using source pixels",
+        "unknown": "static-canonical fallback until a reviewer accepts a role"
+      },
+      "decision_trace": [
+        "estimate border background and foreground mask",
+        "extract connected components with deterministic ordering",
+        "hypothesize symbol and wordmark groups from layout and geometry",
+        "bind supported roles to source-pixel motion strategies",
+        "retain unknown or low-confidence actors behind static-canonical fallback"
+      ]
+    },
+    "raster": {
+      "analysis_version": "1.0",
+      "coordinate_space": "sampled-raster",
+      "sampling": {
+        "original_width": 3950,
+        "original_height": 1323,
+        "width": 1024,
+        "height": 343,
+        "max_dimension": 1024,
+        "method": "nearest-neighbour when capped; exact pixels otherwise"
+      },
+      "decoder": {
+        "provider": "Pillow",
+        "mode": "RGB",
+        "has_alpha": false
+      },
+      "background": {
+        "mode": "opaque-solid",
+        "estimated_rgb": [
+          0,
+          0,
+          0
+        ],
+        "border_sample_count": 547,
+        "transparent_border_fraction": 0,
+        "colour_noise_p95": 0,
+        "colour_distance_threshold": 10,
+        "alpha_threshold": 16,
+        "foreground_pixels": 72455,
+        "foreground_coverage": 0.2063
+      },
+      "foreground_mask": {
+        "encoding": "row-major-rle-v1",
+        "width": 1024,
+        "height": 343,
+        "foreground_pixels": 72455,
+        "background_pixels": 278777,
+        "coverage": 0.2063,
+        "runs": [
+          {
+            "start": 58534,
+            "length": 22
+          },
+          {
+            "start": 59551,
+            "length": 36
+          },
+          {
+            "start": 60570,
+            "length": 46
+          },
+          {
+            "start": 61590,
+            "length": 55
+          },
+          {
+            "start": 62610,
+            "length": 62
+          },
+          {
+            "start": 63631,
+            "length": 68
+          },
+          {
+            "start": 64653,
+            "length": 72
+          },
+          {
+            "start": 65674,
+            "length": 78
+          },
+          {
+            "start": 66696,
+            "length": 83
+          },
+          {
+            "start": 67502,
+            "length": 12
+          },
+          {
+            "start": 67718,
+            "length": 87
+          },
+          {
+            "start": 68524,
+            "length": 17
+          },
+          {
+            "start": 68739,
+            "length": 92
+          },
+          {
+            "start": 69546,
+            "length": 20
+          },
+          {
+            "start": 69761,
+            "length": 96
+          },
+          {
+            "start": 70568,
+            "length": 24
+          },
+          {
+            "start": 70783,
+            "length": 100
+          },
+          {
+            "start": 71591,
+            "length": 26
+          },
+          {
+            "start": 71806,
+            "length": 102
+          },
+          {
+            "start": 72614,
+            "length": 28
+          },
+          {
+            "start": 72828,
+            "length": 106
+          },
+          {
+            "start": 73637,
+            "length": 30
+          },
+          {
+            "start": 73850,
+            "length": 110
+          },
+          {
+            "start": 74661,
+            "length": 31
+          },
+          {
+            "start": 74873,
+            "length": 112
+          },
+          {
+            "start": 75684,
+            "length": 32
+          },
+          {
+            "start": 75895,
+            "length": 116
+          },
+          {
+            "start": 76707,
+            "length": 34
+          },
+          {
+            "start": 76918,
+            "length": 118
+          },
+          {
+            "start": 77731,
+            "length": 34
+          },
+          {
+            "start": 77940,
+            "length": 122
+          },
+          {
+            "start": 78754,
+            "length": 36
+          },
+          {
+            "start": 78963,
+            "length": 124
+          },
+          {
+            "start": 79778,
+            "length": 36
+          },
+          {
+            "start": 79986,
+            "length": 126
+          },
+          {
+            "start": 80802,
+            "length": 36
+          },
+          {
+            "start": 81009,
+            "length": 129
+          },
+          {
+            "start": 81826,
+            "length": 36
+          },
+          {
+            "start": 82031,
+            "length": 132
+          },
+          {
+            "start": 82849,
+            "length": 38
+          },
+          {
+            "start": 83054,
+            "length": 134
+          },
+          {
+            "start": 83873,
+            "length": 38
+          },
+          {
+            "start": 84077,
+            "length": 137
+          },
+          {
+            "start": 84283,
+            "length": 77
+          },
+          {
+            "start": 84897,
+            "length": 38
+          },
+          {
+            "start": 85100,
+            "length": 139
+          },
+          {
+            "start": 85307,
+            "length": 86
+          },
+          {
+            "start": 85921,
+            "length": 38
+          },
+          {
+            "start": 86123,
+            "length": 140
+          },
+          {
+            "start": 86331,
+            "length": 89
+          },
+          {
+            "start": 86945,
+            "length": 38
+          },
+          {
+            "start": 87146,
+            "length": 143
+          },
+          {
+            "start": 87355,
+            "length": 93
+          },
+          {
+            "start": 87969,
+            "length": 38
+          },
+          {
+            "start": 88168,
+            "length": 146
+          },
+          {
+            "start": 88379,
+            "length": 97
+          },
+          {
+            "start": 88993,
+            "length": 38
+          },
+          {
+            "start": 89191,
+            "length": 148
+          },
+          {
+            "start": 89403,
+            "length": 100
+          },
+          {
+            "start": 90017,
+            "length": 38
+          },
+          {
+            "start": 90214,
+            "length": 150
+          },
+          {
+            "start": 90427,
+            "length": 102
+          },
+          {
+            "start": 91042,
+            "length": 37
+          },
+          {
+            "start": 91238,
+            "length": 151
+          },
+          {
+            "start": 91451,
+            "length": 104
+          },
+          {
+            "start": 92066,
+            "length": 36
+          },
+          {
+            "start": 92261,
+            "length": 153
+          },
+          {
+            "start": 92475,
+            "length": 106
+          },
+          {
+            "start": 93090,
+            "length": 36
+          },
+          {
+            "start": 93284,
+            "length": 154
+          },
+          {
+            "start": 93499,
+            "length": 107
+          },
+          {
+            "start": 94114,
+            "length": 36
+          },
+          {
+            "start": 94307,
+            "length": 156
+          },
+          {
+            "start": 94523,
+            "length": 109
+          },
+          {
+            "start": 95139,
+            "length": 35
+          },
+          {
+            "start": 95330,
+            "length": 158
+          },
+          {
+            "start": 95547,
+            "length": 111
+          },
+          {
+            "start": 96163,
+            "length": 34
+          },
+          {
+            "start": 96353,
+            "length": 160
+          },
+          {
+            "start": 96571,
+            "length": 112
+          },
+          {
+            "start": 97188,
+            "length": 33
+          },
+          {
+            "start": 97376,
+            "length": 162
+          },
+          {
+            "start": 97595,
+            "length": 113
+          },
+          {
+            "start": 98212,
+            "length": 32
+          },
+          {
+            "start": 98399,
+            "length": 164
+          },
+          {
+            "start": 98619,
+            "length": 115
+          },
+          {
+            "start": 99237,
+            "length": 30
+          },
+          {
+            "start": 99423,
+            "length": 73
+          },
+          {
+            "start": 99514,
+            "length": 73
+          },
+          {
+            "start": 99643,
+            "length": 116
+          },
+          {
+            "start": 100262,
+            "length": 29
+          },
+          {
+            "start": 100446,
+            "length": 70
+          },
+          {
+            "start": 100543,
+            "length": 69
+          },
+          {
+            "start": 100667,
+            "length": 117
+          },
+          {
+            "start": 101286,
+            "length": 28
+          },
+          {
+            "start": 101469,
+            "length": 66
+          },
+          {
+            "start": 101571,
+            "length": 66
+          },
+          {
+            "start": 101691,
+            "length": 118
+          },
+          {
+            "start": 102312,
+            "length": 25
+          },
+          {
+            "start": 102493,
+            "length": 63
+          },
+          {
+            "start": 102598,
+            "length": 64
+          },
+          {
+            "start": 102715,
+            "length": 118
+          },
+          {
+            "start": 103337,
+            "length": 22
+          },
+          {
+            "start": 103516,
+            "length": 61
+          },
+          {
+            "start": 103625,
+            "length": 61
+          },
+          {
+            "start": 103739,
+            "length": 119
+          },
+          {
+            "start": 104362,
+            "length": 20
+          },
+          {
+            "start": 104539,
+            "length": 60
+          },
+          {
+            "start": 104651,
+            "length": 60
+          },
+          {
+            "start": 104763,
+            "length": 120
+          },
+          {
+            "start": 105389,
+            "length": 15
+          },
+          {
+            "start": 105562,
+            "length": 59
+          },
+          {
+            "start": 105677,
+            "length": 59
+          },
+          {
+            "start": 105787,
+            "length": 121
+          },
+          {
+            "start": 106416,
+            "length": 8
+          },
+          {
+            "start": 106586,
+            "length": 57
+          },
+          {
+            "start": 106703,
+            "length": 57
+          },
+          {
+            "start": 106811,
+            "length": 122
+          },
+          {
+            "start": 107609,
+            "length": 56
+          },
+          {
+            "start": 107729,
+            "length": 56
+          },
+          {
+            "start": 107835,
+            "length": 122
+          },
+          {
+            "start": 108633,
+            "length": 55
+          },
+          {
+            "start": 108755,
+            "length": 54
+          },
+          {
+            "start": 108859,
+            "length": 123
+          },
+          {
+            "start": 109656,
+            "length": 54
+          },
+          {
+            "start": 109780,
+            "length": 54
+          },
+          {
+            "start": 109883,
+            "length": 124
+          },
+          {
+            "start": 110679,
+            "length": 54
+          },
+          {
+            "start": 110806,
+            "length": 53
+          },
+          {
+            "start": 110907,
+            "length": 124
+          },
+          {
+            "start": 111703,
+            "length": 52
+          },
+          {
+            "start": 111831,
+            "length": 52
+          },
+          {
+            "start": 111931,
+            "length": 125
+          },
+          {
+            "start": 112726,
+            "length": 52
+          },
+          {
+            "start": 112856,
+            "length": 52
+          },
+          {
+            "start": 112955,
+            "length": 125
+          },
+          {
+            "start": 113750,
+            "length": 51
+          },
+          {
+            "start": 113882,
+            "length": 51
+          },
+          {
+            "start": 113979,
+            "length": 126
+          },
+          {
+            "start": 114773,
+            "length": 51
+          },
+          {
+            "start": 114907,
+            "length": 50
+          },
+          {
+            "start": 115003,
+            "length": 36
+          },
+          {
+            "start": 115075,
+            "length": 54
+          },
+          {
+            "start": 115797,
+            "length": 50
+          },
+          {
+            "start": 115932,
+            "length": 49
+          },
+          {
+            "start": 116027,
+            "length": 36
+          },
+          {
+            "start": 116105,
+            "length": 49
+          },
+          {
+            "start": 116820,
+            "length": 49
+          },
+          {
+            "start": 116957,
+            "length": 49
+          },
+          {
+            "start": 117051,
+            "length": 36
+          },
+          {
+            "start": 117132,
+            "length": 46
+          },
+          {
+            "start": 117844,
+            "length": 48
+          },
+          {
+            "start": 117982,
+            "length": 48
+          },
+          {
+            "start": 118075,
+            "length": 36
+          },
+          {
+            "start": 118159,
+            "length": 44
+          },
+          {
+            "start": 118867,
+            "length": 48
+          },
+          {
+            "start": 119007,
+            "length": 48
+          },
+          {
+            "start": 119099,
+            "length": 36
+          },
+          {
+            "start": 119185,
+            "length": 42
+          },
+          {
+            "start": 119891,
+            "length": 47
+          },
+          {
+            "start": 120032,
+            "length": 47
+          },
+          {
+            "start": 120123,
+            "length": 36
+          },
+          {
+            "start": 120210,
+            "length": 41
+          },
+          {
+            "start": 120343,
+            "length": 4
+          },
+          {
+            "start": 120538,
+            "length": 16
+          },
+          {
+            "start": 120663,
+            "length": 12
+          },
+          {
+            "start": 120914,
+            "length": 47
+          },
+          {
+            "start": 121057,
+            "length": 47
+          },
+          {
+            "start": 121147,
+            "length": 36
+          },
+          {
+            "start": 121236,
+            "length": 40
+          },
+          {
+            "start": 121360,
+            "length": 11
+          },
+          {
+            "start": 121555,
+            "length": 31
+          },
+          {
+            "start": 121677,
+            "length": 31
+          },
+          {
+            "start": 121938,
+            "length": 47
+          },
+          {
+            "start": 122082,
+            "length": 46
+          },
+          {
+            "start": 122171,
+            "length": 36
+          },
+          {
+            "start": 122261,
+            "length": 39
+          },
+          {
+            "start": 122320,
+            "length": 35
+          },
+          {
+            "start": 122381,
+            "length": 14
+          },
+          {
+            "start": 122409,
+            "length": 36
+          },
+          {
+            "start": 122505,
+            "length": 35
+          },
+          {
+            "start": 122576,
+            "length": 38
+          },
+          {
+            "start": 122696,
+            "length": 40
+          },
+          {
+            "start": 122787,
+            "length": 35
+          },
+          {
+            "start": 122961,
+            "length": 47
+          },
+          {
+            "start": 123106,
+            "length": 47
+          },
+          {
+            "start": 123195,
+            "length": 36
+          },
+          {
+            "start": 123286,
+            "length": 38
+          },
+          {
+            "start": 123344,
+            "length": 35
+          },
+          {
+            "start": 123402,
+            "length": 17
+          },
+          {
+            "start": 123433,
+            "length": 36
+          },
+          {
+            "start": 123528,
+            "length": 36
+          },
+          {
+            "start": 123596,
+            "length": 46
+          },
+          {
+            "start": 123715,
+            "length": 48
+          },
+          {
+            "start": 123811,
+            "length": 35
+          },
+          {
+            "start": 123985,
+            "length": 46
+          },
+          {
+            "start": 124131,
+            "length": 46
+          },
+          {
+            "start": 124219,
+            "length": 36
+          },
+          {
+            "start": 124310,
+            "length": 38
+          },
+          {
+            "start": 124368,
+            "length": 35
+          },
+          {
+            "start": 124423,
+            "length": 20
+          },
+          {
+            "start": 124457,
+            "length": 37
+          },
+          {
+            "start": 124552,
+            "length": 35
+          },
+          {
+            "start": 124617,
+            "length": 52
+          },
+          {
+            "start": 124735,
+            "length": 56
+          },
+          {
+            "start": 124835,
+            "length": 35
+          },
+          {
+            "start": 125009,
+            "length": 45
+          },
+          {
+            "start": 125156,
+            "length": 45
+          },
+          {
+            "start": 125243,
+            "length": 36
+          },
+          {
+            "start": 125335,
+            "length": 38
+          },
+          {
+            "start": 125392,
+            "length": 35
+          },
+          {
+            "start": 125445,
+            "length": 22
+          },
+          {
+            "start": 125482,
+            "length": 36
+          },
+          {
+            "start": 125576,
+            "length": 35
+          },
+          {
+            "start": 125639,
+            "length": 57
+          },
+          {
+            "start": 125756,
+            "length": 61
+          },
+          {
+            "start": 125859,
+            "length": 35
+          },
+          {
+            "start": 126032,
+            "length": 45
+          },
+          {
+            "start": 126181,
+            "length": 45
+          },
+          {
+            "start": 126267,
+            "length": 36
+          },
+          {
+            "start": 126360,
+            "length": 37
+          },
+          {
+            "start": 126416,
+            "length": 35
+          },
+          {
+            "start": 126467,
+            "length": 24
+          },
+          {
+            "start": 126506,
+            "length": 37
+          },
+          {
+            "start": 126599,
+            "length": 35
+          },
+          {
+            "start": 126661,
+            "length": 62
+          },
+          {
+            "start": 126777,
+            "length": 67
+          },
+          {
+            "start": 126883,
+            "length": 35
+          },
+          {
+            "start": 127056,
+            "length": 45
+          },
+          {
+            "start": 127205,
+            "length": 45
+          },
+          {
+            "start": 127291,
+            "length": 36
+          },
+          {
+            "start": 127385,
+            "length": 36
+          },
+          {
+            "start": 127440,
+            "length": 35
+          },
+          {
+            "start": 127489,
+            "length": 26
+          },
+          {
+            "start": 127531,
+            "length": 36
+          },
+          {
+            "start": 127623,
+            "length": 35
+          },
+          {
+            "start": 127683,
+            "length": 67
+          },
+          {
+            "start": 127798,
+            "length": 71
+          },
+          {
+            "start": 127907,
+            "length": 35
+          },
+          {
+            "start": 128079,
+            "length": 45
+          },
+          {
+            "start": 128230,
+            "length": 45
+          },
+          {
+            "start": 128315,
+            "length": 36
+          },
+          {
+            "start": 128409,
+            "length": 36
+          },
+          {
+            "start": 128464,
+            "length": 35
+          },
+          {
+            "start": 128512,
+            "length": 27
+          },
+          {
+            "start": 128555,
+            "length": 36
+          },
+          {
+            "start": 128647,
+            "length": 35
+          },
+          {
+            "start": 128705,
+            "length": 71
+          },
+          {
+            "start": 128819,
+            "length": 76
+          },
+          {
+            "start": 128931,
+            "length": 35
+          },
+          {
+            "start": 129103,
+            "length": 44
+          },
+          {
+            "start": 129255,
+            "length": 44
+          },
+          {
+            "start": 129339,
+            "length": 36
+          },
+          {
+            "start": 129434,
+            "length": 35
+          },
+          {
+            "start": 129488,
+            "length": 35
+          },
+          {
+            "start": 129534,
+            "length": 29
+          },
+          {
+            "start": 129580,
+            "length": 36
+          },
+          {
+            "start": 129671,
+            "length": 34
+          },
+          {
+            "start": 129728,
+            "length": 73
+          },
+          {
+            "start": 129842,
+            "length": 78
+          },
+          {
+            "start": 129955,
+            "length": 35
+          },
+          {
+            "start": 130127,
+            "length": 44
+          },
+          {
+            "start": 130280,
+            "length": 42
+          },
+          {
+            "start": 130363,
+            "length": 36
+          },
+          {
+            "start": 130458,
+            "length": 35
+          },
+          {
+            "start": 130512,
+            "length": 35
+          },
+          {
+            "start": 130557,
+            "length": 30
+          },
+          {
+            "start": 130604,
+            "length": 36
+          },
+          {
+            "start": 130694,
+            "length": 35
+          },
+          {
+            "start": 130751,
+            "length": 77
+          },
+          {
+            "start": 130863,
+            "length": 83
+          },
+          {
+            "start": 130979,
+            "length": 35
+          },
+          {
+            "start": 131151,
+            "length": 43
+          },
+          {
+            "start": 131304,
+            "length": 41
+          },
+          {
+            "start": 131387,
+            "length": 36
+          },
+          {
+            "start": 131482,
+            "length": 36
+          },
+          {
+            "start": 131536,
+            "length": 35
+          },
+          {
+            "start": 131580,
+            "length": 31
+          },
+          {
+            "start": 131628,
+            "length": 36
+          },
+          {
+            "start": 131718,
+            "length": 35
+          },
+          {
+            "start": 131774,
+            "length": 80
+          },
+          {
+            "start": 131885,
+            "length": 86
+          },
+          {
+            "start": 132003,
+            "length": 35
+          },
+          {
+            "start": 132174,
+            "length": 44
+          },
+          {
+            "start": 132329,
+            "length": 39
+          },
+          {
+            "start": 132411,
+            "length": 36
+          },
+          {
+            "start": 132507,
+            "length": 35
+          },
+          {
+            "start": 132560,
+            "length": 35
+          },
+          {
+            "start": 132603,
+            "length": 32
+          },
+          {
+            "start": 132653,
+            "length": 36
+          },
+          {
+            "start": 132741,
+            "length": 35
+          },
+          {
+            "start": 132796,
+            "length": 83
+          },
+          {
+            "start": 132907,
+            "length": 89
+          },
+          {
+            "start": 133027,
+            "length": 35
+          },
+          {
+            "start": 133198,
+            "length": 43
+          },
+          {
+            "start": 133353,
+            "length": 38
+          },
+          {
+            "start": 133435,
+            "length": 36
+          },
+          {
+            "start": 133531,
+            "length": 35
+          },
+          {
+            "start": 133584,
+            "length": 35
+          },
+          {
+            "start": 133626,
+            "length": 33
+          },
+          {
+            "start": 133677,
+            "length": 36
+          },
+          {
+            "start": 133765,
+            "length": 34
+          },
+          {
+            "start": 133819,
+            "length": 86
+          },
+          {
+            "start": 133928,
+            "length": 93
+          },
+          {
+            "start": 134051,
+            "length": 35
+          },
+          {
+            "start": 134222,
+            "length": 43
+          },
+          {
+            "start": 134378,
+            "length": 36
+          },
+          {
+            "start": 134459,
+            "length": 36
+          },
+          {
+            "start": 134555,
+            "length": 35
+          },
+          {
+            "start": 134608,
+            "length": 35
+          },
+          {
+            "start": 134649,
+            "length": 34
+          },
+          {
+            "start": 134702,
+            "length": 36
+          },
+          {
+            "start": 134789,
+            "length": 34
+          },
+          {
+            "start": 134842,
+            "length": 87
+          },
+          {
+            "start": 134950,
+            "length": 96
+          },
+          {
+            "start": 135075,
+            "length": 35
+          },
+          {
+            "start": 135245,
+            "length": 43
+          },
+          {
+            "start": 135402,
+            "length": 35
+          },
+          {
+            "start": 135483,
+            "length": 36
+          },
+          {
+            "start": 135579,
+            "length": 35
+          },
+          {
+            "start": 135632,
+            "length": 35
+          },
+          {
+            "start": 135672,
+            "length": 35
+          },
+          {
+            "start": 135726,
+            "length": 36
+          },
+          {
+            "start": 135812,
+            "length": 35
+          },
+          {
+            "start": 135866,
+            "length": 87
+          },
+          {
+            "start": 135975,
+            "length": 96
+          },
+          {
+            "start": 136099,
+            "length": 35
+          },
+          {
+            "start": 136269,
+            "length": 43
+          },
+          {
+            "start": 136427,
+            "length": 33
+          },
+          {
+            "start": 136507,
+            "length": 36
+          },
+          {
+            "start": 136604,
+            "length": 34
+          },
+          {
+            "start": 136656,
+            "length": 35
+          },
+          {
+            "start": 136695,
+            "length": 36
+          },
+          {
+            "start": 136750,
+            "length": 36
+          },
+          {
+            "start": 136836,
+            "length": 34
+          },
+          {
+            "start": 136889,
+            "length": 87
+          },
+          {
+            "start": 136999,
+            "length": 97
+          },
+          {
+            "start": 137123,
+            "length": 35
+          },
+          {
+            "start": 137293,
+            "length": 42
+          },
+          {
+            "start": 137451,
+            "length": 32
+          },
+          {
+            "start": 137531,
+            "length": 36
+          },
+          {
+            "start": 137628,
+            "length": 34
+          },
+          {
+            "start": 137680,
+            "length": 35
+          },
+          {
+            "start": 137718,
+            "length": 37
+          },
+          {
+            "start": 137775,
+            "length": 36
+          },
+          {
+            "start": 137860,
+            "length": 34
+          },
+          {
+            "start": 137912,
+            "length": 88
+          },
+          {
+            "start": 138024,
+            "length": 97
+          },
+          {
+            "start": 138147,
+            "length": 35
+          },
+          {
+            "start": 138316,
+            "length": 43
+          },
+          {
+            "start": 138476,
+            "length": 30
+          },
+          {
+            "start": 138555,
+            "length": 36
+          },
+          {
+            "start": 138652,
+            "length": 34
+          },
+          {
+            "start": 138704,
+            "length": 35
+          },
+          {
+            "start": 138742,
+            "length": 37
+          },
+          {
+            "start": 138799,
+            "length": 36
+          },
+          {
+            "start": 138883,
+            "length": 35
+          },
+          {
+            "start": 138935,
+            "length": 88
+          },
+          {
+            "start": 139048,
+            "length": 98
+          },
+          {
+            "start": 139171,
+            "length": 35
+          },
+          {
+            "start": 139340,
+            "length": 42
+          },
+          {
+            "start": 139500,
+            "length": 29
+          },
+          {
+            "start": 139579,
+            "length": 36
+          },
+          {
+            "start": 139676,
+            "length": 34
+          },
+          {
+            "start": 139728,
+            "length": 35
+          },
+          {
+            "start": 139765,
+            "length": 38
+          },
+          {
+            "start": 139824,
+            "length": 35
+          },
+          {
+            "start": 139907,
+            "length": 34
+          },
+          {
+            "start": 139959,
+            "length": 88
+          },
+          {
+            "start": 140073,
+            "length": 97
+          },
+          {
+            "start": 140195,
+            "length": 35
+          },
+          {
+            "start": 140364,
+            "length": 42
+          },
+          {
+            "start": 140524,
+            "length": 28
+          },
+          {
+            "start": 140603,
+            "length": 36
+          },
+          {
+            "start": 140700,
+            "length": 34
+          },
+          {
+            "start": 140752,
+            "length": 35
+          },
+          {
+            "start": 140788,
+            "length": 39
+          },
+          {
+            "start": 140848,
+            "length": 36
+          },
+          {
+            "start": 140931,
+            "length": 34
+          },
+          {
+            "start": 140982,
+            "length": 88
+          },
+          {
+            "start": 141097,
+            "length": 98
+          },
+          {
+            "start": 141219,
+            "length": 35
+          },
+          {
+            "start": 141388,
+            "length": 41
+          },
+          {
+            "start": 141549,
+            "length": 26
+          },
+          {
+            "start": 141627,
+            "length": 36
+          },
+          {
+            "start": 141724,
+            "length": 34
+          },
+          {
+            "start": 141776,
+            "length": 35
+          },
+          {
+            "start": 141812,
+            "length": 39
+          },
+          {
+            "start": 141873,
+            "length": 35
+          },
+          {
+            "start": 141954,
+            "length": 34
+          },
+          {
+            "start": 142005,
+            "length": 89
+          },
+          {
+            "start": 142122,
+            "length": 98
+          },
+          {
+            "start": 142243,
+            "length": 35
+          },
+          {
+            "start": 142411,
+            "length": 42
+          },
+          {
+            "start": 142573,
+            "length": 25
+          },
+          {
+            "start": 142651,
+            "length": 36
+          },
+          {
+            "start": 142748,
+            "length": 34
+          },
+          {
+            "start": 142800,
+            "length": 75
+          },
+          {
+            "start": 142897,
+            "length": 36
+          },
+          {
+            "start": 142978,
+            "length": 34
+          },
+          {
+            "start": 143029,
+            "length": 88
+          },
+          {
+            "start": 143146,
+            "length": 98
+          },
+          {
+            "start": 143267,
+            "length": 35
+          },
+          {
+            "start": 143435,
+            "length": 42
+          },
+          {
+            "start": 143597,
+            "length": 24
+          },
+          {
+            "start": 143675,
+            "length": 36
+          },
+          {
+            "start": 143772,
+            "length": 34
+          },
+          {
+            "start": 143824,
+            "length": 75
+          },
+          {
+            "start": 143922,
+            "length": 35
+          },
+          {
+            "start": 144002,
+            "length": 34
+          },
+          {
+            "start": 144053,
+            "length": 88
+          },
+          {
+            "start": 144170,
+            "length": 99
+          },
+          {
+            "start": 144291,
+            "length": 35
+          },
+          {
+            "start": 144459,
+            "length": 41
+          },
+          {
+            "start": 144622,
+            "length": 22
+          },
+          {
+            "start": 144699,
+            "length": 36
+          },
+          {
+            "start": 144796,
+            "length": 34
+          },
+          {
+            "start": 144848,
+            "length": 75
+          },
+          {
+            "start": 144946,
+            "length": 35
+          },
+          {
+            "start": 145025,
+            "length": 34
+          },
+          {
+            "start": 145076,
+            "length": 88
+          },
+          {
+            "start": 145195,
+            "length": 98
+          },
+          {
+            "start": 145315,
+            "length": 35
+          },
+          {
+            "start": 145483,
+            "length": 41
+          },
+          {
+            "start": 145646,
+            "length": 21
+          },
+          {
+            "start": 145723,
+            "length": 36
+          },
+          {
+            "start": 145820,
+            "length": 34
+          },
+          {
+            "start": 145872,
+            "length": 75
+          },
+          {
+            "start": 145970,
+            "length": 36
+          },
+          {
+            "start": 146049,
+            "length": 34
+          },
+          {
+            "start": 146100,
+            "length": 88
+          },
+          {
+            "start": 146219,
+            "length": 99
+          },
+          {
+            "start": 146339,
+            "length": 35
+          },
+          {
+            "start": 146507,
+            "length": 41
+          },
+          {
+            "start": 146671,
+            "length": 19
+          },
+          {
+            "start": 146747,
+            "length": 36
+          },
+          {
+            "start": 146844,
+            "length": 34
+          },
+          {
+            "start": 146896,
+            "length": 75
+          },
+          {
+            "start": 146995,
+            "length": 35
+          },
+          {
+            "start": 147073,
+            "length": 34
+          },
+          {
+            "start": 147123,
+            "length": 40
+          },
+          {
+            "start": 147174,
+            "length": 37
+          },
+          {
+            "start": 147244,
+            "length": 98
+          },
+          {
+            "start": 147363,
+            "length": 35
+          },
+          {
+            "start": 147531,
+            "length": 41
+          },
+          {
+            "start": 147695,
+            "length": 18
+          },
+          {
+            "start": 147771,
+            "length": 36
+          },
+          {
+            "start": 147867,
+            "length": 35
+          },
+          {
+            "start": 147920,
+            "length": 75
+          },
+          {
+            "start": 148019,
+            "length": 36
+          },
+          {
+            "start": 148096,
+            "length": 34
+          },
+          {
+            "start": 148147,
+            "length": 37
+          },
+          {
+            "start": 148204,
+            "length": 31
+          },
+          {
+            "start": 148268,
+            "length": 98
+          },
+          {
+            "start": 148387,
+            "length": 35
+          },
+          {
+            "start": 148554,
+            "length": 41
+          },
+          {
+            "start": 148719,
+            "length": 17
+          },
+          {
+            "start": 148795,
+            "length": 36
+          },
+          {
+            "start": 148891,
+            "length": 35
+          },
+          {
+            "start": 148944,
+            "length": 75
+          },
+          {
+            "start": 149044,
+            "length": 35
+          },
+          {
+            "start": 149120,
+            "length": 34
+          },
+          {
+            "start": 149171,
+            "length": 35
+          },
+          {
+            "start": 149232,
+            "length": 26
+          },
+          {
+            "start": 149293,
+            "length": 34
+          },
+          {
+            "start": 149341,
+            "length": 50
+          },
+          {
+            "start": 149411,
+            "length": 35
+          },
+          {
+            "start": 149578,
+            "length": 41
+          },
+          {
+            "start": 149743,
+            "length": 16
+          },
+          {
+            "start": 149819,
+            "length": 36
+          },
+          {
+            "start": 149915,
+            "length": 35
+          },
+          {
+            "start": 149968,
+            "length": 75
+          },
+          {
+            "start": 150068,
+            "length": 35
+          },
+          {
+            "start": 150144,
+            "length": 33
+          },
+          {
+            "start": 150195,
+            "length": 34
+          },
+          {
+            "start": 150259,
+            "length": 22
+          },
+          {
+            "start": 150317,
+            "length": 28
+          },
+          {
+            "start": 150369,
+            "length": 46
+          },
+          {
+            "start": 150435,
+            "length": 35
+          },
+          {
+            "start": 150602,
+            "length": 41
+          },
+          {
+            "start": 150767,
+            "length": 15
+          },
+          {
+            "start": 150843,
+            "length": 36
+          },
+          {
+            "start": 150939,
+            "length": 34
+          },
+          {
+            "start": 150992,
+            "length": 75
+          },
+          {
+            "start": 151092,
+            "length": 36
+          },
+          {
+            "start": 151167,
+            "length": 34
+          },
+          {
+            "start": 151219,
+            "length": 33
+          },
+          {
+            "start": 151285,
+            "length": 20
+          },
+          {
+            "start": 151342,
+            "length": 24
+          },
+          {
+            "start": 151395,
+            "length": 44
+          },
+          {
+            "start": 151459,
+            "length": 35
+          },
+          {
+            "start": 151626,
+            "length": 41
+          },
+          {
+            "start": 151792,
+            "length": 13
+          },
+          {
+            "start": 151867,
+            "length": 36
+          },
+          {
+            "start": 151962,
+            "length": 35
+          },
+          {
+            "start": 152016,
+            "length": 75
+          },
+          {
+            "start": 152117,
+            "length": 35
+          },
+          {
+            "start": 152191,
+            "length": 33
+          },
+          {
+            "start": 152242,
+            "length": 33
+          },
+          {
+            "start": 152312,
+            "length": 17
+          },
+          {
+            "start": 152366,
+            "length": 20
+          },
+          {
+            "start": 152421,
+            "length": 43
+          },
+          {
+            "start": 152483,
+            "length": 35
+          },
+          {
+            "start": 152650,
+            "length": 40
+          },
+          {
+            "start": 152816,
+            "length": 12
+          },
+          {
+            "start": 152891,
+            "length": 36
+          },
+          {
+            "start": 152986,
+            "length": 35
+          },
+          {
+            "start": 153040,
+            "length": 75
+          },
+          {
+            "start": 153141,
+            "length": 35
+          },
+          {
+            "start": 153215,
+            "length": 33
+          },
+          {
+            "start": 153266,
+            "length": 33
+          },
+          {
+            "start": 153338,
+            "length": 14
+          },
+          {
+            "start": 153391,
+            "length": 16
+          },
+          {
+            "start": 153447,
+            "length": 41
+          },
+          {
+            "start": 153507,
+            "length": 35
+          },
+          {
+            "start": 153674,
+            "length": 40
+          },
+          {
+            "start": 153840,
+            "length": 11
+          },
+          {
+            "start": 153915,
+            "length": 36
+          },
+          {
+            "start": 154010,
+            "length": 35
+          },
+          {
+            "start": 154064,
+            "length": 64
+          },
+          {
+            "start": 154166,
+            "length": 35
+          },
+          {
+            "start": 154238,
+            "length": 34
+          },
+          {
+            "start": 154290,
+            "length": 33
+          },
+          {
+            "start": 154365,
+            "length": 11
+          },
+          {
+            "start": 154415,
+            "length": 14
+          },
+          {
+            "start": 154473,
+            "length": 39
+          },
+          {
+            "start": 154531,
+            "length": 35
+          },
+          {
+            "start": 154698,
+            "length": 40
+          },
+          {
+            "start": 154864,
+            "length": 10
+          },
+          {
+            "start": 154939,
+            "length": 36
+          },
+          {
+            "start": 155033,
+            "length": 36
+          },
+          {
+            "start": 155088,
+            "length": 58
+          },
+          {
+            "start": 155190,
+            "length": 35
+          },
+          {
+            "start": 155262,
+            "length": 33
+          },
+          {
+            "start": 155314,
+            "length": 32
+          },
+          {
+            "start": 155391,
+            "length": 8
+          },
+          {
+            "start": 155440,
+            "length": 10
+          },
+          {
+            "start": 155498,
+            "length": 39
+          },
+          {
+            "start": 155555,
+            "length": 35
+          },
+          {
+            "start": 155722,
+            "length": 40
+          },
+          {
+            "start": 155888,
+            "length": 9
+          },
+          {
+            "start": 155963,
+            "length": 36
+          },
+          {
+            "start": 156057,
+            "length": 36
+          },
+          {
+            "start": 156112,
+            "length": 55
+          },
+          {
+            "start": 156215,
+            "length": 34
+          },
+          {
+            "start": 156285,
+            "length": 34
+          },
+          {
+            "start": 156338,
+            "length": 33
+          },
+          {
+            "start": 156417,
+            "length": 6
+          },
+          {
+            "start": 156464,
+            "length": 8
+          },
+          {
+            "start": 156523,
+            "length": 38
+          },
+          {
+            "start": 156579,
+            "length": 35
+          },
+          {
+            "start": 156746,
+            "length": 40
+          },
+          {
+            "start": 156912,
+            "length": 8
+          },
+          {
+            "start": 156987,
+            "length": 36
+          },
+          {
+            "start": 157080,
+            "length": 36
+          },
+          {
+            "start": 157136,
+            "length": 52
+          },
+          {
+            "start": 157239,
+            "length": 35
+          },
+          {
+            "start": 157309,
+            "length": 33
+          },
+          {
+            "start": 157362,
+            "length": 33
+          },
+          {
+            "start": 157443,
+            "length": 3
+          },
+          {
+            "start": 157489,
+            "length": 5
+          },
+          {
+            "start": 157547,
+            "length": 38
+          },
+          {
+            "start": 157603,
+            "length": 35
+          },
+          {
+            "start": 157770,
+            "length": 40
+          },
+          {
+            "start": 157936,
+            "length": 7
+          },
+          {
+            "start": 158011,
+            "length": 36
+          },
+          {
+            "start": 158104,
+            "length": 36
+          },
+          {
+            "start": 158160,
+            "length": 51
+          },
+          {
+            "start": 158263,
+            "length": 35
+          },
+          {
+            "start": 158333,
+            "length": 33
+          },
+          {
+            "start": 158386,
+            "length": 33
+          },
+          {
+            "start": 158469,
+            "length": 1
+          },
+          {
+            "start": 158513,
+            "length": 3
+          },
+          {
+            "start": 158572,
+            "length": 37
+          },
+          {
+            "start": 158627,
+            "length": 35
+          },
+          {
+            "start": 158794,
+            "length": 40
+          },
+          {
+            "start": 158961,
+            "length": 5
+          },
+          {
+            "start": 159035,
+            "length": 36
+          },
+          {
+            "start": 159127,
+            "length": 37
+          },
+          {
+            "start": 159184,
+            "length": 49
+          },
+          {
+            "start": 159288,
+            "length": 35
+          },
+          {
+            "start": 159356,
+            "length": 34
+          },
+          {
+            "start": 159410,
+            "length": 33
+          },
+          {
+            "start": 159537,
+            "length": 1
+          },
+          {
+            "start": 159597,
+            "length": 36
+          },
+          {
+            "start": 159651,
+            "length": 35
+          },
+          {
+            "start": 159817,
+            "length": 41
+          },
+          {
+            "start": 159985,
+            "length": 4
+          },
+          {
+            "start": 160059,
+            "length": 36
+          },
+          {
+            "start": 160150,
+            "length": 38
+          },
+          {
+            "start": 160208,
+            "length": 47
+          },
+          {
+            "start": 160312,
+            "length": 35
+          },
+          {
+            "start": 160380,
+            "length": 33
+          },
+          {
+            "start": 160434,
+            "length": 34
+          },
+          {
+            "start": 160621,
+            "length": 36
+          },
+          {
+            "start": 160675,
+            "length": 35
+          },
+          {
+            "start": 160841,
+            "length": 41
+          },
+          {
+            "start": 161009,
+            "length": 3
+          },
+          {
+            "start": 161083,
+            "length": 36
+          },
+          {
+            "start": 161173,
+            "length": 38
+          },
+          {
+            "start": 161232,
+            "length": 46
+          },
+          {
+            "start": 161337,
+            "length": 35
+          },
+          {
+            "start": 161404,
+            "length": 33
+          },
+          {
+            "start": 161458,
+            "length": 35
+          },
+          {
+            "start": 161646,
+            "length": 35
+          },
+          {
+            "start": 161699,
+            "length": 35
+          },
+          {
+            "start": 161865,
+            "length": 41
+          },
+          {
+            "start": 162033,
+            "length": 2
+          },
+          {
+            "start": 162107,
+            "length": 36
+          },
+          {
+            "start": 162196,
+            "length": 39
+          },
+          {
+            "start": 162256,
+            "length": 44
+          },
+          {
+            "start": 162361,
+            "length": 35
+          },
+          {
+            "start": 162427,
+            "length": 34
+          },
+          {
+            "start": 162482,
+            "length": 36
+          },
+          {
+            "start": 162670,
+            "length": 35
+          },
+          {
+            "start": 162723,
+            "length": 35
+          },
+          {
+            "start": 162889,
+            "length": 41
+          },
+          {
+            "start": 163057,
+            "length": 1
+          },
+          {
+            "start": 163131,
+            "length": 36
+          },
+          {
+            "start": 163219,
+            "length": 40
+          },
+          {
+            "start": 163280,
+            "length": 43
+          },
+          {
+            "start": 163386,
+            "length": 34
+          },
+          {
+            "start": 163451,
+            "length": 33
+          },
+          {
+            "start": 163506,
+            "length": 38
+          },
+          {
+            "start": 163694,
+            "length": 35
+          },
+          {
+            "start": 163747,
+            "length": 35
+          },
+          {
+            "start": 163913,
+            "length": 80
+          },
+          {
+            "start": 164081,
+            "length": 40
+          },
+          {
+            "start": 164155,
+            "length": 36
+          },
+          {
+            "start": 164241,
+            "length": 41
+          },
+          {
+            "start": 164304,
+            "length": 42
+          },
+          {
+            "start": 164410,
+            "length": 35
+          },
+          {
+            "start": 164475,
+            "length": 33
+          },
+          {
+            "start": 164530,
+            "length": 40
+          },
+          {
+            "start": 164719,
+            "length": 34
+          },
+          {
+            "start": 164771,
+            "length": 35
+          },
+          {
+            "start": 164977,
+            "length": 40
+          },
+          {
+            "start": 165105,
+            "length": 40
+          },
+          {
+            "start": 165179,
+            "length": 36
+          },
+          {
+            "start": 165264,
+            "length": 42
+          },
+          {
+            "start": 165328,
+            "length": 42
+          },
+          {
+            "start": 165434,
+            "length": 35
+          },
+          {
+            "start": 165498,
+            "length": 33
+          },
+          {
+            "start": 165554,
+            "length": 42
+          },
+          {
+            "start": 165743,
+            "length": 34
+          },
+          {
+            "start": 165795,
+            "length": 35
+          },
+          {
+            "start": 166001,
+            "length": 40
+          },
+          {
+            "start": 166129,
+            "length": 40
+          },
+          {
+            "start": 166203,
+            "length": 36
+          },
+          {
+            "start": 166285,
+            "length": 45
+          },
+          {
+            "start": 166352,
+            "length": 41
+          },
+          {
+            "start": 166459,
+            "length": 34
+          },
+          {
+            "start": 166522,
+            "length": 33
+          },
+          {
+            "start": 166578,
+            "length": 44
+          },
+          {
+            "start": 166767,
+            "length": 34
+          },
+          {
+            "start": 166819,
+            "length": 35
+          },
+          {
+            "start": 167025,
+            "length": 40
+          },
+          {
+            "start": 167153,
+            "length": 40
+          },
+          {
+            "start": 167227,
+            "length": 36
+          },
+          {
+            "start": 167307,
+            "length": 46
+          },
+          {
+            "start": 167376,
+            "length": 40
+          },
+          {
+            "start": 167483,
+            "length": 35
+          },
+          {
+            "start": 167546,
+            "length": 33
+          },
+          {
+            "start": 167603,
+            "length": 47
+          },
+          {
+            "start": 167791,
+            "length": 34
+          },
+          {
+            "start": 167843,
+            "length": 35
+          },
+          {
+            "start": 168049,
+            "length": 40
+          },
+          {
+            "start": 168177,
+            "length": 40
+          },
+          {
+            "start": 168251,
+            "length": 36
+          },
+          {
+            "start": 168327,
+            "length": 50
+          },
+          {
+            "start": 168400,
+            "length": 39
+          },
+          {
+            "start": 168508,
+            "length": 34
+          },
+          {
+            "start": 168569,
+            "length": 33
+          },
+          {
+            "start": 168627,
+            "length": 50
+          },
+          {
+            "start": 168815,
+            "length": 34
+          },
+          {
+            "start": 168867,
+            "length": 35
+          },
+          {
+            "start": 169073,
+            "length": 40
+          },
+          {
+            "start": 169201,
+            "length": 40
+          },
+          {
+            "start": 169275,
+            "length": 125
+          },
+          {
+            "start": 169424,
+            "length": 39
+          },
+          {
+            "start": 169532,
+            "length": 34
+          },
+          {
+            "start": 169593,
+            "length": 33
+          },
+          {
+            "start": 169651,
+            "length": 54
+          },
+          {
+            "start": 169839,
+            "length": 34
+          },
+          {
+            "start": 169891,
+            "length": 35
+          },
+          {
+            "start": 170097,
+            "length": 41
+          },
+          {
+            "start": 170224,
+            "length": 40
+          },
+          {
+            "start": 170299,
+            "length": 125
+          },
+          {
+            "start": 170448,
+            "length": 38
+          },
+          {
+            "start": 170557,
+            "length": 34
+          },
+          {
+            "start": 170617,
+            "length": 32
+          },
+          {
+            "start": 170675,
+            "length": 57
+          },
+          {
+            "start": 170863,
+            "length": 34
+          },
+          {
+            "start": 170915,
+            "length": 35
+          },
+          {
+            "start": 171121,
+            "length": 41
+          },
+          {
+            "start": 171248,
+            "length": 40
+          },
+          {
+            "start": 171323,
+            "length": 124
+          },
+          {
+            "start": 171472,
+            "length": 38
+          },
+          {
+            "start": 171581,
+            "length": 34
+          },
+          {
+            "start": 171640,
+            "length": 33
+          },
+          {
+            "start": 171700,
+            "length": 60
+          },
+          {
+            "start": 171848,
+            "length": 73
+          },
+          {
+            "start": 171939,
+            "length": 35
+          },
+          {
+            "start": 172145,
+            "length": 41
+          },
+          {
+            "start": 172272,
+            "length": 40
+          },
+          {
+            "start": 172347,
+            "length": 124
+          },
+          {
+            "start": 172496,
+            "length": 37
+          },
+          {
+            "start": 172605,
+            "length": 35
+          },
+          {
+            "start": 172664,
+            "length": 33
+          },
+          {
+            "start": 172724,
+            "length": 62
+          },
+          {
+            "start": 172865,
+            "length": 80
+          },
+          {
+            "start": 172963,
+            "length": 35
+          },
+          {
+            "start": 173169,
+            "length": 41
+          },
+          {
+            "start": 173296,
+            "length": 40
+          },
+          {
+            "start": 173371,
+            "length": 123
+          },
+          {
+            "start": 173520,
+            "length": 37
+          },
+          {
+            "start": 173630,
+            "length": 34
+          },
+          {
+            "start": 173688,
+            "length": 32
+          },
+          {
+            "start": 173749,
+            "length": 64
+          },
+          {
+            "start": 173884,
+            "length": 85
+          },
+          {
+            "start": 173987,
+            "length": 35
+          },
+          {
+            "start": 174193,
+            "length": 41
+          },
+          {
+            "start": 174320,
+            "length": 40
+          },
+          {
+            "start": 174395,
+            "length": 123
+          },
+          {
+            "start": 174544,
+            "length": 37
+          },
+          {
+            "start": 174654,
+            "length": 34
+          },
+          {
+            "start": 174711,
+            "length": 33
+          },
+          {
+            "start": 174773,
+            "length": 67
+          },
+          {
+            "start": 174904,
+            "length": 89
+          },
+          {
+            "start": 175011,
+            "length": 35
+          },
+          {
+            "start": 175217,
+            "length": 42
+          },
+          {
+            "start": 175343,
+            "length": 41
+          },
+          {
+            "start": 175419,
+            "length": 122
+          },
+          {
+            "start": 175568,
+            "length": 36
+          },
+          {
+            "start": 175679,
+            "length": 34
+          },
+          {
+            "start": 175735,
+            "length": 32
+          },
+          {
+            "start": 175798,
+            "length": 68
+          },
+          {
+            "start": 175925,
+            "length": 92
+          },
+          {
+            "start": 176035,
+            "length": 35
+          },
+          {
+            "start": 176241,
+            "length": 42
+          },
+          {
+            "start": 176367,
+            "length": 41
+          },
+          {
+            "start": 176443,
+            "length": 121
+          },
+          {
+            "start": 176592,
+            "length": 36
+          },
+          {
+            "start": 176703,
+            "length": 34
+          },
+          {
+            "start": 176758,
+            "length": 33
+          },
+          {
+            "start": 176822,
+            "length": 71
+          },
+          {
+            "start": 176947,
+            "length": 94
+          },
+          {
+            "start": 177059,
+            "length": 35
+          },
+          {
+            "start": 177265,
+            "length": 42
+          },
+          {
+            "start": 177391,
+            "length": 41
+          },
+          {
+            "start": 177467,
+            "length": 121
+          },
+          {
+            "start": 177616,
+            "length": 36
+          },
+          {
+            "start": 177728,
+            "length": 33
+          },
+          {
+            "start": 177782,
+            "length": 33
+          },
+          {
+            "start": 177847,
+            "length": 72
+          },
+          {
+            "start": 177969,
+            "length": 96
+          },
+          {
+            "start": 178083,
+            "length": 35
+          },
+          {
+            "start": 178289,
+            "length": 43
+          },
+          {
+            "start": 178415,
+            "length": 41
+          },
+          {
+            "start": 178491,
+            "length": 120
+          },
+          {
+            "start": 178640,
+            "length": 35
+          },
+          {
+            "start": 178752,
+            "length": 34
+          },
+          {
+            "start": 178806,
+            "length": 32
+          },
+          {
+            "start": 178872,
+            "length": 73
+          },
+          {
+            "start": 178991,
+            "length": 98
+          },
+          {
+            "start": 179107,
+            "length": 35
+          },
+          {
+            "start": 179313,
+            "length": 43
+          },
+          {
+            "start": 179438,
+            "length": 41
+          },
+          {
+            "start": 179515,
+            "length": 119
+          },
+          {
+            "start": 179664,
+            "length": 35
+          },
+          {
+            "start": 179776,
+            "length": 34
+          },
+          {
+            "start": 179830,
+            "length": 32
+          },
+          {
+            "start": 179896,
+            "length": 74
+          },
+          {
+            "start": 180014,
+            "length": 99
+          },
+          {
+            "start": 180131,
+            "length": 35
+          },
+          {
+            "start": 180337,
+            "length": 43
+          },
+          {
+            "start": 180462,
+            "length": 41
+          },
+          {
+            "start": 180539,
+            "length": 118
+          },
+          {
+            "start": 180688,
+            "length": 35
+          },
+          {
+            "start": 180801,
+            "length": 34
+          },
+          {
+            "start": 180853,
+            "length": 33
+          },
+          {
+            "start": 180921,
+            "length": 74
+          },
+          {
+            "start": 181036,
+            "length": 101
+          },
+          {
+            "start": 181155,
+            "length": 35
+          },
+          {
+            "start": 181361,
+            "length": 44
+          },
+          {
+            "start": 181485,
+            "length": 42
+          },
+          {
+            "start": 181563,
+            "length": 117
+          },
+          {
+            "start": 181712,
+            "length": 35
+          },
+          {
+            "start": 181825,
+            "length": 34
+          },
+          {
+            "start": 181877,
+            "length": 32
+          },
+          {
+            "start": 181946,
+            "length": 75
+          },
+          {
+            "start": 182059,
+            "length": 102
+          },
+          {
+            "start": 182179,
+            "length": 35
+          },
+          {
+            "start": 182385,
+            "length": 44
+          },
+          {
+            "start": 182509,
+            "length": 42
+          },
+          {
+            "start": 182587,
+            "length": 116
+          },
+          {
+            "start": 182736,
+            "length": 35
+          },
+          {
+            "start": 182850,
+            "length": 33
+          },
+          {
+            "start": 182901,
+            "length": 32
+          },
+          {
+            "start": 182971,
+            "length": 76
+          },
+          {
+            "start": 183082,
+            "length": 103
+          },
+          {
+            "start": 183203,
+            "length": 35
+          },
+          {
+            "start": 183409,
+            "length": 45
+          },
+          {
+            "start": 183532,
+            "length": 43
+          },
+          {
+            "start": 183611,
+            "length": 115
+          },
+          {
+            "start": 183760,
+            "length": 35
+          },
+          {
+            "start": 183874,
+            "length": 34
+          },
+          {
+            "start": 183924,
+            "length": 32
+          },
+          {
+            "start": 183996,
+            "length": 76
+          },
+          {
+            "start": 184105,
+            "length": 104
+          },
+          {
+            "start": 184227,
+            "length": 35
+          },
+          {
+            "start": 184433,
+            "length": 45
+          },
+          {
+            "start": 184556,
+            "length": 42
+          },
+          {
+            "start": 184635,
+            "length": 114
+          },
+          {
+            "start": 184784,
+            "length": 35
+          },
+          {
+            "start": 184898,
+            "length": 34
+          },
+          {
+            "start": 184948,
+            "length": 32
+          },
+          {
+            "start": 185022,
+            "length": 75
+          },
+          {
+            "start": 185128,
+            "length": 105
+          },
+          {
+            "start": 185251,
+            "length": 35
+          },
+          {
+            "start": 185457,
+            "length": 46
+          },
+          {
+            "start": 185579,
+            "length": 43
+          },
+          {
+            "start": 185659,
+            "length": 113
+          },
+          {
+            "start": 185808,
+            "length": 35
+          },
+          {
+            "start": 185923,
+            "length": 34
+          },
+          {
+            "start": 185971,
+            "length": 33
+          },
+          {
+            "start": 186047,
+            "length": 75
+          },
+          {
+            "start": 186150,
+            "length": 107
+          },
+          {
+            "start": 186275,
+            "length": 35
+          },
+          {
+            "start": 186481,
+            "length": 46
+          },
+          {
+            "start": 186603,
+            "length": 43
+          },
+          {
+            "start": 186683,
+            "length": 112
+          },
+          {
+            "start": 186832,
+            "length": 35
+          },
+          {
+            "start": 186947,
+            "length": 34
+          },
+          {
+            "start": 186995,
+            "length": 32
+          },
+          {
+            "start": 187072,
+            "length": 75
+          },
+          {
+            "start": 187174,
+            "length": 107
+          },
+          {
+            "start": 187299,
+            "length": 35
+          },
+          {
+            "start": 187505,
+            "length": 47
+          },
+          {
+            "start": 187626,
+            "length": 44
+          },
+          {
+            "start": 187707,
+            "length": 111
+          },
+          {
+            "start": 187856,
+            "length": 35
+          },
+          {
+            "start": 187972,
+            "length": 33
+          },
+          {
+            "start": 188019,
+            "length": 32
+          },
+          {
+            "start": 188098,
+            "length": 74
+          },
+          {
+            "start": 188197,
+            "length": 108
+          },
+          {
+            "start": 188323,
+            "length": 35
+          },
+          {
+            "start": 188529,
+            "length": 47
+          },
+          {
+            "start": 188650,
+            "length": 43
+          },
+          {
+            "start": 188731,
+            "length": 109
+          },
+          {
+            "start": 188880,
+            "length": 35
+          },
+          {
+            "start": 188996,
+            "length": 34
+          },
+          {
+            "start": 189043,
+            "length": 31
+          },
+          {
+            "start": 189124,
+            "length": 72
+          },
+          {
+            "start": 189220,
+            "length": 109
+          },
+          {
+            "start": 189347,
+            "length": 35
+          },
+          {
+            "start": 189553,
+            "length": 48
+          },
+          {
+            "start": 189673,
+            "length": 44
+          },
+          {
+            "start": 189755,
+            "length": 108
+          },
+          {
+            "start": 189904,
+            "length": 35
+          },
+          {
+            "start": 190020,
+            "length": 34
+          },
+          {
+            "start": 190066,
+            "length": 32
+          },
+          {
+            "start": 190150,
+            "length": 71
+          },
+          {
+            "start": 190244,
+            "length": 110
+          },
+          {
+            "start": 190371,
+            "length": 35
+          },
+          {
+            "start": 190577,
+            "length": 49
+          },
+          {
+            "start": 190696,
+            "length": 45
+          },
+          {
+            "start": 190779,
+            "length": 106
+          },
+          {
+            "start": 190928,
+            "length": 35
+          },
+          {
+            "start": 191045,
+            "length": 33
+          },
+          {
+            "start": 191090,
+            "length": 31
+          },
+          {
+            "start": 191176,
+            "length": 70
+          },
+          {
+            "start": 191267,
+            "length": 111
+          },
+          {
+            "start": 191395,
+            "length": 35
+          },
+          {
+            "start": 191601,
+            "length": 50
+          },
+          {
+            "start": 191719,
+            "length": 45
+          },
+          {
+            "start": 191803,
+            "length": 104
+          },
+          {
+            "start": 191952,
+            "length": 35
+          },
+          {
+            "start": 192069,
+            "length": 34
+          },
+          {
+            "start": 192114,
+            "length": 31
+          },
+          {
+            "start": 192202,
+            "length": 68
+          },
+          {
+            "start": 192291,
+            "length": 111
+          },
+          {
+            "start": 192419,
+            "length": 35
+          },
+          {
+            "start": 192625,
+            "length": 50
+          },
+          {
+            "start": 192742,
+            "length": 46
+          },
+          {
+            "start": 192827,
+            "length": 102
+          },
+          {
+            "start": 192976,
+            "length": 35
+          },
+          {
+            "start": 193094,
+            "length": 33
+          },
+          {
+            "start": 193137,
+            "length": 32
+          },
+          {
+            "start": 193229,
+            "length": 66
+          },
+          {
+            "start": 193314,
+            "length": 44
+          },
+          {
+            "start": 193391,
+            "length": 35
+          },
+          {
+            "start": 193443,
+            "length": 35
+          },
+          {
+            "start": 193649,
+            "length": 51
+          },
+          {
+            "start": 193766,
+            "length": 46
+          },
+          {
+            "start": 193851,
+            "length": 100
+          },
+          {
+            "start": 194000,
+            "length": 35
+          },
+          {
+            "start": 194118,
+            "length": 34
+          },
+          {
+            "start": 194161,
+            "length": 31
+          },
+          {
+            "start": 194255,
+            "length": 64
+          },
+          {
+            "start": 194338,
+            "length": 40
+          },
+          {
+            "start": 194415,
+            "length": 35
+          },
+          {
+            "start": 194467,
+            "length": 35
+          },
+          {
+            "start": 194673,
+            "length": 52
+          },
+          {
+            "start": 194789,
+            "length": 46
+          },
+          {
+            "start": 194875,
+            "length": 98
+          },
+          {
+            "start": 195024,
+            "length": 35
+          },
+          {
+            "start": 195143,
+            "length": 33
+          },
+          {
+            "start": 195185,
+            "length": 31
+          },
+          {
+            "start": 195282,
+            "length": 62
+          },
+          {
+            "start": 195362,
+            "length": 37
+          },
+          {
+            "start": 195439,
+            "length": 35
+          },
+          {
+            "start": 195491,
+            "length": 35
+          },
+          {
+            "start": 195697,
+            "length": 53
+          },
+          {
+            "start": 195812,
+            "length": 47
+          },
+          {
+            "start": 195899,
+            "length": 95
+          },
+          {
+            "start": 196048,
+            "length": 35
+          },
+          {
+            "start": 196167,
+            "length": 33
+          },
+          {
+            "start": 196208,
+            "length": 32
+          },
+          {
+            "start": 196310,
+            "length": 58
+          },
+          {
+            "start": 196385,
+            "length": 36
+          },
+          {
+            "start": 196463,
+            "length": 35
+          },
+          {
+            "start": 196515,
+            "length": 35
+          },
+          {
+            "start": 196721,
+            "length": 54
+          },
+          {
+            "start": 196835,
+            "length": 48
+          },
+          {
+            "start": 196923,
+            "length": 92
+          },
+          {
+            "start": 197072,
+            "length": 35
+          },
+          {
+            "start": 197192,
+            "length": 33
+          },
+          {
+            "start": 197232,
+            "length": 31
+          },
+          {
+            "start": 197337,
+            "length": 56
+          },
+          {
+            "start": 197409,
+            "length": 35
+          },
+          {
+            "start": 197487,
+            "length": 35
+          },
+          {
+            "start": 197539,
+            "length": 35
+          },
+          {
+            "start": 197745,
+            "length": 55
+          },
+          {
+            "start": 197858,
+            "length": 48
+          },
+          {
+            "start": 197947,
+            "length": 88
+          },
+          {
+            "start": 198096,
+            "length": 35
+          },
+          {
+            "start": 198216,
+            "length": 33
+          },
+          {
+            "start": 198255,
+            "length": 32
+          },
+          {
+            "start": 198365,
+            "length": 52
+          },
+          {
+            "start": 198433,
+            "length": 33
+          },
+          {
+            "start": 198511,
+            "length": 35
+          },
+          {
+            "start": 198563,
+            "length": 35
+          },
+          {
+            "start": 198769,
+            "length": 57
+          },
+          {
+            "start": 198881,
+            "length": 49
+          },
+          {
+            "start": 198971,
+            "length": 82
+          },
+          {
+            "start": 199120,
+            "length": 35
+          },
+          {
+            "start": 199240,
+            "length": 34
+          },
+          {
+            "start": 199279,
+            "length": 31
+          },
+          {
+            "start": 199392,
+            "length": 49
+          },
+          {
+            "start": 199456,
+            "length": 34
+          },
+          {
+            "start": 199535,
+            "length": 35
+          },
+          {
+            "start": 199587,
+            "length": 35
+          },
+          {
+            "start": 199793,
+            "length": 58
+          },
+          {
+            "start": 199903,
+            "length": 50
+          },
+          {
+            "start": 199995,
+            "length": 36
+          },
+          {
+            "start": 200144,
+            "length": 35
+          },
+          {
+            "start": 200265,
+            "length": 33
+          },
+          {
+            "start": 200303,
+            "length": 31
+          },
+          {
+            "start": 200419,
+            "length": 46
+          },
+          {
+            "start": 200480,
+            "length": 33
+          },
+          {
+            "start": 200559,
+            "length": 35
+          },
+          {
+            "start": 200611,
+            "length": 35
+          },
+          {
+            "start": 200817,
+            "length": 59
+          },
+          {
+            "start": 200926,
+            "length": 51
+          },
+          {
+            "start": 201019,
+            "length": 36
+          },
+          {
+            "start": 201168,
+            "length": 35
+          },
+          {
+            "start": 201289,
+            "length": 33
+          },
+          {
+            "start": 201326,
+            "length": 32
+          },
+          {
+            "start": 201445,
+            "length": 45
+          },
+          {
+            "start": 201504,
+            "length": 33
+          },
+          {
+            "start": 201583,
+            "length": 35
+          },
+          {
+            "start": 201635,
+            "length": 35
+          },
+          {
+            "start": 201841,
+            "length": 60
+          },
+          {
+            "start": 201949,
+            "length": 51
+          },
+          {
+            "start": 202043,
+            "length": 36
+          },
+          {
+            "start": 202192,
+            "length": 35
+          },
+          {
+            "start": 202314,
+            "length": 33
+          },
+          {
+            "start": 202350,
+            "length": 31
+          },
+          {
+            "start": 202472,
+            "length": 42
+          },
+          {
+            "start": 202527,
+            "length": 34
+          },
+          {
+            "start": 202607,
+            "length": 35
+          },
+          {
+            "start": 202659,
+            "length": 35
+          },
+          {
+            "start": 202865,
+            "length": 62
+          },
+          {
+            "start": 202971,
+            "length": 53
+          },
+          {
+            "start": 203067,
+            "length": 36
+          },
+          {
+            "start": 203216,
+            "length": 35
+          },
+          {
+            "start": 203338,
+            "length": 33
+          },
+          {
+            "start": 203374,
+            "length": 31
+          },
+          {
+            "start": 203498,
+            "length": 40
+          },
+          {
+            "start": 203551,
+            "length": 33
+          },
+          {
+            "start": 203631,
+            "length": 35
+          },
+          {
+            "start": 203683,
+            "length": 35
+          },
+          {
+            "start": 203889,
+            "length": 64
+          },
+          {
+            "start": 203993,
+            "length": 54
+          },
+          {
+            "start": 204091,
+            "length": 36
+          },
+          {
+            "start": 204240,
+            "length": 35
+          },
+          {
+            "start": 204362,
+            "length": 33
+          },
+          {
+            "start": 204397,
+            "length": 31
+          },
+          {
+            "start": 204524,
+            "length": 38
+          },
+          {
+            "start": 204575,
+            "length": 33
+          },
+          {
+            "start": 204655,
+            "length": 35
+          },
+          {
+            "start": 204707,
+            "length": 35
+          },
+          {
+            "start": 204913,
+            "length": 66
+          },
+          {
+            "start": 205015,
+            "length": 56
+          },
+          {
+            "start": 205115,
+            "length": 36
+          },
+          {
+            "start": 205264,
+            "length": 35
+          },
+          {
+            "start": 205387,
+            "length": 33
+          },
+          {
+            "start": 205421,
+            "length": 31
+          },
+          {
+            "start": 205549,
+            "length": 37
+          },
+          {
+            "start": 205599,
+            "length": 33
+          },
+          {
+            "start": 205679,
+            "length": 35
+          },
+          {
+            "start": 205731,
+            "length": 35
+          },
+          {
+            "start": 205937,
+            "length": 69
+          },
+          {
+            "start": 206036,
+            "length": 58
+          },
+          {
+            "start": 206139,
+            "length": 36
+          },
+          {
+            "start": 206288,
+            "length": 35
+          },
+          {
+            "start": 206411,
+            "length": 33
+          },
+          {
+            "start": 206445,
+            "length": 30
+          },
+          {
+            "start": 206519,
+            "length": 1
+          },
+          {
+            "start": 206575,
+            "length": 35
+          },
+          {
+            "start": 206623,
+            "length": 33
+          },
+          {
+            "start": 206702,
+            "length": 36
+          },
+          {
+            "start": 206755,
+            "length": 35
+          },
+          {
+            "start": 206961,
+            "length": 72
+          },
+          {
+            "start": 207057,
+            "length": 61
+          },
+          {
+            "start": 207163,
+            "length": 36
+          },
+          {
+            "start": 207312,
+            "length": 35
+          },
+          {
+            "start": 207436,
+            "length": 63
+          },
+          {
+            "start": 207543,
+            "length": 2
+          },
+          {
+            "start": 207599,
+            "length": 35
+          },
+          {
+            "start": 207647,
+            "length": 33
+          },
+          {
+            "start": 207726,
+            "length": 36
+          },
+          {
+            "start": 207779,
+            "length": 35
+          },
+          {
+            "start": 207985,
+            "length": 75
+          },
+          {
+            "start": 208078,
+            "length": 63
+          },
+          {
+            "start": 208187,
+            "length": 36
+          },
+          {
+            "start": 208336,
+            "length": 35
+          },
+          {
+            "start": 208460,
+            "length": 63
+          },
+          {
+            "start": 208566,
+            "length": 4
+          },
+          {
+            "start": 208624,
+            "length": 34
+          },
+          {
+            "start": 208671,
+            "length": 33
+          },
+          {
+            "start": 208750,
+            "length": 36
+          },
+          {
+            "start": 208803,
+            "length": 35
+          },
+          {
+            "start": 209009,
+            "length": 155
+          },
+          {
+            "start": 209211,
+            "length": 36
+          },
+          {
+            "start": 209360,
+            "length": 35
+          },
+          {
+            "start": 209484,
+            "length": 62
+          },
+          {
+            "start": 209590,
+            "length": 6
+          },
+          {
+            "start": 209648,
+            "length": 34
+          },
+          {
+            "start": 209695,
+            "length": 33
+          },
+          {
+            "start": 209773,
+            "length": 37
+          },
+          {
+            "start": 209827,
+            "length": 35
+          },
+          {
+            "start": 210033,
+            "length": 155
+          },
+          {
+            "start": 210235,
+            "length": 36
+          },
+          {
+            "start": 210384,
+            "length": 35
+          },
+          {
+            "start": 210509,
+            "length": 61
+          },
+          {
+            "start": 210613,
+            "length": 9
+          },
+          {
+            "start": 210673,
+            "length": 33
+          },
+          {
+            "start": 210719,
+            "length": 33
+          },
+          {
+            "start": 210796,
+            "length": 38
+          },
+          {
+            "start": 210851,
+            "length": 35
+          },
+          {
+            "start": 211057,
+            "length": 154
+          },
+          {
+            "start": 211259,
+            "length": 36
+          },
+          {
+            "start": 211408,
+            "length": 35
+          },
+          {
+            "start": 211534,
+            "length": 60
+          },
+          {
+            "start": 211637,
+            "length": 10
+          },
+          {
+            "start": 211697,
+            "length": 33
+          },
+          {
+            "start": 211743,
+            "length": 34
+          },
+          {
+            "start": 211819,
+            "length": 39
+          },
+          {
+            "start": 211875,
+            "length": 35
+          },
+          {
+            "start": 212081,
+            "length": 153
+          },
+          {
+            "start": 212283,
+            "length": 36
+          },
+          {
+            "start": 212432,
+            "length": 35
+          },
+          {
+            "start": 212558,
+            "length": 59
+          },
+          {
+            "start": 212660,
+            "length": 13
+          },
+          {
+            "start": 212721,
+            "length": 33
+          },
+          {
+            "start": 212767,
+            "length": 34
+          },
+          {
+            "start": 212843,
+            "length": 39
+          },
+          {
+            "start": 212899,
+            "length": 35
+          },
+          {
+            "start": 213105,
+            "length": 153
+          },
+          {
+            "start": 213307,
+            "length": 36
+          },
+          {
+            "start": 213456,
+            "length": 35
+          },
+          {
+            "start": 213582,
+            "length": 59
+          },
+          {
+            "start": 213684,
+            "length": 15
+          },
+          {
+            "start": 213745,
+            "length": 33
+          },
+          {
+            "start": 213791,
+            "length": 34
+          },
+          {
+            "start": 213866,
+            "length": 40
+          },
+          {
+            "start": 213923,
+            "length": 35
+          },
+          {
+            "start": 214129,
+            "length": 152
+          },
+          {
+            "start": 214331,
+            "length": 36
+          },
+          {
+            "start": 214480,
+            "length": 35
+          },
+          {
+            "start": 214607,
+            "length": 57
+          },
+          {
+            "start": 214707,
+            "length": 18
+          },
+          {
+            "start": 214769,
+            "length": 33
+          },
+          {
+            "start": 214815,
+            "length": 35
+          },
+          {
+            "start": 214889,
+            "length": 41
+          },
+          {
+            "start": 214947,
+            "length": 35
+          },
+          {
+            "start": 215153,
+            "length": 151
+          },
+          {
+            "start": 215355,
+            "length": 36
+          },
+          {
+            "start": 215504,
+            "length": 35
+          },
+          {
+            "start": 215631,
+            "length": 57
+          },
+          {
+            "start": 215731,
+            "length": 20
+          },
+          {
+            "start": 215792,
+            "length": 34
+          },
+          {
+            "start": 215839,
+            "length": 35
+          },
+          {
+            "start": 215912,
+            "length": 42
+          },
+          {
+            "start": 215971,
+            "length": 35
+          },
+          {
+            "start": 216177,
+            "length": 151
+          },
+          {
+            "start": 216379,
+            "length": 36
+          },
+          {
+            "start": 216528,
+            "length": 35
+          },
+          {
+            "start": 216656,
+            "length": 56
+          },
+          {
+            "start": 216754,
+            "length": 23
+          },
+          {
+            "start": 216816,
+            "length": 34
+          },
+          {
+            "start": 216864,
+            "length": 36
+          },
+          {
+            "start": 216934,
+            "length": 44
+          },
+          {
+            "start": 216995,
+            "length": 35
+          },
+          {
+            "start": 217201,
+            "length": 150
+          },
+          {
+            "start": 217403,
+            "length": 36
+          },
+          {
+            "start": 217552,
+            "length": 35
+          },
+          {
+            "start": 217680,
+            "length": 55
+          },
+          {
+            "start": 217778,
+            "length": 26
+          },
+          {
+            "start": 217839,
+            "length": 34
+          },
+          {
+            "start": 217888,
+            "length": 36
+          },
+          {
+            "start": 217957,
+            "length": 45
+          },
+          {
+            "start": 218019,
+            "length": 35
+          },
+          {
+            "start": 218225,
+            "length": 149
+          },
+          {
+            "start": 218427,
+            "length": 36
+          },
+          {
+            "start": 218576,
+            "length": 35
+          },
+          {
+            "start": 218704,
+            "length": 55
+          },
+          {
+            "start": 218801,
+            "length": 30
+          },
+          {
+            "start": 218861,
+            "length": 36
+          },
+          {
+            "start": 218912,
+            "length": 38
+          },
+          {
+            "start": 218979,
+            "length": 47
+          },
+          {
+            "start": 219043,
+            "length": 35
+          },
+          {
+            "start": 219249,
+            "length": 148
+          },
+          {
+            "start": 219451,
+            "length": 36
+          },
+          {
+            "start": 219600,
+            "length": 35
+          },
+          {
+            "start": 219729,
+            "length": 54
+          },
+          {
+            "start": 219825,
+            "length": 34
+          },
+          {
+            "start": 219884,
+            "length": 37
+          },
+          {
+            "start": 219936,
+            "length": 39
+          },
+          {
+            "start": 220001,
+            "length": 49
+          },
+          {
+            "start": 220067,
+            "length": 35
+          },
+          {
+            "start": 220273,
+            "length": 147
+          },
+          {
+            "start": 220475,
+            "length": 36
+          },
+          {
+            "start": 220624,
+            "length": 35
+          },
+          {
+            "start": 220753,
+            "length": 53
+          },
+          {
+            "start": 220848,
+            "length": 40
+          },
+          {
+            "start": 220905,
+            "length": 40
+          },
+          {
+            "start": 220961,
+            "length": 40
+          },
+          {
+            "start": 221022,
+            "length": 52
+          },
+          {
+            "start": 221091,
+            "length": 35
+          },
+          {
+            "start": 221297,
+            "length": 146
+          },
+          {
+            "start": 221499,
+            "length": 36
+          },
+          {
+            "start": 221648,
+            "length": 35
+          },
+          {
+            "start": 221778,
+            "length": 52
+          },
+          {
+            "start": 221872,
+            "length": 96
+          },
+          {
+            "start": 221985,
+            "length": 44
+          },
+          {
+            "start": 222041,
+            "length": 57
+          },
+          {
+            "start": 222115,
+            "length": 35
+          },
+          {
+            "start": 222321,
+            "length": 146
+          },
+          {
+            "start": 222523,
+            "length": 36
+          },
+          {
+            "start": 222672,
+            "length": 35
+          },
+          {
+            "start": 222802,
+            "length": 51
+          },
+          {
+            "start": 222896,
+            "length": 96
+          },
+          {
+            "start": 223009,
+            "length": 113
+          },
+          {
+            "start": 223139,
+            "length": 35
+          },
+          {
+            "start": 223345,
+            "length": 145
+          },
+          {
+            "start": 223547,
+            "length": 36
+          },
+          {
+            "start": 223696,
+            "length": 35
+          },
+          {
+            "start": 223826,
+            "length": 51
+          },
+          {
+            "start": 223919,
+            "length": 96
+          },
+          {
+            "start": 224034,
+            "length": 112
+          },
+          {
+            "start": 224163,
+            "length": 35
+          },
+          {
+            "start": 224369,
+            "length": 144
+          },
+          {
+            "start": 224571,
+            "length": 36
+          },
+          {
+            "start": 224720,
+            "length": 35
+          },
+          {
+            "start": 224851,
+            "length": 49
+          },
+          {
+            "start": 224942,
+            "length": 97
+          },
+          {
+            "start": 225058,
+            "length": 112
+          },
+          {
+            "start": 225187,
+            "length": 35
+          },
+          {
+            "start": 225393,
+            "length": 143
+          },
+          {
+            "start": 225595,
+            "length": 36
+          },
+          {
+            "start": 225744,
+            "length": 35
+          },
+          {
+            "start": 225875,
+            "length": 49
+          },
+          {
+            "start": 225966,
+            "length": 96
+          },
+          {
+            "start": 226082,
+            "length": 112
+          },
+          {
+            "start": 226211,
+            "length": 35
+          },
+          {
+            "start": 226417,
+            "length": 142
+          },
+          {
+            "start": 226619,
+            "length": 36
+          },
+          {
+            "start": 226768,
+            "length": 35
+          },
+          {
+            "start": 226900,
+            "length": 48
+          },
+          {
+            "start": 226989,
+            "length": 97
+          },
+          {
+            "start": 227107,
+            "length": 111
+          },
+          {
+            "start": 227235,
+            "length": 35
+          },
+          {
+            "start": 227441,
+            "length": 140
+          },
+          {
+            "start": 227643,
+            "length": 36
+          },
+          {
+            "start": 227792,
+            "length": 35
+          },
+          {
+            "start": 227924,
+            "length": 47
+          },
+          {
+            "start": 228013,
+            "length": 96
+          },
+          {
+            "start": 228131,
+            "length": 111
+          },
+          {
+            "start": 228259,
+            "length": 35
+          },
+          {
+            "start": 228465,
+            "length": 139
+          },
+          {
+            "start": 228667,
+            "length": 36
+          },
+          {
+            "start": 228816,
+            "length": 35
+          },
+          {
+            "start": 228949,
+            "length": 46
+          },
+          {
+            "start": 229036,
+            "length": 97
+          },
+          {
+            "start": 229156,
+            "length": 110
+          },
+          {
+            "start": 229283,
+            "length": 35
+          },
+          {
+            "start": 229451,
+            "length": 5
+          },
+          {
+            "start": 229489,
+            "length": 138
+          },
+          {
+            "start": 229691,
+            "length": 36
+          },
+          {
+            "start": 229840,
+            "length": 35
+          },
+          {
+            "start": 229973,
+            "length": 46
+          },
+          {
+            "start": 230060,
+            "length": 96
+          },
+          {
+            "start": 230180,
+            "length": 110
+          },
+          {
+            "start": 230307,
+            "length": 35
+          },
+          {
+            "start": 230471,
+            "length": 14
+          },
+          {
+            "start": 230513,
+            "length": 137
+          },
+          {
+            "start": 230715,
+            "length": 36
+          },
+          {
+            "start": 230864,
+            "length": 35
+          },
+          {
+            "start": 230998,
+            "length": 44
+          },
+          {
+            "start": 231084,
+            "length": 95
+          },
+          {
+            "start": 231205,
+            "length": 109
+          },
+          {
+            "start": 231331,
+            "length": 35
+          },
+          {
+            "start": 231492,
+            "length": 19
+          },
+          {
+            "start": 231537,
+            "length": 136
+          },
+          {
+            "start": 231739,
+            "length": 36
+          },
+          {
+            "start": 231888,
+            "length": 35
+          },
+          {
+            "start": 232022,
+            "length": 44
+          },
+          {
+            "start": 232110,
+            "length": 92
+          },
+          {
+            "start": 232230,
+            "length": 108
+          },
+          {
+            "start": 232355,
+            "length": 35
+          },
+          {
+            "start": 232515,
+            "length": 22
+          },
+          {
+            "start": 232561,
+            "length": 135
+          },
+          {
+            "start": 232763,
+            "length": 36
+          },
+          {
+            "start": 232912,
+            "length": 35
+          },
+          {
+            "start": 233046,
+            "length": 43
+          },
+          {
+            "start": 233135,
+            "length": 90
+          },
+          {
+            "start": 233254,
+            "length": 108
+          },
+          {
+            "start": 233379,
+            "length": 35
+          },
+          {
+            "start": 233537,
+            "length": 26
+          },
+          {
+            "start": 233585,
+            "length": 133
+          },
+          {
+            "start": 233787,
+            "length": 36
+          },
+          {
+            "start": 233936,
+            "length": 35
+          },
+          {
+            "start": 234071,
+            "length": 42
+          },
+          {
+            "start": 234161,
+            "length": 88
+          },
+          {
+            "start": 234279,
+            "length": 71
+          },
+          {
+            "start": 234351,
+            "length": 35
+          },
+          {
+            "start": 234403,
+            "length": 35
+          },
+          {
+            "start": 234560,
+            "length": 28
+          },
+          {
+            "start": 234609,
+            "length": 132
+          },
+          {
+            "start": 234811,
+            "length": 36
+          },
+          {
+            "start": 234960,
+            "length": 35
+          },
+          {
+            "start": 235095,
+            "length": 42
+          },
+          {
+            "start": 235186,
+            "length": 85
+          },
+          {
+            "start": 235304,
+            "length": 69
+          },
+          {
+            "start": 235375,
+            "length": 35
+          },
+          {
+            "start": 235427,
+            "length": 35
+          },
+          {
+            "start": 235583,
+            "length": 30
+          },
+          {
+            "start": 235633,
+            "length": 130
+          },
+          {
+            "start": 235835,
+            "length": 36
+          },
+          {
+            "start": 235984,
+            "length": 35
+          },
+          {
+            "start": 236120,
+            "length": 40
+          },
+          {
+            "start": 236212,
+            "length": 82
+          },
+          {
+            "start": 236329,
+            "length": 67
+          },
+          {
+            "start": 236399,
+            "length": 35
+          },
+          {
+            "start": 236451,
+            "length": 35
+          },
+          {
+            "start": 236606,
+            "length": 32
+          },
+          {
+            "start": 236657,
+            "length": 129
+          },
+          {
+            "start": 236859,
+            "length": 36
+          },
+          {
+            "start": 237008,
+            "length": 35
+          },
+          {
+            "start": 237144,
+            "length": 40
+          },
+          {
+            "start": 237237,
+            "length": 80
+          },
+          {
+            "start": 237354,
+            "length": 65
+          },
+          {
+            "start": 237423,
+            "length": 35
+          },
+          {
+            "start": 237475,
+            "length": 35
+          },
+          {
+            "start": 237629,
+            "length": 34
+          },
+          {
+            "start": 237681,
+            "length": 40
+          },
+          {
+            "start": 237722,
+            "length": 86
+          },
+          {
+            "start": 237883,
+            "length": 36
+          },
+          {
+            "start": 238032,
+            "length": 35
+          },
+          {
+            "start": 238168,
+            "length": 39
+          },
+          {
+            "start": 238263,
+            "length": 77
+          },
+          {
+            "start": 238379,
+            "length": 62
+          },
+          {
+            "start": 238447,
+            "length": 35
+          },
+          {
+            "start": 238499,
+            "length": 35
+          },
+          {
+            "start": 238652,
+            "length": 35
+          },
+          {
+            "start": 238705,
+            "length": 40
+          },
+          {
+            "start": 238748,
+            "length": 83
+          },
+          {
+            "start": 238907,
+            "length": 36
+          },
+          {
+            "start": 239056,
+            "length": 35
+          },
+          {
+            "start": 239193,
+            "length": 38
+          },
+          {
+            "start": 239289,
+            "length": 73
+          },
+          {
+            "start": 239404,
+            "length": 60
+          },
+          {
+            "start": 239471,
+            "length": 35
+          },
+          {
+            "start": 239523,
+            "length": 35
+          },
+          {
+            "start": 239676,
+            "length": 36
+          },
+          {
+            "start": 239729,
+            "length": 40
+          },
+          {
+            "start": 239773,
+            "length": 80
+          },
+          {
+            "start": 239931,
+            "length": 36
+          },
+          {
+            "start": 240080,
+            "length": 35
+          },
+          {
+            "start": 240217,
+            "length": 38
+          },
+          {
+            "start": 240315,
+            "length": 70
+          },
+          {
+            "start": 240430,
+            "length": 57
+          },
+          {
+            "start": 240495,
+            "length": 35
+          },
+          {
+            "start": 240547,
+            "length": 35
+          },
+          {
+            "start": 240699,
+            "length": 37
+          },
+          {
+            "start": 240753,
+            "length": 40
+          },
+          {
+            "start": 240799,
+            "length": 76
+          },
+          {
+            "start": 240955,
+            "length": 36
+          },
+          {
+            "start": 241104,
+            "length": 35
+          },
+          {
+            "start": 241242,
+            "length": 36
+          },
+          {
+            "start": 241342,
+            "length": 65
+          },
+          {
+            "start": 241455,
+            "length": 54
+          },
+          {
+            "start": 241519,
+            "length": 35
+          },
+          {
+            "start": 241571,
+            "length": 35
+          },
+          {
+            "start": 241723,
+            "length": 38
+          },
+          {
+            "start": 241777,
+            "length": 40
+          },
+          {
+            "start": 241826,
+            "length": 71
+          },
+          {
+            "start": 241979,
+            "length": 36
+          },
+          {
+            "start": 242128,
+            "length": 35
+          },
+          {
+            "start": 242266,
+            "length": 36
+          },
+          {
+            "start": 242368,
+            "length": 61
+          },
+          {
+            "start": 242481,
+            "length": 50
+          },
+          {
+            "start": 242543,
+            "length": 35
+          },
+          {
+            "start": 242595,
+            "length": 35
+          },
+          {
+            "start": 242746,
+            "length": 39
+          },
+          {
+            "start": 242801,
+            "length": 40
+          },
+          {
+            "start": 242852,
+            "length": 66
+          },
+          {
+            "start": 243003,
+            "length": 36
+          },
+          {
+            "start": 243152,
+            "length": 35
+          },
+          {
+            "start": 243291,
+            "length": 34
+          },
+          {
+            "start": 243395,
+            "length": 55
+          },
+          {
+            "start": 243507,
+            "length": 46
+          },
+          {
+            "start": 243567,
+            "length": 35
+          },
+          {
+            "start": 243619,
+            "length": 35
+          },
+          {
+            "start": 243770,
+            "length": 40
+          },
+          {
+            "start": 243825,
+            "length": 40
+          },
+          {
+            "start": 243878,
+            "length": 62
+          },
+          {
+            "start": 244027,
+            "length": 36
+          },
+          {
+            "start": 244176,
+            "length": 35
+          },
+          {
+            "start": 244315,
+            "length": 34
+          },
+          {
+            "start": 244422,
+            "length": 50
+          },
+          {
+            "start": 244532,
+            "length": 43
+          },
+          {
+            "start": 244591,
+            "length": 35
+          },
+          {
+            "start": 244643,
+            "length": 35
+          },
+          {
+            "start": 244794,
+            "length": 40
+          },
+          {
+            "start": 244849,
+            "length": 40
+          },
+          {
+            "start": 244905,
+            "length": 57
+          },
+          {
+            "start": 245051,
+            "length": 36
+          },
+          {
+            "start": 245200,
+            "length": 35
+          },
+          {
+            "start": 245338,
+            "length": 35
+          },
+          {
+            "start": 245450,
+            "length": 43
+          },
+          {
+            "start": 245559,
+            "length": 37
+          },
+          {
+            "start": 245615,
+            "length": 35
+          },
+          {
+            "start": 245667,
+            "length": 35
+          },
+          {
+            "start": 245818,
+            "length": 40
+          },
+          {
+            "start": 245873,
+            "length": 40
+          },
+          {
+            "start": 245931,
+            "length": 51
+          },
+          {
+            "start": 246075,
+            "length": 36
+          },
+          {
+            "start": 246224,
+            "length": 35
+          },
+          {
+            "start": 246362,
+            "length": 34
+          },
+          {
+            "start": 246479,
+            "length": 34
+          },
+          {
+            "start": 246586,
+            "length": 31
+          },
+          {
+            "start": 246639,
+            "length": 35
+          },
+          {
+            "start": 246691,
+            "length": 35
+          },
+          {
+            "start": 246841,
+            "length": 42
+          },
+          {
+            "start": 246897,
+            "length": 40
+          },
+          {
+            "start": 246959,
+            "length": 44
+          },
+          {
+            "start": 247385,
+            "length": 35
+          },
+          {
+            "start": 247510,
+            "length": 21
+          },
+          {
+            "start": 247615,
+            "length": 21
+          },
+          {
+            "start": 247865,
+            "length": 42
+          },
+          {
+            "start": 247921,
+            "length": 40
+          },
+          {
+            "start": 247987,
+            "length": 36
+          },
+          {
+            "start": 248409,
+            "length": 34
+          },
+          {
+            "start": 248889,
+            "length": 42
+          },
+          {
+            "start": 248945,
+            "length": 40
+          },
+          {
+            "start": 249017,
+            "length": 24
+          },
+          {
+            "start": 249432,
+            "length": 35
+          },
+          {
+            "start": 249913,
+            "length": 42
+          },
+          {
+            "start": 249969,
+            "length": 40
+          },
+          {
+            "start": 250456,
+            "length": 35
+          },
+          {
+            "start": 250937,
+            "length": 42
+          },
+          {
+            "start": 250993,
+            "length": 40
+          },
+          {
+            "start": 251479,
+            "length": 35
+          },
+          {
+            "start": 251961,
+            "length": 42
+          },
+          {
+            "start": 252017,
+            "length": 40
+          },
+          {
+            "start": 252503,
+            "length": 35
+          },
+          {
+            "start": 252985,
+            "length": 42
+          },
+          {
+            "start": 253041,
+            "length": 40
+          },
+          {
+            "start": 253526,
+            "length": 35
+          },
+          {
+            "start": 254009,
+            "length": 42
+          },
+          {
+            "start": 254065,
+            "length": 40
+          },
+          {
+            "start": 254549,
+            "length": 36
+          },
+          {
+            "start": 255033,
+            "length": 41
+          },
+          {
+            "start": 255089,
+            "length": 40
+          },
+          {
+            "start": 255543,
+            "length": 2
+          },
+          {
+            "start": 255573,
+            "length": 36
+          },
+          {
+            "start": 256058,
+            "length": 40
+          },
+          {
+            "start": 256113,
+            "length": 40
+          },
+          {
+            "start": 256567,
+            "length": 3
+          },
+          {
+            "start": 256596,
+            "length": 36
+          },
+          {
+            "start": 257082,
+            "length": 40
+          },
+          {
+            "start": 257137,
+            "length": 40
+          },
+          {
+            "start": 257590,
+            "length": 5
+          },
+          {
+            "start": 257619,
+            "length": 37
+          },
+          {
+            "start": 258106,
+            "length": 39
+          },
+          {
+            "start": 258161,
+            "length": 40
+          },
+          {
+            "start": 258614,
+            "length": 6
+          },
+          {
+            "start": 258642,
+            "length": 38
+          },
+          {
+            "start": 259131,
+            "length": 38
+          },
+          {
+            "start": 259185,
+            "length": 40
+          },
+          {
+            "start": 259637,
+            "length": 9
+          },
+          {
+            "start": 259664,
+            "length": 39
+          },
+          {
+            "start": 260155,
+            "length": 38
+          },
+          {
+            "start": 260209,
+            "length": 40
+          },
+          {
+            "start": 260660,
+            "length": 13
+          },
+          {
+            "start": 260686,
+            "length": 41
+          },
+          {
+            "start": 261180,
+            "length": 36
+          },
+          {
+            "start": 261233,
+            "length": 40
+          },
+          {
+            "start": 261684,
+            "length": 17
+          },
+          {
+            "start": 261706,
+            "length": 44
+          },
+          {
+            "start": 262204,
+            "length": 35
+          },
+          {
+            "start": 262257,
+            "length": 40
+          },
+          {
+            "start": 262707,
+            "length": 67
+          },
+          {
+            "start": 263229,
+            "length": 34
+          },
+          {
+            "start": 263281,
+            "length": 40
+          },
+          {
+            "start": 263731,
+            "length": 66
+          },
+          {
+            "start": 264254,
+            "length": 32
+          },
+          {
+            "start": 264305,
+            "length": 40
+          },
+          {
+            "start": 264754,
+            "length": 67
+          },
+          {
+            "start": 265278,
+            "length": 31
+          },
+          {
+            "start": 265329,
+            "length": 40
+          },
+          {
+            "start": 265778,
+            "length": 66
+          },
+          {
+            "start": 266304,
+            "length": 28
+          },
+          {
+            "start": 266353,
+            "length": 40
+          },
+          {
+            "start": 266801,
+            "length": 67
+          },
+          {
+            "start": 267329,
+            "length": 26
+          },
+          {
+            "start": 267377,
+            "length": 40
+          },
+          {
+            "start": 267824,
+            "length": 67
+          },
+          {
+            "start": 268354,
+            "length": 24
+          },
+          {
+            "start": 268401,
+            "length": 40
+          },
+          {
+            "start": 268848,
+            "length": 67
+          },
+          {
+            "start": 269380,
+            "length": 20
+          },
+          {
+            "start": 269425,
+            "length": 40
+          },
+          {
+            "start": 269871,
+            "length": 67
+          },
+          {
+            "start": 270406,
+            "length": 16
+          },
+          {
+            "start": 270449,
+            "length": 40
+          },
+          {
+            "start": 270894,
+            "length": 68
+          },
+          {
+            "start": 271434,
+            "length": 8
+          },
+          {
+            "start": 271473,
+            "length": 40
+          },
+          {
+            "start": 271918,
+            "length": 67
+          },
+          {
+            "start": 272941,
+            "length": 68
+          },
+          {
+            "start": 273965,
+            "length": 67
+          },
+          {
+            "start": 274988,
+            "length": 67
+          },
+          {
+            "start": 276012,
+            "length": 66
+          },
+          {
+            "start": 277035,
+            "length": 66
+          },
+          {
+            "start": 278059,
+            "length": 66
+          },
+          {
+            "start": 279082,
+            "length": 66
+          },
+          {
+            "start": 280105,
+            "length": 66
+          },
+          {
+            "start": 281129,
+            "length": 65
+          },
+          {
+            "start": 282154,
+            "length": 63
+          },
+          {
+            "start": 283180,
+            "length": 59
+          },
+          {
+            "start": 284205,
+            "length": 57
+          },
+          {
+            "start": 285231,
+            "length": 54
+          },
+          {
+            "start": 286256,
+            "length": 51
+          },
+          {
+            "start": 287282,
+            "length": 48
+          },
+          {
+            "start": 288308,
+            "length": 44
+          },
+          {
+            "start": 289334,
+            "length": 40
+          },
+          {
+            "start": 290361,
+            "length": 34
+          },
+          {
+            "start": 291388,
+            "length": 28
+          },
+          {
+            "start": 292417,
+            "length": 18
+          }
+        ]
+      },
+      "components": [
+        {
+          "scan_order": 1,
+          "bounds": {
+            "x": 929,
+            "y": 65,
+            "width": 38,
+            "height": 39
+          },
+          "area": 1192,
+          "centroid": {
+            "x": 948.0931,
+            "y": 84.3272
+          },
+          "geometry": {
+            "aspect_ratio": 0.9744,
+            "fill_ratio": 0.8043,
+            "perimeter": 154,
+            "circularity": 0.6316,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "origin-dot",
+              "score": 0.7933,
+              "confidence": "medium"
+            },
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "arc",
+              "score": 0.4154,
+              "confidence": "low"
+            },
+            {
+              "role": "monogram",
+              "score": 0.3623,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1665,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.9523,
+            "compactness": 0.9813,
+            "elongation": 1.0263,
+            "fill_ratio": 0.8043,
+            "centrality": 0.0521,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-001",
+          "sort_order": 0
+        },
+        {
+          "scan_order": 2,
+          "bounds": {
+            "x": 315,
+            "y": 82,
+            "width": 131,
+            "height": 159
+          },
+          "area": 12254,
+          "centroid": {
+            "x": 369.0095,
+            "y": 149.2485
+          },
+          "geometry": {
+            "aspect_ratio": 0.8239,
+            "fill_ratio": 0.5883,
+            "perimeter": 808,
+            "circularity": 0.2359,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.6416,
+              "confidence": "medium"
+            },
+            {
+              "role": "monogram",
+              "score": 0.5497,
+              "confidence": "low"
+            },
+            {
+              "role": "arc",
+              "score": 0.3776,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1677,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.51,
+            "compactness": 0.8603,
+            "elongation": 1.2137,
+            "fill_ratio": 0.5883,
+            "centrality": 0.6916,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-002",
+          "sort_order": 1
+        },
+        {
+          "scan_order": 0,
+          "bounds": {
+            "x": 73,
+            "y": 57,
+            "width": 208,
+            "height": 209
+          },
+          "area": 20124,
+          "centroid": {
+            "x": 176.6079,
+            "y": 157.5847
+          },
+          "geometry": {
+            "aspect_ratio": 0.9952,
+            "fill_ratio": 0.4629,
+            "perimeter": 1392,
+            "circularity": 0.1305,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "origin-dot",
+              "score": 0.5568,
+              "confidence": "medium"
+            },
+            {
+              "role": "arc",
+              "score": 0.5058,
+              "confidence": "low"
+            },
+            {
+              "role": "monogram",
+              "score": 0.4395,
+              "confidence": "low"
+            },
+            {
+              "role": "wordmark",
+              "score": 0.1825,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1276,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "symbol",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.1953,
+            "compactness": 0.9965,
+            "elongation": 1.0048,
+            "fill_ratio": 0.4629,
+            "centrality": 0.2845,
+            "wordmark_group_score": 0
+          },
+          "role_review": {
+            "proposed_role": "arc",
+            "accepted_role": null,
+            "confidence": "medium",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-003",
+          "sort_order": 2
+        },
+        {
+          "scan_order": 3,
+          "bounds": {
+            "x": 464,
+            "y": 117,
+            "width": 75,
+            "height": 124
+          },
+          "area": 5532,
+          "centroid": {
+            "x": 490.0785,
+            "y": 170.7422
+          },
+          "geometry": {
+            "aspect_ratio": 0.6048,
+            "fill_ratio": 0.5948,
+            "perimeter": 438,
+            "circularity": 0.3624,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.6905,
+              "confidence": "medium"
+            },
+            {
+              "role": "monogram",
+              "score": 0.5751,
+              "confidence": "medium"
+            },
+            {
+              "role": "arc",
+              "score": 0.293,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.2173,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.7788,
+            "compactness": 0.6373,
+            "elongation": 1.6534,
+            "fill_ratio": 0.5948,
+            "centrality": 0.9532,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-004",
+          "sort_order": 3
+        },
+        {
+          "scan_order": 7,
+          "bounds": {
+            "x": 931,
+            "y": 119,
+            "width": 35,
+            "height": 122
+          },
+          "area": 4270,
+          "centroid": {
+            "x": 948.5,
+            "y": 180
+          },
+          "geometry": {
+            "aspect_ratio": 0.2869,
+            "fill_ratio": 1,
+            "perimeter": 314,
+            "circularity": 0.5442,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "bar",
+              "score": 0.5453,
+              "confidence": "low"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.4647,
+              "confidence": "low"
+            },
+            {
+              "role": "monogram",
+              "score": 0.2362,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "arc",
+              "score": 0.0939,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.8292,
+            "compactness": 0.0993,
+            "elongation": 3.4855,
+            "fill_ratio": 1,
+            "centrality": 0.0695,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-005",
+          "sort_order": 4
+        },
+        {
+          "scan_order": 4,
+          "bounds": {
+            "x": 684,
+            "y": 117,
+            "width": 102,
+            "height": 125
+          },
+          "area": 7952,
+          "centroid": {
+            "x": 736.8419,
+            "y": 180.5107
+          },
+          "geometry": {
+            "aspect_ratio": 0.816,
+            "fill_ratio": 0.6237,
+            "perimeter": 760,
+            "circularity": 0.173,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.6562,
+              "confidence": "medium"
+            },
+            {
+              "role": "monogram",
+              "score": 0.4836,
+              "confidence": "low"
+            },
+            {
+              "role": "arc",
+              "score": 0.3359,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.169,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.682,
+            "compactness": 0.8533,
+            "elongation": 1.2255,
+            "fill_ratio": 0.6237,
+            "centrality": 0.5204,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-006",
+          "sort_order": 5
+        },
+        {
+          "scan_order": 5,
+          "bounds": {
+            "x": 799,
+            "y": 117,
+            "width": 115,
+            "height": 125
+          },
+          "area": 9900,
+          "centroid": {
+            "x": 862.0644,
+            "y": 183.0545
+          },
+          "geometry": {
+            "aspect_ratio": 0.92,
+            "fill_ratio": 0.6887,
+            "perimeter": 826,
+            "circularity": 0.1823,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.6168,
+              "confidence": "medium"
+            },
+            {
+              "role": "monogram",
+              "score": 0.4277,
+              "confidence": "low"
+            },
+            {
+              "role": "arc",
+              "score": 0.3407,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1665,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.6041,
+            "compactness": 0.9399,
+            "elongation": 1.087,
+            "fill_ratio": 0.6887,
+            "centrality": 0.2535,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-007",
+          "sort_order": 6
+        },
+        {
+          "scan_order": 6,
+          "bounds": {
+            "x": 553,
+            "y": 119,
+            "width": 131,
+            "height": 167
+          },
+          "area": 9854,
+          "centroid": {
+            "x": 613.1134,
+            "y": 196.1597
+          },
+          "geometry": {
+            "aspect_ratio": 0.7844,
+            "fill_ratio": 0.4504,
+            "perimeter": 876,
+            "circularity": 0.1614,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "wordmark",
+              "score": 0.7208,
+              "confidence": "medium"
+            },
+            {
+              "role": "origin-dot",
+              "score": 0.6325,
+              "confidence": "medium"
+            },
+            {
+              "role": "monogram",
+              "score": 0.54,
+              "confidence": "low"
+            },
+            {
+              "role": "arc",
+              "score": 0.4327,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1443,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "wordmark",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.6059,
+            "compactness": 0.8248,
+            "elongation": 1.2749,
+            "fill_ratio": 0.4504,
+            "centrality": 0.7782,
+            "wordmark_group_score": 0.7208
+          },
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-008",
+          "sort_order": 7
+        },
+        {
+          "scan_order": 8,
+          "bounds": {
+            "x": 57,
+            "y": 224,
+            "width": 42,
+            "height": 42
+          },
+          "area": 1377,
+          "centroid": {
+            "x": 77.898,
+            "y": 245.1325
+          },
+          "geometry": {
+            "aspect_ratio": 1,
+            "fill_ratio": 0.7806,
+            "perimeter": 168,
+            "circularity": 0.6131,
+            "edge_touching": false
+          },
+          "role_candidates": [
+            {
+              "role": "origin-dot",
+              "score": 0.9672,
+              "confidence": "medium"
+            },
+            {
+              "role": "arc",
+              "score": 0.4203,
+              "confidence": "low"
+            },
+            {
+              "role": "monogram",
+              "score": 0.3656,
+              "confidence": "low"
+            },
+            {
+              "role": "unknown",
+              "score": 0.18,
+              "confidence": "low"
+            },
+            {
+              "role": "bar",
+              "score": 0.1585,
+              "confidence": "low"
+            },
+            {
+              "role": "wordmark",
+              "score": 0.0367,
+              "confidence": "low"
+            }
+          ],
+          "selected_role": "unknown",
+          "layout_group": "symbol",
+          "group_confidence": "medium",
+          "heuristic_basis": {
+            "small_relative_to_content": 0.9449,
+            "compactness": 1,
+            "elongation": 1,
+            "fill_ratio": 0.7806,
+            "centrality": 0.0616,
+            "wordmark_group_score": 0
+          },
+          "role_review": {
+            "proposed_role": "origin-dot",
+            "accepted_role": null,
+            "confidence": "medium",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          },
+          "id": "raster-component-009",
+          "sort_order": 8
+        }
+      ],
+      "content_bounds": {
+        "x": 57,
+        "y": 57,
+        "width": 910,
+        "height": 229
+      },
+      "ordering": {
+        "strategy": "role-priority, then centroid-y, centroid-x, area-desc, scan-order",
+        "component_ids": [
+          "raster-component-001",
+          "raster-component-002",
+          "raster-component-003",
+          "raster-component-004",
+          "raster-component-005",
+          "raster-component-006",
+          "raster-component-007",
+          "raster-component-008",
+          "raster-component-009"
+        ],
+        "role_priority": [
+          "origin-dot",
+          "arc",
+          "bar",
+          "monogram",
+          "wordmark",
+          "unknown"
+        ],
+        "rationale": "Use geometry only to propose a stable reveal order; review role assignments before animation planning."
+      },
+      "role_hypotheses": [
+        {
+          "role": "wordmark",
+          "component_ids": [
+            "raster-component-001",
+            "raster-component-002",
+            "raster-component-004",
+            "raster-component-005",
+            "raster-component-006",
+            "raster-component-007",
+            "raster-component-008"
+          ],
+          "score": 0.7208,
+          "basis": "multiple short components with a shared baseline and horizontal span"
+        }
+      ],
+      "layout_groups": [
+        {
+          "id": "symbol",
+          "role": "identity-symbol-candidate",
+          "component_ids": [
+            "raster-component-003",
+            "raster-component-009"
+          ],
+          "confidence": "medium",
+          "basis": "components outside the horizontal wordmark hypothesis"
+        },
+        {
+          "id": "wordmark",
+          "role": "wordmark-candidate",
+          "component_ids": [
+            "raster-component-001",
+            "raster-component-002",
+            "raster-component-004",
+            "raster-component-005",
+            "raster-component-006",
+            "raster-component-007",
+            "raster-component-008"
+          ],
+          "confidence": "medium",
+          "basis": "right-side components aligned on a shared baseline, with nearby small accents attached"
+        }
+      ],
+      "recognition": {
+        "mode": "bounded-geometric-observation",
+        "review_status": "needs-review",
+        "input_boundary": "decoded pixels and layout heuristics only; no semantic or vector reconstruction claim",
+        "component_count": 9,
+        "role_counts": {
+          "unknown": 9
+        },
+        "layout_groups": [
+          "symbol",
+          "wordmark"
+        ],
+        "confidence_policy": {
+          "high": "not assigned by this adapter",
+          "medium": "geometry is suggestive and still requires review",
+          "low": "do not use as a semantic role without review",
+          "accepted_role": "only an explicit reviewer annotation may promote a role"
+        },
+        "motion_binding_rules": {
+          "origin-dot": "scale-and-opacity reveal from the observed centroid",
+          "arc": "ordered angular or contour prefix over the observed source mask",
+          "bar": "continuous endpoint-to-endpoint scan over the observed stroke",
+          "monogram": "component-local contour or convergence reveal using source pixels",
+          "wordmark": "reading-order glyph/component cascade using source pixels",
+          "unknown": "static-canonical fallback until a reviewer accepts a role"
+        },
+        "decision_trace": [
+          "estimate border background and foreground mask",
+          "extract connected components with deterministic ordering",
+          "hypothesize symbol and wordmark groups from layout and geometry",
+          "bind supported roles to source-pixel motion strategies",
+          "retain unknown or low-confidence actors behind static-canonical fallback"
+        ]
+      },
+      "reconstruction": {
+        "status": "needs-review",
+        "vector_reconstruction": "not-claimed",
+        "reason": "Pixels were segmented into observations; no vector paths were generated or verified."
+      }
+    }
+  },
+  "review": {
+    "status": "needs-review",
+    "vector_reconstruction": "not-claimed",
+    "reason": "Raster components and role labels are deterministic geometric candidates, not semantic truth.",
+    "recommended_next_step": "Review component roles and compare against the supplied mark before planning motion."
+  },
+  "capabilities": [
+    "raster-header",
+    "raster-pixels",
+    "foreground-mask",
+    "connected-components",
+    "geometric-role-candidates"
+  ],
+  "not_run": [
+    "raster-to-vector-reconstruction",
+    "human-role-review",
+    "browser-render-analysis"
+  ],
+  "unresolved": [
+    "component roles are heuristic candidates and require review",
+    "raster-to-vector reconstruction was not attempted"
+  ],
+  "producer": "showcase/generate_showcase.py",
+  "observation_review": {
+    "status": "needs-review",
+    "reviewed_components": [],
+    "method": "Pillow foreground mask + connected components + layout grouping",
+    "notes": "Proposed roles are bounded geometric hypotheses; accepted_role remains null until reviewed."
+  },
+  "showcase_adapter": {
+    "status": "candidate",
+    "method": "Pillow foreground mask + connected components + layout grouping",
+    "review_status": "needs-review",
+    "recognition": {
+      "mode": "bounded-geometric-observation",
+      "review_status": "needs-review",
+      "input_boundary": "decoded pixels and layout heuristics only; no semantic or vector reconstruction claim",
+      "component_count": 9,
+      "role_counts": {
+        "unknown": 9
+      },
+      "layout_groups": [
+        "symbol",
+        "wordmark"
+      ],
+      "confidence_policy": {
+        "high": "not assigned by this adapter",
+        "medium": "geometry is suggestive and still requires review",
+        "low": "do not use as a semantic role without review",
+        "accepted_role": "only an explicit reviewer annotation may promote a role"
+      },
+      "motion_binding_rules": {
+        "origin-dot": "scale-and-opacity reveal from the observed centroid",
+        "arc": "ordered angular or contour prefix over the observed source mask",
+        "bar": "continuous endpoint-to-endpoint scan over the observed stroke",
+        "monogram": "component-local contour or convergence reveal using source pixels",
+        "wordmark": "reading-order glyph/component cascade using source pixels",
+        "unknown": "static-canonical fallback until a reviewer accepts a role"
+      },
+      "decision_trace": [
+        "estimate border background and foreground mask",
+        "extract connected components with deterministic ordering",
+        "hypothesize symbol and wordmark groups from layout and geometry",
+        "bind supported roles to source-pixel motion strategies",
+        "retain unknown or low-confidence actors behind static-canonical fallback"
+      ]
+    },
+    "sampling": {
+      "original_width": 3950,
+      "original_height": 1323,
+      "width": 1024,
+      "height": 343,
+      "max_dimension": 1024,
+      "method": "nearest-neighbour when capped; exact pixels otherwise"
+    },
+    "boxes": {
+      "origin_dot": [
+        219,
+        864,
+        382,
+        1026
+      ],
+      "monogram_raw": [
+        281,
+        219,
+        1084,
+        1026
+      ],
+      "wordmark_01": [
+        1215,
+        316,
+        1721,
+        930
+      ],
+      "wordmark_02": [
+        1789,
+        451,
+        2080,
+        930
+      ],
+      "wordmark_03": [
+        2133,
+        459,
+        2639,
+        1104
+      ],
+      "wordmark_04": [
+        2638,
+        451,
+        3032,
+        934
+      ],
+      "wordmark_05": [
+        3082,
+        451,
+        3526,
+        934
+      ],
+      "wordmark_06": [
+        3583,
+        250,
+        3731,
+        930
+      ]
+    },
+    "actor_groups": {
+      "symbol": [
+        "origin_dot",
+        "monogram_raw"
+      ],
+      "wordmark": [
+        "wordmark_01",
+        "wordmark_02",
+        "wordmark_03",
+        "wordmark_04",
+        "wordmark_05",
+        "wordmark_06"
+      ]
+    },
+    "group_bounds": {
+      "symbol": [
+        219,
+        219,
+        1084,
+        1026
+      ],
+      "wordmark": [
+        1215,
+        250,
+        3731,
+        1104
+      ]
+    },
+    "stage_mapping": {
+      "origin_dot": [
+        "origin_dot"
+      ],
+      "arc": [
+        "monogram_raw"
+      ],
+      "bar": [
+        "monogram_raw"
+      ],
+      "monogram": [
+        "monogram_raw"
+      ],
+      "wordmark": [
+        "wordmark_01",
+        "wordmark_02",
+        "wordmark_03",
+        "wordmark_04",
+        "wordmark_05",
+        "wordmark_06"
+      ],
+      "canonical": [
+        "final"
+      ]
+    },
+    "observed_components": [
+      {
+        "id": "raster-component-003",
+        "bounds": [
+          281,
+          219,
+          1084,
+          1026
+        ],
+        "area": 20124,
+        "layout_group": "symbol",
+        "role": "ring-candidate",
+        "role_review": {
+          "proposed_role": "arc",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-009",
+        "bounds": [
+          219,
+          864,
+          382,
+          1026
+        ],
+        "area": 1377,
+        "layout_group": "symbol",
+        "role": "origin-dot-candidate",
+        "role_review": {
+          "proposed_role": "origin-dot",
+          "accepted_role": null,
+          "confidence": "medium",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-002",
+        "bounds": [
+          1215,
+          316,
+          1721,
+          930
+        ],
+        "area": 12254,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-004",
+        "bounds": [
+          1789,
+          451,
+          2080,
+          930
+        ],
+        "area": 5532,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-008",
+        "bounds": [
+          2133,
+          459,
+          2639,
+          1104
+        ],
+        "area": 9854,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-006",
+        "bounds": [
+          2638,
+          451,
+          3032,
+          934
+        ],
+        "area": 7952,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-007",
+        "bounds": [
+          3082,
+          451,
+          3526,
+          934
+        ],
+        "area": 9900,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-001",
+        "bounds": [
+          3583,
+          250,
+          3731,
+          402
+        ],
+        "area": 1192,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      },
+      {
+        "id": "raster-component-005",
+        "bounds": [
+          3591,
+          459,
+          3727,
+          930
+        ],
+        "area": 4270,
+        "layout_group": "wordmark",
+        "role": "wordmark-candidate",
+        "role_review": {
+          "proposed_role": "wordmark",
+          "accepted_role": null,
+          "confidence": "low",
+          "review_status": "needs-review",
+          "evidence": "connected-component geometry and layout grouping only"
+        }
+      }
+    ],
+    "observation_review": {
+      "status": "needs-review",
+      "reviewed_components": [],
+      "method": "Pillow foreground mask + connected components + layout grouping",
+      "notes": "Proposed roles are bounded geometric hypotheses; accepted_role remains null until reviewed."
+    },
+    "unresolved": [
+      "semantic roles and vector equivalence still require review"
+    ]
+  }
+}

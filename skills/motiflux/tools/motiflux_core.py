@@ -121,6 +121,36 @@ def contract_errors(document: Any, schema: dict[str, Any], path: str = "$") -> l
     return errors
 
 
+def evidence_semantic_errors(document: Any) -> list[str]:
+    """Apply evidence rules that are conditional on the reported status."""
+
+    if not isinstance(document, dict):
+        return ["evidence must be an object"]
+    errors: list[str] = []
+    foreground = document.get("foreground_evidence")
+    if not isinstance(foreground, dict):
+        errors.append("evidence.foreground_evidence is required")
+    else:
+        snapshots = foreground.get("stage_snapshots")
+        if not isinstance(snapshots, list) or not snapshots:
+            errors.append("evidence.foreground_evidence.stage_snapshots must be non-empty")
+        stage_order = foreground.get("stage_order")
+        stage_ids = [item.get("stage_id") for item in snapshots if isinstance(item, dict)] if isinstance(snapshots, list) else []
+        if isinstance(stage_order, list) and stage_ids and stage_ids != stage_order:
+            errors.append("evidence foreground stage snapshots must follow stage_order")
+    if document.get("status") == "complete":
+        if document.get("not_run"):
+            errors.append("complete evidence cannot contain not_run items")
+        if document.get("unresolved"):
+            errors.append("complete evidence cannot contain unresolved items")
+        if not isinstance(foreground, dict) or foreground.get("status") != "observed":
+            errors.append("complete evidence requires observed foreground evidence")
+        canonical = document.get("canonical_fingerprint")
+        if not isinstance(canonical, dict) or canonical.get("match") is not True:
+            errors.append("complete evidence requires a matching canonical fingerprint")
+    return errors
+
+
 def matches_type(value: Any, expected: str | list[str]) -> bool:
     expected_types = [expected] if isinstance(expected, str) else expected
     for item in expected_types:

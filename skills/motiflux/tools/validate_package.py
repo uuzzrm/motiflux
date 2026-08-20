@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from motiflux_core import SCHEMA_VERSION, contract_errors, load_document, write_json
+from motiflux_core import SCHEMA_VERSION, contract_errors, evidence_semantic_errors, load_document, write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,7 +41,10 @@ def validate_package(package_dir: Path) -> dict[str, Any]:
     for schema_name, label, artifact_path in checks:
         schema = json.loads((SCHEMA_DIR / schema_name).read_text(encoding="utf-8"))
         artifact = load_document(artifact_path)
-        errors.extend(f"{label}: {item}" for item in contract_errors(artifact, schema))
+        contract_failures = contract_errors(artifact, schema)
+        errors.extend(f"{label}: {item}" for item in contract_failures)
+        if label == "evidence" and not contract_failures:
+            errors.extend(f"{label}: {item}" for item in evidence_semantic_errors(artifact))
 
     html = (package_dir / "motion.html").read_text(encoding="utf-8")
     runtime = (package_dir / "motion.js").read_text(encoding="utf-8")
@@ -53,6 +56,14 @@ def validate_package(package_dir: Path) -> dict[str, Any]:
             errors.append(f"motion.js missing runtime contract: {marker}")
     if "prefers-reduced-motion" not in html + runtime + (package_dir / "motion.css").read_text(encoding="utf-8"):
         errors.append("package does not declare reduced-motion behavior")
+    plan = load_document(package_dir / "motion-plan.yaml")
+    foreground = plan.get("foreground_plan", {}) if isinstance(plan, dict) else {}
+    actor_ids = foreground.get("source_actors", []) if isinstance(foreground, dict) else []
+    if actor_ids:
+        for actor_id in actor_ids:
+            marker = f'data-motiflux-actor="{actor_id}"'
+            if marker not in html and f'id="{actor_id}"' not in html:
+                errors.append(f"motion.html missing source actor binding: {actor_id}")
     return result(package_dir, errors)
 
 

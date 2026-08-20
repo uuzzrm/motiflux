@@ -55,15 +55,25 @@ def probe_runtime(package_dir: Path, *, node_executable: str | None = None) -> d
         "visibilitychange",
     )
     missing_runtime_markers = [marker for marker in runtime_markers if marker not in javascript and marker not in css]
+    growth_markers = (
+        'data-growth-mode="staged-source-actors"',
+        "data-motiflux-role",
+        "actorProgress",
+        "strokeDashoffset",
+    )
+    missing_growth_markers = [marker for marker in growth_markers if marker not in javascript and marker not in html]
     checks["static-contract"] = {
-        "passed": not missing_markers and not missing_runtime_markers,
+        "passed": not missing_markers and not missing_runtime_markers and not missing_growth_markers,
         "missing_html_markers": missing_markers,
         "missing_runtime_markers": missing_runtime_markers,
+        "missing_growth_markers": missing_growth_markers,
     }
 
     unresolved: list[str] = []
     if missing_markers or missing_runtime_markers:
         unresolved.append("runtime package is missing required static contract markers")
+    if missing_growth_markers:
+        unresolved.append("runtime package is missing the staged source-actor growth contract")
     not_run = ["browser-runtime-check", "accessibility-tree-check", "browser-pixel-diff"]
     if node_executable:
         syntax = _node_syntax_check(node_executable, package_dir / "motion.js")

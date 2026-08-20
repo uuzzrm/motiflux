@@ -3,11 +3,12 @@
   "$id": "https://github.com/uuzzrm/motiflux/schemas/telemetry.schema.json",
   "title": "Motiflux runtime telemetry",
   "type": "object",
-  "required": ["schema_version", "samples", "risk_intervals", "runtime_errors"],
+  "required": ["schema_version", "samples", "stage_snapshots", "risk_intervals", "runtime_errors"],
   "properties": {
     "schema_version": { "const": "1.0" },
     "samples": {
       "type": "array",
+      "minItems": 2,
       "items": {
         "type": "object",
         "required": ["time_ms", "active_beat", "progress_values", "runtime_errors"],
@@ -23,7 +24,24 @@
         "additionalProperties": true
       }
     },
-    "risk_intervals": { "type": "array", "items": { "type": "object" } },
+    "stage_snapshots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["stage_id", "source_actor_ids", "foreground_bounds", "alpha_mass", "path_strategy", "speed_profile"],
+        "properties": {
+          "stage_id": { "type": "string", "minLength": 1 },
+          "source_actor_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "foreground_bounds": { "type": "object" },
+          "alpha_mass": { "type": ["number", "null"] },
+          "path_strategy": { "type": "string", "minLength": 1 },
+          "speed_profile": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "risk_intervals": { "type": "array", "minItems": 1, "items": { "type": "object" } },
     "runtime_errors": { "type": "array", "items": { "type": "string" } }
   },
   "additionalProperties": true

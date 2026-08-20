@@ -6,20 +6,26 @@
   <meta name="description" content="Motiflux V1 theme atlas: one supplied Prysai mark routed through thirteen logo-motion systems.">
   <title>Motiflux V1 / Theme Atlas</title>
   <link rel="icon" type="image/jpeg" href="assets/prysai-logo-white.jpg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=motiflux-v1-20260820">
 </head>
-<body data-motion="running">
+<body data-motion="auto">
   <div class="shell">
+    <a class="skip-link" href="#input-output">Skip to the image-to-animation result</a>
     <header class="topbar">
       <div class="wordmark"><span class="wordmark-mark">M</span><span>Motiflux / V1</span></div>
-      <div class="private-badge">Private development / source-preserving showcase</div>
+      <div class="private-badge">Public preview / source-preserving showcase</div>
     </header>
+    <div class="truth-bar" role="status"><strong>CHECKED-IN EXAMPLE</strong><span>Input: supplied Prysai JPG</span><span>Analysis: offline candidate</span><span>Output: baked GIF/PDF</span><span>Browser does not generate new media</span></div>
+    <nav class="section-nav" aria-label="Showcase sections"><a href="#workflow-guide">How to use</a><a href="#input-output">Image → animation</a><a href="#prompt-lab">Prompt lab</a><a href="#theme-atlas">13 routes</a><a href="output/pdf/motiflux-theme-atlas.pdf">PDF atlas</a></nav>
     <main>
       <section class="hero" aria-labelledby="page-title">
         <div>
           <p class="eyebrow">Brand motion routing / comparative study</p>
           <h1 id="page-title">One image.<br>Thirteen animations.</h1>
-           <p class="hero-copy">The source stays fixed. The output grows. This atlas shows how Motiflux turns the same supplied Prysai image into thirteen playable logo-construction results. Algorithm families remain available as explanation, not as the thing being displayed.</p>
+           <p class="hero-copy">The source stays fixed. The output grows. Motiflux observes the supplied raster's foreground components and turns those candidate actors into thirteen playable logo-construction results. The visible distinction is the logo's growth path; algorithm notes explain the result rather than replacing it.</p>
+           <p class="hero-reading-guide"><strong>How to read this page:</strong> left is the unchanged input image; right is the selected theme's generated GIF. Start with AI-field, pause all cards, then replay one route to compare its foreground draw-on path.</p>
+           <p class="hero-next-step"><strong>Start here:</strong> view AI-field → pause → choose a route → copy the prompt → run the skill on your own source.</p>
+           <div class="hero-preview-pair" aria-label="Quick static image to animated GIF comparison"><figure><img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo static source"><figcaption>source / JPG</figcaption></figure><span class="hero-preview-arrow" aria-hidden="true">→</span><figure><img src="assets/animations/prysai-ai-field.gif" alt="AI-field logo growth GIF preview"><figcaption>result / GIF</figcaption></figure></div>
           <div class="stats" aria-label="Showcase summary">
             <div class="stat"><strong>13</strong><span>routable themes</span></div>
             <div class="stat"><strong>1</strong><span>identity source</span></div>
@@ -31,33 +37,177 @@
           <p class="source-note">INPUT ASSET<br>Prysai logo / supplied raster source<br>Display derivatives remove the black surround for legibility only; the logo geometry is unchanged.</p>
         </aside>
       </section>
-      <section class="io-showcase" aria-labelledby="io-title">
+      <section id="workflow-guide" class="workflow-guide" aria-labelledby="workflow-guide-title">
+        <div class="workflow-guide-head">
+          <div>
+            <p class="eyebrow">Operator guide / five-step contract</p>
+            <h2 id="workflow-guide-title">From logo file to defensible motion result.</h2>
+            <p>Read the showcase in order. The source fixes the identity, the theme selects the foreground choreography, tuning describes measurable changes, the generator creates files, and evidence determines what you can call verified.</p>
+          </div>
+          <div class="guide-live" role="status" aria-live="polite">
+            <span class="detail-label">NEXT ACTION</span>
+            <strong data-guide-live>01 / SOURCE · start here</strong>
+            <small data-guide-detail>Confirm the supplied image and the parts that must remain unchanged.</small>
+          </div>
+        </div>
+        <ol class="workflow-rail" aria-label="Motiflux logo animation workflow">
+          <li data-guide-step="source" class="is-current"><a href="#input-output"><span class="workflow-index">01</span><span><strong>Source</strong><small>Keep identity fixed</small></span><em data-guide-step-status>current</em></a></li>
+          <li data-guide-step="theme"><a href="#prompt-lab"><span class="workflow-index">02</span><span><strong>Theme</strong><small>Choose one route</small></span><em data-guide-step-status>next</em></a></li>
+          <li data-guide-step="tune"><a href="#prompt-lab"><span class="workflow-index">03</span><span><strong>Tune</strong><small>State measurable controls</small></span><em data-guide-step-status>next</em></a></li>
+          <li data-guide-step="bake"><a href="#prompt-lab"><span class="workflow-index">04</span><span><strong>Bake</strong><small>Run the exporter</small></span><em data-guide-step-status>next</em></a></li>
+          <li data-guide-step="verify"><a href="#evidence-key"><span class="workflow-index">05</span><span><strong>Verify</strong><small>Check evidence and review</small></span><em data-guide-step-status>next</em></a></li>
+        </ol>
+        <div class="workflow-rules">
+          <article><span>THEME CUE</span><strong>One context + one motion intention.</strong><p>“AI technology” routes to <code>ai-field</code>; “education” routes to <code>system-spatial</code>. The route changes the identity-bearing foreground path, not only the background.</p></article>
+          <article><span>TUNING CUE</span><strong>Use values the generator can reproduce.</strong><p>Say <code>solid #0B0D12</code>, <code>1600ms</code>, <code>speed 1.25x</code>, or <code>no particles</code>. The controls below teach this vocabulary and update the local shell only.</p></article>
+          <article><span>EVIDENCE CUE</span><strong>Preview, baked, and verified are different states.</strong><p>A checked-in GIF/PDF is baked. A browser preview or copied command is not a new bake. Call it verified only after file, frame, runtime, source-identity, accessibility, and review checks pass.</p></article>
+        </div>
+        <div class="state-ladder" aria-labelledby="state-ladder-title">
+          <div class="state-ladder-head"><div><span class="detail-label">STATUS LADDER</span><h3 id="state-ladder-title">What the page can prove right now.</h3></div><p data-guide-status>Current session: browser controls are preview-only; checked-in GIF/PDF assets are baked reference outputs; verified is not claimed.</p></div>
+          <ol class="state-ladder-items">
+            <li class="state-card state-preview"><span>01 / PREVIEW</span><strong>Browser shell</strong><small>Route, tuning, playback, and prompt edits change the local view or request text. No media file is written.</small></li>
+            <li class="state-card state-baked"><span>02 / BAKED</span><strong>Generator output</strong><small>The exporter has run and produced the GIF, poster, checkpoint, PDF, manifest, or package being discussed.</small></li>
+            <li class="state-card state-verified"><span>03 / VERIFIED</span><strong>Evidence passed</strong><small>Only after the relevant files, fingerprints, frame/runtime checks, source identity, accessibility, and human review are recorded.</small></li>
+          </ol>
+        </div>
+      </section>
+      <section id="input-output" class="io-showcase" aria-labelledby="io-title">
         <div class="io-heading">
           <div>
             <p class="eyebrow">Actual rendered output / AI-field route</p>
             <h2 id="io-title">From image to animation.</h2>
-           <p>Give the skill one logo image and a request such as “make an AI company logo animation.” Motiflux routes it to AI-field, keeps the source mark intact, and returns a portable GIF that grows it from a blank field to a complete logo.</p>
+           <p>Give the skill one logo image and a request such as “make an AI company logo animation.” Motiflux observes candidate dot, monogram, and wordmark regions, routes the request to AI-field, and returns a portable GIF that grows the supplied pixels from a blank field to a complete logo.</p>
+           <p class="checked-in-note"><strong>Checked-in showcase:</strong> this GIF is already generated and stored in the repository. The page controls preview wording and playback; they do not regenerate media in the browser.</p>
           </div>
-          <div class="io-badge">INPUT → OUTPUT<br><strong>JPG → GIF</strong></div>
+          <div class="io-badge">INPUT → OUTPUT<br><strong>JPG → GIF</strong><br><small>auto replay / final hold</small></div>
         </div>
-        <div class="io-flow">
-          <figure class="io-frame io-source"><span class="cell-label">INPUT / SUPPLIED IMAGE</span><img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo image"></figure>
-          <div class="io-arrow" aria-hidden="true">→</div>
-          <figure class="io-frame io-output"><span class="cell-label">OUTPUT / LOGO GROWTH GIF</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo growing from blank through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
+         <div class="io-flow">
+           <figure class="io-frame io-source"><span class="cell-label">01 / INPUT IMAGE</span><img src="assets/prysai-mark-crop.jpg" alt="Supplied Prysai logo image"></figure>
+           <div class="io-arrow" aria-hidden="true">→</div>
+           <div class="io-middle"><span>02 / FOREGROUND ROUTE</span><strong>Theme-specific growth path</strong><small>Same source actors, different draw-on grammar, timing, and settle behavior.</small></div>
+           <div class="io-arrow" aria-hidden="true">→</div>
+           <figure class="io-frame io-output"><span class="cell-label">03 / OUTPUT GIF</span><img src="assets/animations/prysai-ai-field.gif" alt="Prysai logo growing from blank through the AI-field theme"><span class="io-status">AI-FIELD / PLAYING GIF</span></figure>
+         </div>
+         <div class="io-footer"><span>Observed source actors / origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
+      </section>
+      <section class="evidence-key" aria-labelledby="evidence-key-title">
+        <div class="evidence-key-head">
+          <div>
+            <p class="eyebrow">How to read the deliverables</p>
+            <h2 id="evidence-key-title">Three files, three kinds of evidence.</h2>
+          </div>
+          <p class="evidence-key-intro">The media are related, but they do not prove the same thing. Use the GIF to inspect the complete motion path, the poster to land safely on the canonical final frame, and the PDF to review the seven checkpoints.</p>
         </div>
-         <div class="io-footer"><span>Same identity source / spark (source dot) → arc → bar → monogram → wordmark → canonical</span><a href="assets/animations/prysai-ai-field.gif" download>Download AI-field GIF</a><a href="#theme-atlas">Compare all 13 routes</a></div>
+        <div class="evidence-grid">
+          <article class="evidence-item evidence-gif">
+            <span class="evidence-token">GIF / FULL TRAJECTORY</span>
+            <h3>Complete generation evidence</h3>
+            <p>The baked GIF records the playable blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo sequence. It is the evidence for how the supplied pixels become the final mark over time.</p>
+            <small>Use Play, Pause, and Replay to compare the route; a GIF is portable, but the browser player cannot author a new GIF.</small>
+          </article>
+          <article class="evidence-item evidence-poster">
+            <span class="evidence-token">POSTER / CANONICAL FALLBACK</span>
+            <h3>Canonical final frame</h3>
+            <p>The poster is a static canonical final-frame fallback. It appears for reduced motion, loading, an unavailable GIF, or the final reading hold; it does not prove the intermediate trajectory or human role acceptance.</p>
+            <small>Compare it with the source identity and final-frame evidence before calling the result verified.</small>
+          </article>
+          <article class="evidence-item evidence-pdf">
+            <span class="evidence-token">PDF / SEVEN-STAGE STORYBOARD</span>
+            <h3>Static inspection atlas</h3>
+            <p>The PDF captures seven static checkpoints for each route. It is useful for review, export, and print; it is not a playable GIF, a seekable timeline, or proof of every in-between frame.</p>
+            <small><a href="output/pdf/motiflux-theme-atlas.pdf">Open the seven-stage PDF atlas</a> · pair it with the GIF when motion behavior matters.</small>
+          </article>
+        </div>
       </section>
       <section class="route-brief" aria-labelledby="route-title">
         <div class="route-cell"><span id="route-title" class="route-label">Example request</span><p class="route-value">“I want to make a logo animation for my artificial-intelligence company.”</p></div>
         <div class="route-cell"><span class="route-label">AI-field animation</span><p class="route-value"><strong>AI-field</strong><br>the supplied image becomes a signal-convergence reveal</p></div>
-         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Blank field → spark (source dot) → arc → bar → P construction → wordmark → stable logo. Each card is a direct GIF output.</p></div>
+         <div class="route-cell"><span class="route-label">What the viewer sees</span><p class="route-value">Blank field → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo. Each card is a direct GIF output.</p></div>
+      </section>
+      <section class="how-to" aria-labelledby="how-to-title">
+        <div class="how-to-head">
+          <div><p class="eyebrow">Three-step request pattern</p><h2 id="how-to-title">Give the agent a usable brief.</h2><p>Keywords select the foreground route. Tuning phrases change measurable controls. Export words select an actual delivery path.</p></div>
+          <p>Keep identity constraints first. Keep one primary theme. Ask for proof when a file or behavior matters.</p>
+        </div>
+        <div class="how-to-grid">
+          <article class="how-to-step"><span>01 / SOURCE</span><h3>Protect the mark</h3><p>Attach the image and state what must stay unchanged. For raster input, ask the agent to observe candidate actors and keep a static canonical fallback.</p><code>preserve source geometry; use only observed actors</code></article>
+          <article class="how-to-step"><span>02 / KEYWORD</span><h3>Choose one route</h3><p>Say the context in plain language. For example, “AI technology” routes to <strong>ai-field</strong>; “education” routes to <strong>system-spatial</strong>. Add no more than two modifiers.</p><code>AI technology -> ai-field -> signal convergence</code></article>
+          <article class="how-to-step"><span>03 / TUNE + EXPORT</span><h3>Make the output explicit</h3><p>Use measurable phrases for color, timing, effects, and accessibility. Preview controls are not a baked export; rerun the generator to create GIF or PDF files.</p><code>solid #0B0D12 background; no particles; 1600ms; export GIF</code></article>
+        </div>
+      </section>
+      <section class="observation-strip" aria-labelledby="observation-title">
+        <div class="observation-head"><strong id="observation-title">Source structure observation</strong><p>Geometry candidates drive the growth staging; semantic roles remain reviewable.</p></div>
+        <div class="observation-grid">
+          <div class="observation-cell"><span class="detail-label">METHOD</span><strong>Pillow foreground mask + connected components + layout grouping</strong><small>candidate / 9 measured components</small></div>
+          <div class="observation-cell"><span class="detail-label">GROUPING</span><strong>2 actor groups</strong><small>symbol and wordmark candidates are staged from the supplied pixels</small></div>
+          <div class="observation-cell"><span class="detail-label">REVIEW BOUNDARY</span><strong>needs-review</strong><small>candidate geometry is not semantic recognition or equivalent editable SVG</small></div>
+          <div class="observation-cell"><span class="detail-label">EVIDENCE</span><strong><a href="output/source-analysis.json">Open source analysis</a> · <a href="output/growth-evidence.json">Growth evidence</a></strong><small>inspect masks, bounds, stage frame indices, GIF hashes, and unresolved items</small></div>
+        </div>
+        <div class="recognition-handoff" aria-label="Automatic structure recognition handoff"><div><span class="detail-label">AUTOMATIC STRUCTURE HANDOFF</span><strong>bounded-geometric-observation</strong><p>decoded pixels and layout heuristics only; no semantic or vector reconstruction claim</p></div><div><span class="detail-label">DECISION TRACE</span><p>estimate border background and foreground mask → extract connected components with deterministic ordering → hypothesize symbol and wordmark groups from layout and geometry → bind supported roles to source-pixel motion strategies</p></div><div><span class="detail-label">SAFE ACTION</span><p>Bind only observed actors; keep uncertain roles behind the static-canonical fallback.</p></div></div>
+        <p class="observation-map"><span>STAGED ACTOR MAP</span>origin_dot: origin_dot · arc: monogram_raw · bar: monogram_raw · monogram: monogram_raw · wordmark: wordmark_01, wordmark_02, wordmark_03, wordmark_04, wordmark_05, wordmark_06<small>These names are deterministic candidate bindings used by the showcase; review them before treating a raster role as semantic truth.</small></p>
+      </section>
+      <section id="prompt-lab" class="prompt-lab" aria-labelledby="prompt-lab-title">
+        <div class="prompt-lab-head">
+          <div>
+            <p class="eyebrow">Prompt lab / agent guidance</p>
+            <h2 id="prompt-lab-title">Describe the identity. Motiflux chooses the route.</h2>
+            <p>Give the skill the source image, surface, industry, foreground growth order, visual controls, accessibility behavior, and output. The controls below update this local preview and the copyable request; they do not regenerate or rewrite the committed GIF pixels in the browser. Editing the request is text-only: it does not automatically reroute the preview. Choose a route or preset explicitly, then use “Sync controls to request” only when you want to replace the text. The stage labels below are candidate descriptions for this checked-in raster; review them before treating them as semantic roles. Use the storyboard chips to read the active construction phase.</p>
+          </div>
+           <div class="prompt-lab-order"><span>RECOMMENDED ORDER</span><strong>source → theme → growth → tuning → output → proof</strong><small>Say what must stay unchanged first. Then name one route and one measurable refinement.</small></div>
+        </div>
+        <div class="prompt-lab-grid">
+          <div class="prompt-editor">
+            <label class="detail-label" for="motion-prompt">COPYABLE REQUEST</label>
+            <textarea id="motion-prompt" class="motion-prompt" data-motion-prompt rows="8">Animate this supplied logo for an AI technology company. Surface: brand identity. Route it to ai-field. Preserve the source geometry and grow only observed actors in this order: blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo. Execute the source-pixel foreground route convergence / polar-counter / seeded signals converge into measured actors. Path strategy: seeded signals converge into measured actors. Speed profile: accelerate into geometry and decelerate at lockup. Treat raster stage labels as candidates and keep a static canonical fallback. Use a solid #0B0D12 background, 1600ms, speed 1.25x, center outward direction, no particles, respect reduced motion, and export GIF. Lifecycle: browser changes are preview-only; the named generator creates baked files; call the result verified only after source identity, frame, runtime, accessibility, and human-review checks pass. Evidence required: report actual output paths plus candidate, needs-review, not_run, and unresolved items.</textarea>
+            <div class="prompt-actions"><button type="button" data-prompt-preset="ai">AI technology preset</button><button type="button" data-prompt-preset="education">Education preset</button><button type="button" data-prompt-preset="premium">Premium preset</button><button type="button" data-sync-prompt>Sync controls to request</button><button type="button" data-copy-prompt>Copy request</button></div>
+            <p class="copy-status" data-copy-status aria-live="polite">Edit the request, then copy it into the skill.</p>
+          <div class="evidence-status" aria-label="Current evidence status"><span class="detail-label">CURRENT EVIDENCE</span><strong>GIF/PDF: baked · evidence: candidate · review: needs-review</strong><small>not_run: raster-to-vector reconstruction, human role review, browser render analysis · unresolved: candidate role semantics</small></div>
+          </div>
+          <div class="route-readout" aria-live="polite">
+            <label class="detail-label" for="route-select">ROUTE PREVIEW</label>
+            <select id="route-select" data-route-select>
+              <option value="system-spatial">System-spatial</option><option value="premium-quiet">Premium-quiet</option><option value="developer-open">Developer-open</option><option value="ai-field" selected>AI-field</option><option value="fintech-trust">Fintech-trust</option><option value="security-shield">Security-shield</option><option value="commerce-energy">Commerce-energy</option><option value="automotive-precision">Automotive-precision</option><option value="sports-impact">Sports-impact</option><option value="cinematic-title">Cinematic-title</option><option value="nature-flow">Nature-flow</option><option value="gaming-world">Gaming-world</option><option value="accessibility-first">Accessibility-first</option>
+            </select>
+            <p><span>SELECTED THEME</span><strong data-route-name>AI-field</strong></p>
+             <p><span>TRIGGER TAGS</span><strong data-route-trigger>AI, artificial intelligence</strong></p>
+             <p><span>FOREGROUND TRAJECTORY</span><strong data-route-trajectory>Signal convergence into the measured source pixels.</strong></p>
+             <p><span>DRAW-ON IMPLEMENTATION</span><strong data-route-construction>convergence / seeded signals converge into measured actors</strong></p>
+             <p><span>SPEED PROFILE</span><strong data-route-speed>accelerate into geometry and decelerate at lockup</strong></p>
+             <p><span>STAGE ORDER</span><strong data-route-sequence>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</strong></p>
+             <figure class="route-preview"><span class="detail-label">BAKED ROUTE OUTPUT / GIF OR POSTER</span><img data-route-animation src="assets/animations/prysai-ai-field.gif" alt="AI-field selected route preview: source logo growth animation"><img data-route-animation-poster hidden src="assets/animations/prysai-ai-field-poster.png" alt="AI-field static canonical fallback for reduced motion"><figcaption>Changing the route changes this checked-in GIF. Reduced motion shows its static canonical poster. Tuning controls below change only the local shell simulation until the generator is rerun.</figcaption><p class="preview-state" data-preview-state role="status" aria-live="polite">GIF evidence · checked-in route asset · browser tuning is preview-only until the generator is rerun.</p></figure>
+             <a class="route-gif-link" data-route-gif href="assets/animations/prysai-ai-field.gif" download>Open selected AI-field GIF</a>
+          </div>
+        </div>
+        <div class="tuning-panel parameter-panel">
+           <div class="tuning-head"><div><span class="detail-label">PROMPT COMPOSER / LOCAL PREVIEW ONLY</span><p>Use these controls to learn precise tuning language. Background, particles, duration, speed, direction, and reduced motion change this page preview only. Downloaded GIF/PDF pixels remain unchanged until the named generator is run.</p></div><span class="tuning-boundary">PREVIEW ONLY</span></div>
+          <div class="recipe-row" aria-label="Common tuning recipes"><span class="detail-label">QUICK RECIPES</span><button type="button" data-recipe="solid">Pure color</button><button type="button" data-recipe="quiet">Slow reading</button><button type="button" data-recipe="clean">No particles</button><button type="button" data-recipe="accessible">Low motion</button></div>
+          <div class="tuning-grid">
+             <label>Surface<select data-param="surface"><option value="brand identity" selected>Brand identity</option><option value="product interface">Product interface</option><option value="campaign title">Campaign title</option><option value="social reveal">Social reveal</option></select></label>
+             <label>Background<select data-param="background"><option value="theme" selected>Theme background</option><option value="dark">Plain dark</option><option value="solid">Solid color</option><option value="transparent">Transparent shell</option></select></label>
+            <label>Solid color<input data-param="background-color" type="color" value="#0B0D12"><output data-background-swatch>#0B0D12</output><small class="control-note">used only when Background = Solid color</small></label>
+            <label>Duration<input data-param="duration" type="range" min="0.8" max="3.2" step="0.1" value="1.8"><output data-value-for="duration">1.8 s</output></label>
+            <label>Speed<select data-param="speed"><option value="0.75">0.75x / slow</option><option value="1" selected>1x / medium</option><option value="1.25">1.25x / fast</option><option value="1.5">1.5x / very fast</option></select></label>
+           <label>Direction<select data-param="direction"><option value="radial" selected>Center outward</option><option value="left-to-right">Left to right</option><option value="right-to-left">Right to left</option></select><small class="control-note">preview entry cue; not a baked showcase flag</small></label>
+             <label class="check-label"><input data-param="particles" type="checkbox" checked> Auxiliary particles<small class="control-note">shell preview; bake with <code>--no-particles</code></small></label>
+             <label>Motion<select data-param="reduced-motion"><option value="respect" selected>Respect system setting</option><option value="full">Full motion preview</option><option value="reduced">Reduced / canonical</option></select><small class="control-note">page preview only; GIF remains animated</small></label>
+            <label>Output<select data-param="format"><option value="gif" selected>GIF / existing asset</option><option value="html-svg">HTML + SVG / run skill</option><option value="pdf">PDF atlas / existing asset</option></select><small class="control-note">selection changes the request only; no exporter runs here</small></label>
+          </div>
+          <div class="request-summary" aria-live="polite"><span>REQUEST SUMMARY</span><strong data-config-summary>AI-field · theme background · 1.8 s · medium · center outward · particles on · respect system motion · GIF</strong></div>
+          <div class="route-export-command"><span class="detail-label">EXPORT CONFIRMATION GATE</span><p class="export-plan" data-export-plan>source: supplied Prysai JPG · route: AI-field · actor map: candidate / needs-review · tuning: brand identity, theme background, 1.8 s, 1x, center outward, particles · output: GIF · gaps: raster role acceptance and browser/accessibility proof remain open</p><p class="export-approval-state" data-export-approval-state aria-live="polite">pending · review the source, candidate actor map, tuning, output, and open gaps</p><div class="prompt-actions"><button type="button" data-export-approve>Approve plan</button><button type="button" data-export-correct>Correct actor mapping</button><button type="button" data-export-decline>Decline export</button></div><span class="detail-label">CURRENT CONFIGURATION / BAKED EXPORT COMMAND</span><pre><code data-route-export-command>python showcase/generate_showcase.py --theme ai-field --duration-ms 1800</code></pre><button type="button" data-copy-export-command>Copy export command</button><small data-route-export-note>baked target · writes the selected route export manifest and GIF</small><small>Displayed for copying only. Run it from the project root; browser controls never execute shell commands.</small></div>
+           <p class="static-boundary"><strong>Preview:</strong> browser controls only. <strong>Baked:</strong> run <code>python showcase/generate_showcase.py</code> for the 13 checked-in GIFs and PDF, or the skill's <code>project</code> + <code>build</code> path for a source-specific HTML/SVG package. <strong>Verified:</strong> only after files, frame evidence, runtime checks, and source identity checks pass. <a href="https://github.com/uuzzrm/motiflux/blob/main/skills/motiflux/guides/prompting.md">Prompt guide</a> · <a href="https://github.com/uuzzrm/motiflux/blob/main/skills/motiflux/guides/export-and-tuning.md">Export and tuning guide</a> · <a href="output/pdf/motiflux-theme-atlas.pdf">Download PDF atlas</a> · <a href="output/source-analysis.json">View source observation</a> · <a href="output/growth-evidence.json">View growth evidence</a></p>
+            <details class="export-details"><summary>Show exact export commands</summary><pre><code>python showcase/generate_showcase.py --theme ai-field --background '#0B0D12' --duration-ms 1600 --speed 1.25 --no-particles
+python showcase/generate_showcase.py --background '#F4F1E8' --duration-ms 2200 --speed 0.75 --no-particles
+ python skills/motiflux/tools/motiflux.py project path/to/logo.svg "AI logo animation, export HTML SVG" work/motiflux-project
+python skills/motiflux/tools/motiflux.py validate motion-plan work/motiflux-project/motion-plan.yaml
+python skills/motiflux/tools/motiflux.py build path/to/logo.svg work/motiflux-project/motion-plan.yaml work/motiflux-package</code></pre><p>For a JPG or PNG, the showcase GIF is source-pixel based and remains a reviewable candidate. Provide SVG when editable vector actors are required.</p></details>
+        </div>
       </section>
       <section id="theme-atlas" aria-labelledby="grid-title">
         <div class="controls">
-          <div><div id="grid-title" class="controls-copy">Theme animation atlas / algorithm notes are secondary</div><div data-filter-status class="controls-copy">13 of 13 animations shown</div></div>
+           <div><h2 id="grid-title" class="section-title">Theme animation atlas</h2><div data-filter-status class="controls-copy">13 of 13 animations shown · same stages, different foreground paths</div></div>
           <div class="controls-actions"><input class="filter" data-filter type="search" placeholder="Filter by theme or keyword" aria-label="Filter themes"><button type="button" data-action="play">Play all</button><button type="button" data-action="pause">Pause</button><button type="button" data-action="replay">Replay</button><span class="route-state" data-motion-label>RUNNING</span></div>
         </div>
-        <div class="theme-grid"><article class="theme-card" data-theme="system-spatial" data-search="System-spatial system, product, saas, dashboard, enterprise, interface system-spatial grid logo-growth hierarchy weight grid standard" style="--accent:#8aa4ff;--stage-bg:#101723;--theme-index:01">
+        <div class="theme-grid"><article class="theme-card" data-theme="system-spatial" data-search="System-spatial system, product, saas, dashboard, enterprise, interface system product saas dashboard enterprise interface structured clear technology education learning teaching course knowledge 教育 学习 课程 教学 知识 system-spatial grid logo-growth hierarchy weight grid scan-forward standard measured actor-to-actor grid locks hierarchy stagger with a slow final lock" style="--accent:#8aa4ff;--stage-bg:#101723;--theme-index:01">
   <header class="card-head">
     <span class="card-number">01</span>
     <div>
@@ -74,37 +224,45 @@
     </div>
      <div class="result-cell motion-output pattern-grid">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="grid" data-duration-ms="1800" data-tempo="1.0" data-beats="locate / draw / lock" data-animation-src="assets/animations/prysai-system-spatial.gif" data-poster-src="assets/animations/prysai-system-spatial-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="system-spatial" data-effect="grid" data-duration-ms="1800" data-tempo="1.0" data-beats="locate / draw / lock" data-animation-src="assets/animations/prysai-system-spatial.gif" data-poster-src="assets/animations/prysai-system-spatial-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-system-spatial-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-system-spatial-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-system-spatial-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-system-spatial-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-system-spatial-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-system-spatial-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-system-spatial-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.14,&quot;arc&quot;:0.31,&quot;bar&quot;:0.47,&quot;monogram&quot;:0.64,&quot;wordmark&quot;:0.96,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="knowledge-graph-lock" data-foreground-mode="grid" data-foreground-variant="scan-forward" data-path-strategy="measured actor-to-actor grid locks" data-speed-profile="hierarchy stagger with a slow final lock" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-system-spatial.gif" alt="System-spatial style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="System-spatial animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-system-spatial-poster.png" data-gif-src="assets/animations/prysai-system-spatial.gif" alt="System-spatial static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-system-spatial-poster.png" alt="Canonical System-spatial logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">locate</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="System-spatial animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek System-spatial animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-system-spatial.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>grid / scan-forward</strong><small>measured actor-to-actor grid locks</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">system-spatial</span><span class="tag">grid</span><span class="tag">logo-growth</span><span class="tag">hierarchy weight</span><span class="tag">knowledge-graph-lock</span><span class="tag">grid</span></div>
+    <div class="tag-row"><span class="tag">system-spatial</span><span class="tag">grid</span><span class="tag">logo-growth</span><span class="tag">hierarchy weight</span><span class="tag">knowledge-graph-lock</span><span class="tag">grid</span><span class="tag">scan-forward</span></div>
      <p class="intent">Communicate state change, hierarchy, and spatial continuity through semantic movement.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Place semantic nodes, connect their relationships, then lock the supplied mark component by component.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>grid / standard / steps</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>grid / scan-forward / standard / steps</strong><small>path: measured actor-to-actor grid locks<br>speed: hierarchy stagger with a slow final lock<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>scene-graph dependency ordering</li><li>shared spatial-anchor resolution</li><li>monotonic cubic interpolation</li><li>container-aware bounds</li><li>reduced-motion substitution</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>locate</span><span>draw</span><span>lock</span></div><span class="detail-label qa-label">QA FOCUS</span><p>spatial continuity; no layout shift; focus order; bounds</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Place semantic nodes, connect their relationships, then lock the supplied mark component by component. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Place semantic nodes, connect their relationships, then lock the supplied mark component by component. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="premium-quiet" data-search="Premium-quiet premium, luxury, fashion, beauty, editorial, quiet premium-quiet quiet logo-growth amplitude contour slow" style="--accent:#d7c7a7;--stage-bg:#171513;--theme-index:02">
+<article class="theme-card" data-theme="premium-quiet" data-search="Premium-quiet premium, luxury, fashion, beauty, editorial, quiet premium luxury fashion beauty editorial quiet elegant minimal premium-quiet quiet logo-growth amplitude contour polar-clockwise slow source contour trace followed by fill slow trace with a deliberate reading pause" style="--accent:#d7c7a7;--stage-bg:#171513;--theme-index:02">
   <header class="card-head">
     <span class="card-number">02</span>
     <div>
@@ -121,37 +279,45 @@
     </div>
      <div class="result-cell motion-output pattern-quiet">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="quiet" data-duration-ms="2400" data-tempo="0.72" data-beats="spark / trace / rest" data-animation-src="assets/animations/prysai-premium-quiet.gif" data-poster-src="assets/animations/prysai-premium-quiet-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="premium-quiet" data-effect="quiet" data-duration-ms="2400" data-tempo="0.72" data-beats="spark / trace / rest" data-animation-src="assets/animations/prysai-premium-quiet.gif" data-poster-src="assets/animations/prysai-premium-quiet-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-premium-quiet-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-premium-quiet-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-premium-quiet-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-premium-quiet-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-premium-quiet-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-premium-quiet-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-premium-quiet-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.18,&quot;arc&quot;:0.38,&quot;bar&quot;:0.56,&quot;monogram&quot;:0.74,&quot;wordmark&quot;:0.98,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="contour-etch" data-foreground-mode="contour" data-foreground-variant="polar-clockwise" data-path-strategy="source contour trace followed by fill" data-speed-profile="slow trace with a deliberate reading pause" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-premium-quiet.gif" alt="Premium-quiet style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Premium-quiet animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-premium-quiet-poster.png" data-gif-src="assets/animations/prysai-premium-quiet.gif" alt="Premium-quiet static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-premium-quiet-poster.png" alt="Canonical Premium-quiet logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">spark</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Premium-quiet animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Premium-quiet animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-premium-quiet.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>contour / polar-clockwise</strong><small>source contour trace followed by fill</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">premium-quiet</span><span class="tag">quiet</span><span class="tag">logo-growth</span><span class="tag">amplitude</span><span class="tag">contour-etch</span><span class="tag">contour</span></div>
+    <div class="tag-row"><span class="tag">premium-quiet</span><span class="tag">quiet</span><span class="tag">logo-growth</span><span class="tag">amplitude</span><span class="tag">contour-etch</span><span class="tag">contour</span><span class="tag">polar-clockwise</span></div>
      <p class="intent">Create perceived value through restraint, material presence, optical alignment, and deliberate timing.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Trace the mark&#x27;s measured outer contour first, then let the solid identity resolve with optical restraint.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>contour / slow / soft</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>contour / polar-clockwise / slow / soft</strong><small>path: source contour trace followed by fill<br>speed: slow trace with a deliberate reading pause<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>low-amplitude transform field</li><li>opacity-and-mask sequencing</li><li>slow monotonic interpolation</li><li>optical-alignment correction</li><li>low-frequency highlight pass</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>spark</span><span>trace</span><span>rest</span></div><span class="detail-label qa-label">QA FOCUS</span><p>contour integrity; optical centering; frame pacing; typography</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Trace the mark&#x27;s measured outer contour first, then let the solid identity resolve with optical restraint. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Trace the mark&#x27;s measured outer contour first, then let the solid identity resolve with optical restraint. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="developer-open" data-search="Developer-open developer, open source, opensource, api, cli, code developer-open scan logo-growth phase step token staggered" style="--accent:#79e2a4;--stage-bg:#0d1714;--theme-index:03">
+<article class="theme-card" data-theme="developer-open" data-search="Developer-open developer, open source, opensource, api, cli, code developer open source opensource api cli code tooling technical precise developer-open scan logo-growth phase step token scan-reverse staggered deterministic left-to-right actor commits even token cadence with short pauses" style="--accent:#79e2a4;--stage-bg:#0d1714;--theme-index:03">
   <header class="card-head">
     <span class="card-number">03</span>
     <div>
@@ -168,42 +334,50 @@
     </div>
      <div class="result-cell motion-output pattern-scan">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="scan" data-duration-ms="1800" data-tempo="1.0" data-beats="parse / stroke / commit" data-animation-src="assets/animations/prysai-developer-open.gif" data-poster-src="assets/animations/prysai-developer-open-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="developer-open" data-effect="scan" data-duration-ms="1800" data-tempo="1.0" data-beats="parse / stroke / commit" data-animation-src="assets/animations/prysai-developer-open.gif" data-poster-src="assets/animations/prysai-developer-open-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-developer-open-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-developer-open-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-developer-open-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-developer-open-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-developer-open-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-developer-open-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-developer-open-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.14,&quot;arc&quot;:0.32,&quot;bar&quot;:0.46,&quot;monogram&quot;:0.63,&quot;wordmark&quot;:0.96,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="token-commit" data-foreground-mode="token" data-foreground-variant="scan-reverse" data-path-strategy="deterministic left-to-right actor commits" data-speed-profile="even token cadence with short pauses" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-developer-open.gif" alt="Developer-open style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Developer-open animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-developer-open-poster.png" data-gif-src="assets/animations/prysai-developer-open.gif" alt="Developer-open static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-developer-open-poster.png" alt="Canonical Developer-open logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">parse</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Developer-open animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Developer-open animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-developer-open.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>token / scan-reverse</strong><small>deterministic left-to-right actor commits</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">developer-open</span><span class="tag">scan</span><span class="tag">logo-growth</span><span class="tag">phase step</span><span class="tag">token-commit</span><span class="tag">token</span></div>
+    <div class="tag-row"><span class="tag">developer-open</span><span class="tag">scan</span><span class="tag">logo-growth</span><span class="tag">phase step</span><span class="tag">token-commit</span><span class="tag">token</span><span class="tag">scan-reverse</span></div>
      <p class="intent">Make transformation legible to technical users through explicit phases and reproducible state.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Commit deterministic identity tokens in an inspectable sequence, one source component at a time.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>token / staggered / linear</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>token / scan-reverse / staggered / linear</strong><small>path: deterministic left-to-right actor commits<br>speed: even token cadence with short pauses<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>deterministic state machine</li><li>tokenized property channels</li><li>typed event timeline</li><li>semantic actor metadata</li><li>reproducible seek controls</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>parse</span><span>stroke</span><span>commit</span></div><span class="detail-label qa-label">QA FOCUS</span><p>determinism; event order; inspectability; keyboard operation</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Commit deterministic identity tokens in an inspectable sequence, one source component at a time. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Commit deterministic identity tokens in an inspectable sequence, one source component at a time. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="ai-field" data-search="AI-field ai, artificial intelligence, machine learning, ml, neural, data ai-field field logo-growth field density convergence field" style="--accent:#9c8cff;--stage-bg:#14122b;--theme-index:04">
+<article class="theme-card" data-theme="ai-field" data-search="AI-field ai, ai technology, artificial intelligence, machine learning, ml, neural ai ai technology artificial intelligence machine learning ml neural data model generative future intelligent 人工智能 生成式 生成式AI AI科技 人工智能技术 ai-field field logo-growth field density convergence polar-counter field seeded signals converge into measured actors accelerate into geometry and decelerate at lockup" style="--accent:#9c8cff;--stage-bg:#14122b;--theme-index:04">
   <header class="card-head">
     <span class="card-number">04</span>
     <div>
       <h2>AI-field</h2>
-      <p class="trigger">ai, artificial intelligence, machine learning, ml, neural, data</p>
+      <p class="trigger">ai, ai technology, artificial intelligence, machine learning, ml, neural</p>
     </div>
     <span class="route-state">ROUTE</span>
   </header>
@@ -215,37 +389,45 @@
     </div>
      <div class="result-cell motion-output pattern-field">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="field" data-duration-ms="1957" data-tempo="0.92" data-beats="seed / converge / land" data-animation-src="assets/animations/prysai-ai-field.gif" data-poster-src="assets/animations/prysai-ai-field-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="ai-field" data-effect="field" data-duration-ms="1960" data-tempo="0.92" data-beats="seed / converge / land" data-animation-src="assets/animations/prysai-ai-field.gif" data-poster-src="assets/animations/prysai-ai-field-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-ai-field-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-ai-field-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-ai-field-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-ai-field-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-ai-field-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-ai-field-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-ai-field-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.15,&quot;arc&quot;:0.33,&quot;bar&quot;:0.48,&quot;monogram&quot;:0.65,&quot;wordmark&quot;:0.97,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="signal-convergence" data-foreground-mode="convergence" data-foreground-variant="polar-counter" data-path-strategy="seeded signals converge into measured actors" data-speed-profile="accelerate into geometry and decelerate at lockup" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-ai-field.gif" alt="AI-field style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="AI-field animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-ai-field-poster.png" data-gif-src="assets/animations/prysai-ai-field.gif" alt="AI-field static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-ai-field-poster.png" alt="Canonical AI-field logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">seed</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="AI-field animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek AI-field animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-ai-field.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>convergence / polar-counter</strong><small>seeded signals converge into measured actors</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">ai-field</span><span class="tag">field</span><span class="tag">logo-growth</span><span class="tag">field density</span><span class="tag">signal-convergence</span><span class="tag">convergence</span></div>
+    <div class="tag-row"><span class="tag">ai-field</span><span class="tag">field</span><span class="tag">logo-growth</span><span class="tag">field density</span><span class="tag">signal-convergence</span><span class="tag">convergence</span><span class="tag">polar-counter</span></div>
      <p class="intent">Suggest intelligence through organized transformation rather than science-fiction decoration.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Move deterministic external signals into their measured Logo pixels until the mark assembles from the field.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>convergence / field / ease_out</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: r &gt; P &gt; y &gt; a &gt; s &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>convergence / polar-counter / field / ease_out</strong><small>path: seeded signals converge into measured actors<br>speed: accelerate into geometry and decelerate at lockup<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>constraint-to-signal mapping</li><li>seeded vector-field guidance</li><li>graph-flow convergence</li><li>progressive disclosure</li><li>confidence-bounded morphing</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>seed</span><span>converge</span><span>land</span></div><span class="detail-label qa-label">QA FOCUS</span><p>determinism; semantic landing; performance; reduced motion; misleading-data avoidance</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Move deterministic external signals into their measured Logo pixels until the mark assembles from the field. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Move deterministic external signals into their measured Logo pixels until the mark assembles from the field. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="fintech-trust" data-search="Fintech-trust fintech, banking, bank, payments, payment, trust fintech-trust ring logo-growth progress mode radial center" style="--accent:#6dd9c0;--stage-bg:#0c1c1b;--theme-index:05">
+<article class="theme-card" data-theme="fintech-trust" data-search="Fintech-trust fintech, banking, bank, payments, payment, trust fintech banking bank payments payment trust finance institutional reliable secure finance 金融 银行 支付 金融科技 可信 稳健 fintech-trust ring logo-growth progress mode radial polar-offset center center-outward progress gates the supplied actors steady processing with a bounded confirmation settle" style="--accent:#6dd9c0;--stage-bg:#0c1c1b;--theme-index:05">
   <header class="card-head">
     <span class="card-number">05</span>
     <div>
@@ -262,37 +444,45 @@
     </div>
      <div class="result-cell motion-output pattern-ring">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="ring" data-duration-ms="2093" data-tempo="0.86" data-beats="orbit / close / confirm" data-animation-src="assets/animations/prysai-fintech-trust.gif" data-poster-src="assets/animations/prysai-fintech-trust-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="fintech-trust" data-effect="ring" data-duration-ms="2090" data-tempo="0.86" data-beats="orbit / close / confirm" data-animation-src="assets/animations/prysai-fintech-trust.gif" data-poster-src="assets/animations/prysai-fintech-trust-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-fintech-trust-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-fintech-trust-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-fintech-trust-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-fintech-trust-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-fintech-trust-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-fintech-trust-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-fintech-trust-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.17,&quot;arc&quot;:0.35,&quot;bar&quot;:0.47,&quot;monogram&quot;:0.64,&quot;wordmark&quot;:0.97,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="progress-confirm" data-foreground-mode="radial" data-foreground-variant="polar-offset" data-path-strategy="center-outward progress gates the supplied actors" data-speed-profile="steady processing with a bounded confirmation settle" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-fintech-trust.gif" alt="Fintech-trust style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Fintech-trust animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-fintech-trust-poster.png" data-gif-src="assets/animations/prysai-fintech-trust.gif" alt="Fintech-trust static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-fintech-trust-poster.png" alt="Canonical Fintech-trust logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">orbit</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Fintech-trust animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Fintech-trust animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-fintech-trust.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>radial / polar-offset</strong><small>center-outward progress gates the supplied actors</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">fintech-trust</span><span class="tag">ring</span><span class="tag">logo-growth</span><span class="tag">progress mode</span><span class="tag">progress-confirm</span><span class="tag">radial</span></div>
+    <div class="tag-row"><span class="tag">fintech-trust</span><span class="tag">ring</span><span class="tag">logo-growth</span><span class="tag">progress mode</span><span class="tag">progress-confirm</span><span class="tag">radial</span><span class="tag">polar-offset</span></div>
      <p class="intent">Communicate reliability, controlled movement, and successful resolution.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Use a bounded progress state to reveal the mark from its center, then settle into an unambiguous confirmation.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>radial / center / smooth</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>radial / polar-offset / center / smooth</strong><small>path: center-outward progress gates the supplied actors<br>speed: steady processing with a bounded confirmation settle<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>monotonic progress</li><li>guarded state transitions</li><li>bounded confirmation spring</li><li>high-contrast completion cue</li><li>failure-safe cancellation</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>orbit</span><span>close</span><span>confirm</span></div><span class="detail-label qa-label">QA FOCUS</span><p>state correctness; cancellation; contrast; announcement timing; no false success</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Use a bounded progress state to reveal the mark from its center, then settle into an unambiguous confirmation. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Use a bounded progress state to reveal the mark from its center, then settle into an unambiguous confirmation. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="security-shield" data-search="Security-shield security, privacy, identity, authentication, auth, defense security-shield shield logo-growth verification state boundary late" style="--accent:#ffb86b;--stage-bg:#1b1510;--theme-index:06">
+<article class="theme-card" data-theme="security-shield" data-search="Security-shield security, privacy, identity, authentication, auth, defense security privacy identity authentication auth defense shield compliance protection 安全 隐私 认证 防护 盾牌 合规 security-shield shield logo-growth verification state boundary boundary-reverse late perimeter-first trace then interior unlock guarded boundary, quick verify, deliberate release" style="--accent:#ffb86b;--stage-bg:#1b1510;--theme-index:06">
   <header class="card-head">
     <span class="card-number">06</span>
     <div>
@@ -309,37 +499,45 @@
     </div>
      <div class="result-cell motion-output pattern-shield">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="shield" data-duration-ms="2250" data-tempo="0.8" data-beats="boundary / verify / unlock" data-animation-src="assets/animations/prysai-security-shield.gif" data-poster-src="assets/animations/prysai-security-shield-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="security-shield" data-effect="shield" data-duration-ms="2250" data-tempo="0.8" data-beats="boundary / verify / unlock" data-animation-src="assets/animations/prysai-security-shield.gif" data-poster-src="assets/animations/prysai-security-shield-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-security-shield-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-security-shield-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-security-shield-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-security-shield-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-security-shield-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-security-shield-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-security-shield-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.18,&quot;arc&quot;:0.39,&quot;bar&quot;:0.58,&quot;monogram&quot;:0.71,&quot;wordmark&quot;:0.985,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="boundary-unlock" data-foreground-mode="boundary" data-foreground-variant="boundary-reverse" data-path-strategy="perimeter-first trace then interior unlock" data-speed-profile="guarded boundary, quick verify, deliberate release" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-security-shield.gif" alt="Security-shield style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Security-shield animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-security-shield-poster.png" data-gif-src="assets/animations/prysai-security-shield.gif" alt="Security-shield static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-security-shield-poster.png" alt="Canonical Security-shield logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">boundary</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Security-shield animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Security-shield animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-security-shield.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>boundary / boundary-reverse</strong><small>perimeter-first trace then interior unlock</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">security-shield</span><span class="tag">shield</span><span class="tag">logo-growth</span><span class="tag">verification state</span><span class="tag">boundary-unlock</span><span class="tag">boundary</span></div>
+    <div class="tag-row"><span class="tag">security-shield</span><span class="tag">shield</span><span class="tag">logo-growth</span><span class="tag">verification state</span><span class="tag">boundary-unlock</span><span class="tag">boundary</span><span class="tag">boundary-reverse</span></div>
      <p class="intent">Convey boundary, verification, and controlled access.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Establish the measured Logo boundary first, verify the interior, and unlock the wordmark last.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>boundary / late / soft</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>boundary / boundary-reverse / late / soft</strong><small>path: perimeter-first trace then interior unlock<br>speed: guarded boundary, quick verify, deliberate release<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>boundary-first reveal</li><li>occlusion-and-aperture logic</li><li>finite-state verification sequence</li><li>restrained lock transition</li><li>interruptible animation</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>boundary</span><span>verify</span><span>unlock</span></div><span class="detail-label qa-label">QA FOCUS</span><p>semantic state; interruption; focus; contrast; temporal clarity</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Establish the measured Logo boundary first, verify the interior, and unlock the wordmark last. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Establish the measured Logo boundary first, verify the interior, and unlock the wordmark last. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="commerce-energy" data-search="Commerce-energy commerce, retail, shopping, marketplace, consumer, sale commerce-energy burst logo-growth interaction speed burst rapid" style="--accent:#ff6f91;--stage-bg:#24131b;--theme-index:07">
+<article class="theme-card" data-theme="commerce-energy" data-search="Commerce-energy commerce, retail, shopping, marketplace, consumer, sale commerce retail shopping marketplace consumer sale conversion friendly 电商 零售 购物 消费 促销 commerce-energy burst logo-growth interaction speed burst diagonal-forward rapid compressed actors release from a shared origin short anticipation, fast release, rapid settle" style="--accent:#ff6f91;--stage-bg:#24131b;--theme-index:07">
   <header class="card-head">
     <span class="card-number">07</span>
     <div>
@@ -356,37 +554,45 @@
     </div>
      <div class="result-cell motion-output pattern-burst">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="burst" data-duration-ms="1500" data-tempo="1.2" data-beats="compress / release / idle" data-animation-src="assets/animations/prysai-commerce-energy.gif" data-poster-src="assets/animations/prysai-commerce-energy-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="commerce-energy" data-effect="burst" data-duration-ms="1500" data-tempo="1.2" data-beats="compress / release / idle" data-animation-src="assets/animations/prysai-commerce-energy.gif" data-poster-src="assets/animations/prysai-commerce-energy-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-commerce-energy-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-commerce-energy-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-commerce-energy-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-commerce-energy-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-commerce-energy-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-commerce-energy-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-commerce-energy-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.1,&quot;arc&quot;:0.24,&quot;bar&quot;:0.35,&quot;monogram&quot;:0.42,&quot;wordmark&quot;:0.94,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="burst-assembly" data-foreground-mode="burst" data-foreground-variant="diagonal-forward" data-path-strategy="compressed actors release from a shared origin" data-speed-profile="short anticipation, fast release, rapid settle" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-commerce-energy.gif" alt="Commerce-energy style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Commerce-energy animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-commerce-energy-poster.png" data-gif-src="assets/animations/prysai-commerce-energy.gif" alt="Commerce-energy static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-commerce-energy-poster.png" alt="Canonical Commerce-energy logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">compress</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Commerce-energy animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Commerce-energy animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-commerce-energy.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>burst / diagonal-forward</strong><small>compressed actors release from a shared origin</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">commerce-energy</span><span class="tag">burst</span><span class="tag">logo-growth</span><span class="tag">interaction speed</span><span class="tag">burst-assembly</span><span class="tag">burst</span></div>
+    <div class="tag-row"><span class="tag">commerce-energy</span><span class="tag">burst</span><span class="tag">logo-growth</span><span class="tag">interaction speed</span><span class="tag">burst-assembly</span><span class="tag">burst</span><span class="tag">diagonal-forward</span></div>
      <p class="intent">Create approachability and action without making the brand feel unstable.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Compress identity components at a shared origin, release them outward, and settle quickly into the lockup.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>burst / rapid / ease_out</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; y &gt; a &gt; r &gt; s &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>burst / diagonal-forward / rapid / ease_out</strong><small>path: compressed actors release from a shared origin<br>speed: short anticipation, fast release, rapid settle<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>short interaction transitions</li><li>spring-like confirmation</li><li>badge-and-accent choreography</li><li>responsive hit-area anchoring</li><li>action-completion state machine</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>compress</span><span>release</span><span>idle</span></div><span class="detail-label qa-label">QA FOCUS</span><p>input latency; hit-area stability; repeat action; focus; touch behavior</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Compress identity components at a shared origin, release them outward, and settle quickly into the lockup. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Compress identity components at a shared origin, release them outward, and settle quickly into the lockup. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="automotive-precision" data-search="Automotive-precision automotive, mobility, transport, engineering, performance, industrial automotive-precision track logo-growth mass track standard" style="--accent:#e2edf1;--stage-bg:#11191e;--theme-index:08">
+<article class="theme-card" data-theme="automotive-precision" data-search="Automotive-precision automotive, mobility, transport, engineering, performance, industrial automotive mobility transport engineering performance industrial mechanical 汽车 交通 工业 工程 性能 机械 automotive-precision track logo-growth mass track scan-slope standard single-axis actor travel with velocity continuity heavy forms slow; scan accent remains fast" style="--accent:#e2edf1;--stage-bg:#11191e;--theme-index:08">
   <header class="card-head">
     <span class="card-number">08</span>
     <div>
@@ -403,37 +609,45 @@
     </div>
      <div class="result-cell motion-output pattern-track">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="track" data-duration-ms="2000" data-tempo="0.9" data-beats="scan / draw / settle" data-animation-src="assets/animations/prysai-automotive-precision.gif" data-poster-src="assets/animations/prysai-automotive-precision-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="automotive-precision" data-effect="track" data-duration-ms="2000" data-tempo="0.9" data-beats="scan / draw / settle" data-animation-src="assets/animations/prysai-automotive-precision.gif" data-poster-src="assets/animations/prysai-automotive-precision-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-automotive-precision-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-automotive-precision-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-automotive-precision-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-automotive-precision-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-automotive-precision-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-automotive-precision-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-automotive-precision-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.14,&quot;arc&quot;:0.31,&quot;bar&quot;:0.47,&quot;monogram&quot;:0.64,&quot;wordmark&quot;:0.96,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="kinematic-lock" data-foreground-mode="track" data-foreground-variant="scan-slope" data-path-strategy="single-axis actor travel with velocity continuity" data-speed-profile="heavy forms slow; scan accent remains fast" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-automotive-precision.gif" alt="Automotive-precision style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Automotive-precision animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-automotive-precision-poster.png" data-gif-src="assets/animations/prysai-automotive-precision.gif" alt="Automotive-precision static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-automotive-precision-poster.png" alt="Canonical Automotive-precision logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">scan</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Automotive-precision animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Automotive-precision animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-automotive-precision.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>track / scan-slope</strong><small>single-axis actor travel with velocity continuity</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">automotive-precision</span><span class="tag">track</span><span class="tag">logo-growth</span><span class="tag">mass</span><span class="tag">kinematic-lock</span><span class="tag">track</span></div>
+    <div class="tag-row"><span class="tag">automotive-precision</span><span class="tag">track</span><span class="tag">logo-growth</span><span class="tag">mass</span><span class="tag">kinematic-lock</span><span class="tag">track</span><span class="tag">scan-slope</span></div>
      <p class="intent">Express mass, direction, precision, and mechanical confidence.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Carry each supplied component along one directional velocity path and lock it with a controlled scan.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>track / standard / ease_out</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>track / scan-slope / standard / ease_out</strong><small>path: single-axis actor travel with velocity continuity<br>speed: heavy forms slow; scan accent remains fast<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>kinematic trajectory planning</li><li>acceleration and jerk limits</li><li>anchor-based transforms</li><li>directional light sweep</li><li>constrained settle</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>scan</span><span>draw</span><span>settle</span></div><span class="detail-label qa-label">QA FOCUS</span><p>jerk continuity; clipping; anchor correctness; responsive bounds</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Carry each supplied component along one directional velocity path and lock it with a controlled scan. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Carry each supplied component along one directional velocity path and lock it with a controlled scan. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="sports-impact" data-search="Sports-impact sports, fitness, competition, speed, impact, bold sports-impact speed logo-growth impact strength impact rapid" style="--accent:#ff5c4d;--stage-bg:#24120f;--theme-index:09">
+<article class="theme-card" data-theme="sports-impact" data-search="Sports-impact sports, fitness, competition, speed, impact, bold sports fitness competition speed impact bold dynamic athletics 体育 健身 竞技 速度 冲击 sports-impact speed logo-growth impact strength impact diagonal-reverse impact horizontal compression followed by directional release sharp impact with controlled recovery" style="--accent:#ff5c4d;--stage-bg:#24120f;--theme-index:09">
   <header class="card-head">
     <span class="card-number">09</span>
     <div>
@@ -450,37 +664,45 @@
     </div>
      <div class="result-cell motion-output pattern-speed">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="speed" data-duration-ms="1333" data-tempo="1.35" data-beats="charge / strike / recover" data-animation-src="assets/animations/prysai-sports-impact.gif" data-poster-src="assets/animations/prysai-sports-impact-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="sports-impact" data-effect="speed" data-duration-ms="1330" data-tempo="1.35" data-beats="charge / strike / recover" data-animation-src="assets/animations/prysai-sports-impact.gif" data-poster-src="assets/animations/prysai-sports-impact-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-sports-impact-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-sports-impact-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-sports-impact-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-sports-impact-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-sports-impact-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-sports-impact-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-sports-impact-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.1,&quot;arc&quot;:0.27,&quot;bar&quot;:0.42,&quot;monogram&quot;:0.58,&quot;wordmark&quot;:0.98,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="impact-release" data-foreground-mode="impact" data-foreground-variant="diagonal-reverse" data-path-strategy="horizontal compression followed by directional release" data-speed-profile="sharp impact with controlled recovery" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-sports-impact.gif" alt="Sports-impact style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Sports-impact animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-sports-impact-poster.png" data-gif-src="assets/animations/prysai-sports-impact.gif" alt="Sports-impact static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-sports-impact-poster.png" alt="Canonical Sports-impact logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">charge</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Sports-impact animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Sports-impact animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-sports-impact.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>impact / diagonal-reverse</strong><small>horizontal compression followed by directional release</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">sports-impact</span><span class="tag">speed</span><span class="tag">logo-growth</span><span class="tag">impact strength</span><span class="tag">impact-release</span><span class="tag">impact</span></div>
+    <div class="tag-row"><span class="tag">sports-impact</span><span class="tag">speed</span><span class="tag">logo-growth</span><span class="tag">impact strength</span><span class="tag">impact-release</span><span class="tag">impact</span><span class="tag">diagonal-reverse</span></div>
      <p class="intent">Create energy through anticipation, compression, release, and recovery.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Compress the full supplied mark, release it along its dominant axis, and recover to a readable final silhouette.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>impact / rapid / ease_out</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; y &gt; a &gt; r &gt; s &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>impact / diagonal-reverse / impact / ease_out</strong><small>path: horizontal compression followed by directional release<br>speed: sharp impact with controlled recovery<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>anticipation compression</li><li>velocity burst</li><li>directional smear or stretch</li><li>controlled overshoot</li><li>recovery-to-idle state</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>charge</span><span>strike</span><span>recover</span></div><span class="detail-label qa-label">QA FOCUS</span><p>peak silhouette; deformation limit; flashing risk; reduced motion</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Compress the full supplied mark, release it along its dominant axis, and recover to a readable final silhouette. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Compress the full supplied mark, release it along its dominant axis, and recover to a readable final silhouette. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="cinematic-title" data-search="Cinematic-title cinematic, film, movie, title, trailer, story cinematic-title curtain logo-growth depth aperture late" style="--accent:#d7d2ff;--stage-bg:#100f1c;--theme-index:10">
+<article class="theme-card" data-theme="cinematic-title" data-search="Cinematic-title cinematic, film, movie, title, trailer, story cinematic film movie title trailer story dramatic suspense 电影 片头 预告 叙事 戏剧 cinematic-title curtain logo-growth depth aperture diagonal-center title center aperture gates contour and lockup layers slow exposure followed by a long title hold" style="--accent:#d7d2ff;--stage-bg:#100f1c;--theme-index:10">
   <header class="card-head">
     <span class="card-number">10</span>
     <div>
@@ -497,37 +719,45 @@
     </div>
      <div class="result-cell motion-output pattern-curtain">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="curtain" data-duration-ms="2400" data-tempo="0.65" data-beats="dark / reveal / hold" data-animation-src="assets/animations/prysai-cinematic-title.gif" data-poster-src="assets/animations/prysai-cinematic-title-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="cinematic-title" data-effect="curtain" data-duration-ms="2400" data-tempo="0.65" data-beats="dark / reveal / hold" data-animation-src="assets/animations/prysai-cinematic-title.gif" data-poster-src="assets/animations/prysai-cinematic-title-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-cinematic-title-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-cinematic-title-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-cinematic-title-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-cinematic-title-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-cinematic-title-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-cinematic-title-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-cinematic-title-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.18,&quot;arc&quot;:0.38,&quot;bar&quot;:0.58,&quot;monogram&quot;:0.69,&quot;wordmark&quot;:0.985,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="aperture-title" data-foreground-mode="aperture" data-foreground-variant="diagonal-center" data-path-strategy="center aperture gates contour and lockup layers" data-speed-profile="slow exposure followed by a long title hold" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-cinematic-title.gif" alt="Cinematic-title style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Cinematic-title animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-cinematic-title-poster.png" data-gif-src="assets/animations/prysai-cinematic-title.gif" alt="Cinematic-title static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-cinematic-title-poster.png" alt="Canonical Cinematic-title logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">dark</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Cinematic-title animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Cinematic-title animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-cinematic-title.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>aperture / diagonal-center</strong><small>center aperture gates contour and lockup layers</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">cinematic-title</span><span class="tag">curtain</span><span class="tag">logo-growth</span><span class="tag">depth</span><span class="tag">aperture-title</span><span class="tag">aperture</span></div>
+    <div class="tag-row"><span class="tag">cinematic-title</span><span class="tag">curtain</span><span class="tag">logo-growth</span><span class="tag">depth</span><span class="tag">aperture-title</span><span class="tag">aperture</span><span class="tag">diagonal-center</span></div>
      <p class="intent">Reveal meaning through attention control, scale, silence, and composition.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Open a central title aperture through the dark field, expose the lockup in layers, and hold the reading pause.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>aperture / late / soft</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: i &gt; a &gt; s &gt; y &gt; r &gt; P</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>aperture / diagonal-center / title / soft</strong><small>path: center aperture gates contour and lockup layers<br>speed: slow exposure followed by a long title hold<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>camera-space composition</li><li>depth-layer parallax</li><li>masked reveal</li><li>light-to-dark exposure curve</li><li>beat-driven timing</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>dark</span><span>reveal</span><span>hold</span></div><span class="detail-label qa-label">QA FOCUS</span><p>final readability; crop safety; contrast; reduced motion; static fallback</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Open a central title aperture through the dark field, expose the lockup in layers, and hold the reading pause. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Open a central title aperture through the dark field, expose the lockup in layers, and hold the reading pause. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="nature-flow" data-search="Nature-flow nature, organic, wellness, sustainable, water, wind nature-flow wave logo-growth flow amplitude organic slow" style="--accent:#b9d8a5;--stage-bg:#132017;--theme-index:11">
+<article class="theme-card" data-theme="nature-flow" data-search="Nature-flow nature, organic, wellness, sustainable, water, wind nature organic wellness sustainable water wind growth calm health 自然 有机 健康 环保 成长 nature-flow wave logo-growth flow amplitude organic wave-phase-a organic curvature-following drift into source positions low-frequency flow with damped settle" style="--accent:#b9d8a5;--stage-bg:#132017;--theme-index:11">
   <header class="card-head">
     <span class="card-number">11</span>
     <div>
@@ -544,37 +774,45 @@
     </div>
      <div class="result-cell motion-output pattern-wave">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="wave" data-duration-ms="2400" data-tempo="0.72" data-beats="breathe / grow / root" data-animation-src="assets/animations/prysai-nature-flow.gif" data-poster-src="assets/animations/prysai-nature-flow-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="nature-flow" data-effect="wave" data-duration-ms="2400" data-tempo="0.72" data-beats="breathe / grow / root" data-animation-src="assets/animations/prysai-nature-flow.gif" data-poster-src="assets/animations/prysai-nature-flow-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-nature-flow-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-nature-flow-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-nature-flow-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-nature-flow-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-nature-flow-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-nature-flow-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-nature-flow-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.18,&quot;arc&quot;:0.38,&quot;bar&quot;:0.56,&quot;monogram&quot;:0.7,&quot;wordmark&quot;:0.98,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="organic-current" data-foreground-mode="organic" data-foreground-variant="wave-phase-a" data-path-strategy="curvature-following drift into source positions" data-speed-profile="low-frequency flow with damped settle" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-nature-flow.gif" alt="Nature-flow style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Nature-flow animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-nature-flow-poster.png" data-gif-src="assets/animations/prysai-nature-flow.gif" alt="Nature-flow static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-nature-flow-poster.png" alt="Canonical Nature-flow logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">breathe</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Nature-flow animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Nature-flow animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-nature-flow.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>organic / wave-phase-a</strong><small>curvature-following drift into source positions</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">nature-flow</span><span class="tag">wave</span><span class="tag">logo-growth</span><span class="tag">flow amplitude</span><span class="tag">organic-current</span><span class="tag">organic</span></div>
+    <div class="tag-row"><span class="tag">nature-flow</span><span class="tag">wave</span><span class="tag">logo-growth</span><span class="tag">flow amplitude</span><span class="tag">organic-current</span><span class="tag">organic</span><span class="tag">wave-phase-a</span></div>
      <p class="intent">Imply growth, breath, flow, and connection without losing mark structure.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Carry each supplied component on a smooth low-frequency current before it roots into the canonical position.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>organic / slow / soft</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>organic / wave-phase-a / organic / soft</strong><small>path: curvature-following drift into source positions<br>speed: low-frequency flow with damped settle<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>curvature-following flow</li><li>bounded low-frequency drift</li><li>phase-offset secondary actors</li><li>damped wave</li><li>organic settle</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>breathe</span><span>grow</span><span>root</span></div><span class="detail-label qa-label">QA FOCUS</span><p>smoothness; amplitude bounds; topology; loop seam; reduced motion</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Carry each supplied component on a smooth low-frequency current before it roots into the canonical position. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Carry each supplied component on a smooth low-frequency current before it roots into the canonical position. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="gaming-world" data-search="Gaming-world gaming, esports, fantasy, sci-fi, character, quest gaming-world orbit logo-growth effect density orbit staggered" style="--accent:#62d7ff;--stage-bg:#101b2b;--theme-index:12">
+<article class="theme-card" data-theme="gaming-world" data-search="Gaming-world gaming, esports, fantasy, sci-fi, character, quest gaming esports fantasy sci-fi character quest arcade playful 游戏 电竞 奇幻 科幻 街机 gaming-world orbit logo-growth effect density orbit polar-orbit orbit deterministic orbital arrivals into actor targets spawn, accumulate, snap to reward, clear" style="--accent:#62d7ff;--stage-bg:#101b2b;--theme-index:12">
   <header class="card-head">
     <span class="card-number">12</span>
     <div>
@@ -591,37 +829,45 @@
     </div>
      <div class="result-cell motion-output pattern-orbit">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="orbit" data-duration-ms="1636" data-tempo="1.1" data-beats="spawn / assemble / clear" data-animation-src="assets/animations/prysai-gaming-world.gif" data-poster-src="assets/animations/prysai-gaming-world-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="gaming-world" data-effect="orbit" data-duration-ms="1640" data-tempo="1.1" data-beats="spawn / assemble / clear" data-animation-src="assets/animations/prysai-gaming-world.gif" data-poster-src="assets/animations/prysai-gaming-world-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-gaming-world-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-gaming-world-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-gaming-world-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-gaming-world-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-gaming-world-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-gaming-world-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-gaming-world-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.13,&quot;arc&quot;:0.3,&quot;bar&quot;:0.46,&quot;monogram&quot;:0.64,&quot;wordmark&quot;:0.98,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="orbit-quest" data-foreground-mode="orbit" data-foreground-variant="polar-orbit" data-path-strategy="deterministic orbital arrivals into actor targets" data-speed-profile="spawn, accumulate, snap to reward, clear" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-gaming-world.gif" alt="Gaming-world style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Gaming-world animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-gaming-world-poster.png" data-gif-src="assets/animations/prysai-gaming-world.gif" alt="Gaming-world static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-gaming-world-poster.png" alt="Canonical Gaming-world logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">spawn</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Gaming-world animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Gaming-world animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-gaming-world.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>orbit / polar-orbit</strong><small>deterministic orbital arrivals into actor targets</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">gaming-world</span><span class="tag">orbit</span><span class="tag">logo-growth</span><span class="tag">effect density</span><span class="tag">orbit-quest</span><span class="tag">orbit</span></div>
+    <div class="tag-row"><span class="tag">gaming-world</span><span class="tag">orbit</span><span class="tag">logo-growth</span><span class="tag">effect density</span><span class="tag">orbit-quest</span><span class="tag">orbit</span><span class="tag">polar-orbit</span></div>
      <p class="intent">Create personality, reward, and world-building around a recognizable mark.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Spawn identity components on deterministic orbits, assemble them as quest rewards, and clear the field.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>orbit / staggered / ease_out</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; y &gt; a &gt; r &gt; s &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>orbit / polar-orbit / orbit / ease_out</strong><small>path: deterministic orbital arrivals into actor targets<br>speed: spawn, accumulate, snap to reward, clear<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>stateful combo or quest beats</li><li>seeded particle secondary layers</li><li>bounded squash and stretch</li><li>camera emphasis</li><li>interaction-triggered replay</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>spawn</span><span>assemble</span><span>clear</span></div><span class="detail-label qa-label">QA FOCUS</span><p>readability; deterministic replay; flashing limits; performance; reduced motion</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Spawn identity components on deterministic orbits, assemble them as quest rewards, and clear the field. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Spawn identity components on deterministic orbits, assemble them as quest rewards, and clear the field. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article>
-<article class="theme-card" data-theme="accessibility-first" data-search="Accessibility-first accessible, accessibility, reduced motion, calm, inclusive, low motion accessibility-first plain logo-growth pause fade late" style="--accent:#f4f1df;--stage-bg:#1b1b19;--theme-index:13">
+<article class="theme-card" data-theme="accessibility-first" data-search="Accessibility-first accessible, accessibility, reduced motion, calm, inclusive, low motion accessible accessibility reduced motion calm inclusive low motion 低动效 低运动 键盘 keyboard assistive accessibility-first plain logo-growth pause fade opacity-stable accessible ordered opacity with stable source geometry opacity-first and no overshoot" style="--accent:#f4f1df;--stage-bg:#1b1b19;--theme-index:13">
   <header class="card-head">
     <span class="card-number">13</span>
     <div>
@@ -638,40 +884,48 @@
     </div>
      <div class="result-cell motion-output pattern-plain">
        <span class="cell-label">OUTPUT / LOGO GROWTH GIF</span>
-       <div class="motion-stage" data-motion-card data-effect="plain" data-duration-ms="2400" data-tempo="0.55" data-beats="appear / form / rest" data-animation-src="assets/animations/prysai-accessibility-first.gif" data-poster-src="assets/animations/prysai-accessibility-first-poster.png" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-state="playing">
+          <div class="motion-stage" data-motion-card data-theme-id="accessibility-first" data-effect="plain" data-duration-ms="2400" data-tempo="0.55" data-beats="appear / form / rest" data-animation-src="assets/animations/prysai-accessibility-first.gif" data-poster-src="assets/animations/prysai-accessibility-first-poster.png" data-stage-files="{&quot;blank&quot;:&quot;assets/animations/prysai-accessibility-first-blank.png&quot;,&quot;spark&quot;:&quot;assets/animations/prysai-accessibility-first-spark.png&quot;,&quot;arc&quot;:&quot;assets/animations/prysai-accessibility-first-arc.png&quot;,&quot;bar&quot;:&quot;assets/animations/prysai-accessibility-first-bar.png&quot;,&quot;monogram&quot;:&quot;assets/animations/prysai-accessibility-first-monogram.png&quot;,&quot;wordmark&quot;:&quot;assets/animations/prysai-accessibility-first-wordmark.png&quot;,&quot;canonical&quot;:&quot;assets/animations/prysai-accessibility-first-canonical.png&quot;}" data-stage-progress="{&quot;blank&quot;:0.0,&quot;spark&quot;:0.14,&quot;arc&quot;:0.29,&quot;bar&quot;:0.43,&quot;monogram&quot;:0.46,&quot;wordmark&quot;:0.93,&quot;canonical&quot;:1.0}" data-growth-sequence="blank / spark / arc / bar / monogram / wordmark / canonical" data-growth-display="blank / origin dot / circular arc / horizontal bar / P / monogram / Prysai wordmark / complete Logo" data-trajectory="semantic-fade" data-foreground-mode="fade" data-foreground-variant="opacity-stable" data-path-strategy="ordered opacity with stable source geometry" data-speed-profile="opacity-first and no overshoot" data-review-status="needs-review" data-state="blank" data-playback="poster">
          <div class="motion-effect motion-effect-a" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-b" aria-hidden="true"></div>
          <div class="motion-effect motion-effect-c" aria-hidden="true"></div>
-         <img class="growth-gif" src="assets/animations/prysai-accessibility-first.gif" alt="Accessibility-first style: Prysai logo grows from a spark into the complete wordmark" loading="lazy">
-         <img class="motion-freeze" hidden src="" alt="Paused frame of the logo growth animation" aria-hidden="true">
-         <span class="motion-phase" data-motion-phase>blank</span>
-      </div>
-      <div class="motion-controls" aria-label="Accessibility-first animation controls">
+           <img class="growth-gif" src="assets/animations/prysai-accessibility-first-poster.png" data-gif-src="assets/animations/prysai-accessibility-first.gif" alt="Accessibility-first static canonical fallback before the logo growth animation plays" loading="lazy">
+          <img class="motion-canonical" hidden src="assets/animations/prysai-accessibility-first-poster.png" alt="Canonical Accessibility-first logo frame">
+           <img class="motion-freeze" hidden src="" alt="Paused or reduced-motion frame of the logo growth animation">
+          <span class="motion-loading" hidden role="status">Loading animation frame...</span>
+          <div class="growth-storyboard" aria-label="Logo construction stages">
+            <span data-growth-stage="blank">00 blank</span><span data-growth-stage="spark">01 origin dot</span><span data-growth-stage="arc">02 circular arc</span><span data-growth-stage="bar">03 horizontal bar</span><span data-growth-stage="monogram">04 P / monogram</span><span data-growth-stage="wordmark">05 Prysai wordmark</span><span data-growth-stage="canonical">06 complete Logo</span>
+          </div>
+           <span class="motion-phase" data-motion-phase role="status" aria-live="polite">blank</span>
+           <span class="motion-beat" data-motion-beat aria-hidden="true">appear</span>
+       </div>
+      <div class="motion-controls" role="group" aria-label="Accessibility-first animation controls">
         <button type="button" data-card-action="play">Play</button>
         <button type="button" data-card-action="pause">Pause</button>
         <button type="button" data-card-action="replay">Replay</button>
-        <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
+          <div class="motion-timeline" aria-hidden="true"><span data-motion-progress></span></div>
         <span class="motion-time" data-motion-time>0.0s</span>
-      </div>
+       </div>
+       <label class="motion-seek-label"><span>CHECKPOINT TIMELINE</span><input class="motion-seek" data-motion-seek type="range" min="0" max="1" step="0.001" value="0" aria-label="Seek Accessibility-first animation checkpoints"><small>Shows a baked PNG checkpoint; the downloaded GIF remains a portable looping file.</small></label>
        <a class="download-animation" href="assets/animations/prysai-accessibility-first.gif" download>Open / download growth GIF</a>
+       <p class="motion-route-banner"><span>THEME-SPECIFIC FOREGROUND ROUTE</span><strong>fade / opacity-stable</strong><small>ordered opacity with stable source geometry</small></p>
     </div>
   </div>
   <div class="card-copy">
-    <div class="tag-row"><span class="tag">accessibility-first</span><span class="tag">plain</span><span class="tag">logo-growth</span><span class="tag">pause</span><span class="tag">semantic-fade</span><span class="tag">fade</span></div>
+    <div class="tag-row"><span class="tag">accessibility-first</span><span class="tag">plain</span><span class="tag">logo-growth</span><span class="tag">pause</span><span class="tag">semantic-fade</span><span class="tag">fade</span><span class="tag">opacity-stable</span></div>
      <p class="intent">Preserve orientation and feedback while minimizing vestibular, cognitive, and visual load.</p>
      <p class="trajectory-note"><span>FOREGROUND TRAJECTORY</span>Use semantic order and opacity only, preserving stable geometry, focus, and a static-safe canonical landing.</p>
-     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>fade / late / soft</strong><small>stages: blank &gt; dot &gt; arc &gt; bar &gt; P &gt; letters &gt; canonical<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
+     <p class="construction-note"><span>FOREGROUND CONTRACT</span><strong>fade / opacity-stable / accessible / soft</strong><small>path: ordered opacity with stable source geometry<br>speed: opacity-first and no overshoot<br>stages: blank &gt; origin dot &gt; circular arc &gt; horizontal bar &gt; P / monogram &gt; Prysai wordmark &gt; complete Logo<br>letter order: P &gt; r &gt; y &gt; s &gt; a &gt; i</small></p>
     <div class="detail-grid">
       <div><span class="detail-label">ALGORITHM STACK</span><ul><li>opacity and color state changes</li><li>short translation only when necessary</li><li>user-controlled pause and tempo</li><li>focus-preserving transitions</li><li>static canonical fallback</li></ul></div>
       <div><span class="detail-label">BEATS</span><div class="beats"><span>appear</span><span>form</span><span>rest</span></div><span class="detail-label qa-label">QA FOCUS</span><p>accessibility tree; focus; contrast; reduced motion; static equivalence</p></div>
     </div>
-     <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Use semantic order and opacity only, preserving stable geometry, focus, and a static-safe canonical landing. <small>blank → spark → arc → bar → monogram → wordmark → canonical</small></p>
+      <p class="result-note"><span>GROWTH RESULT</span>The supplied mark follows this foreground route: Use semantic order and opacity only, preserving stable geometry, focus, and a static-safe canonical landing. <small>blank → origin dot → circular arc → horizontal bar → P / monogram → Prysai wordmark → complete Logo</small></p>
   </div>
 </article></div>
       </section>
     </main>
      <footer class="footer"><p>Motiflux V1 is an AI skill for source-aware logo growth: the source image stays recognizable while the selected theme changes the construction choreography.</p><p>The HTML and GitHub README expose portable GIF outputs. The PDF is a static storyboard of the same image-to-animation sequences. Public design systems are principle analogues only; no private vendor recipe is claimed.</p></footer>
   </div>
-  <script src="app.js"></script>
+  <script src="app.js?v=motiflux-v1-20260820"></script>
 </body>
 </html>

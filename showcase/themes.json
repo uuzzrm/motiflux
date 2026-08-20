@@ -4,7 +4,358 @@
   "source": {
     "asset": "assets/prysai-logo-white.jpg",
     "label": "Prysai logo / supplied raster source",
-    "identity_rule": "Use the same source mark in every theme. Change the foreground trajectory and motion language only."
+    "identity_rule": "Use the same source mark in every theme. Change the foreground trajectory and motion language only.",
+    "structure_rule": "Observe raster pixels into candidate actors, map only available roles, and keep semantic/vector review unresolved.",
+    "growth_sequence": [
+      "blank",
+      "spark",
+      "arc",
+      "bar",
+      "monogram",
+      "wordmark",
+      "canonical"
+    ],
+    "growth_sequence_display": [
+      "blank",
+      "origin dot",
+      "circular arc",
+      "horizontal bar",
+      "P / monogram",
+      "Prysai wordmark",
+      "complete Logo"
+    ],
+    "structure_observation": {
+      "status": "candidate",
+      "method": "Pillow foreground mask + connected components + layout grouping",
+      "review_status": "needs-review",
+      "recognition": {
+        "mode": "bounded-geometric-observation",
+        "review_status": "needs-review",
+        "input_boundary": "decoded pixels and layout heuristics only; no semantic or vector reconstruction claim",
+        "component_count": 9,
+        "role_counts": {
+          "unknown": 9
+        },
+        "layout_groups": [
+          "symbol",
+          "wordmark"
+        ],
+        "confidence_policy": {
+          "high": "not assigned by this adapter",
+          "medium": "geometry is suggestive and still requires review",
+          "low": "do not use as a semantic role without review",
+          "accepted_role": "only an explicit reviewer annotation may promote a role"
+        },
+        "motion_binding_rules": {
+          "origin-dot": "scale-and-opacity reveal from the observed centroid",
+          "arc": "ordered angular or contour prefix over the observed source mask",
+          "bar": "continuous endpoint-to-endpoint scan over the observed stroke",
+          "monogram": "component-local contour or convergence reveal using source pixels",
+          "wordmark": "reading-order glyph/component cascade using source pixels",
+          "unknown": "static-canonical fallback until a reviewer accepts a role"
+        },
+        "decision_trace": [
+          "estimate border background and foreground mask",
+          "extract connected components with deterministic ordering",
+          "hypothesize symbol and wordmark groups from layout and geometry",
+          "bind supported roles to source-pixel motion strategies",
+          "retain unknown or low-confidence actors behind static-canonical fallback"
+        ]
+      },
+      "sampling": {
+        "original_width": 3950,
+        "original_height": 1323,
+        "width": 1024,
+        "height": 343,
+        "max_dimension": 1024,
+        "method": "nearest-neighbour when capped; exact pixels otherwise"
+      },
+      "boxes": {
+        "origin_dot": [
+          219,
+          864,
+          382,
+          1026
+        ],
+        "monogram_raw": [
+          281,
+          219,
+          1084,
+          1026
+        ],
+        "wordmark_01": [
+          1215,
+          316,
+          1721,
+          930
+        ],
+        "wordmark_02": [
+          1789,
+          451,
+          2080,
+          930
+        ],
+        "wordmark_03": [
+          2133,
+          459,
+          2639,
+          1104
+        ],
+        "wordmark_04": [
+          2638,
+          451,
+          3032,
+          934
+        ],
+        "wordmark_05": [
+          3082,
+          451,
+          3526,
+          934
+        ],
+        "wordmark_06": [
+          3583,
+          250,
+          3731,
+          930
+        ]
+      },
+      "actor_groups": {
+        "symbol": [
+          "origin_dot",
+          "monogram_raw"
+        ],
+        "wordmark": [
+          "wordmark_01",
+          "wordmark_02",
+          "wordmark_03",
+          "wordmark_04",
+          "wordmark_05",
+          "wordmark_06"
+        ]
+      },
+      "group_bounds": {
+        "symbol": [
+          219,
+          219,
+          1084,
+          1026
+        ],
+        "wordmark": [
+          1215,
+          250,
+          3731,
+          1104
+        ]
+      },
+      "stage_mapping": {
+        "origin_dot": [
+          "origin_dot"
+        ],
+        "arc": [
+          "monogram_raw"
+        ],
+        "bar": [
+          "monogram_raw"
+        ],
+        "monogram": [
+          "monogram_raw"
+        ],
+        "wordmark": [
+          "wordmark_01",
+          "wordmark_02",
+          "wordmark_03",
+          "wordmark_04",
+          "wordmark_05",
+          "wordmark_06"
+        ],
+        "canonical": [
+          "final"
+        ]
+      },
+      "observed_components": [
+        {
+          "id": "raster-component-003",
+          "bounds": [
+            281,
+            219,
+            1084,
+            1026
+          ],
+          "area": 20124,
+          "layout_group": "symbol",
+          "role": "ring-candidate",
+          "role_review": {
+            "proposed_role": "arc",
+            "accepted_role": null,
+            "confidence": "medium",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-009",
+          "bounds": [
+            219,
+            864,
+            382,
+            1026
+          ],
+          "area": 1377,
+          "layout_group": "symbol",
+          "role": "origin-dot-candidate",
+          "role_review": {
+            "proposed_role": "origin-dot",
+            "accepted_role": null,
+            "confidence": "medium",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-002",
+          "bounds": [
+            1215,
+            316,
+            1721,
+            930
+          ],
+          "area": 12254,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-004",
+          "bounds": [
+            1789,
+            451,
+            2080,
+            930
+          ],
+          "area": 5532,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-008",
+          "bounds": [
+            2133,
+            459,
+            2639,
+            1104
+          ],
+          "area": 9854,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-006",
+          "bounds": [
+            2638,
+            451,
+            3032,
+            934
+          ],
+          "area": 7952,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-007",
+          "bounds": [
+            3082,
+            451,
+            3526,
+            934
+          ],
+          "area": 9900,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-001",
+          "bounds": [
+            3583,
+            250,
+            3731,
+            402
+          ],
+          "area": 1192,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        },
+        {
+          "id": "raster-component-005",
+          "bounds": [
+            3591,
+            459,
+            3727,
+            930
+          ],
+          "area": 4270,
+          "layout_group": "wordmark",
+          "role": "wordmark-candidate",
+          "role_review": {
+            "proposed_role": "wordmark",
+            "accepted_role": null,
+            "confidence": "low",
+            "review_status": "needs-review",
+            "evidence": "connected-component geometry and layout grouping only"
+          }
+        }
+      ],
+      "observation_review": {
+        "status": "needs-review",
+        "reviewed_components": [],
+        "method": "Pillow foreground mask + connected components + layout grouping",
+        "notes": "Proposed roles are bounded geometric hypotheses; accepted_role remains null until reviewed."
+      },
+      "unresolved": [
+        "semantic roles and vector equivalence still require review"
+      ]
+    }
   },
   "request_example": {
     "user_says": "I want to make a logo animation for my artificial-intelligence company.",
@@ -67,6 +418,7 @@
       "pattern": "grid",
       "tempo": 1.0,
       "duration_ms": 1800,
+      "playback_duration_ms": 1800,
       "growth_sequence": [
         "blank",
         "spark",
@@ -91,10 +443,22 @@
         5
       ],
       "foreground_easing": "steps",
+      "foreground_variant": "scan-forward",
+      "path_strategy": "measured actor-to-actor grid locks",
+      "speed_profile": "hierarchy stagger with a slow final lock",
       "arc_start": 205.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-system-spatial.gif",
-      "animation_poster": "assets/animations/prysai-system-spatial-poster.png"
+      "animation_poster": "assets/animations/prysai-system-spatial-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-system-spatial-blank.png",
+        "spark": "assets/animations/prysai-system-spatial-spark.png",
+        "arc": "assets/animations/prysai-system-spatial-arc.png",
+        "bar": "assets/animations/prysai-system-spatial-bar.png",
+        "monogram": "assets/animations/prysai-system-spatial-monogram.png",
+        "wordmark": "assets/animations/prysai-system-spatial-wordmark.png",
+        "canonical": "assets/animations/prysai-system-spatial-canonical.png"
+      }
     },
     {
       "id": "premium-quiet",
@@ -140,6 +504,7 @@
       "pattern": "quiet",
       "tempo": 0.72,
       "duration_ms": 2400,
+      "playback_duration_ms": 2400,
       "growth_sequence": [
         "blank",
         "spark",
@@ -164,10 +529,22 @@
         5
       ],
       "foreground_easing": "soft",
+      "foreground_variant": "polar-clockwise",
+      "path_strategy": "source contour trace followed by fill",
+      "speed_profile": "slow trace with a deliberate reading pause",
       "arc_start": 228.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-premium-quiet.gif",
-      "animation_poster": "assets/animations/prysai-premium-quiet-poster.png"
+      "animation_poster": "assets/animations/prysai-premium-quiet-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-premium-quiet-blank.png",
+        "spark": "assets/animations/prysai-premium-quiet-spark.png",
+        "arc": "assets/animations/prysai-premium-quiet-arc.png",
+        "bar": "assets/animations/prysai-premium-quiet-bar.png",
+        "monogram": "assets/animations/prysai-premium-quiet-monogram.png",
+        "wordmark": "assets/animations/prysai-premium-quiet-wordmark.png",
+        "canonical": "assets/animations/prysai-premium-quiet-canonical.png"
+      }
     },
     {
       "id": "developer-open",
@@ -214,6 +591,7 @@
       "pattern": "scan",
       "tempo": 1.0,
       "duration_ms": 1800,
+      "playback_duration_ms": 1800,
       "growth_sequence": [
         "blank",
         "spark",
@@ -238,18 +616,31 @@
         5
       ],
       "foreground_easing": "linear",
+      "foreground_variant": "scan-reverse",
+      "path_strategy": "deterministic left-to-right actor commits",
+      "speed_profile": "even token cadence with short pauses",
       "arc_start": 180.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-developer-open.gif",
-      "animation_poster": "assets/animations/prysai-developer-open-poster.png"
+      "animation_poster": "assets/animations/prysai-developer-open-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-developer-open-blank.png",
+        "spark": "assets/animations/prysai-developer-open-spark.png",
+        "arc": "assets/animations/prysai-developer-open-arc.png",
+        "bar": "assets/animations/prysai-developer-open-bar.png",
+        "monogram": "assets/animations/prysai-developer-open-monogram.png",
+        "wordmark": "assets/animations/prysai-developer-open-wordmark.png",
+        "canonical": "assets/animations/prysai-developer-open-canonical.png"
+      }
     },
     {
       "id": "ai-field",
       "name": "AI-field",
       "number": "04",
-      "trigger": "ai, artificial intelligence, machine learning, ml, neural, data",
+      "trigger": "ai, ai technology, artificial intelligence, machine learning, ml, neural",
       "keywords": [
         "ai",
+        "ai technology",
         "artificial intelligence",
         "machine learning",
         "ml",
@@ -258,7 +649,12 @@
         "model",
         "generative",
         "future",
-        "intelligent"
+        "intelligent",
+        "人工智能",
+        "生成式",
+        "生成式AI",
+        "AI科技",
+        "人工智能技术"
       ],
       "tags": [
         "ai-field",
@@ -289,6 +685,7 @@
       "pattern": "field",
       "tempo": 0.92,
       "duration_ms": 1957,
+      "playback_duration_ms": 1960,
       "growth_sequence": [
         "blank",
         "spark",
@@ -305,18 +702,30 @@
       "foreground_mode": "convergence",
       "foreground_timing": "field",
       "foreground_order": [
-        1,
         0,
+        1,
         2,
-        4,
         3,
+        4,
         5
       ],
       "foreground_easing": "ease_out",
+      "foreground_variant": "polar-counter",
+      "path_strategy": "seeded signals converge into measured actors",
+      "speed_profile": "accelerate into geometry and decelerate at lockup",
       "arc_start": 250.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-ai-field.gif",
-      "animation_poster": "assets/animations/prysai-ai-field-poster.png"
+      "animation_poster": "assets/animations/prysai-ai-field-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-ai-field-blank.png",
+        "spark": "assets/animations/prysai-ai-field-spark.png",
+        "arc": "assets/animations/prysai-ai-field-arc.png",
+        "bar": "assets/animations/prysai-ai-field-bar.png",
+        "monogram": "assets/animations/prysai-ai-field-monogram.png",
+        "wordmark": "assets/animations/prysai-ai-field-wordmark.png",
+        "canonical": "assets/animations/prysai-ai-field-canonical.png"
+      }
     },
     {
       "id": "fintech-trust",
@@ -333,7 +742,13 @@
         "finance",
         "institutional",
         "reliable",
-        "secure finance"
+        "secure finance",
+        "金融",
+        "银行",
+        "支付",
+        "金融科技",
+        "可信",
+        "稳健"
       ],
       "tags": [
         "fintech-trust",
@@ -364,6 +779,7 @@
       "pattern": "ring",
       "tempo": 0.86,
       "duration_ms": 2093,
+      "playback_duration_ms": 2090,
       "growth_sequence": [
         "blank",
         "spark",
@@ -388,10 +804,22 @@
         5
       ],
       "foreground_easing": "smooth",
+      "foreground_variant": "polar-offset",
+      "path_strategy": "center-outward progress gates the supplied actors",
+      "speed_profile": "steady processing with a bounded confirmation settle",
       "arc_start": 270.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-fintech-trust.gif",
-      "animation_poster": "assets/animations/prysai-fintech-trust-poster.png"
+      "animation_poster": "assets/animations/prysai-fintech-trust-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-fintech-trust-blank.png",
+        "spark": "assets/animations/prysai-fintech-trust-spark.png",
+        "arc": "assets/animations/prysai-fintech-trust-arc.png",
+        "bar": "assets/animations/prysai-fintech-trust-bar.png",
+        "monogram": "assets/animations/prysai-fintech-trust-monogram.png",
+        "wordmark": "assets/animations/prysai-fintech-trust-wordmark.png",
+        "canonical": "assets/animations/prysai-fintech-trust-canonical.png"
+      }
     },
     {
       "id": "security-shield",
@@ -407,7 +835,13 @@
         "defense",
         "shield",
         "compliance",
-        "protection"
+        "protection",
+        "安全",
+        "隐私",
+        "认证",
+        "防护",
+        "盾牌",
+        "合规"
       ],
       "tags": [
         "security-shield",
@@ -438,6 +872,7 @@
       "pattern": "shield",
       "tempo": 0.8,
       "duration_ms": 2250,
+      "playback_duration_ms": 2250,
       "growth_sequence": [
         "blank",
         "spark",
@@ -462,10 +897,22 @@
         5
       ],
       "foreground_easing": "soft",
+      "foreground_variant": "boundary-reverse",
+      "path_strategy": "perimeter-first trace then interior unlock",
+      "speed_profile": "guarded boundary, quick verify, deliberate release",
       "arc_start": 135.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-security-shield.gif",
-      "animation_poster": "assets/animations/prysai-security-shield-poster.png"
+      "animation_poster": "assets/animations/prysai-security-shield-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-security-shield-blank.png",
+        "spark": "assets/animations/prysai-security-shield-spark.png",
+        "arc": "assets/animations/prysai-security-shield-arc.png",
+        "bar": "assets/animations/prysai-security-shield-bar.png",
+        "monogram": "assets/animations/prysai-security-shield-monogram.png",
+        "wordmark": "assets/animations/prysai-security-shield-wordmark.png",
+        "canonical": "assets/animations/prysai-security-shield-canonical.png"
+      }
     },
     {
       "id": "commerce-energy",
@@ -480,7 +927,12 @@
         "consumer",
         "sale",
         "conversion",
-        "friendly"
+        "friendly",
+        "电商",
+        "零售",
+        "购物",
+        "消费",
+        "促销"
       ],
       "tags": [
         "commerce-energy",
@@ -511,6 +963,7 @@
       "pattern": "burst",
       "tempo": 1.2,
       "duration_ms": 1500,
+      "playback_duration_ms": 1500,
       "growth_sequence": [
         "blank",
         "spark",
@@ -528,17 +981,29 @@
       "foreground_timing": "rapid",
       "foreground_order": [
         0,
-        2,
-        4,
         1,
+        2,
         3,
+        4,
         5
       ],
       "foreground_easing": "ease_out",
+      "foreground_variant": "diagonal-forward",
+      "path_strategy": "compressed actors release from a shared origin",
+      "speed_profile": "short anticipation, fast release, rapid settle",
       "arc_start": 200.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-commerce-energy.gif",
-      "animation_poster": "assets/animations/prysai-commerce-energy-poster.png"
+      "animation_poster": "assets/animations/prysai-commerce-energy-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-commerce-energy-blank.png",
+        "spark": "assets/animations/prysai-commerce-energy-spark.png",
+        "arc": "assets/animations/prysai-commerce-energy-arc.png",
+        "bar": "assets/animations/prysai-commerce-energy-bar.png",
+        "monogram": "assets/animations/prysai-commerce-energy-monogram.png",
+        "wordmark": "assets/animations/prysai-commerce-energy-wordmark.png",
+        "canonical": "assets/animations/prysai-commerce-energy-canonical.png"
+      }
     },
     {
       "id": "automotive-precision",
@@ -552,7 +1017,13 @@
         "engineering",
         "performance",
         "industrial",
-        "mechanical"
+        "mechanical",
+        "汽车",
+        "交通",
+        "工业",
+        "工程",
+        "性能",
+        "机械"
       ],
       "tags": [
         "automotive-precision",
@@ -583,6 +1054,7 @@
       "pattern": "track",
       "tempo": 0.9,
       "duration_ms": 2000,
+      "playback_duration_ms": 2000,
       "growth_sequence": [
         "blank",
         "spark",
@@ -607,10 +1079,22 @@
         5
       ],
       "foreground_easing": "ease_out",
+      "foreground_variant": "scan-slope",
+      "path_strategy": "single-axis actor travel with velocity continuity",
+      "speed_profile": "heavy forms slow; scan accent remains fast",
       "arc_start": 315.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-automotive-precision.gif",
-      "animation_poster": "assets/animations/prysai-automotive-precision-poster.png"
+      "animation_poster": "assets/animations/prysai-automotive-precision-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-automotive-precision-blank.png",
+        "spark": "assets/animations/prysai-automotive-precision-spark.png",
+        "arc": "assets/animations/prysai-automotive-precision-arc.png",
+        "bar": "assets/animations/prysai-automotive-precision-bar.png",
+        "monogram": "assets/animations/prysai-automotive-precision-monogram.png",
+        "wordmark": "assets/animations/prysai-automotive-precision-wordmark.png",
+        "canonical": "assets/animations/prysai-automotive-precision-canonical.png"
+      }
     },
     {
       "id": "sports-impact",
@@ -625,7 +1109,12 @@
         "impact",
         "bold",
         "dynamic",
-        "athletics"
+        "athletics",
+        "体育",
+        "健身",
+        "竞技",
+        "速度",
+        "冲击"
       ],
       "tags": [
         "sports-impact",
@@ -656,6 +1145,7 @@
       "pattern": "speed",
       "tempo": 1.35,
       "duration_ms": 1333,
+      "playback_duration_ms": 1330,
       "growth_sequence": [
         "blank",
         "spark",
@@ -670,20 +1160,32 @@
       "wordmark_reveal": "impact-timed component release",
       "stagger": 0.025,
       "foreground_mode": "impact",
-      "foreground_timing": "rapid",
+      "foreground_timing": "impact",
       "foreground_order": [
         0,
-        2,
-        4,
         1,
+        2,
         3,
+        4,
         5
       ],
       "foreground_easing": "ease_out",
+      "foreground_variant": "diagonal-reverse",
+      "path_strategy": "horizontal compression followed by directional release",
+      "speed_profile": "sharp impact with controlled recovery",
       "arc_start": 225.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-sports-impact.gif",
-      "animation_poster": "assets/animations/prysai-sports-impact-poster.png"
+      "animation_poster": "assets/animations/prysai-sports-impact-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-sports-impact-blank.png",
+        "spark": "assets/animations/prysai-sports-impact-spark.png",
+        "arc": "assets/animations/prysai-sports-impact-arc.png",
+        "bar": "assets/animations/prysai-sports-impact-bar.png",
+        "monogram": "assets/animations/prysai-sports-impact-monogram.png",
+        "wordmark": "assets/animations/prysai-sports-impact-wordmark.png",
+        "canonical": "assets/animations/prysai-sports-impact-canonical.png"
+      }
     },
     {
       "id": "cinematic-title",
@@ -698,7 +1200,12 @@
         "trailer",
         "story",
         "dramatic",
-        "suspense"
+        "suspense",
+        "电影",
+        "片头",
+        "预告",
+        "叙事",
+        "戏剧"
       ],
       "tags": [
         "cinematic-title",
@@ -729,6 +1236,7 @@
       "pattern": "curtain",
       "tempo": 0.65,
       "duration_ms": 2400,
+      "playback_duration_ms": 2400,
       "growth_sequence": [
         "blank",
         "spark",
@@ -743,20 +1251,32 @@
       "wordmark_reveal": "paced title-card letter reveal",
       "stagger": 0.1,
       "foreground_mode": "aperture",
-      "foreground_timing": "late",
+      "foreground_timing": "title",
       "foreground_order": [
-        5,
-        4,
-        3,
-        2,
+        0,
         1,
-        0
+        2,
+        3,
+        4,
+        5
       ],
       "foreground_easing": "soft",
+      "foreground_variant": "diagonal-center",
+      "path_strategy": "center aperture gates contour and lockup layers",
+      "speed_profile": "slow exposure followed by a long title hold",
       "arc_start": 225.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-cinematic-title.gif",
-      "animation_poster": "assets/animations/prysai-cinematic-title-poster.png"
+      "animation_poster": "assets/animations/prysai-cinematic-title-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-cinematic-title-blank.png",
+        "spark": "assets/animations/prysai-cinematic-title-spark.png",
+        "arc": "assets/animations/prysai-cinematic-title-arc.png",
+        "bar": "assets/animations/prysai-cinematic-title-bar.png",
+        "monogram": "assets/animations/prysai-cinematic-title-monogram.png",
+        "wordmark": "assets/animations/prysai-cinematic-title-wordmark.png",
+        "canonical": "assets/animations/prysai-cinematic-title-canonical.png"
+      }
     },
     {
       "id": "nature-flow",
@@ -772,7 +1292,12 @@
         "wind",
         "growth",
         "calm",
-        "health"
+        "health",
+        "自然",
+        "有机",
+        "健康",
+        "环保",
+        "成长"
       ],
       "tags": [
         "nature-flow",
@@ -803,6 +1328,7 @@
       "pattern": "wave",
       "tempo": 0.72,
       "duration_ms": 2400,
+      "playback_duration_ms": 2400,
       "growth_sequence": [
         "blank",
         "spark",
@@ -817,7 +1343,7 @@
       "wordmark_reveal": "breathing connected reveal",
       "stagger": 0.08,
       "foreground_mode": "organic",
-      "foreground_timing": "slow",
+      "foreground_timing": "organic",
       "foreground_order": [
         0,
         1,
@@ -827,10 +1353,22 @@
         5
       ],
       "foreground_easing": "soft",
+      "foreground_variant": "wave-phase-a",
+      "path_strategy": "curvature-following drift into source positions",
+      "speed_profile": "low-frequency flow with damped settle",
       "arc_start": 160.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-nature-flow.gif",
-      "animation_poster": "assets/animations/prysai-nature-flow-poster.png"
+      "animation_poster": "assets/animations/prysai-nature-flow-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-nature-flow-blank.png",
+        "spark": "assets/animations/prysai-nature-flow-spark.png",
+        "arc": "assets/animations/prysai-nature-flow-arc.png",
+        "bar": "assets/animations/prysai-nature-flow-bar.png",
+        "monogram": "assets/animations/prysai-nature-flow-monogram.png",
+        "wordmark": "assets/animations/prysai-nature-flow-wordmark.png",
+        "canonical": "assets/animations/prysai-nature-flow-canonical.png"
+      }
     },
     {
       "id": "gaming-world",
@@ -845,7 +1383,12 @@
         "character",
         "quest",
         "arcade",
-        "playful"
+        "playful",
+        "游戏",
+        "电竞",
+        "奇幻",
+        "科幻",
+        "街机"
       ],
       "tags": [
         "gaming-world",
@@ -876,6 +1419,7 @@
       "pattern": "orbit",
       "tempo": 1.1,
       "duration_ms": 1636,
+      "playback_duration_ms": 1640,
       "growth_sequence": [
         "blank",
         "spark",
@@ -890,20 +1434,32 @@
       "wordmark_reveal": "reward-like sequential component reveal",
       "stagger": 0.04,
       "foreground_mode": "orbit",
-      "foreground_timing": "staggered",
+      "foreground_timing": "orbit",
       "foreground_order": [
         0,
-        2,
-        4,
         1,
+        2,
         3,
+        4,
         5
       ],
       "foreground_easing": "ease_out",
+      "foreground_variant": "polar-orbit",
+      "path_strategy": "deterministic orbital arrivals into actor targets",
+      "speed_profile": "spawn, accumulate, snap to reward, clear",
       "arc_start": 300.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-gaming-world.gif",
-      "animation_poster": "assets/animations/prysai-gaming-world-poster.png"
+      "animation_poster": "assets/animations/prysai-gaming-world-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-gaming-world-blank.png",
+        "spark": "assets/animations/prysai-gaming-world-spark.png",
+        "arc": "assets/animations/prysai-gaming-world-arc.png",
+        "bar": "assets/animations/prysai-gaming-world-bar.png",
+        "monogram": "assets/animations/prysai-gaming-world-monogram.png",
+        "wordmark": "assets/animations/prysai-gaming-world-wordmark.png",
+        "canonical": "assets/animations/prysai-gaming-world-canonical.png"
+      }
     },
     {
       "id": "accessibility-first",
@@ -917,6 +1473,9 @@
         "calm",
         "inclusive",
         "low motion",
+        "低动效",
+        "低运动",
+        "键盘",
         "keyboard",
         "assistive"
       ],
@@ -949,6 +1508,7 @@
       "pattern": "plain",
       "tempo": 0.55,
       "duration_ms": 2400,
+      "playback_duration_ms": 2400,
       "growth_sequence": [
         "blank",
         "spark",
@@ -963,7 +1523,7 @@
       "wordmark_reveal": "low-motion component fade",
       "stagger": 0.12,
       "foreground_mode": "fade",
-      "foreground_timing": "late",
+      "foreground_timing": "accessible",
       "foreground_order": [
         0,
         1,
@@ -973,10 +1533,29 @@
         5
       ],
       "foreground_easing": "soft",
+      "foreground_variant": "opacity-stable",
+      "path_strategy": "ordered opacity with stable source geometry",
+      "speed_profile": "opacity-first and no overshoot",
       "arc_start": 205.0,
       "arc_direction": 1,
       "animation_file": "assets/animations/prysai-accessibility-first.gif",
-      "animation_poster": "assets/animations/prysai-accessibility-first-poster.png"
+      "animation_poster": "assets/animations/prysai-accessibility-first-poster.png",
+      "stage_files": {
+        "blank": "assets/animations/prysai-accessibility-first-blank.png",
+        "spark": "assets/animations/prysai-accessibility-first-spark.png",
+        "arc": "assets/animations/prysai-accessibility-first-arc.png",
+        "bar": "assets/animations/prysai-accessibility-first-bar.png",
+        "monogram": "assets/animations/prysai-accessibility-first-monogram.png",
+        "wordmark": "assets/animations/prysai-accessibility-first-wordmark.png",
+        "canonical": "assets/animations/prysai-accessibility-first-canonical.png"
+      }
     }
-  ]
+  ],
+  "export_options": {
+    "background": null,
+    "duration_ms": null,
+    "speed": 1.0,
+    "particles": true,
+    "guides": true
+  }
 }

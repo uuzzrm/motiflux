@@ -1,0 +1,4355 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate",
+  "source": "showcase/assets/prysai-mark-crop.jpg",
+  "source_sha256": "5b2eccc8c7bd7b74e61f716312bfde639e4f02b0a18a5d8a223eed65bc21870b",
+  "renderer": "source-pixel actor-path reveal + route-specific foreground grammar; optional secondary guides",
+  "canonical_handoff_progress": 1.0,
+  "export_options": {
+    "background": null,
+    "duration_ms": null,
+    "speed": 1.0,
+    "particles": true,
+    "guides": true
+  },
+  "review_status": "needs-review",
+  "frame_count": null,
+  "frame_count_scope": "per-theme; see themes[].encoded_frame_count",
+  "stage_order": [
+    "blank",
+    "spark",
+    "arc",
+    "bar",
+    "monogram",
+    "wordmark",
+    "canonical"
+  ],
+  "themes": [
+    {
+      "id": "system-spatial",
+      "gif": "assets/animations/prysai-system-spatial.gif",
+      "sha256": "433e5f953cf83401481ad0bdb40347d60796f58e66d734fcbc51b73754e3148e",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 1800,
+      "canonical_frame_sha256": "086c30695a1a380620498e65f40e13d5158e183430729c1796628fce0f2fda27",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 5,
+          "progress": 0.14,
+          "render_progress": 0.14,
+          "label": "origin dot",
+          "bright_pixel_count": 573,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 135116,
+          "encoded_identity_unique_count": 531,
+          "encoded_identity_coverage": 0.017555
+        },
+        "arc": {
+          "frame_index": 11,
+          "progress": 0.31,
+          "render_progress": 0.31,
+          "label": "circular arc",
+          "bright_pixel_count": 3682,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
+        },
+        "bar": {
+          "frame_index": 17,
+          "progress": 0.47,
+          "render_progress": 0.47,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4325,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 24,
+          "progress": 0.64,
+          "render_progress": 0.64,
+          "label": "P / monogram",
+          "bright_pixel_count": 8220,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 2027712,
+          "encoded_identity_unique_count": 7967,
+          "encoded_identity_coverage": 0.263398
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.96,
+          "render_progress": 0.96,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25188,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6127780,
+          "encoded_identity_unique_count": 24074,
+          "encoded_identity_coverage": 0.795914
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25198,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "measured actor-to-actor grid locks",
+          "speed_profile": "hierarchy stagger with a slow final lock",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "c62fd39f25a1be66b08ae8ab1eeed93395a7a0fd66801095506b4a3973b72ec3"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "e6789c20529b5f59d22b1b35c0d2b0283b79be5cbad5da91697aa24c7cdefc80",
+          "alpha_mass": 123593,
+          "unique_count": 610,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 30,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0374,
+            "y": 194.0099
+          },
+          "encoded_identity_alpha_mass": 135116,
+          "encoded_identity_unique_count": 531,
+          "encoded_identity_coverage": 0.017555,
+          "trajectory_fingerprint": "cac99cec1286fbbbb4c4868a7f9acaf221718b6be6765ef57dc9b203dea6b9ff"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "b23ef66b96a7582d5fa1c379b7f57c93e278a3255755dbff76fa0a4438ed2b50",
+          "alpha_mass": 745787,
+          "unique_count": 3278,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 111,
+            "height": 130
+          },
+          "centroid": {
+            "x": 226.0385,
+            "y": 119.2355
+          },
+          "encoded_identity_alpha_mass": 707805,
+          "encoded_identity_unique_count": 2780,
+          "encoded_identity_coverage": 0.09191,
+          "trajectory_fingerprint": "0604c24a7a03c7ccdfa333c03812a1a5297162f48a0326c6ae14e5f32bcf9004"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "1b8c83c50c150107b9878f38763340ae516610eb4f640c1875e6596158d7db39",
+          "alpha_mass": 1057404,
+          "unique_count": 4733,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 237.4913,
+            "y": 120.8222
+          },
+          "encoded_identity_alpha_mass": 1007842,
+          "encoded_identity_unique_count": 3961,
+          "encoded_identity_coverage": 0.130955,
+          "trajectory_fingerprint": "1cc73aaa3180bb759acd6c24e474565d472e83c3cf4f56b5c19559b70a3f5145"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "be51b67f63d5072539771818717d3425baeec43ebc97a4ffc14bb1fe6c52833a",
+          "alpha_mass": 1211339,
+          "unique_count": 5582,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 239.0038,
+            "y": 126.4592
+          },
+          "encoded_identity_alpha_mass": 1148808,
+          "encoded_identity_unique_count": 4516,
+          "encoded_identity_coverage": 0.149304,
+          "trajectory_fingerprint": "92ab0fceb28ec3b7c6d9566c7e5ced774be2145c08be6184f0dab8ce5b013f4e"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "6b6f52acc9515f33da8d420d2bae1129600d4614c02cbe0bd6cc17f0b68c1058",
+          "alpha_mass": 1928775,
+          "unique_count": 8757,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.0094,
+            "y": 144.9094
+          },
+          "encoded_identity_alpha_mass": 1842243,
+          "encoded_identity_unique_count": 7238,
+          "encoded_identity_coverage": 0.239296,
+          "trajectory_fingerprint": "9548591031657f3e4df45439dd47b5cd199f8a2055985f9b9c85c7846a49d372"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "6c948303b3838aeb239a2ee0d114bf47682faa97d15bb7f1b091e57d0e1f791b",
+          "alpha_mass": 3585829,
+          "unique_count": 19929,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 343,
+            "height": 150
+          },
+          "centroid": {
+            "x": 311.4208,
+            "y": 143.3046
+          },
+          "encoded_identity_alpha_mass": 3622308,
+          "encoded_identity_unique_count": 14229,
+          "encoded_identity_coverage": 0.470427,
+          "trajectory_fingerprint": "7d14067cdef1e8ccbd1f7bd710dbbbb84cc6fa72775d7f7e270fdb8612de41e2"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "988c2ef154b654911a5ee6e73f9ac6e20992968b63f4afa1fc0e51e5c1e961c1",
+          "alpha_mass": 5589756,
+          "unique_count": 25785,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 496,
+            "height": 143
+          },
+          "centroid": {
+            "x": 402.656,
+            "y": 149.2293
+          },
+          "encoded_identity_alpha_mass": 5249249,
+          "encoded_identity_unique_count": 20621,
+          "encoded_identity_coverage": 0.681754,
+          "trajectory_fingerprint": "e427e162f4a89566f9e8649b9f5f8c9e216e68e1c3ea0518e7a9fef3dc677971"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "ac0d34be3f6499d34af0252badb366777ad342f81618b86fbeed06d9205c3e1f"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "premium-quiet",
+      "gif": "assets/animations/prysai-premium-quiet.gif",
+      "sha256": "9974c622e390f0af977518fbb740f1888211c9d614e43a5ff3d0f652a7eca246",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2400,
+      "canonical_frame_sha256": "2f9b33e2c533a9c4eb8d665d5a025f84e1e751a15b83aebfa0d765b3ea772b78",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 7,
+          "progress": 0.18,
+          "render_progress": 0.18,
+          "label": "origin dot",
+          "bright_pixel_count": 524,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 123437,
+          "encoded_identity_unique_count": 485,
+          "encoded_identity_coverage": 0.016035
+        },
+        "arc": {
+          "frame_index": 14,
+          "progress": 0.38,
+          "render_progress": 0.38,
+          "label": "circular arc",
+          "bright_pixel_count": 3746,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 924264,
+          "encoded_identity_unique_count": 3631,
+          "encoded_identity_coverage": 0.120045
+        },
+        "bar": {
+          "frame_index": 21,
+          "progress": 0.56,
+          "render_progress": 0.56,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4324,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 27,
+          "progress": 0.74,
+          "render_progress": 0.74,
+          "label": "P / monogram",
+          "bright_pixel_count": 7471,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.98,
+          "render_progress": 0.98,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25205,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6139132,
+          "encoded_identity_unique_count": 24120,
+          "encoded_identity_coverage": 0.797434
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25210,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "source contour trace followed by fill",
+          "speed_profile": "slow trace with a deliberate reading pause",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "3522531a309ea729b8c3a43638969c235c9d8f4c92b03feb09ad5ec91565e9c5"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "d712cfc8cf9fe02b0e4ed7a85cb33584baf108c42910df0a8c88ac32efde2710",
+          "alpha_mass": 79000,
+          "unique_count": 491,
+          "bbox": {
+            "x": 176,
+            "y": 179,
+            "width": 30,
+            "height": 30
+          },
+          "centroid": {
+            "x": 191.4483,
+            "y": 192.5415
+          },
+          "encoded_identity_alpha_mass": 110712,
+          "encoded_identity_unique_count": 435,
+          "encoded_identity_coverage": 0.014382,
+          "trajectory_fingerprint": "0da8c4b18252e6cd9081e854ef7a66d35c049ce538989ca7ba8f61b09c91d1fd"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "90b605c9883bf9b9fbb7e504e7b7399bc8615b748b7c63bd9cf2a240e59a438a",
+          "alpha_mass": 253426,
+          "unique_count": 1183,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 96,
+            "height": 130
+          },
+          "centroid": {
+            "x": 221.055,
+            "y": 141.2663
+          },
+          "encoded_identity_alpha_mass": 388538,
+          "encoded_identity_unique_count": 1526,
+          "encoded_identity_coverage": 0.050451,
+          "trajectory_fingerprint": "89eef44968d4c416ead5016cbcca4baaa12ece13034151116bff5d3f3e5c1565"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 924264,
+          "encoded_identity_unique_count": 3631,
+          "encoded_identity_coverage": 0.120045,
+          "trajectory_fingerprint": "48474ea0a256e5750a7df037a1701b9408915bffc40f30e376b5eb78bdc7f344"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
+          "alpha_mass": 1124376,
+          "unique_count": 5093,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.9101,
+            "y": 122.3723
+          },
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758,
+          "trajectory_fingerprint": "b65fe09562341832990e20cddc95bf495caa47c0e212f12c02117eac024a5ce2"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "5c4a0025ed170a87a3a8cd23f40e238e60ae5d0bb7989f083d2f9383631dda9e",
+          "alpha_mass": 1220517,
+          "unique_count": 5599,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 242.4618,
+            "y": 127.0376
+          },
+          "encoded_identity_alpha_mass": 1251750,
+          "encoded_identity_unique_count": 4920,
+          "encoded_identity_coverage": 0.162661,
+          "trajectory_fingerprint": "2d1f0b330962cbbba3fe60161d5dce2b5eae3f8aebde0ca44119cbecd05c2f4c"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "e3544fa252f3f1c6a1804c52262ef15a9fa30d73c4d9749bb7c859f9ee167447",
+          "alpha_mass": 2053643,
+          "unique_count": 12637,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 254,
+            "height": 131
+          },
+          "centroid": {
+            "x": 253.8107,
+            "y": 144.1604
+          },
+          "encoded_identity_alpha_mass": 2217828,
+          "encoded_identity_unique_count": 8714,
+          "encoded_identity_coverage": 0.288095,
+          "trajectory_fingerprint": "4ea3431fe385a98cf002271b36055a90391d9dc9bcd577a0531eb8cb7656a408"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "5d62e7e73af15a1f2a8b6c8f3f4cad1c8c4a340e29e03ceee11dac0f509165f5",
+          "alpha_mass": 5044830,
+          "unique_count": 23184,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 441,
+            "height": 143
+          },
+          "centroid": {
+            "x": 377.7127,
+            "y": 148.9284
+          },
+          "encoded_identity_alpha_mass": 4416561,
+          "encoded_identity_unique_count": 17350,
+          "encoded_identity_coverage": 0.573611,
+          "trajectory_fingerprint": "9496c1d6d11eb9eaed82c2d9acb92d66146e623857165e78ca7e771b1a36bbfd"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468,
+          "trajectory_fingerprint": "329ffadd4212936be83453536b9d5f524d799fee32d96fb79f5d152884f57526"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "developer-open",
+      "gif": "assets/animations/prysai-developer-open.gif",
+      "sha256": "f445bb9c1b5fa7489f183429890a70b5fcfdcb45e222d4d31a84b5ac8ac2be3c",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 1800,
+      "canonical_frame_sha256": "da87f8f6822ef4ac81ecea4ae102c2545874be6af9def45a3db5a2d5170c1554",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 5,
+          "progress": 0.14,
+          "render_progress": 0.14,
+          "label": "origin dot",
+          "bright_pixel_count": 476,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 111498,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
+        },
+        "arc": {
+          "frame_index": 12,
+          "progress": 0.32,
+          "render_progress": 0.32,
+          "label": "circular arc",
+          "bright_pixel_count": 3910,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 966711,
+          "encoded_identity_unique_count": 3798,
+          "encoded_identity_coverage": 0.125566
+        },
+        "bar": {
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4323,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 23,
+          "progress": 0.63,
+          "render_progress": 0.63,
+          "label": "P / monogram",
+          "bright_pixel_count": 7578,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1877037,
+          "encoded_identity_unique_count": 7375,
+          "encoded_identity_coverage": 0.243826
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.96,
+          "render_progress": 0.96,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25181,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6135154,
+          "encoded_identity_unique_count": 24103,
+          "encoded_identity_coverage": 0.796872
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25185,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "deterministic left-to-right actor commits",
+          "speed_profile": "even token cadence with short pauses",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "3bcdad7382fe884561328051f65fece579d3eeb492316ce8f5b81f036540f9b8"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "a38c8369b4d5898bc52548ccfb9a512ab5c667d595d95f604d0eff3e15807eed",
+          "alpha_mass": 123598,
+          "unique_count": 617,
+          "bbox": {
+            "x": 176,
+            "y": 179,
+            "width": 30,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0395,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 111498,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "145096144cb67124f8fa7dea6576332d77a0aee0d1fc371de00eb93fc2239731"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "d9662cf5b853c86d58418f1bc7690bef68cb7e8431241644a10a69d4d668e19a",
+          "alpha_mass": 666581,
+          "unique_count": 2952,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 253.4624,
+            "y": 120.2672
+          },
+          "encoded_identity_alpha_mass": 724649,
+          "encoded_identity_unique_count": 2846,
+          "encoded_identity_coverage": 0.094092,
+          "trajectory_fingerprint": "491b7aa4e9a9f615c97c10a838bb493eaffdde86d96d89e6a00a4bee836a2ef3"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "f6ea677366fc49b3e348c7efc781d9d594cfddb93b14df062e84ebaf6160b24b",
+          "alpha_mass": 1019471,
+          "unique_count": 4536,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 243.8534,
+            "y": 120.1407
+          },
+          "encoded_identity_alpha_mass": 982173,
+          "encoded_identity_unique_count": 3859,
+          "encoded_identity_coverage": 0.127583,
+          "trajectory_fingerprint": "b0a40291bbacbb0b1da303d115476a482cd86a30619ed9d76b8f701f1d88a859"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "b13931f2628a309eeb64d30a6e979d4935131bfcfd16fe5b3ae7c663ee81654e",
+          "alpha_mass": 1271541,
+          "unique_count": 5809,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 244.9296,
+            "y": 128.42
+          },
+          "encoded_identity_alpha_mass": 1206368,
+          "encoded_identity_unique_count": 4742,
+          "encoded_identity_coverage": 0.156776,
+          "trajectory_fingerprint": "f63bdc8a72df6c320d17c8972e45eacdd6ab99548c0d6d986967441382105add"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1877037,
+          "encoded_identity_unique_count": 7375,
+          "encoded_identity_coverage": 0.243826,
+          "trajectory_fingerprint": "805ea76606f2d1f6ccdcea666e1450e08c34d40582932a4c02b62d1daa79fbb6"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "7bfb132609b8976434ed198de37d8a9c722f310ea41eb40d130495e8e951a319",
+          "alpha_mass": 3682676,
+          "unique_count": 20308,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 394,
+            "height": 131
+          },
+          "centroid": {
+            "x": 318.1451,
+            "y": 143.3623
+          },
+          "encoded_identity_alpha_mass": 3653938,
+          "encoded_identity_unique_count": 14353,
+          "encoded_identity_coverage": 0.474526,
+          "trajectory_fingerprint": "5b747cfbab3c723ed5e4abce435485f5fa62960ece25dfdfca295c3fd9dad249"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "8393ea99cf835dceffd2d8188b40d9a33b8c7efcd4704436ab209b3180d2e5ca",
+          "alpha_mass": 5772186,
+          "unique_count": 26520,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 518,
+            "height": 143
+          },
+          "centroid": {
+            "x": 413.1112,
+            "y": 149.2747
+          },
+          "encoded_identity_alpha_mass": 5339058,
+          "encoded_identity_unique_count": 20973,
+          "encoded_identity_coverage": 0.693391,
+          "trajectory_fingerprint": "dc09fca401240a7f3f222d9e08c66b959bd9ffd9344ace523e2329459b9e5f98"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "7df3c4087173b43523bf2731a7cc320cde3bb35110233341a2cacb4d39b608c8"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "ai-field",
+      "gif": "assets/animations/prysai-ai-field.gif",
+      "sha256": "4b8861245a3103782e0cfd902dfcfc33c8811475d78ceae97f4ff0a766e917f6",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 1960,
+      "canonical_frame_sha256": "33178c59090b463188ad2ffbc1b01a41e7be1142d4f14d664e2cd870bc973ca6",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 6,
+          "progress": 0.15,
+          "render_progress": 0.15,
+          "label": "origin dot",
+          "bright_pixel_count": 597,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 140009,
+          "encoded_identity_unique_count": 550,
+          "encoded_identity_coverage": 0.018184
+        },
+        "arc": {
+          "frame_index": 12,
+          "progress": 0.33,
+          "render_progress": 0.33,
+          "label": "circular arc",
+          "bright_pixel_count": 3681,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
+        },
+        "bar": {
+          "frame_index": 18,
+          "progress": 0.48,
+          "render_progress": 0.48,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4323,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824
+        },
+        "monogram": {
+          "frame_index": 24,
+          "progress": 0.65,
+          "render_progress": 0.65,
+          "label": "P / monogram",
+          "bright_pixel_count": 7469,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.97,
+          "render_progress": 0.97,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25205,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6135154,
+          "encoded_identity_unique_count": 24103,
+          "encoded_identity_coverage": 0.796872
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25210,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "seeded signals converge into measured actors",
+          "speed_profile": "accelerate into geometry and decelerate at lockup",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "77b3079cac117672bb8f76fe8b230ea96a383ddba44ca4d07c94490e913f37a9"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 31,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0387,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "f866acb1ee3ab21b056f47d0f917cb5a1a072030297dcc6434d38852c8a939ee"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 892359,
+          "encoded_identity_unique_count": 3505,
+          "encoded_identity_coverage": 0.115879,
+          "trajectory_fingerprint": "001d646c820713eed8f0f4d951c2a841efae31609f1f8014c86f6c6f83f1b3ce"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "14de380ffd0b4925dd8fe5687884b117e366eaae90b8990187ea5d37ee16b526",
+          "alpha_mass": 1118230,
+          "unique_count": 5066,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 241.1353,
+            "y": 122.2974
+          },
+          "encoded_identity_alpha_mass": 1056663,
+          "encoded_identity_unique_count": 4154,
+          "encoded_identity_coverage": 0.137336,
+          "trajectory_fingerprint": "ec4a5f1715011e63557dc968b074ad01ebcfad09e7830247519ee697c821f1bf"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "1d46561bb53c63a2b1d472c0731bdeeddedc8cf7177850d1f983c32ad2431c62",
+          "alpha_mass": 1286598,
+          "unique_count": 5874,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 244.771,
+            "y": 128.9372
+          },
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824,
+          "trajectory_fingerprint": "b3c1af07b6e09c6ba4b0da8de1e8a21c410ff2cfda1b9684e67edd6d9fd03048"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354,
+          "trajectory_fingerprint": "ffad11593d83995bd7806c528e423174cfb831341ae4eb0f7b8b0325ab53bff0"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "5a993ee8ed8f25bbdfcafcbdcb50a450045f3ceb01d1004167e6485161ee410f",
+          "alpha_mass": 3542631,
+          "unique_count": 16144,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 294,
+            "height": 131
+          },
+          "centroid": {
+            "x": 309.2685,
+            "y": 143.0347
+          },
+          "encoded_identity_alpha_mass": 3339788,
+          "encoded_identity_unique_count": 13119,
+          "encoded_identity_coverage": 0.433729,
+          "trajectory_fingerprint": "a1f304a49b3c018fd2f73b8cdf25fc61e8dda3c972437dc089fb2ea83ed06346"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "7fa36664a8ec987c0c98667f7b9e15d577ec85937f520965e6c7b6e9904b694c",
+          "alpha_mass": 6018927,
+          "unique_count": 27708,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 518,
+            "height": 143
+          },
+          "centroid": {
+            "x": 422.0536,
+            "y": 149.6888
+          },
+          "encoded_identity_alpha_mass": 4921229,
+          "encoded_identity_unique_count": 19333,
+          "encoded_identity_coverage": 0.639171,
+          "trajectory_fingerprint": "ad966f782e3dc97f4e249a3c0119de0089e92623db382f709ac05b3bddfbef56"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "30938e71d8f8e59803d4c4ef417367079b8c911345f143ad72d8af32d513c1db"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "fintech-trust",
+      "gif": "assets/animations/prysai-fintech-trust.gif",
+      "sha256": "48c3737edc071961217c09db57718d1e7d953540c71ce73c8d5d9d087319ba51",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2090,
+      "canonical_frame_sha256": "ee4f5bb6605097b74c4190c889f3bf5840cf32b590edea8bce17879d94dad945",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 6,
+          "progress": 0.17,
+          "render_progress": 0.17,
+          "label": "origin dot",
+          "bright_pixel_count": 499,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 117358,
+          "encoded_identity_unique_count": 461,
+          "encoded_identity_coverage": 0.015241
+        },
+        "arc": {
+          "frame_index": 13,
+          "progress": 0.35,
+          "render_progress": 0.35,
+          "label": "circular arc",
+          "bright_pixel_count": 3743,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 924639,
+          "encoded_identity_unique_count": 3632,
+          "encoded_identity_coverage": 0.120078
+        },
+        "bar": {
+          "frame_index": 17,
+          "progress": 0.47,
+          "render_progress": 0.47,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4321,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 24,
+          "progress": 0.64,
+          "render_progress": 0.64,
+          "label": "P / monogram",
+          "bright_pixel_count": 7862,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1930298,
+          "encoded_identity_unique_count": 7584,
+          "encoded_identity_coverage": 0.250736
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.97,
+          "render_progress": 0.97,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25180,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6118600,
+          "encoded_identity_unique_count": 24038,
+          "encoded_identity_coverage": 0.794723
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25185,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "center-outward progress gates the supplied actors",
+          "speed_profile": "steady processing with a bounded confirmation settle",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "d17cb11b5a5f3fdc0b3c926faf798bb2909e34334e5e4690ba24fbd2b181cce1"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "d1f6820e16784f785cf0e52d36d099ce4ef59d0d52819dc370b48c11e53342ea",
+          "alpha_mass": 91584,
+          "unique_count": 535,
+          "bbox": {
+            "x": 175,
+            "y": 180,
+            "width": 31,
+            "height": 30
+          },
+          "centroid": {
+            "x": 189.9214,
+            "y": 195.7088
+          },
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "6faff6c97338e61da902a61b1a09231a9fc9de810f150f0dbe520448035b6659"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "08158009667405ae619e48188a67ef163ded7e1b415a30ba43771b672ee76b2b",
+          "alpha_mass": 538230,
+          "unique_count": 2431,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 256.9072,
+            "y": 125.9555
+          },
+          "encoded_identity_alpha_mass": 503829,
+          "encoded_identity_unique_count": 1979,
+          "encoded_identity_coverage": 0.065428,
+          "trajectory_fingerprint": "a18e088b6409271afe1e977b71288e7c4d76aa0c10e9f25bf039e1f432f7c424"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "e4acf6f7d5151654d8bc2ac652fb7945d1cb0a097e13b353924c074dbfb0dd61",
+          "alpha_mass": 993876,
+          "unique_count": 4389,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 239.6828,
+            "y": 119.4976
+          },
+          "encoded_identity_alpha_mass": 1056937,
+          "encoded_identity_unique_count": 4155,
+          "encoded_identity_coverage": 0.137369,
+          "trajectory_fingerprint": "08f312ef9b4e5d78df0d094a1c9de15ef5cb0b9e81c15ab92e86006af78c80f2"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "25c24fc2e907be356ff6edca1c932f0234695a82a527957c1af09d010ef58c6b",
+          "alpha_mass": 1124456,
+          "unique_count": 5124,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.9119,
+            "y": 122.3709
+          },
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758,
+          "trajectory_fingerprint": "ccabede8c36979781c1a0eeeca579f632268fe66441b0cb83e11f13c924eadae"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1833063,
+          "encoded_identity_unique_count": 7202,
+          "encoded_identity_coverage": 0.238106,
+          "trajectory_fingerprint": "d84a9b746c925b5eb8e4223d282d189a1eadccbbde19fb98e60fd45417fd4105"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "d577b0539e3bac412e4202bc73ee11b6ca67db434bdb2c347d5fc8c7e7e5323a",
+          "alpha_mass": 3542630,
+          "unique_count": 16143,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 294,
+            "height": 131
+          },
+          "centroid": {
+            "x": 309.2684,
+            "y": 143.0347
+          },
+          "encoded_identity_alpha_mass": 3380293,
+          "encoded_identity_unique_count": 13278,
+          "encoded_identity_coverage": 0.438986,
+          "trajectory_fingerprint": "bd6a4ad527f931f2b236774c9d20475e386af679af4ad6d66d5f9b2b50cea712"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "37006c34e79c451d9bfc795c8d89d2c8f2d8a7bc525b4ab5649f77b05015f2f3",
+          "alpha_mass": 5635005,
+          "unique_count": 25907,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 518,
+            "height": 143
+          },
+          "centroid": {
+            "x": 405.5992,
+            "y": 150.393
+          },
+          "encoded_identity_alpha_mass": 5140468,
+          "encoded_identity_unique_count": 20193,
+          "encoded_identity_coverage": 0.667603,
+          "trajectory_fingerprint": "f8c8983f3ebb7c38ee93663fefd94fc77d40bcae63a2798bb147d5e69fcb3817"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "28d32cc9b1cd56c994f0a76a920a3d310f731c2aebda8398d21908c8a9e1b654"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "security-shield",
+      "gif": "assets/animations/prysai-security-shield.gif",
+      "sha256": "941d267fdb56800304f899f1c818bb11b896ef290b4228a999b07e8903290354",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2250,
+      "canonical_frame_sha256": "1ec42ce758965b661913eebd41c895963d87ebf3c41c64853a74b12d52428e9b",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 7,
+          "progress": 0.18,
+          "render_progress": 0.18,
+          "label": "origin dot",
+          "bright_pixel_count": 507,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 119374,
+          "encoded_identity_unique_count": 469,
+          "encoded_identity_coverage": 0.015506
+        },
+        "arc": {
+          "frame_index": 14,
+          "progress": 0.39,
+          "render_progress": 0.39,
+          "label": "circular arc",
+          "bright_pixel_count": 3689,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
+        },
+        "bar": {
+          "frame_index": 21,
+          "progress": 0.58,
+          "render_progress": 0.58,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4336,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1068359,
+          "encoded_identity_unique_count": 4200,
+          "encoded_identity_coverage": 0.138857
+        },
+        "monogram": {
+          "frame_index": 26,
+          "progress": 0.71,
+          "render_progress": 0.71,
+          "label": "P / monogram",
+          "bright_pixel_count": 7493,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1851016,
+          "encoded_identity_unique_count": 7273,
+          "encoded_identity_coverage": 0.240454
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.985,
+          "render_progress": 0.985,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25202,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6133190,
+          "encoded_identity_unique_count": 24096,
+          "encoded_identity_coverage": 0.796641
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25198,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "perimeter-first trace then interior unlock",
+          "speed_profile": "guarded boundary, quick verify, deliberate release",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "144d52d863ff34f155a59e1dd0a59d9c1d32113e6024e8d6b37dbf364f8e3cd3"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "98b70167e7e74d2590ceff5878f64c938b32a5acf6106dec57ec81d7625f0b83",
+          "alpha_mass": 47640,
+          "unique_count": 403,
+          "bbox": {
+            "x": 176,
+            "y": 183,
+            "width": 29,
+            "height": 27
+          },
+          "centroid": {
+            "x": 190.0371,
+            "y": 194.8747
+          },
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "c4520730422d8fed3851ca806858ce660a64b46881bd04f18dfa7a9817b39c08"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "33fe3a5e7c53b8f9250f5ef7a0c9ed665a728f780da303f81f5b340da7e74aed",
+          "alpha_mass": 218021,
+          "unique_count": 1050,
+          "bbox": {
+            "x": 175,
+            "y": 86,
+            "width": 133,
+            "height": 124
+          },
+          "centroid": {
+            "x": 210.4493,
+            "y": 165.8642
+          },
+          "encoded_identity_alpha_mass": 284794,
+          "encoded_identity_unique_count": 1119,
+          "encoded_identity_coverage": 0.036995,
+          "trajectory_fingerprint": "0683c6a876b84afbe372c0e25e3ef8f198a2e52c597e1ef14cd54d3a988b18a8"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028,
+          "trajectory_fingerprint": "72a33988bde0652adb5c6a91e61c08f5a74566fa29d78efba1f8915587a06158"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "9ca341ac9b28ca307f7899e4cd559f4b6c056d02e6eff32ede74a96dd46dc004",
+          "alpha_mass": 1085663,
+          "unique_count": 4913,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 242.205,
+            "y": 121.8023
+          },
+          "encoded_identity_alpha_mass": 1032189,
+          "encoded_identity_unique_count": 4058,
+          "encoded_identity_coverage": 0.134162,
+          "trajectory_fingerprint": "34705921f4b493097fcba33272fb1ca1753e63944a1b990c2b8aa1a622ccae79"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "0097c7b38a12bdfe0903ae0e38871f2a92854e86074962a5d690c3ecd8101771",
+          "alpha_mass": 1403589,
+          "unique_count": 6418,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 241.3585,
+            "y": 135.6719
+          },
+          "encoded_identity_alpha_mass": 1558786,
+          "encoded_identity_unique_count": 6126,
+          "encoded_identity_coverage": 0.202532,
+          "trajectory_fingerprint": "d8139be9cdb6a8fdf4488f34bfba6d4cf71412cdb0094903d9005d729bbdc615"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "3e698b9aca649c3882dba9006493a821ddf492573deeb3d7641ff1c319421526",
+          "alpha_mass": 2514577,
+          "unique_count": 11444,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 238,
+            "height": 131
+          },
+          "centroid": {
+            "x": 271.7996,
+            "y": 147.865
+          },
+          "encoded_identity_alpha_mass": 2784286,
+          "encoded_identity_unique_count": 10938,
+          "encoded_identity_coverage": 0.361623,
+          "trajectory_fingerprint": "f2608efc204c4ae58463eb193b674c37e1670b08399e8c5dd8c9ea8b96b130c1"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "3df59a494504eb320dd4cee1c07b2faea152b49400deb0fcfbb792baa2ebc1ee",
+          "alpha_mass": 4906113,
+          "unique_count": 22553,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 441,
+            "height": 143
+          },
+          "centroid": {
+            "x": 372.2569,
+            "y": 149.4439
+          },
+          "encoded_identity_alpha_mass": 4562436,
+          "encoded_identity_unique_count": 17922,
+          "encoded_identity_coverage": 0.592522,
+          "trajectory_fingerprint": "b6ef7fd35f711b5ab027d276b68619e7e016c8f42c44f1fd4990b8fdf189b440"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "7f847e8b0face79cf97e5c29bc8ff6a3391ab0d9c160b687bc7796e8aa06aca3"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "commerce-energy",
+      "gif": "assets/animations/prysai-commerce-energy.gif",
+      "sha256": "74e9e8e3a5ba440c318189a2f283d2d5571b2ce2380cae546f8325c1dfc58748",
+      "encoded_frame_count": 37,
+      "encoded_duration_ms": 1500,
+      "canonical_frame_sha256": "4705bd11795c39818e17dd58868d4934969178d3ffdf291e8053b37b113ac337",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 4,
+          "progress": 0.1,
+          "render_progress": 0.1,
+          "label": "origin dot",
+          "bright_pixel_count": 475,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
+        },
+        "arc": {
+          "frame_index": 9,
+          "progress": 0.24,
+          "render_progress": 0.24,
+          "label": "circular arc",
+          "bright_pixel_count": 3679,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 904662,
+          "encoded_identity_unique_count": 3553,
+          "encoded_identity_coverage": 0.117466
+        },
+        "bar": {
+          "frame_index": 13,
+          "progress": 0.35,
+          "render_progress": 0.35,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4321,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1056862,
+          "encoded_identity_unique_count": 4152,
+          "encoded_identity_coverage": 0.13727
+        },
+        "monogram": {
+          "frame_index": 15,
+          "progress": 0.42,
+          "render_progress": 0.42,
+          "label": "P / monogram",
+          "bright_pixel_count": 7466,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1840473,
+          "encoded_identity_unique_count": 7229,
+          "encoded_identity_coverage": 0.238999
+        },
+        "wordmark": {
+          "frame_index": 34,
+          "progress": 0.94,
+          "render_progress": 0.94,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25205,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6139132,
+          "encoded_identity_unique_count": 24120,
+          "encoded_identity_coverage": 0.797434
+        },
+        "canonical": {
+          "frame_index": 36,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25210,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "compressed actors release from a shared origin",
+          "speed_profile": "short anticipation, fast release, rapid settle",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "852d380ccdc7767e5a1eb8dbc853950f35f86c71797a511bae1c00ebd731649f"
+        },
+        {
+          "frame_index": 4,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "2b0094796fe82e6b238712dbf042b53161bd1454ab35c4dfc22bbacaf5b14d8b"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "fe48ac9309cb9f5e909225fc9acde5e50965c5a4b15c533aa6e2152d4a5cb562",
+          "alpha_mass": 1037301,
+          "unique_count": 4625,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 237.7895,
+            "y": 120.3606
+          },
+          "encoded_identity_alpha_mass": 904662,
+          "encoded_identity_unique_count": 3553,
+          "encoded_identity_coverage": 0.117466,
+          "trajectory_fingerprint": "dae57c3927815fb0294c73db6f0ef8c5c6819d2e31159f2b31d37bf64939ea8e"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1838805,
+          "encoded_identity_unique_count": 7222,
+          "encoded_identity_coverage": 0.238767,
+          "trajectory_fingerprint": "ad47a437a3f2162573d8af512547397e50d8e5135a73a7c9b59a2ad16d49a26f"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "0baab22c2624cde1bbc61e9b53b7af2983826975f2306c46b1b6dada9ee13352",
+          "alpha_mass": 3044073,
+          "unique_count": 13812,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 238,
+            "height": 131
+          },
+          "centroid": {
+            "x": 288.4765,
+            "y": 141.9883
+          },
+          "encoded_identity_alpha_mass": 2882983,
+          "encoded_identity_unique_count": 11324,
+          "encoded_identity_coverage": 0.374384,
+          "trajectory_fingerprint": "77bfda7ac9fc29e06143e9cb2ddf3cbb1f6cf178a967b79f5d4f04fa4512e8d0"
+        },
+        {
+          "frame_index": 22,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "f76b13ab07e071e2ed675aa65123f6df9f77c1925e5f9d4151848896e0541046",
+          "alpha_mass": 3906149,
+          "unique_count": 17788,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 359,
+            "height": 131
+          },
+          "centroid": {
+            "x": 327.2146,
+            "y": 143.9645
+          },
+          "encoded_identity_alpha_mass": 3340276,
+          "encoded_identity_unique_count": 13121,
+          "encoded_identity_coverage": 0.433795,
+          "trajectory_fingerprint": "132bcfd0c28158ae37afa023421fa241b840998e5ff1470d2ddd77f491dd46c5"
+        },
+        {
+          "frame_index": 27,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "7c8a1a35cf56cbec6f3cbcdc0f6186b9d87366c46c6a2f8ece9ea404b1d75c50",
+          "alpha_mass": 5148623,
+          "unique_count": 23725,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 456,
+            "height": 143
+          },
+          "centroid": {
+            "x": 382.1481,
+            "y": 148.513
+          },
+          "encoded_identity_alpha_mass": 4848432,
+          "encoded_identity_unique_count": 19047,
+          "encoded_identity_coverage": 0.629715,
+          "trajectory_fingerprint": "a7c90d31f7d085c4e6c96ba19754afe29d3e51471ccba0bb0b9e2b7a38698ab2"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "d1f995925a61006533c347416bc2f104c24d0e8bd1b630c121f91194d4eb15ef",
+          "alpha_mass": 6531849,
+          "unique_count": 30166,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.597,
+            "y": 149.1989
+          },
+          "encoded_identity_alpha_mass": 5806944,
+          "encoded_identity_unique_count": 22813,
+          "encoded_identity_coverage": 0.754224,
+          "trajectory_fingerprint": "d7bcff65a0ccfab971fde4ce249116ab52d81b6f416f1738aa9d805120ca46f9"
+        },
+        {
+          "frame_index": 36,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468,
+          "trajectory_fingerprint": "f997d2c59d2632bd34e868fbf83c98cf3cb70c67e7219b4a7c10d7aad743811c"
+        }
+      ],
+      "canonical_frame": 36
+    },
+    {
+      "id": "automotive-precision",
+      "gif": "assets/animations/prysai-automotive-precision.gif",
+      "sha256": "bd55bd863ca6b8bb258a18a1c41c689aa68e5dba8817a102929b89e3c3c44fbc",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2000,
+      "canonical_frame_sha256": "e47464ef2880aa5052e03085f4347e1dbf53797cae7ba3837758c66c243d324a",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 5,
+          "progress": 0.14,
+          "render_progress": 0.14,
+          "label": "origin dot",
+          "bright_pixel_count": 1122,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 272877,
+          "encoded_identity_unique_count": 1072,
+          "encoded_identity_coverage": 0.035442
+        },
+        "arc": {
+          "frame_index": 11,
+          "progress": 0.31,
+          "render_progress": 0.31,
+          "label": "circular arc",
+          "bright_pixel_count": 3838,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 947492,
+          "encoded_identity_unique_count": 3723,
+          "encoded_identity_coverage": 0.123087
+        },
+        "bar": {
+          "frame_index": 17,
+          "progress": 0.47,
+          "render_progress": 0.47,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4655,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1150570,
+          "encoded_identity_unique_count": 4523,
+          "encoded_identity_coverage": 0.149535
+        },
+        "monogram": {
+          "frame_index": 24,
+          "progress": 0.64,
+          "render_progress": 0.64,
+          "label": "P / monogram",
+          "bright_pixel_count": 10573,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 2597786,
+          "encoded_identity_unique_count": 10205,
+          "encoded_identity_coverage": 0.337389
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.96,
+          "render_progress": 0.96,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25206,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6135154,
+          "encoded_identity_unique_count": 24103,
+          "encoded_identity_coverage": 0.796872
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25210,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "single-axis actor travel with velocity continuity",
+          "speed_profile": "heavy forms slow; scan accent remains fast",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "91445791409ae6455dd0588ada60de25d6af34c6c576a11223468255e5274f8c"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 31,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0387,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 272877,
+          "encoded_identity_unique_count": 1072,
+          "encoded_identity_coverage": 0.035442,
+          "trajectory_fingerprint": "9e9d1ecf6ea4d61b0c0ff6b6018c18bd8c023e346c69d484088e6d7a84ea17a5"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061,
+          "trajectory_fingerprint": "4767e742f4c9b6809dc87ca0d800323bbf05a3566f0bb28a80ff7b95a9c9e466"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "9838d7bcc1499507d92c9271a921041bbf2b1d26a0773851ec1de6d8d16bd298",
+          "alpha_mass": 1115049,
+          "unique_count": 5036,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.343,
+            "y": 122.1516
+          },
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824,
+          "trajectory_fingerprint": "1981a338fff37466b36064d8ec902a00357678370ef934e226d2d870b17e2017"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "4480da083add802eb5eae84ae1c5f2f677539f6b4709f60bf7883b0c83ba6a90",
+          "alpha_mass": 1675414,
+          "unique_count": 7608,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 238.7505,
+            "y": 140.9333
+          },
+          "encoded_identity_alpha_mass": 1597417,
+          "encoded_identity_unique_count": 6277,
+          "encoded_identity_coverage": 0.207525,
+          "trajectory_fingerprint": "3d7932f4ca4d8de610cf92e097b68ffbad5bb8ef85a25359319b8b23b4c64b45"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354,
+          "trajectory_fingerprint": "4121ccc0a2c27bdb2e70a75c8e7e8541913f49ed6ab8d9577c82fd8bf4b72150"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "6fe2d7a477cb26e1acd0d97b796c5623bd4ed9552c9f3edc10cb577092aa3fe6",
+          "alpha_mass": 4180091,
+          "unique_count": 19109,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 352,
+            "height": 143
+          },
+          "centroid": {
+            "x": 338.4584,
+            "y": 147.5484
+          },
+          "encoded_identity_alpha_mass": 4174607,
+          "encoded_identity_unique_count": 16399,
+          "encoded_identity_coverage": 0.542169,
+          "trajectory_fingerprint": "d070d710aafd4d40cee51b22d20bc50e8d9f810df06572eabc1bdc09f56ca434"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "81fb730ccb2d1a8b5c408a0268fae5dadcd6a45fbab4727a2fe4d04095e04030",
+          "alpha_mass": 6038501,
+          "unique_count": 27804,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 518,
+            "height": 143
+          },
+          "centroid": {
+            "x": 422.9009,
+            "y": 149.7397
+          },
+          "encoded_identity_alpha_mass": 5679965,
+          "encoded_identity_unique_count": 22314,
+          "encoded_identity_coverage": 0.737726,
+          "trajectory_fingerprint": "43d827154c76546d0d6dd933aac06ad24148e4ed0a85a662df6ddd5f21c6d184"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "c883eccb82bd5724cd6c0d19b92b5016e1b93fd7caaa918578bacbb9bdfe0b81"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "sports-impact",
+      "gif": "assets/animations/prysai-sports-impact.gif",
+      "sha256": "22a464c258623e2b5f12664d776ddb2e455e8701f5580aca018fdd9fb5846b80",
+      "encoded_frame_count": 36,
+      "encoded_duration_ms": 1330,
+      "canonical_frame_sha256": "e49a8ab89b7e9d7bfb47349eb907284ad200a966c4630984c899a80bd5a54a94",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 4,
+          "progress": 0.1,
+          "render_progress": 0.1,
+          "label": "origin dot",
+          "bright_pixel_count": 586,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 135112,
+          "encoded_identity_unique_count": 531,
+          "encoded_identity_coverage": 0.017555
+        },
+        "arc": {
+          "frame_index": 9,
+          "progress": 0.27,
+          "render_progress": 0.27,
+          "label": "circular arc",
+          "bright_pixel_count": 3679,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
+        },
+        "bar": {
+          "frame_index": 15,
+          "progress": 0.42,
+          "render_progress": 0.42,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4321,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 20,
+          "progress": 0.58,
+          "render_progress": 0.58,
+          "label": "P / monogram",
+          "bright_pixel_count": 7463,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1839142,
+          "encoded_identity_unique_count": 7224,
+          "encoded_identity_coverage": 0.238834
+        },
+        "wordmark": {
+          "frame_index": 34,
+          "progress": 0.98,
+          "render_progress": 0.98,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25194,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6135154,
+          "encoded_identity_unique_count": 24103,
+          "encoded_identity_coverage": 0.796872
+        },
+        "canonical": {
+          "frame_index": 35,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25198,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "horizontal compression followed by directional release",
+          "speed_profile": "sharp impact with controlled recovery",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "99597e220e7a3d32aaaa0506dcd4d3c5db438f4dfbe3adfa4c214910a620b71d"
+        },
+        {
+          "frame_index": 4,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "7f30c0a0f0c6652705e875f0b2c61cb33068555b97499a37a23c27cb64a5e835",
+          "alpha_mass": 141582,
+          "unique_count": 721,
+          "bbox": {
+            "x": 175,
+            "y": 81,
+            "width": 130,
+            "height": 129
+          },
+          "centroid": {
+            "x": 199.615,
+            "y": 180.2872
+          },
+          "encoded_identity_alpha_mass": 135112,
+          "encoded_identity_unique_count": 531,
+          "encoded_identity_coverage": 0.017555,
+          "trajectory_fingerprint": "0e1ba5866869df6f07454c4fa30e7bc4b0a4c049401bb857e4b693e2bb4efb98"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028,
+          "trajectory_fingerprint": "a1df8d1be170ec38780670d529ed2496ac5eb59d96eb11fa4ec68b6edba5673c"
+        },
+        {
+          "frame_index": 13,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
+          "alpha_mass": 1124376,
+          "unique_count": 5093,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.9101,
+            "y": 122.3723
+          },
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758,
+          "trajectory_fingerprint": "88fb95bb27c2b7f8ea5ae3e2a1c180a0dd4f0a8cfd11844f7127e27a10e4775d"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1842797,
+          "encoded_identity_unique_count": 7239,
+          "encoded_identity_coverage": 0.23933,
+          "trajectory_fingerprint": "994732c68975b153177bc77ff5efbe8c5418a4f3b57000c887a5e3748f42868e"
+        },
+        {
+          "frame_index": 22,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "0baab22c2624cde1bbc61e9b53b7af2983826975f2306c46b1b6dada9ee13352",
+          "alpha_mass": 3044073,
+          "unique_count": 13812,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 238,
+            "height": 131
+          },
+          "centroid": {
+            "x": 288.4765,
+            "y": 141.9883
+          },
+          "encoded_identity_alpha_mass": 1945673,
+          "encoded_identity_unique_count": 7644,
+          "encoded_identity_coverage": 0.252719,
+          "trajectory_fingerprint": "da86428be22c0fc44ce3dd4c4aab96c1b37d3f8d49c881a600592332a7fdd718"
+        },
+        {
+          "frame_index": 26,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "8688d9b975ad3d4ee2713c5a36384b4f2e756d78c673b98fc18b190478a3f36a",
+          "alpha_mass": 4432641,
+          "unique_count": 20341,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 380,
+            "height": 143
+          },
+          "centroid": {
+            "x": 349.5598,
+            "y": 147.3975
+          },
+          "encoded_identity_alpha_mass": 3339345,
+          "encoded_identity_unique_count": 13117,
+          "encoded_identity_coverage": 0.433663,
+          "trajectory_fingerprint": "e8c202bc7b00f763bcf4813a971676e4ccec001c5fbf653db0511530e72a2976"
+        },
+        {
+          "frame_index": 31,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "81fb730ccb2d1a8b5c408a0268fae5dadcd6a45fbab4727a2fe4d04095e04030",
+          "alpha_mass": 6038501,
+          "unique_count": 27804,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 518,
+            "height": 143
+          },
+          "centroid": {
+            "x": 422.9009,
+            "y": 149.7397
+          },
+          "encoded_identity_alpha_mass": 5154780,
+          "encoded_identity_unique_count": 20249,
+          "encoded_identity_coverage": 0.669455,
+          "trajectory_fingerprint": "e86067e9ca305bc6c548d392a4f5843c74b017de0cd84fcfaea83231f1fcd27b"
+        },
+        {
+          "frame_index": 35,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "0a4d878e0c76d06970cf5c334965c7faed340ec1aabfc77a126bfcbd36ce042b"
+        }
+      ],
+      "canonical_frame": 35
+    },
+    {
+      "id": "cinematic-title",
+      "gif": "assets/animations/prysai-cinematic-title.gif",
+      "sha256": "413f35e6c9511958344f27d115283c6b408925dc32c1e15d50e4cc4dec21c877",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2400,
+      "canonical_frame_sha256": "ccedc5fab7a0628f81ee21c23ae210468b1d3b2df31c00acf4769fa297d3edd9",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 7,
+          "progress": 0.18,
+          "render_progress": 0.18,
+          "label": "origin dot",
+          "bright_pixel_count": 546,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 128061,
+          "encoded_identity_unique_count": 503,
+          "encoded_identity_coverage": 0.01663
+        },
+        "arc": {
+          "frame_index": 14,
+          "progress": 0.38,
+          "render_progress": 0.38,
+          "label": "circular arc",
+          "bright_pixel_count": 3680,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028
+        },
+        "bar": {
+          "frame_index": 21,
+          "progress": 0.58,
+          "render_progress": 0.58,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4323,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1067659,
+          "encoded_identity_unique_count": 4197,
+          "encoded_identity_coverage": 0.138758
+        },
+        "monogram": {
+          "frame_index": 26,
+          "progress": 0.69,
+          "render_progress": 0.69,
+          "label": "P / monogram",
+          "bright_pixel_count": 8212,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 2029149,
+          "encoded_identity_unique_count": 7972,
+          "encoded_identity_coverage": 0.263563
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.985,
+          "render_progress": 0.985,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25194,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6135154,
+          "encoded_identity_unique_count": 24103,
+          "encoded_identity_coverage": 0.796872
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25198,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "center aperture gates contour and lockup layers",
+          "speed_profile": "slow exposure followed by a long title hold",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "5f1a6bd9c95a87d0e99052b03703209f63e37318a1a6ed14de56285e135baccd"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "8c6b1a7fb4531b91608e275c873e02b5285e624a768cc07708f4b94f1f29bfe9",
+          "alpha_mass": 109843,
+          "unique_count": 598,
+          "bbox": {
+            "x": 177,
+            "y": 179,
+            "width": 28,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.2362,
+            "y": 194.0099
+          },
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "8420cab8f9722e010990124c597243fc8565151b74abea673c7b1ddd3dcdfde7"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "17480cbce3110a5f548094858008044abcf40cf5789cb2d3f6293d1308e5904d",
+          "alpha_mass": 280224,
+          "unique_count": 1295,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 86,
+            "height": 130
+          },
+          "centroid": {
+            "x": 222.1049,
+            "y": 138.0877
+          },
+          "encoded_identity_alpha_mass": 357750,
+          "encoded_identity_unique_count": 1405,
+          "encoded_identity_coverage": 0.046451,
+          "trajectory_fingerprint": "4f88a26d0b8c2be92571f2d7aedbf2219e06c7b3114f3554429eecce6f074b2b"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 908955,
+          "encoded_identity_unique_count": 3570,
+          "encoded_identity_coverage": 0.118028,
+          "trajectory_fingerprint": "2bb6ef26ee7aac0ac16a599b8eb0741d726027260aae9a4424a381be253a9094"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "b416bcc65f8f44626258649b3f180198f20053d412975077efc06c243549afa8",
+          "alpha_mass": 1087180,
+          "unique_count": 4901,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 239.1321,
+            "y": 121.5391
+          },
+          "encoded_identity_alpha_mass": 1032166,
+          "encoded_identity_unique_count": 4057,
+          "encoded_identity_coverage": 0.134129,
+          "trajectory_fingerprint": "27cbfe0a5a6f0372f113def2f372615693541001076af0240721b7dbfb428bd3"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "e0b1c8866d198e1af10f494962ba82b4b4b10bec8da01da8bc3be99c82e619e9",
+          "alpha_mass": 1354609,
+          "unique_count": 6160,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 244.0093,
+            "y": 131.9938
+          },
+          "encoded_identity_alpha_mass": 1354381,
+          "encoded_identity_unique_count": 5323,
+          "encoded_identity_coverage": 0.175984,
+          "trajectory_fingerprint": "1138226d35fbf9e55cbcc32354e70420a511f70e61bde18bc7d7b0b230c60819"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "a2eca43cd6c6dd2508c55995af145000a6f010291a447249c2cc717e695600fe",
+          "alpha_mass": 3134648,
+          "unique_count": 16376,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 290,
+            "height": 131
+          },
+          "centroid": {
+            "x": 292.5932,
+            "y": 141.9361
+          },
+          "encoded_identity_alpha_mass": 3058367,
+          "encoded_identity_unique_count": 12014,
+          "encoded_identity_coverage": 0.397196,
+          "trajectory_fingerprint": "39f87f0c080fe748929d47f5cf699f64cd591ed82113e8064e84cd4e044eb30e"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "a12ede4baed970f3ac50f9ff0b01fed07d738f5d7ab768c796f9e285c4090a70",
+          "alpha_mass": 5184460,
+          "unique_count": 27257,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 502,
+            "height": 143
+          },
+          "centroid": {
+            "x": 384.1711,
+            "y": 148.5169
+          },
+          "encoded_identity_alpha_mass": 4766095,
+          "encoded_identity_unique_count": 18722,
+          "encoded_identity_coverage": 0.61897,
+          "trajectory_fingerprint": "b61b7dc34addf7f725180e467606c9b3bb5fb153de9b2d5470596050aba5b1a5"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "366db9586a4d3226a744018ba88e9aa12441b0c64bf9ef0dd5a445be73b881e1"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "nature-flow",
+      "gif": "assets/animations/prysai-nature-flow.gif",
+      "sha256": "086b49a010438df8a99d05d2e6477c96dbc18c8f5db49689c9050cc3db015239",
+      "encoded_frame_count": 38,
+      "encoded_duration_ms": 2400,
+      "canonical_frame_sha256": "3128abd112bc51f8a8c222b51a411a7003f1754bf0b09143005370465c695485",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 7,
+          "progress": 0.18,
+          "render_progress": 0.18,
+          "label": "origin dot",
+          "bright_pixel_count": 475,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
+        },
+        "arc": {
+          "frame_index": 14,
+          "progress": 0.38,
+          "render_progress": 0.38,
+          "label": "circular arc",
+          "bright_pixel_count": 3750,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 926131,
+          "encoded_identity_unique_count": 3638,
+          "encoded_identity_coverage": 0.120276
+        },
+        "bar": {
+          "frame_index": 21,
+          "progress": 0.56,
+          "render_progress": 0.56,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4987,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1234195,
+          "encoded_identity_unique_count": 4851,
+          "encoded_identity_coverage": 0.16038
+        },
+        "monogram": {
+          "frame_index": 26,
+          "progress": 0.7,
+          "render_progress": 0.7,
+          "label": "P / monogram",
+          "bright_pixel_count": 8600,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 2129205,
+          "encoded_identity_unique_count": 8365,
+          "encoded_identity_coverage": 0.276556
+        },
+        "wordmark": {
+          "frame_index": 36,
+          "progress": 0.98,
+          "render_progress": 0.98,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25205,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6138896,
+          "encoded_identity_unique_count": 24119,
+          "encoded_identity_coverage": 0.797401
+        },
+        "canonical": {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25210,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "curvature-following drift into source positions",
+          "speed_profile": "low-frequency flow with damped settle",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "ca7a2b646c045319e0934abebec77794d7c70632cae4251ed1fe86f3dc23e03d"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "1fec5e36db8f01f8d6f4d09bdba363d7e854ec5cb715848b27258d1d821bf277",
+          "alpha_mass": 104020,
+          "unique_count": 573,
+          "bbox": {
+            "x": 175,
+            "y": 180,
+            "width": 30,
+            "height": 30
+          },
+          "centroid": {
+            "x": 188.9202,
+            "y": 194.4355
+          },
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "43d044c5e80d3e31cf348ed845e07ea5694da80903b9c0344002a40300322e07"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "18d4460fbb917eb424369e7d68debc4776a01ac4775d2254b38a30f5f45be934",
+          "alpha_mass": 186374,
+          "unique_count": 944,
+          "bbox": {
+            "x": 175,
+            "y": 86,
+            "width": 48,
+            "height": 124
+          },
+          "centroid": {
+            "x": 192.1364,
+            "y": 170.0167
+          },
+          "encoded_identity_alpha_mass": 337503,
+          "encoded_identity_unique_count": 1326,
+          "encoded_identity_coverage": 0.043839,
+          "trajectory_fingerprint": "750ecd2ee81699554d9ba2cfc4d4237bd4d3ef5fabdee5f47b3cd1d3149875c0"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 926131,
+          "encoded_identity_unique_count": 3638,
+          "encoded_identity_coverage": 0.120276,
+          "trajectory_fingerprint": "e2e8016cde2beb8b49b5c0b94de5149af4945c48f6d9afa7a707bcbf17931b03"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "1a246f50f431e95f3f79b2d32fd346a98a461462fe2b72ad5a5d07e6b53d2432",
+          "alpha_mass": 1117872,
+          "unique_count": 5063,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.574,
+            "y": 122.2235
+          },
+          "encoded_identity_alpha_mass": 1061539,
+          "encoded_identity_unique_count": 4173,
+          "encoded_identity_coverage": 0.137964,
+          "trajectory_fingerprint": "6ac9e40ae6c2117350142d89ba8316c278a783597600b2b25966e1a68eab063c"
+        },
+        {
+          "frame_index": 23,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "35fc31c6abd84115374f227cf103a05de1b0afbb27a6b0cd1ccbdb400995ffd0",
+          "alpha_mass": 1675391,
+          "unique_count": 7591,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 238.7504,
+            "y": 140.9339
+          },
+          "encoded_identity_alpha_mass": 1635360,
+          "encoded_identity_unique_count": 6426,
+          "encoded_identity_coverage": 0.212451,
+          "trajectory_fingerprint": "8ece4dd8f001ff0093862d4ad2421dfbe87963781d78a8e78f3be29498674b73"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "4ef472b15767d2f0d7321488ea4fa788da6c090de9767177bf8c24e5191b7e5f",
+          "alpha_mass": 2982513,
+          "unique_count": 13488,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 233,
+            "height": 131
+          },
+          "centroid": {
+            "x": 286.0857,
+            "y": 142.4202
+          },
+          "encoded_identity_alpha_mass": 3137550,
+          "encoded_identity_unique_count": 12324,
+          "encoded_identity_coverage": 0.407445,
+          "trajectory_fingerprint": "c1b9a5000bd94fe8a5cb11929b2491adf5997a66cf038f6a1d5ceb06d4e144ca"
+        },
+        {
+          "frame_index": 32,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "7be148f58eda3190cb219c38743bd3d85b78fabdbf55b52c10d67ce0fc5808a1",
+          "alpha_mass": 5208567,
+          "unique_count": 27371,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 481,
+            "height": 143
+          },
+          "centroid": {
+            "x": 385.326,
+            "y": 148.4344
+          },
+          "encoded_identity_alpha_mass": 4694104,
+          "encoded_identity_unique_count": 18441,
+          "encoded_identity_coverage": 0.60968,
+          "trajectory_fingerprint": "e5ee2ace73a7c2f9f1dcc58dd97456be628ae0c1cb2515460755ed52236640e7"
+        },
+        {
+          "frame_index": 37,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468,
+          "trajectory_fingerprint": "0eb38fe7c539c0ab5341b644bcd5bb3a8ae55c9b6ab20c4990c148b2d144e65e"
+        }
+      ],
+      "canonical_frame": 37
+    },
+    {
+      "id": "gaming-world",
+      "gif": "assets/animations/prysai-gaming-world.gif",
+      "sha256": "65853c1b4010ffeba591248706802d121893c1566f36d5d95f1c0a07cdf08847",
+      "encoded_frame_count": 39,
+      "encoded_duration_ms": 1640,
+      "canonical_frame_sha256": "d72f00e0fde63f46585ab9a692c8e6ae0f78e7cb6f96272ac5eaec8671bde30a",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 5,
+          "progress": 0.13,
+          "render_progress": 0.13,
+          "label": "origin dot",
+          "bright_pixel_count": 502,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 114035,
+          "encoded_identity_unique_count": 448,
+          "encoded_identity_coverage": 0.014811
+        },
+        "arc": {
+          "frame_index": 11,
+          "progress": 0.3,
+          "render_progress": 0.3,
+          "label": "circular arc",
+          "bright_pixel_count": 3681,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 904881,
+          "encoded_identity_unique_count": 3554,
+          "encoded_identity_coverage": 0.117499
+        },
+        "bar": {
+          "frame_index": 17,
+          "progress": 0.46,
+          "render_progress": 0.46,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4323,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1055434,
+          "encoded_identity_unique_count": 4149,
+          "encoded_identity_coverage": 0.137171
+        },
+        "monogram": {
+          "frame_index": 24,
+          "progress": 0.64,
+          "render_progress": 0.64,
+          "label": "P / monogram",
+          "bright_pixel_count": 7467,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1845543,
+          "encoded_identity_unique_count": 7251,
+          "encoded_identity_coverage": 0.239726
+        },
+        "wordmark": {
+          "frame_index": 37,
+          "progress": 0.98,
+          "render_progress": 0.98,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 25193,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 6531849,
+          "encoded_identity_alpha_mass": 6124470,
+          "encoded_identity_unique_count": 24061,
+          "encoded_identity_coverage": 0.795484
+        },
+        "canonical": {
+          "frame_index": 38,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25198,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "deterministic orbital arrivals into actor targets",
+          "speed_profile": "spawn, accumulate, snap to reward, clear",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "b3db24e35ec3010e9a9d637d5c79f70568b3605e640785a252f413f85f184657"
+        },
+        {
+          "frame_index": 5,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "ea581adaa59ba7ea9afb66f98732d9a40a7d876384b9440dbc63b820e3cef813",
+          "alpha_mass": 123605,
+          "unique_count": 618,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 31,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0387,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 114035,
+          "encoded_identity_unique_count": 448,
+          "encoded_identity_coverage": 0.014811,
+          "trajectory_fingerprint": "e8c1e8b6c03c4751c3c557540922141fbd931a61fd494413116d3b82ac4551d3"
+        },
+        {
+          "frame_index": 10,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "f2ee0ddecacef379375080d5c61b1a64dc57e9d1f85dc4437831dc5f3031e6ab",
+          "alpha_mass": 955051,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.2203,
+            "y": 118.3532
+          },
+          "encoded_identity_alpha_mass": 904646,
+          "encoded_identity_unique_count": 3553,
+          "encoded_identity_coverage": 0.117466,
+          "trajectory_fingerprint": "b618efffb35027293d34e85e08136ddaa1fa47c8e06d96d5c2b302d6577d4b08"
+        },
+        {
+          "frame_index": 14,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "ce7472ff046bc15a00abe955e53feb3d3b7db257d7836255e4b622e53750dc95",
+          "alpha_mass": 1124376,
+          "unique_count": 5093,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.9101,
+            "y": 122.3723
+          },
+          "encoded_identity_alpha_mass": 1063585,
+          "encoded_identity_unique_count": 4181,
+          "encoded_identity_coverage": 0.138229,
+          "trajectory_fingerprint": "ebf4b17e2a5fd2fe33b0058b923bcf029ade944746c46e1664dbff7e6f60930b"
+        },
+        {
+          "frame_index": 19,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "47bade10923b190eca530c12aa6adc517d613089900a5d28dec17e457896b582",
+          "alpha_mass": 1939028,
+          "unique_count": 8723,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 245.3457,
+            "y": 144.9821
+          },
+          "encoded_identity_alpha_mass": 1845543,
+          "encoded_identity_unique_count": 7251,
+          "encoded_identity_coverage": 0.239726,
+          "trajectory_fingerprint": "f9e8d3eaf05eff274acc31bdacd4e5f1ce50326ce8a09167842502d0e4e26b57"
+        },
+        {
+          "frame_index": 24,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "3e66d2dee9af67eb062c15b1325a5b56f35b3e0a96315bb4b6ef90bfbefcaf5f",
+          "alpha_mass": 1939273,
+          "unique_count": 8834,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 139,
+            "height": 131
+          },
+          "centroid": {
+            "x": 245.3468,
+            "y": 144.9781
+          },
+          "encoded_identity_alpha_mass": 1845543,
+          "encoded_identity_unique_count": 7251,
+          "encoded_identity_coverage": 0.239726,
+          "trajectory_fingerprint": "f694035a9ff437051f6ec5873c972c1677b6bd5a4ed8dd5ea1c945167315515c"
+        },
+        {
+          "frame_index": 28,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "1a8f266583f7425b293753260fa6ea4bf93b58a3b2f5e06e44ab96c3e3c347ca",
+          "alpha_mass": 3186866,
+          "unique_count": 17405,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 286,
+            "height": 131
+          },
+          "centroid": {
+            "x": 295.0715,
+            "y": 143.0594
+          },
+          "encoded_identity_alpha_mass": 2883256,
+          "encoded_identity_unique_count": 11326,
+          "encoded_identity_coverage": 0.37445,
+          "trajectory_fingerprint": "606dda188cd2be876fa17ee51df6504bbfc4d43307ed0e2fed73ee2d17384413"
+        },
+        {
+          "frame_index": 33,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "8f48766bde59626b87768cd4107d0c4bedac8e4947f9bc978aecb3995cab874a",
+          "alpha_mass": 5604361,
+          "unique_count": 29997,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 534,
+            "height": 143
+          },
+          "centroid": {
+            "x": 403.9703,
+            "y": 150.127
+          },
+          "encoded_identity_alpha_mass": 4980877,
+          "encoded_identity_unique_count": 19566,
+          "encoded_identity_coverage": 0.646874,
+          "trajectory_fingerprint": "d278d4154cc9ceb0a15e54d0211f3d42b659585e76a479c96ab7d9a530fa5fee"
+        },
+        {
+          "frame_index": 38,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6135390,
+          "encoded_identity_unique_count": 24104,
+          "encoded_identity_coverage": 0.796905,
+          "trajectory_fingerprint": "b61b08b0d110ba8bd35afe0d43fcfc6f962470dd7e73ba62c0369ae8af6efe26"
+        }
+      ],
+      "canonical_frame": 38
+    },
+    {
+      "id": "accessibility-first",
+      "gif": "assets/animations/prysai-accessibility-first.gif",
+      "sha256": "7cee8507db1caf05a930cca7ab0b5a50671a98b4bc4086075bb91fd5500d9bd9",
+      "encoded_frame_count": 36,
+      "encoded_duration_ms": 2400,
+      "canonical_frame_sha256": "9dd35d3d6f1281790cd70c20d3a28eda4f2356eeb8750169047322ae6395d8b4",
+      "stages": {
+        "blank": {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "label": "blank",
+          "bright_pixel_count": 0,
+          "source_actor_ids": [],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 0,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0
+        },
+        "spark": {
+          "frame_index": 5,
+          "progress": 0.14,
+          "render_progress": 0.14,
+          "label": "origin dot",
+          "bright_pixel_count": 478,
+          "source_actor_ids": [
+            "origin_dot"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 123605,
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481
+        },
+        "arc": {
+          "frame_index": 10,
+          "progress": 0.29,
+          "render_progress": 0.29,
+          "label": "circular arc",
+          "bright_pixel_count": 3687,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 955051,
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061
+        },
+        "bar": {
+          "frame_index": 15,
+          "progress": 0.43,
+          "render_progress": 0.43,
+          "label": "horizontal bar",
+          "bright_pixel_count": 4329,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 1124376,
+          "encoded_identity_alpha_mass": 1063193,
+          "encoded_identity_unique_count": 4178,
+          "encoded_identity_coverage": 0.138129
+        },
+        "monogram": {
+          "frame_index": 16,
+          "progress": 0.46,
+          "render_progress": 0.46,
+          "label": "P / monogram",
+          "bright_pixel_count": 4331,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 1939273,
+          "encoded_identity_alpha_mass": 1068127,
+          "encoded_identity_unique_count": 4199,
+          "encoded_identity_coverage": 0.138824
+        },
+        "wordmark": {
+          "frame_index": 33,
+          "progress": 0.93,
+          "render_progress": 0.93,
+          "label": "Prysai wordmark",
+          "bright_pixel_count": 23224,
+          "source_actor_ids": [
+            "origin_dot",
+            "arc",
+            "bar",
+            "p_component",
+            "wordmark_01",
+            "wordmark_02",
+            "wordmark_03",
+            "wordmark_04",
+            "wordmark_05",
+            "wordmark_06"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 6274673,
+          "encoded_identity_alpha_mass": 5651619,
+          "encoded_identity_unique_count": 22196,
+          "encoded_identity_coverage": 0.733825
+        },
+        "canonical": {
+          "frame_index": 35,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "label": "complete Logo",
+          "bright_pixel_count": 25232,
+          "source_actor_ids": [
+            "final"
+          ],
+          "path_strategy": "ordered opacity with stable source geometry",
+          "speed_profile": "opacity-first and no overshoot",
+          "foreground_alpha_mass": 6535154,
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468
+        }
+      },
+      "progress_points": [
+        {
+          "frame_index": 0,
+          "progress": 0.0,
+          "render_progress": 0.0,
+          "foreground_mask_sha256": "c6e815ce8a75c8b60852af2f8bebbd203073270ccdc8acc3fcefa632f8678e03",
+          "alpha_mass": 0,
+          "unique_count": 0,
+          "bbox": null,
+          "centroid": null,
+          "encoded_identity_alpha_mass": 0,
+          "encoded_identity_unique_count": 0,
+          "encoded_identity_coverage": 0.0,
+          "trajectory_fingerprint": "e8b2a0e4e23f15913071127b3f2ef6e055c4270b8cc442e0e5871c907a430919"
+        },
+        {
+          "frame_index": 4,
+          "progress": 0.125,
+          "render_progress": 0.125,
+          "foreground_mask_sha256": "da8bb2e361434afc4c51ac5987ac9c47a1f72af5fc663729b20968075b4a030b",
+          "alpha_mass": 117401,
+          "unique_count": 618,
+          "bbox": {
+            "x": 175,
+            "y": 179,
+            "width": 31,
+            "height": 31
+          },
+          "centroid": {
+            "x": 190.0399,
+            "y": 194.01
+          },
+          "encoded_identity_alpha_mass": 111243,
+          "encoded_identity_unique_count": 437,
+          "encoded_identity_coverage": 0.014448,
+          "trajectory_fingerprint": "0c517994330b53ca7e60e46b219fab9c54a67836346938717c08ffef400a1165"
+        },
+        {
+          "frame_index": 9,
+          "progress": 0.25,
+          "render_progress": 0.25,
+          "foreground_mask_sha256": "67d90ab72dfaae881f78718a96b57d9931d517a7f0fa66900fa665f2821828ac",
+          "alpha_mass": 775998,
+          "unique_count": 4188,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 135,
+            "height": 130
+          },
+          "centroid": {
+            "x": 238.4989,
+            "y": 120.9486
+          },
+          "encoded_identity_alpha_mass": 111477,
+          "encoded_identity_unique_count": 438,
+          "encoded_identity_coverage": 0.014481,
+          "trajectory_fingerprint": "d491c5424c47bcea98a1d2c0bc163738e493fc4bf3a98d0b05302c1093402932"
+        },
+        {
+          "frame_index": 13,
+          "progress": 0.375,
+          "render_progress": 0.375,
+          "foreground_mask_sha256": "51834ec7ab864bda4325fda36a0074a1099edcfaf216fe4841d24b70f0d613a9",
+          "alpha_mass": 1043999,
+          "unique_count": 5093,
+          "bbox": {
+            "x": 175,
+            "y": 80,
+            "width": 139,
+            "height": 130
+          },
+          "centroid": {
+            "x": 240.6101,
+            "y": 120.627
+          },
+          "encoded_identity_alpha_mass": 909189,
+          "encoded_identity_unique_count": 3571,
+          "encoded_identity_coverage": 0.118061,
+          "trajectory_fingerprint": "42fb62e00ee10fd721d748ddae1cc23a33643ef064a9fe5b36be3095f5dec909"
+        },
+        {
+          "frame_index": 18,
+          "progress": 0.5,
+          "render_progress": 0.5,
+          "foreground_mask_sha256": "d47d5de8dae218760aded23a394da6638c7d4892341a4d9a8a66f4ab6d475eee",
+          "alpha_mass": 2132108,
+          "unique_count": 20690,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 515,
+            "height": 141
+          },
+          "centroid": {
+            "x": 262.5766,
+            "y": 144.9411
+          },
+          "encoded_identity_alpha_mass": 1850319,
+          "encoded_identity_unique_count": 7270,
+          "encoded_identity_coverage": 0.240354,
+          "trajectory_fingerprint": "160801eb7ac93f0d0e6f3b687f2902943b47d50b5bb08e518b4b34c2ba5dcd35"
+        },
+        {
+          "frame_index": 22,
+          "progress": 0.625,
+          "render_progress": 0.625,
+          "foreground_mask_sha256": "7a947394837cc9023691446ac63e7c644985b511ead2fc8641a379796b16d0fd",
+          "alpha_mass": 3515182,
+          "unique_count": 23486,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 515,
+            "height": 141
+          },
+          "centroid": {
+            "x": 312.2994,
+            "y": 143.4355
+          },
+          "encoded_identity_alpha_mass": 2885867,
+          "encoded_identity_unique_count": 11336,
+          "encoded_identity_coverage": 0.374781,
+          "trajectory_fingerprint": "ca099c8ac3d84f6fcc76d27413b8e7884636a80b6337c6c6dd2e9c368a10b50d"
+        },
+        {
+          "frame_index": 26,
+          "progress": 0.75,
+          "render_progress": 0.75,
+          "foreground_mask_sha256": "540b5d38c4b2dd203e46f93e4707f31c48fc40ef865bf944e18e4b60f2fdfa09",
+          "alpha_mass": 4803499,
+          "unique_count": 27376,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 515,
+            "height": 143
+          },
+          "centroid": {
+            "x": 372.5351,
+            "y": 148.2021
+          },
+          "encoded_identity_alpha_mass": 4164652,
+          "encoded_identity_unique_count": 16357,
+          "encoded_identity_coverage": 0.540781,
+          "trajectory_fingerprint": "fd6a1ba1da609899e56d6be910948250f7687f5c6195f637b10b06e702cd4c45"
+        },
+        {
+          "frame_index": 31,
+          "progress": 0.875,
+          "render_progress": 0.875,
+          "foreground_mask_sha256": "49a1b2457b3738ff748f5682bf2393d99c6b2a19b85e30a26bd4f5e2c472ed8a",
+          "alpha_mass": 5965037,
+          "unique_count": 30166,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 427.1258,
+            "y": 149.4667
+          },
+          "encoded_identity_alpha_mass": 5652854,
+          "encoded_identity_unique_count": 22201,
+          "encoded_identity_coverage": 0.73399,
+          "trajectory_fingerprint": "b4b27992d6c954a3af1e50a6a4439c871ce35ee81985ac64b1e72d60544a6677"
+        },
+        {
+          "frame_index": 35,
+          "progress": 1.0,
+          "render_progress": 1.0,
+          "foreground_mask_sha256": "2fdbec3995ce32722459da54c8b09ceb5eb4a6ecc9c9fe8e60473cca1883bfc7",
+          "alpha_mass": 6535154,
+          "unique_count": 30247,
+          "bbox": {
+            "x": 175,
+            "y": 79,
+            "width": 550,
+            "height": 143
+          },
+          "centroid": {
+            "x": 444.6028,
+            "y": 149.1967
+          },
+          "encoded_identity_alpha_mass": 6139368,
+          "encoded_identity_unique_count": 24121,
+          "encoded_identity_coverage": 0.797468,
+          "trajectory_fingerprint": "262eec7e36bcef52a244e283044684c4479dba3add1fd8b0fb407a24e94c8b35"
+        }
+      ],
+      "canonical_frame": 35
+    }
+  ],
+  "unresolved": [
+    "raster role semantics and browser pixel review require human or adapter review"
+  ],
+  "trajectory_comparison": {
+    "progress_points": [
+      {
+        "progress": 0.0,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 1,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.125,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 11,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.25,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 10,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.375,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 9,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.5,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 13,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.625,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 9,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.75,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 13,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 0.875,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 12,
+        "unique_trajectory_fingerprint_count": 13
+      },
+      {
+        "progress": 1.0,
+        "theme_count": 13,
+        "unique_foreground_mask_count": 1,
+        "unique_trajectory_fingerprint_count": 13
+      }
+    ],
+    "canonical_note": "The canonical mask is intentionally shared; route identity remains in trajectory fingerprints."
+  }
+}

@@ -27,8 +27,13 @@ class ThemeProfile:
     id: str
     name: str
     aliases: tuple[str, ...]
+    domain_tags: tuple[str, ...]
+    style_tags: tuple[str, ...]
+    motion_tags: tuple[str, ...]
+    routing_aliases: tuple[str, ...]
     trajectory_id: str
     trajectory_summary: str
+    foreground_plan: dict[str, Any]
     public_analogue: str
     design_intent: str
     algorithm_stack: tuple[str, ...]
@@ -40,12 +45,18 @@ class ThemeProfile:
 
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> "ThemeProfile":
+        routing = dict(value.get("routing", {}))
         return cls(
             id=str(value["id"]),
             name=str(value["name"]),
             aliases=tuple(str(item) for item in value.get("aliases", [])),
+            domain_tags=tuple(str(item) for item in routing.get("domain_tags", [])),
+            style_tags=tuple(str(item) for item in routing.get("style_tags", [])),
+            motion_tags=tuple(str(item) for item in routing.get("motion_tags", [])),
+            routing_aliases=tuple(str(item) for item in routing.get("aliases", [])),
             trajectory_id=str(value["trajectory_id"]),
             trajectory_summary=str(value["trajectory_summary"]),
+            foreground_plan=dict(value.get("foreground_plan", {})),
             public_analogue=str(value.get("public_analogue", "")),
             design_intent=str(value["design_intent"]),
             algorithm_stack=tuple(str(item) for item in value.get("algorithm_stack", [])),
@@ -61,8 +72,15 @@ class ThemeProfile:
             "id": self.id,
             "name": self.name,
             "aliases": list(self.aliases),
+            "routing": {
+                "domain_tags": list(self.domain_tags),
+                "style_tags": list(self.style_tags),
+                "motion_tags": list(self.motion_tags),
+                "aliases": list(self.routing_aliases),
+            },
             "trajectory_id": self.trajectory_id,
             "trajectory_summary": self.trajectory_summary,
+            "foreground_plan": self.foreground_plan,
             "public_analogue": self.public_analogue,
             "design_intent": self.design_intent,
             "algorithm_stack": list(self.algorithm_stack),
@@ -101,28 +119,34 @@ class ThemeCatalog:
         query_words = {item.casefold() for item in WORD_RE.findall(normalized_query)}
         scores: dict[str, int] = {}
         matches: dict[str, list[str]] = {}
+        alias_matches: dict[str, list[str]] = {}
         for profile in self._profiles:
             score = 0
-            found: list[str] = []
+            matched_tags: list[str] = []
+            matched_aliases: list[str] = []
             profile_id = normalize_text(profile.id)
             profile_name = normalize_text(profile.name)
             if f" {profile_id} " in padded_query or f" {profile_name} " in padded_query:
                 score += 8
-                found.append(profile.name)
-            for alias in profile.aliases:
+                matched_tags.append(profile.name)
+            for alias in dict.fromkeys((*profile.aliases, *profile.routing_aliases)):
                 alias_normalized = normalize_text(alias)
                 alias_words = alias_normalized.split()
                 if len(alias_words) > 1 and f" {alias_normalized} " in f" {normalized_query} ":
                     score += 5
-                    found.append(alias)
+                    matched_aliases.append(alias)
+                    matched_tags.append(alias)
                 elif any("\u4e00" <= character <= "\u9fff" for character in alias_normalized) and alias_normalized in normalized_query:
                     score += 3
-                    found.append(alias)
+                    matched_aliases.append(alias)
+                    matched_tags.append(alias)
                 elif len(alias_words) == 1 and alias_normalized in query_words:
                     score += 2
-                    found.append(alias)
+                    matched_aliases.append(alias)
+                    matched_tags.append(alias)
             scores[profile.id] = score
-            matches[profile.id] = list(dict.fromkeys(found))
+            matches[profile.id] = list(dict.fromkeys(matched_tags))
+            alias_matches[profile.id] = list(dict.fromkeys(matched_aliases))
 
         ranked = sorted(self._profiles, key=lambda item: (-scores[item.id], item.id))
         primary = ranked[0]
@@ -146,6 +170,10 @@ class ThemeCatalog:
                 "trajectory_summary": primary.trajectory_summary,
                 "modifiers": modifiers,
                 "matched_tags": matches[primary.id],
+                "matched_aliases": alias_matches[primary.id],
+                "domain_tags": list(primary.domain_tags),
+                "style_tags": list(primary.style_tags),
+                "motion_tags": list(primary.motion_tags),
                 "rejected_candidates": rejected,
                 "public_reference_basis": [primary.public_analogue] if primary.public_analogue else [],
                 "algorithm_stack": list(primary.algorithm_stack),

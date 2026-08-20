@@ -152,9 +152,9 @@ def detect_capabilities() -> dict[str, CapabilityReport]:
         ),
         "raster-pixels": CapabilityReport(
             id="raster-pixels",
-            available=False,
-            provider="none",
-            details={"scope": "requires an approved image decoder adapter"},
+            available=_pillow_available(),
+            provider="Pillow" if _pillow_available() else "none",
+            details={"scope": "foreground mask, connected components, and geometric role candidates; vector reconstruction remains separate"},
         ),
         "node-runtime": CapabilityReport(
             id="node-runtime",
@@ -169,3 +169,11 @@ def detect_capabilities() -> dict[str, CapabilityReport]:
             details={"scope": "browser adapter is not bundled into the offline kernel"},
         ),
     }
+
+
+def _pillow_available() -> bool:
+    try:
+        import PIL  # type: ignore  # noqa: F401
+    except ImportError:
+        return False
+    return True

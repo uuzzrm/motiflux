@@ -22,6 +22,9 @@ def audit(
     samples = telemetry.get("samples")
     if not isinstance(samples, list) or not samples:
         return failure("telemetry.samples must contain at least one sample", "telemetry-samples")
+    stage_snapshots = telemetry.get("stage_snapshots")
+    if not isinstance(stage_snapshots, list) or not stage_snapshots:
+        return failure("telemetry.stage_snapshots must contain foreground evidence", "foreground-stage-snapshots")
 
     errors: list[str] = []
     times: list[float] = []
@@ -53,6 +56,12 @@ def audit(
         if any(right < left - 1e-9 for left, right in zip(values, values[1:])):
             progress_errors.append(f"progress channel is not monotonic: {channel}")
     errors.extend(progress_errors)
+    foreground_result = {
+        "checked": True,
+        "stage_count": len(stage_snapshots),
+        "stage_ids": [str(item.get("stage_id")) for item in stage_snapshots if isinstance(item, dict)],
+        "source_actor_ids": sorted({str(actor_id) for item in stage_snapshots if isinstance(item, dict) for actor_id in item.get("source_actor_ids", []) or []}),
+    }
 
     canonical_result: dict[str, Any] = {"checked": False}
     not_run: list[str] = []
@@ -101,6 +110,7 @@ def audit(
             "duration_covered_ms": max(times, default=0.0),
         },
         "canonical_fingerprint": canonical_result,
+        "foreground_evidence": foreground_result,
         "accessibility": accessibility_result,
         "not_run": not_run,
         "unresolved": errors,
@@ -113,6 +123,7 @@ def failure(message: str, missing: str) -> dict[str, Any]:
         "status": "candidate",
         "motion_metrics": {},
         "canonical_fingerprint": {"checked": False},
+        "foreground_evidence": {"checked": False},
         "accessibility": {"checked": False},
         "not_run": [missing],
         "unresolved": [message],
@@ -140,4 +151,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

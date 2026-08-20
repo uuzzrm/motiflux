@@ -19,7 +19,7 @@ from validate_package import validate_package
 from .catalog import ThemeCatalog
 from .domain import StageResult
 from .pipeline import PipelineContext, StageDefinition
-from .planner import build_plan, validate_references
+from .planner import build_plan, foreground_evidence, validate_references
 from .runtime import compile_runtime
 from .runtime_probe import probe_runtime
 
@@ -64,7 +64,7 @@ def stage_route(context: PipelineContext) -> StageResult:
 def stage_plan(context: PipelineContext) -> StageResult:
     source = context.get("source")
     profile = context.get("profile")
-    plan = build_plan(context.get("analysis"), context.get("selection"), profile, project_name=f"Motiflux project / {profile.name}", source_name=source.name)
+    plan = build_plan(context.get("analysis"), context.get("selection"), profile, project_name=f"Motiflux project / {profile.name}", source_name=source.name, request=context.request)
     catalog: ThemeCatalog = context.get("catalog")
     plan_errors = validate_references(plan, theme_ids={item.id for item in catalog.profiles})
     plan_errors.extend(contract_errors(plan, load_document(MOTION_SCHEMA_PATH)))
@@ -79,6 +79,9 @@ def stage_reconstruct(context: PipelineContext) -> StageResult:
     source = context.get("source")
     analysis = context.get("analysis")
     if source.suffix.casefold() != ".svg":
+        raster_observations = analysis.get("observations", {}).get("raster", {})
+        if raster_observations:
+            return StageResult("reconstruct", "candidate", not_run=("reconstruct-raster-source", "raster-to-vector-reconstruction", "human-role-review"), unresolved=("raster observations are candidates; vector reconstruction is not claimed",), metadata={"strategy": "pixel-observation-only", "component_count": analysis.get("observations", {}).get("topology", {}).get("component_count", 0)})
         return StageResult("reconstruct", "candidate", not_run=("reconstruct-raster-source", "raster-to-vector-reconstruction"), unresolved=("raster-to-vector reconstruction adapter is not installed",), metadata={"strategy": "await-image-adapter"})
     mark_path = context.store.copy_file(source, "mark.svg", producer="reconstruct")
     status = "complete" if analysis.get("observations", {}).get("elements") else "candidate"
@@ -116,6 +119,7 @@ def stage_compile(context: PipelineContext) -> StageResult:
         "constraint_summary": {"pipeline": "source-preserving project compiler", "theme": profile.id},
         "geometry_metrics": geometry_report.get("geometry_metrics", {}),
         "motion_metrics": {"duration_ms": plan["runtime"]["duration_ms"], "tempo": plan["runtime"]["tempo"], "secondary_effect": plan["runtime"]["secondary_effect"], "trajectory_id": plan["runtime"]["trajectory_id"]},
+        "foreground_evidence": foreground_evidence(plan),
         "canonical_fingerprint": geometry_report.get("canonical_fingerprint", {}),
         "pixel_tolerance": {"status": "not-run"},
         "accessibility": {"reduced_motion": plan["runtime"]["reduced_motion"], "controls": plan["runtime"]["controls"]},
@@ -143,9 +147,10 @@ def stage_verify_motion(context: PipelineContext) -> StageResult:
     plan = context.get("plan")
     mark_path = context.get("canonical-mark")
     duration = plan["runtime"]["duration_ms"]
+    foreground = foreground_evidence(plan)
     beat_ids = [str(beat["id"]) for beat in plan.get("beats", []) if isinstance(beat, dict) and beat.get("id")]
     first_beat, last_beat = (beat_ids[0], beat_ids[-1]) if beat_ids else ("orient", "resolve")
-    telemetry_relative = context.store.write_json("evidence/motion/telemetry.json", {"schema_version": SCHEMA_VERSION, "samples": [{"time_ms": 0, "active_beat": first_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 0}, "runtime_errors": []}, {"time_ms": duration, "active_beat": last_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 1}, "runtime_errors": []}], "risk_intervals": [{"id": last_beat, "kind": "canonical-handoff", "time_ms": duration}], "runtime_errors": [], "final_scene_fingerprint": context.get("geometry-report").get("canonical_fingerprint", {})}, producer="verify-motion")
+    telemetry_relative = context.store.write_json("evidence/motion/telemetry.json", {"schema_version": SCHEMA_VERSION, "samples": [{"time_ms": 0, "active_beat": first_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 0}, "runtime_errors": []}, {"time_ms": duration, "active_beat": last_beat, "actor_states": {}, "visible_bounds": {}, "progress_values": {"global": 1}, "runtime_errors": []}], "stage_snapshots": foreground["stage_snapshots"], "risk_intervals": [{"id": last_beat, "kind": "canonical-handoff", "time_ms": duration}], "runtime_errors": [], "final_scene_fingerprint": context.get("geometry-report").get("canonical_fingerprint", {})}, producer="verify-motion")
     telemetry_path = context.store.path(telemetry_relative)
     motion_report = audit(telemetry_path, canonical_path=mark_path, duration_ms=duration)
     motion_path = context.store.write_json("evidence/motion/audit.json", motion_report, producer="verify-motion")

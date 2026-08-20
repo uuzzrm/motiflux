@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from motiflux_core import SCHEMA_VERSION, contract_errors, load_document, write_json
+from engine.planner import foreground_evidence
 from engine.runtime import compile_runtime
 
 
@@ -136,6 +137,7 @@ def build(mark_path: Path, plan_path: Path, output_dir: Path) -> dict[str, Any]:
         "constraint_summary": {"builder": "dependency-free-runtime-adapter"},
         "geometry_metrics": {},
         "motion_metrics": {"duration_ms": duration, "tempo": tempo},
+        "foreground_evidence": foreground_evidence(plan),
         "canonical_fingerprint": {},
         "pixel_tolerance": {"status": "not-run"},
         "accessibility": {"reduced_motion": "static-canonical-css-fallback", "controls": ["play", "pause", "replay", "tempo"]},

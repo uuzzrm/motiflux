@@ -19,6 +19,171 @@ motion_language:
       tempo: "moderate"
       overlap: "low"
       direction: "outward"
+foreground_plan:
+  source_actors:
+    - "orbit"
+    - "spark"
+  actor_stage_map:
+    orbit: "trace"
+    spark: "seed"
+  role_annotations:
+    orbit:
+      role: "arc"
+      basis: "example source annotation"
+      confidence: "medium"
+      review_status: "accepted"
+      accepted_role: "arc"
+    spark:
+      role: "origin-dot"
+      basis: "example source annotation"
+      confidence: "medium"
+      review_status: "accepted"
+      accepted_role: "origin-dot"
+  layout_groups:
+    symbol: ["orbit", "spark"]
+    wordmark: []
+  mapping_policy: "Explicit example annotations are accepted; inferred raster roles remain needs-review."
+  stage_order:
+    - "seed"
+    - "trace"
+    - "assemble"
+    - "lockup"
+    - "canonical"
+  stages:
+    - id: "seed"
+      source_actors:
+        - "spark"
+      path_strategy: "source-point"
+      speed_profile:
+        tempo: 1
+        settle_damping: 0.82
+        phase: "entry"
+      visible_proof:
+        criterion: "seed exposes only source-derived actors"
+        source_actor_count: 1
+      role_bindings:
+        - actor_id: "spark"
+          role: "origin-dot"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "origin-dot"
+          evidence: "example source annotation"
+    - id: "trace"
+      source_actors:
+        - "orbit"
+      path_strategy: "measured-knowledge-graph-lock"
+      speed_profile:
+        tempo: 1
+        settle_damping: 0.82
+        phase: "theme-paced"
+      visible_proof:
+        criterion: "trace exposes only source-derived actors"
+        source_actor_count: 1
+      role_bindings:
+        - actor_id: "orbit"
+          role: "arc"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "arc"
+          evidence: "example source annotation"
+    - id: "assemble"
+      source_actors:
+        - "orbit"
+        - "spark"
+      path_strategy: "knowledge-graph-lock-component-assembly"
+      speed_profile:
+        tempo: 1
+        settle_damping: 0.82
+        phase: "staggered"
+      visible_proof:
+        criterion: "assemble exposes only source-derived actors"
+        source_actor_count: 1
+      role_bindings:
+        - actor_id: "orbit"
+          role: "arc"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "arc"
+          evidence: "example source annotation"
+    - id: "lockup"
+      source_actors:
+        - "orbit"
+        - "spark"
+      path_strategy: "source-actor-order"
+      speed_profile:
+        tempo: 1
+        settle_damping: 0.82
+        phase: "settle"
+      visible_proof:
+        criterion: "lockup exposes only source-derived actors"
+        source_actor_count: 1
+      role_bindings:
+        - actor_id: "orbit"
+          role: "arc"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "arc"
+          evidence: "example source annotation"
+        - actor_id: "spark"
+          role: "origin-dot"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "origin-dot"
+          evidence: "example source annotation"
+    - id: "canonical"
+      source_actors:
+        - "orbit"
+        - "spark"
+      path_strategy: "static-canonical"
+      speed_profile:
+        tempo: 1
+        settle_damping: 0.82
+        phase: "hold"
+      visible_proof:
+        criterion: "canonical exposes only source-derived actors"
+        source_actor_count: 1
+      role_bindings:
+        - actor_id: "orbit"
+          role: "arc"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "arc"
+          evidence: "example source annotation"
+        - actor_id: "spark"
+          role: "origin-dot"
+          confidence: "medium"
+          review_status: "accepted"
+          accepted_role: "origin-dot"
+          evidence: "example source annotation"
+  proof:
+    trajectory_id: "knowledge-graph-lock"
+    identity_rule: "source actor geometry is never redrawn"
+    canonical_rule: "canonical stage uses the source geometry and paint"
+  static_canonical_fallback:
+    mode: "static-canonical"
+    source_actors:
+      - "orbit"
+      - "spark"
+    trigger: "prefers-reduced-motion or unavailable trajectory adapter"
+actors:
+  - id: "orbit"
+    role: "identity-bearing actor"
+    geometry_strategy: "preserve-source-vector"
+    trajectory_strategy: "knowledge-graph-lock"
+    parent: null
+    anchor: "source-bounds"
+    layer: 0
+    occludes: []
+    occluded_by: []
+  - id: "spark"
+    role: "secondary source actor"
+    geometry_strategy: "preserve-source-vector"
+    trajectory_strategy: "knowledge-graph-lock"
+    parent: null
+    anchor: "source-bounds"
+    layer: 1
+    occludes: []
+    occluded_by: []
 beats:
   - id: orient
     intent: "establish the mark center"
@@ -39,6 +204,16 @@ runtime:
   duration_ms: 1200
   reduced_motion: "static-canonical"
   seed: 0
+  direction: "radial"
+  direction_vector: [0, 0]
+  particles: true
+  background:
+    mode: "theme"
+    color: null
+    source: "theme-profile"
+  requested_formats:
+    - "html"
+    - "svg"
   tempo: 1
   controls:
     - "play"

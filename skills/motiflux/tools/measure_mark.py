@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from motiflux_core import SCHEMA_VERSION, parse_raster_header, source_format, svg_scene, write_json
+from engine.raster import analyze_raster
 
 
 def measure(path: Path) -> dict[str, Any]:
@@ -40,29 +41,7 @@ def measure(path: Path) -> dict[str, Any]:
             "unresolved": ["negative-space geometry requires raster or explicit scene regions"],
         }
 
-    header = parse_raster_header(path)
-    return {
-        "schema_version": SCHEMA_VERSION,
-        "status": "candidate",
-        "source": {
-            "path": str(path),
-            "format": header["format"],
-            "width": header["width"],
-            "height": header["height"],
-            "color_mode": None,
-            "has_alpha": None,
-        },
-        "observations": {
-            "elements": [],
-            "colors": [],
-            "landmarks": [],
-            "negative_spaces": [],
-            "topology": {},
-        },
-        "capabilities": ["raster-header"],
-        "not_run": ["pixel-decoding", "color-clustering", "landmark-detection", "topology-analysis"],
-        "unresolved": ["raster pixels require an approved image decoder"],
-    }
+    return analyze_raster(path)
 
 
 def landmark_observations(viewbox: list[float], bounds: list[list[float]]) -> list[dict[str, Any]]:

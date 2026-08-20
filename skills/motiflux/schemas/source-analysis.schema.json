@@ -28,9 +28,279 @@
         "colors": { "type": "array", "items": { "type": "object" } },
         "landmarks": { "type": "array", "items": { "type": "object" } },
         "negative_spaces": { "type": "array", "items": { "type": "object" } },
-        "topology": { "type": "object" }
+        "topology": { "type": "object" },
+        "raster": {
+          "type": "object",
+          "required": [
+            "analysis_version",
+            "coordinate_space",
+            "sampling",
+            "decoder",
+            "background",
+            "foreground_mask",
+            "components",
+            "content_bounds",
+            "layout_groups",
+            "ordering",
+            "role_hypotheses",
+            "reconstruction"
+          ],
+          "properties": {
+            "analysis_version": { "const": "1.0" },
+            "coordinate_space": { "const": "sampled-raster" },
+            "sampling": {
+              "type": "object",
+              "required": ["original_width", "original_height", "width", "height", "max_dimension", "method"],
+              "properties": {
+                "original_width": { "type": "integer", "minimum": 1 },
+                "original_height": { "type": "integer", "minimum": 1 },
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 },
+                "max_dimension": { "type": "integer", "minimum": 1 },
+                "method": { "type": "string", "minLength": 1 }
+              },
+              "additionalProperties": false
+            },
+            "decoder": {
+              "type": "object",
+              "required": ["provider", "mode", "has_alpha"],
+              "properties": {
+                "provider": { "const": "Pillow" },
+                "mode": { "type": "string", "minLength": 1 },
+                "has_alpha": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            },
+            "background": {
+              "type": "object",
+              "required": [
+                "mode",
+                "estimated_rgb",
+                "border_sample_count",
+                "transparent_border_fraction",
+                "colour_noise_p95",
+                "colour_distance_threshold",
+                "alpha_threshold",
+                "foreground_pixels",
+                "foreground_coverage"
+              ],
+              "properties": {
+                "mode": { "enum": ["transparent", "opaque-solid", "opaque-estimated"] },
+                "estimated_rgb": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "integer", "minimum": 0, "maximum": 255 } },
+                "border_sample_count": { "type": "integer", "minimum": 1 },
+                "transparent_border_fraction": { "type": "number", "minimum": 0, "maximum": 1 },
+                "colour_noise_p95": { "type": "number", "minimum": 0 },
+                "colour_distance_threshold": { "type": "integer", "minimum": 0, "maximum": 255 },
+                "alpha_threshold": { "type": "integer", "minimum": 0, "maximum": 255 },
+                "foreground_pixels": { "type": "integer", "minimum": 0 },
+                "foreground_coverage": { "type": "number", "minimum": 0, "maximum": 1 }
+              },
+              "additionalProperties": false
+            },
+            "foreground_mask": {
+              "type": "object",
+              "required": ["encoding", "width", "height", "foreground_pixels", "background_pixels", "coverage", "runs"],
+              "properties": {
+                "encoding": { "const": "row-major-rle-v1" },
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 },
+                "foreground_pixels": { "type": "integer", "minimum": 0 },
+                "background_pixels": { "type": "integer", "minimum": 0 },
+                "coverage": { "type": "number", "minimum": 0, "maximum": 1 },
+                "runs": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["start", "length"],
+                    "properties": {
+                      "start": { "type": "integer", "minimum": 0 },
+                      "length": { "type": "integer", "minimum": 1 }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "scan_order", "bounds", "area", "centroid", "geometry", "role_candidates", "selected_role", "heuristic_basis", "sort_order"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^raster-component-[0-9]{3}$" },
+                  "scan_order": { "type": "integer", "minimum": 0 },
+                  "sort_order": { "type": "integer", "minimum": 0 },
+                  "bounds": {
+                    "type": "object",
+                    "required": ["x", "y", "width", "height"],
+                    "properties": {
+                      "x": { "type": "integer", "minimum": 0 },
+                      "y": { "type": "integer", "minimum": 0 },
+                      "width": { "type": "integer", "minimum": 1 },
+                      "height": { "type": "integer", "minimum": 1 }
+                    },
+                    "additionalProperties": false
+                  },
+                  "area": { "type": "integer", "minimum": 1 },
+                  "centroid": {
+                    "type": "object",
+                    "required": ["x", "y"],
+                    "properties": {
+                      "x": { "type": "number", "minimum": 0 },
+                      "y": { "type": "number", "minimum": 0 }
+                    },
+                    "additionalProperties": false
+                  },
+                  "geometry": {
+                    "type": "object",
+                    "required": ["aspect_ratio", "fill_ratio", "perimeter", "circularity", "edge_touching"],
+                    "properties": {
+                      "aspect_ratio": { "type": "number", "exclusiveMinimum": 0 },
+                      "fill_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+                      "perimeter": { "type": "integer", "minimum": 1 },
+                      "circularity": { "type": "number", "minimum": 0, "maximum": 1 },
+                      "edge_touching": { "type": "boolean" }
+                    },
+                    "additionalProperties": false
+                  },
+                  "role_candidates": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": ["role", "score", "confidence"],
+                      "properties": {
+                        "role": { "enum": ["origin-dot", "arc", "bar", "monogram", "wordmark", "unknown"] },
+                        "score": { "type": "number", "minimum": 0, "maximum": 1 },
+                        "confidence": { "enum": ["low", "medium"] }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "selected_role": { "enum": ["origin-dot", "arc", "bar", "monogram", "wordmark", "unknown"] },
+                  "layout_group": { "enum": ["symbol", "wordmark", "unknown"] },
+                  "group_confidence": { "enum": ["low", "medium"] },
+                  "heuristic_basis": { "type": "object" },
+                  "role_review": {
+                    "type": "object",
+                    "required": ["proposed_role", "accepted_role", "confidence", "review_status", "evidence"],
+                    "properties": {
+                      "proposed_role": { "enum": ["origin-dot", "arc", "bar", "monogram", "wordmark", "unknown"] },
+                      "accepted_role": { "type": ["string", "null"], "enum": ["origin-dot", "arc", "bar", "monogram", "wordmark", "unknown", null] },
+                      "confidence": { "enum": ["low", "medium", "high"] },
+                      "review_status": { "enum": ["accepted", "needs-review", "observed"] },
+                      "evidence": { "type": "string", "minLength": 1 }
+                    },
+                    "allOf": [
+                      {
+                        "if": { "properties": { "review_status": { "const": "accepted" } } },
+                        "then": { "properties": { "accepted_role": { "type": "string" } } }
+                      },
+                      {
+                        "if": { "properties": { "review_status": { "enum": ["needs-review", "observed"] } } },
+                        "then": { "properties": { "accepted_role": { "type": "null" } } }
+                      }
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "content_bounds": {
+              "type": ["object", "null"],
+              "properties": {
+                "x": { "type": "integer", "minimum": 0 },
+                "y": { "type": "integer", "minimum": 0 },
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            },
+            "layout_groups": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "role", "component_ids", "confidence", "basis"],
+                "properties": {
+                  "id": { "enum": ["symbol", "wordmark"] },
+                  "role": { "type": "string", "minLength": 1 },
+                  "component_ids": { "type": "array", "items": { "type": "string" } },
+                  "confidence": { "enum": ["low", "medium"] },
+                  "basis": { "type": "string", "minLength": 1 }
+                },
+                "additionalProperties": false
+              }
+            },
+            "ordering": {
+              "type": "object",
+              "required": ["strategy", "component_ids", "role_priority", "rationale"],
+              "properties": {
+                "strategy": { "type": "string", "minLength": 1 },
+                "component_ids": { "type": "array", "items": { "type": "string" } },
+                "role_priority": { "type": "array", "items": { "type": "string" } },
+                "rationale": { "type": "string", "minLength": 1 }
+              },
+              "additionalProperties": false
+            },
+            "recognition": {
+              "type": "object",
+              "required": ["mode", "review_status", "input_boundary", "component_count", "confidence_policy", "motion_binding_rules", "decision_trace"],
+              "properties": {
+                "mode": { "type": "string", "minLength": 1 },
+                "review_status": { "enum": ["needs-review", "observed"] },
+                "input_boundary": { "type": "string", "minLength": 1 },
+                "component_count": { "type": "integer", "minimum": 0 },
+                "role_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+                "layout_groups": { "type": "array", "items": { "type": "string" } },
+                "confidence_policy": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+                "motion_binding_rules": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+                "decision_trace": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+              },
+              "additionalProperties": false
+            },
+            "role_hypotheses": { "type": "array", "items": { "type": "object" } },
+            "reconstruction": {
+              "type": "object",
+              "required": ["status", "vector_reconstruction", "reason"],
+              "properties": {
+                "status": { "const": "needs-review" },
+                "vector_reconstruction": { "const": "not-claimed" },
+                "reason": { "type": "string", "minLength": 1 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": true
+    },
+    "review": {
+      "type": "object",
+      "required": ["status", "vector_reconstruction", "reason", "recommended_next_step"],
+      "properties": {
+        "status": { "const": "needs-review" },
+        "vector_reconstruction": { "const": "not-claimed" },
+        "reason": { "type": "string", "minLength": 1 },
+        "recommended_next_step": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "observation_review": {
+      "type": "object",
+      "required": ["status", "reviewed_components", "method", "notes"],
+      "properties": {
+        "status": { "enum": ["accepted", "needs-review", "observed"] },
+        "reviewed_components": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^raster-component-[0-9]{3}$" }
+        },
+        "method": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
     },
     "capabilities": { "type": "array", "items": { "type": "string" } },
     "not_run": { "type": "array", "items": { "type": "string" } },

@@ -3,7 +3,7 @@
   "$id": "https://github.com/uuzzrm/motiflux/schemas/evidence.schema.json",
   "title": "Motiflux evidence ledger",
   "type": "object",
-  "required": ["schema_version", "status", "source", "constraint_summary", "geometry_metrics", "motion_metrics", "canonical_fingerprint", "accessibility", "substituted_tools", "not_run", "unresolved"],
+  "required": ["schema_version", "status", "source", "constraint_summary", "geometry_metrics", "motion_metrics", "foreground_evidence", "canonical_fingerprint", "accessibility", "substituted_tools", "not_run", "unresolved"],
   "properties": {
     "schema_version": { "const": "1.0" },
     "status": { "enum": ["complete", "candidate"] },
@@ -11,6 +11,38 @@
     "constraint_summary": { "type": "object" },
     "geometry_metrics": { "type": "object" },
     "motion_metrics": { "type": "object" },
+    "foreground_evidence": {
+      "type": "object",
+      "required": ["status", "source_actor_ids", "stage_order", "stage_snapshots", "canonical_stage", "identity_source"],
+      "properties": {
+        "status": { "enum": ["declared", "observed"] },
+        "source_actor_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "stage_order": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 1 } },
+        "stage_snapshots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["stage_id", "source_actor_ids", "foreground_bounds", "alpha_mass", "path_strategy", "speed_profile", "proof"],
+            "properties": {
+              "stage_id": { "type": "string", "minLength": 1 },
+              "source_actor_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+              "foreground_bounds": { "type": "object" },
+              "alpha_mass": { "type": ["number", "null"] },
+              "path_strategy": { "type": "string", "minLength": 1 },
+              "speed_profile": { "type": "object" },
+              "proof": { "type": "object" },
+              "actor_geometry": { "type": "array", "items": { "type": "object" } }
+            },
+            "additionalProperties": true
+          }
+        },
+        "canonical_stage": { "const": "canonical" },
+        "identity_source": { "type": "string", "minLength": 1 },
+        "role_review": { "enum": ["accepted", "needs-review", "not-applicable"] }
+      },
+      "additionalProperties": true
+    },
     "canonical_fingerprint": { "type": "object" },
     "pixel_tolerance": { "type": "object" },
     "accessibility": { "type": "object" },

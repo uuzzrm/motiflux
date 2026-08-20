@@ -26,6 +26,48 @@
       "runtime_errors": []
     }
   ],
+  "stage_snapshots": [
+    {
+      "stage_id": "seed",
+      "source_actor_ids": ["spark"],
+      "foreground_bounds": {"source": "source-analysis", "status": "declared"},
+      "alpha_mass": null,
+      "path_strategy": "source-point",
+      "speed_profile": {"tempo": 1, "settle_damping": 0.82, "phase": "entry"}
+    },
+    {
+      "stage_id": "trace",
+      "source_actor_ids": ["orbit"],
+      "foreground_bounds": {"source": "source-analysis", "status": "declared"},
+      "alpha_mass": null,
+      "path_strategy": "measured-knowledge-graph-lock",
+      "speed_profile": {"tempo": 1, "settle_damping": 0.82, "phase": "theme-paced"}
+    },
+    {
+      "stage_id": "assemble",
+      "source_actor_ids": ["orbit", "spark"],
+      "foreground_bounds": {"source": "source-analysis", "status": "declared"},
+      "alpha_mass": null,
+      "path_strategy": "knowledge-graph-lock-component-assembly",
+      "speed_profile": {"tempo": 1, "settle_damping": 0.82, "phase": "staggered"}
+    },
+    {
+      "stage_id": "lockup",
+      "source_actor_ids": ["orbit", "spark"],
+      "foreground_bounds": {"source": "source-analysis", "status": "declared"},
+      "alpha_mass": null,
+      "path_strategy": "source-actor-order",
+      "speed_profile": {"tempo": 1, "settle_damping": 0.82, "phase": "settle"}
+    },
+    {
+      "stage_id": "canonical",
+      "source_actor_ids": ["orbit", "spark"],
+      "foreground_bounds": {"source": "source-analysis", "status": "declared"},
+      "alpha_mass": null,
+      "path_strategy": "static-canonical",
+      "speed_profile": {"tempo": 1, "settle_damping": 0.82, "phase": "hold"}
+    }
+  ],
   "risk_intervals": [
     {"id": "resolve", "kind": "actor-handoff", "time_ms": 1200}
   ],

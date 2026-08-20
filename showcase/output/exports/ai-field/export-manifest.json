@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "status": "baked",
+  "evidence_status": "candidate",
+  "source": "showcase/assets/prysai-mark-crop.jpg",
+  "source_sha256": "5b2eccc8c7bd7b74e61f716312bfde639e4f02b0a18a5d8a223eed65bc21870b",
+  "theme": "ai-field",
+  "trajectory_id": "signal-convergence",
+  "foreground_variant": "polar-counter",
+  "export_options": {
+    "background": "#0B0D12",
+    "duration_ms": 1600,
+    "speed": 1.25,
+    "particles": false,
+    "guides": true
+  },
+  "outputs": {
+    "gif": "showcase/output/exports/ai-field/prysai-ai-field.gif",
+    "poster": "showcase/output/exports/ai-field/prysai-ai-field-poster.png",
+    "stage_checkpoints": {
+      "blank": "showcase/output/exports/ai-field/prysai-ai-field-blank.png",
+      "spark": "showcase/output/exports/ai-field/prysai-ai-field-spark.png",
+      "arc": "showcase/output/exports/ai-field/prysai-ai-field-arc.png",
+      "bar": "showcase/output/exports/ai-field/prysai-ai-field-bar.png",
+      "monogram": "showcase/output/exports/ai-field/prysai-ai-field-monogram.png",
+      "wordmark": "showcase/output/exports/ai-field/prysai-ai-field-wordmark.png",
+      "canonical": "showcase/output/exports/ai-field/prysai-ai-field-canonical.png"
+    }
+  },
+  "encoded_frame_count": 36,
+  "encoded_duration_ms": 1600,
+  "canonical_frame_sha256": "c8247bd0d8f6ca113caeb7c08860194c787b6eb96d02f1a8f1b16a9d4d6e2780",
+  "not_run": [
+    "browser-pixel-review",
+    "human-raster-role-review",
+    "raster-to-vector-reconstruction"
+  ],
+  "unresolved": [
+    "raster role semantics remain candidate hypotheses"
+  ]
+}

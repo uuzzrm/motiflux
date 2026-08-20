@@ -17,7 +17,6 @@ Use this file as a routing table. It is an algorithm catalog, not a list of bran
 - Nature-flow
 - Gaming-world
 - Accessibility-first
-- Theme composition
 - Public reference index
 
 ## Theme record
@@ -32,9 +31,10 @@ For the selected theme, write:
     algorithm_stack: []
     trajectory_id:
     trajectory_summary:
+    foreground_variant:
     implementation:
-    controls:
-    foreground:
+    controls: []
+    foreground_plan:
       source_actors: []
       stage_order: []
       path_strategy:
@@ -53,9 +53,14 @@ monogram, wordmark or glyphs, accents, and topology-bearing occluders. Backgroun
 particles, glow, camera movement, palette, and global opacity are secondary.
 They may support a theme, but they cannot be the theme's only difference.
 
-Every theme MUST declare and execute a distinct `(stage_order, path_strategy,
-speed_profile)` tuple. `runtime.tempo` is only a baseline; the speed profile MUST
-also describe per-stage duration, easing, overlap, or settle behavior. A generic
+Every theme MUST declare and execute a distinct foreground construction mode,
+path strategy, and speed profile. The `foreground_variant` is an executable
+source-pixel reveal grammar (scan, polar, diagonal, boundary, wave, or stable
+opacity), not a decorative tag. Themes MAY share the stable source-derived
+stage scaffold when it keeps the identity comparison legible; their measured
+actors, traversal, order within stages, easing, overlap, or settle behavior must
+still differ. `runtime.tempo` is only a baseline; the speed profile MUST also
+describe per-stage duration, easing, overlap, or settle behavior. A generic
 circle/rectangle crop, full-mark fade, global transform, or decorative particle
 field is not a foreground construction unless it exposes measured source actors
 in the declared order.
@@ -73,8 +78,8 @@ For a source with a symbol and wordmark, a concrete plan may be
 present or cannot be measured, map the stage to the available source actor and
 record the omission; never invent a replacement shape.
 
-The selected record MUST be serialized in `motion-plan.yaml` as `foreground` or
-`foreground_plan`, including source actor IDs, stage order, path strategy, speed
+The selected record MUST be serialized in `motion-plan.yaml` as `foreground_plan`,
+ including source actor IDs, stage order, path strategy, speed
 profile, fallback, and proof points. Motion evidence MUST show stage-boundary and
 mid-stage foreground snapshots with actor IDs, bounds or alpha mass, progress, and
 speed. Compare same-source themes on foreground vectors or alpha, not backgrounds.
@@ -110,6 +115,29 @@ When the source lacks a listed component, substitute a measured source actor and
 record the mapping in `foreground.source_actors`. A theme is not complete when
 only its background, color, particles, camera, or labels differ from another
 variant.
+
+For the checked-in raster atlas, the default executable route variants are:
+
+```text
+system-spatial       -> scan-forward
+premium-quiet        -> polar-clockwise
+developer-open       -> scan-reverse
+ai-field             -> polar-counter
+fintech-trust        -> polar-offset
+security-shield      -> boundary-reverse
+commerce-energy      -> diagonal-forward
+automotive-precision -> scan-slope
+sports-impact        -> diagonal-reverse
+cinematic-title      -> diagonal-center
+nature-flow          -> wave-phase-a
+gaming-world         -> polar-orbit
+accessibility-first  -> opacity-stable
+```
+
+An agent may choose a different variant only when the selected renderer
+implements it and the request asks for that change. The variant must remain
+source-pixel bounded; it cannot redraw a new emblem or make a background effect
+stand in for foreground construction.
 
 ## 1. System-spatial
 
