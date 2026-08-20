@@ -470,24 +470,24 @@ PHASE_TIMINGS = {
     # Each next actor starts after the previous actor's source-pixel reveal has
     # finished. The route can still differ through its path and easing, but the
     # public storyboard remains a readable construction sequence.
-    "standard": {"dot": (.03, .14), "arc": (.14, .31), "bar": (.31, .47), "stem": (.47, .64), "wordmark": (.64, .96)},
-    "slow": {"dot": (.04, .18), "arc": (.18, .38), "bar": (.38, .56), "stem": (.56, .74), "wordmark": (.74, .98)},
-    "staggered": {"dot": (.02, .14), "arc": (.14, .32), "bar": (.32, .46), "stem": (.46, .63), "wordmark": (.63, .96)},
-    "field": {"dot": (.02, .15), "arc": (.15, .33), "bar": (.33, .48), "stem": (.48, .65), "wordmark": (.65, .97)},
-    "center": {"dot": (.04, .17), "arc": (.17, .35), "bar": (.35, .47), "stem": (.47, .64), "wordmark": (.64, .97)},
-    "late": {"dot": (.05, .18), "arc": (.18, .39), "bar": (.39, .58), "stem": (.58, .71), "wordmark": (.71, .99)},
-    "rapid": {"dot": (.01, .10), "arc": (.10, .24), "bar": (.24, .35), "stem": (.35, .42), "wordmark": (.45, .94)},
+    "standard": {"dot": (.03, .14), "arc": (.17, .32), "bar": (.35, .49), "stem": (.52, .66), "wordmark": (.70, .96)},
+    "slow": {"dot": (.04, .17), "arc": (.20, .38), "bar": (.41, .56), "stem": (.59, .72), "wordmark": (.74, .98)},
+    "staggered": {"dot": (.02, .14), "arc": (.17, .32), "bar": (.35, .46), "stem": (.49, .63), "wordmark": (.67, .96)},
+    "field": {"dot": (.02, .15), "arc": (.18, .33), "bar": (.36, .48), "stem": (.51, .65), "wordmark": (.69, .97)},
+    "center": {"dot": (.04, .17), "arc": (.20, .35), "bar": (.38, .47), "stem": (.50, .64), "wordmark": (.68, .97)},
+    "late": {"dot": (.05, .18), "arc": (.22, .39), "bar": (.42, .58), "stem": (.62, .71), "wordmark": (.75, .99)},
+    "rapid": {"dot": (.01, .10), "arc": (.13, .24), "bar": (.27, .35), "stem": (.38, .42), "wordmark": (.47, .94)},
     # Sports keeps a short recovery beat between the strike and wordmark so
     # its 0.75 evidence frame cannot collapse into commerce's rapid cascade.
-    "impact": {"dot": (.01, .10), "arc": (.10, .27), "bar": (.27, .42), "stem": (.42, .58), "wordmark": (.60, .98)},
-    "orbit": {"dot": (.02, .13), "arc": (.13, .30), "bar": (.30, .46), "stem": (.46, .64), "wordmark": (.70, .98)},
+    "impact": {"dot": (.01, .10), "arc": (.13, .27), "bar": (.30, .42), "stem": (.46, .58), "wordmark": (.63, .98)},
+    "orbit": {"dot": (.02, .13), "arc": (.16, .30), "bar": (.33, .46), "stem": (.50, .64), "wordmark": (.69, .98)},
     # Start the low-motion wordmark earlier so its semantic fade remains a
     # visibly distinct route at the encoded GIF midpoint.
-    "accessible": {"dot": (.03, .14), "arc": (.14, .29), "bar": (.29, .43), "stem": (.43, .46), "wordmark": (.46, .93)},
-    "organic": {"dot": (.04, .18), "arc": (.18, .38), "bar": (.38, .56), "stem": (.56, .70), "wordmark": (.70, .98)},
+    "accessible": {"dot": (.03, .14), "arc": (.17, .29), "bar": (.32, .43), "stem": (.46, .48), "wordmark": (.52, .93)},
+    "organic": {"dot": (.04, .18), "arc": (.21, .38), "bar": (.41, .56), "stem": (.59, .70), "wordmark": (.74, .98)},
     # The title route keeps the aperture phase visible before exposing the
     # wordmark as a deliberate title-card hold.
-    "title": {"dot": (.05, .18), "arc": (.18, .38), "bar": (.38, .58), "stem": (.58, .69), "wordmark": (.69, .99)},
+    "title": {"dot": (.05, .18), "arc": (.21, .38), "bar": (.41, .58), "stem": (.62, .69), "wordmark": (.73, .99)},
 }
 
 IMPLEMENTED_TRAJECTORIES = {
@@ -3286,9 +3286,9 @@ JS = r'''(() => {
     player.paused = true;
     showCheckpoint(player, progress);
   }
-  function showCanonical(player) {
+  function showCanonical(player, preserveClock = false) {
     if (!player.gif) return;
-    player.current = player.duration;
+    if (!preserveClock) player.current = player.duration;
     render(player, 1);
     player.gif.hidden = true;
     player.stage.dataset.playback = "canonical";
@@ -3335,7 +3335,7 @@ JS = r'''(() => {
     // its blank frame while the storyboard is still reporting the final state.
     // showCanonical() clamps the visible state to the exact final frame. Call
     // it only once at the handoff so the separate final hold can advance.
-    if (player.current >= player.duration && player.stage.dataset.playback !== "canonical") showCanonical(player);
+    if (player.current >= player.duration && player.stage.dataset.playback !== "canonical") showCanonical(player, true);
     if (player.current >= player.duration + player.finalHoldMs) {
       player.current = 0;
       render(player, 0);
@@ -3352,7 +3352,9 @@ JS = r'''(() => {
   }
   async function play(player, forceRestart = false) {
     if (motion === "reduced") { stop(player); player.current = player.duration; render(player, 1); showCanonical(player); return; }
-    // A portable GIF cannot seek. Resume by restarting it so the timer and pixels agree.
+    // A portable GIF cannot seek. A paused player therefore restarts the
+    // checked-in GIF from frame zero; the status text makes that limitation
+    // explicit instead of presenting a false resume guarantee.
     const restart = forceRestart || player.current > 0 || player.paused || player.current >= player.duration;
     if (restart) { player.current = 0; render(player, 0); }
     player.paused = false;
