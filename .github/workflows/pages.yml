@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
 
       - name: Install test dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-ci.txt
@@ -33,6 +32,13 @@ jobs:
 
       - name: Run offline tool tests
         run: python -m unittest discover -s tests -p "test_*.py" -q
+
+      - name: Run project pipeline smoke test
+        run: |
+          python skills/motiflux/tools/motiflux.py project examples/basic-mark/mark.svg "AI logo animation" work/ci-project
+          python skills/motiflux/tools/motiflux.py validate project work/ci-project/project.json
+          python skills/motiflux/tools/motiflux.py validate artifact-index work/ci-project/artifact-index.json
+          python skills/motiflux/tools/motiflux.py probe work/ci-project/package
 
   deploy:
     needs: validate
