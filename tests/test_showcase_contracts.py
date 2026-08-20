@@ -47,6 +47,25 @@ class ShowcaseGeneratedSurfaceTests(unittest.TestCase):
         self.assertIn("Copy export command", self.html)
         self.assertIn("browser controls never execute shell commands", self.html)
 
+    def test_readme_feature_overview_is_a_playable_4x3_capability_map(self) -> None:
+        manifest_path = SHOWCASE / "output" / "previews" / "motiflux-feature-overview.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        self.assertEqual(manifest["layout"], {"columns": 4, "rows": 3, "cards": 12})
+        self.assertEqual(len(manifest["cards"]), 12)
+        self.assertEqual(len({card["id"] for card in manifest["cards"]}), 12)
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        start = readme.index("<!-- FEATURE_OVERVIEW:START -->")
+        end = readme.index("<!-- FEATURE_OVERVIEW:END -->")
+        overview = readme[start:end]
+        self.assertIn("## Capability overview", overview)
+        self.assertIn("showcase/output/previews/motiflux-feature-overview.gif", overview)
+        with Image.open(SHOWCASE / "output" / "previews" / "motiflux-feature-overview.gif") as gif:
+            self.assertEqual(gif.size, (1280, 688))
+            self.assertEqual(gif.n_frames, 24)
+            first = gif.convert("RGB").tobytes()
+            gif.seek(gif.n_frames - 1)
+            self.assertNotEqual(first, gif.convert("RGB").tobytes())
+
     def test_showcase_exposes_ai_readable_workflow_and_status_ladder(self) -> None:
         for marker in ("workflow-guide", "data-guide-live", "data-guide-detail", "state-ladder", "PREVIEW", "BAKED", "VERIFIED"):
             self.assertIn(marker, self.html)

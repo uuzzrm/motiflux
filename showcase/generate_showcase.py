@@ -11,10 +11,12 @@ import math
 import random
 import sys
 import textwrap
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageSequence
+from PIL import ImageFont
 
 
 ROOT = Path(__file__).resolve().parent
@@ -29,11 +31,19 @@ CATALOG = ROOT.parent / "skills" / "motiflux" / "catalog" / "themes.json"
 PROJECT_README = ROOT.parent / "README.md"
 GITHUB_GALLERY_START = "<!-- GITHUB_GALLERY:START -->"
 GITHUB_GALLERY_END = "<!-- GITHUB_GALLERY:END -->"
+FEATURE_OVERVIEW_START = "<!-- FEATURE_OVERVIEW:START -->"
+FEATURE_OVERVIEW_END = "<!-- FEATURE_OVERVIEW:END -->"
 SOURCE_ANALYSIS = OUTPUT / "source-analysis.json"
 GROWTH_EVIDENCE = OUTPUT / "growth-evidence.json"
+FEATURE_OVERVIEW_GIF = OUTPUT / "previews" / "motiflux-feature-overview.gif"
+FEATURE_OVERVIEW_POSTER = OUTPUT / "previews" / "motiflux-feature-overview-poster.png"
+FEATURE_OVERVIEW_MANIFEST = OUTPUT / "previews" / "motiflux-feature-overview.json"
 ANIMATION_SIZE = (900, 302)
 ANIMATION_FRAME_COUNT = 39
 ANIMATION_FRAME_MS = 90
+FEATURE_OVERVIEW_SIZE = (1280, 688)
+FEATURE_OVERVIEW_FRAME_COUNT = 24
+FEATURE_OVERVIEW_FRAME_MS = 100
 GROWTH_SEQUENCE = ("blank", "spark", "arc", "bar", "monogram", "wordmark", "canonical")
 CANONICAL_HANDOFF_PROGRESS = 1.0
 # Reserve the last encoded beat for the clean canonical handoff.  The final
@@ -59,6 +69,25 @@ GROWTH_STAGE_LABELS = {
     "canonical": "complete Logo",
 }
 GROWTH_DISPLAY_SEQUENCE = tuple(GROWTH_STAGE_LABELS[stage] for stage in GROWTH_SEQUENCE)
+
+# The README overview is intentionally a capability map, not a second theme
+# catalog. The canonical catalog remains the source of truth for all 13
+# routable motion themes. These twelve cards summarize the stable interfaces a
+# consuming agent can use and point at real checked-in artifacts below.
+FEATURE_OVERVIEW_CARDS = (
+    {"id": "source-lock", "index": "01", "eyebrow": "INPUT", "title": "Source lock", "subtitle": "Keep identity fixed", "kind": "source", "accent": "#a8b7ff", "sources": ["showcase/assets/prysai-mark-crop.jpg"]},
+    {"id": "pixel-observation", "index": "02", "eyebrow": "MEASURE", "title": "Pixel observation", "subtitle": "Bounded geometry only", "kind": "observe", "accent": "#79e2a4", "sources": ["showcase/output/source-analysis.json"]},
+    {"id": "role-review", "index": "03", "eyebrow": "REVIEW", "title": "Role review", "subtitle": "Hypotheses stay visible", "kind": "review", "accent": "#ffb86b", "sources": ["showcase/output/source-analysis.json"]},
+    {"id": "theme-routing", "index": "04", "eyebrow": "ROUTE", "title": "Theme routing", "subtitle": "Keyword → trajectory", "kind": "route", "accent": "#9c8cff", "sources": ["skills/motiflux/catalog/themes.json"]},
+    {"id": "motion-plan", "index": "05", "eyebrow": "PLAN", "title": "Motion plan", "subtitle": "Seven visible checkpoints", "kind": "plan", "accent": "#6dd9c0", "sources": ["showcase/assets/animations/prysai-ai-field-blank.png", "showcase/assets/animations/prysai-ai-field-canonical.png"]},
+    {"id": "foreground-growth", "index": "06", "eyebrow": "MOTION", "title": "Foreground growth", "subtitle": "Image → animated result", "kind": "growth", "accent": "#62d7ff", "theme": "ai-field", "sources": ["showcase/assets/animations/prysai-ai-field.gif"]},
+    {"id": "prompt-composer", "index": "07", "eyebrow": "PROMPT", "title": "Prompt composer", "subtitle": "AI-readable request order", "kind": "prompt", "accent": "#d7d2ff", "sources": ["skills/motiflux/guides/prompting.md"]},
+    {"id": "measurable-tuning", "index": "08", "eyebrow": "TUNE", "title": "Measurable tuning", "subtitle": "Color · time · speed", "kind": "tune", "accent": "#ff6f91", "theme": "ai-field", "sources": ["showcase/output/exports/ai-field/export-manifest.json"]},
+    {"id": "static-fallback", "index": "09", "eyebrow": "ACCESS", "title": "Static fallback", "subtitle": "Reduced motion lands safely", "kind": "reduced", "accent": "#b9d8a5", "theme": "accessibility-first", "sources": ["showcase/assets/animations/prysai-accessibility-first-poster.png"]},
+    {"id": "gif-export", "index": "10", "eyebrow": "EXPORT", "title": "GIF export", "subtitle": "Portable baked output", "kind": "gif", "accent": "#e2edf1", "theme": "premium-quiet", "sources": ["showcase/assets/animations/prysai-premium-quiet.gif"]},
+    {"id": "pdf-atlas", "index": "11", "eyebrow": "ATLAS", "title": "PDF atlas", "subtitle": "Static checkpoint review", "kind": "pdf", "accent": "#d7c7a7", "sources": ["showcase/output/pdf/motiflux-theme-atlas.pdf"]},
+    {"id": "evidence-ledger", "index": "12", "eyebrow": "EVIDENCE", "title": "Evidence ledger", "subtitle": "Candidate / baked / verified", "kind": "evidence", "accent": "#ff5c4d", "sources": ["showcase/output/growth-evidence.json"]},
+)
 
 
 def _quantized_gif_duration(duration_ms: int) -> int:
@@ -750,6 +779,270 @@ def derive_preview_assets() -> None:
     transparent = Image.new("RGBA", crop.size, (255, 255, 255, 0))
     transparent.putalpha(alpha)
     transparent.save(MARK_PNG, optimize=True)
+
+
+@lru_cache(maxsize=32)
+def _overview_font(size: int, *, bold: bool = False, mono: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+    """Load a portable overview font, falling back to Pillow's built-in font."""
+
+    names = []
+    if mono:
+        names.extend(("C:/Windows/Fonts/consola.ttf", "C:/Windows/Fonts/cour.ttf"))
+        names.extend(("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", "/usr/share/fonts/truetype/liberation2/LiberationMono-Regular.ttf"))
+    elif bold:
+        names.extend(("C:/Windows/Fonts/segoeuib.ttf", "C:/Windows/Fonts/arialbd.ttf"))
+        names.extend(("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"))
+    else:
+        names.extend(("C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"))
+        names.extend(("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf"))
+    for name in names:
+        try:
+            return ImageFont.truetype(name, size=size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
+
+
+def _overview_text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], value: str, *, size: int = 12, fill: tuple[int, ...] = (242, 241, 233), bold: bool = False, mono: bool = False, anchor: str | None = None) -> None:
+    draw.text(xy, str(value), font=_overview_font(size, bold=bold, mono=mono), fill=fill, anchor=anchor)
+
+
+def _overview_paste_contained(canvas: Image.Image, image: Image.Image, box: tuple[int, int, int, int], *, background: tuple[int, int, int, int] = (8, 10, 9, 255)) -> None:
+    """Place a real project asset inside an overview media box without distortion."""
+
+    x, y, width, height = box
+    canvas.alpha_composite(Image.new("RGBA", (width, height), background), (x, y))
+    copy = image.convert("RGBA").copy()
+    copy.thumbnail((max(1, width - 10), max(1, height - 10)), Image.Resampling.LANCZOS)
+    position = (x + (width - copy.width) // 2, y + (height - copy.height) // 2)
+    canvas.alpha_composite(copy, position)
+
+
+def _overview_gif_frame(frames: list[Image.Image], frame_index: int) -> Image.Image:
+    if not frames:
+        return Image.new("RGB", (1, 1), (8, 10, 9))
+    return frames[frame_index % len(frames)]
+
+
+def _overview_source_boxes(source_structure: dict[str, object]) -> list[tuple[str, tuple[int, int, int, int]]]:
+    boxes = source_structure.get("boxes", {}) if isinstance(source_structure, dict) else {}
+    if not isinstance(boxes, dict):
+        return []
+    result = []
+    for name, value in boxes.items():
+        if isinstance(value, (tuple, list)) and len(value) == 4:
+            result.append((str(name), tuple(int(item) for item in value)))
+    return result
+
+
+def _overview_draw_source_map(canvas: Image.Image, box: tuple[int, int, int, int], source: Image.Image, source_structure: dict[str, object], *, review: bool = False, pulse: float = 0.0) -> None:
+    """Show the supplied source with measured boxes; never imply semantic recognition."""
+
+    _overview_paste_contained(canvas, source, box)
+    x, y, width, height = box
+    scale = min((width - 10) / source.width, (height - 10) / source.height)
+    draw_width = round(source.width * scale)
+    draw_height = round(source.height * scale)
+    left = x + (width - draw_width) // 2
+    top = y + (height - draw_height) // 2
+    accent = (255, 184, 107, 230) if review else (121, 226, 164, 220)
+    if review:
+        accent = (*accent[:3], max(95, round(150 + 70 * pulse)))
+    for index, (name, bounds) in enumerate(_overview_source_boxes(source_structure)):
+        sx, sy, sw, sh = bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]
+        rectangle = (left + round(sx * scale), top + round(sy * scale), left + round((sx + sw) * scale), top + round((sy + sh) * scale))
+        ImageDraw.Draw(canvas, "RGBA").rectangle(rectangle, outline=accent, width=1)
+        if index < 3:
+            _overview_text(ImageDraw.Draw(canvas, "RGBA"), (rectangle[0] + 2, rectangle[1] + 2), "?" if review else "•", size=9, fill=accent, bold=True, mono=True)
+
+
+def _overview_draw_route(canvas: Image.Image, box: tuple[int, int, int, int], theme_by_id: dict[str, dict], frame_index: int) -> None:
+    x, y, width, height = box
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    ai = theme_by_id.get("ai-field", {})
+    accent = _rgb(str(ai.get("accent", "#9c8cff")))
+    nodes = [(x + 28, y + height // 2), (x + width // 2, y + height // 2), (x + width - 32, y + height // 2)]
+    labels = ("keyword", "ai-field", "trajectory")
+    values = ("AI", "route", "converge")
+    for index in range(len(nodes) - 1):
+        start = nodes[index]
+        end = nodes[index + 1]
+        draw.line((*start, *end), fill=(*accent, 165), width=2)
+        progress = ((frame_index * 5 + index * 17) % 100) / 100
+        px = round(start[0] + (end[0] - start[0]) * progress)
+        draw.ellipse((px - 3, start[1] - 3, px + 3, start[1] + 3), fill=(*accent, 245))
+    for index, (node, label, value) in enumerate(zip(nodes, labels, values)):
+        draw.ellipse((node[0] - 8, node[1] - 8, node[0] + 8, node[1] + 8), outline=(*accent, 235), width=2)
+        _overview_text(draw, (node[0], y + 18), label, size=9, fill=(*accent, 235), mono=True, anchor="mm")
+        _overview_text(draw, (node[0], y + height - 16), value, size=10, fill=(242, 241, 233, 235), bold=True, anchor="mm")
+    _overview_text(draw, (x + 10, y + height - 5), "13 catalog routes / 1 selected trajectory", size=8, fill=(162, 166, 159, 255), mono=True, anchor="ls")
+
+
+def _overview_draw_plan(canvas: Image.Image, box: tuple[int, int, int, int], stage_images: dict[str, Image.Image], frame_index: int) -> None:
+    x, y, width, height = box
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    stages = ("blank", "arc", "monogram", "canonical")
+    gap = 5
+    tile_width = (width - gap * 3) // 4
+    tile_height = height - 22
+    for index, stage in enumerate(stages):
+        tile_x = x + index * (tile_width + gap)
+        _overview_paste_contained(canvas, stage_images[stage], (tile_x, y, tile_width, tile_height))
+        active = index == (frame_index // 4) % len(stages)
+        if active:
+            draw.rectangle((tile_x, y, tile_x + tile_width - 1, y + tile_height - 1), outline=(156, 140, 255, 245), width=2)
+        _overview_text(draw, (tile_x + tile_width // 2, y + tile_height + 8), stage, size=7, fill=(242, 241, 233, 220), mono=True, anchor="mm")
+
+
+def _overview_draw_prompt(canvas: Image.Image, box: tuple[int, int, int, int], frame_index: int) -> None:
+    x, y, width, height = box
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    lines = ("source + invariant", "→ surface", "→ one route", "→ growth + tuning", "→ output + proof")
+    for index, line in enumerate(lines):
+        line_y = y + 14 + index * 16
+        active = index == (frame_index // 5) % len(lines)
+        color = (215, 210, 255, 255) if active else (162, 166, 159, 225)
+        _overview_text(draw, (x + 12, line_y), line, size=9, fill=color, mono=True)
+    draw.rectangle((x + width - 54, y + 12, x + width - 18, y + height - 12), outline=(215, 210, 255, 160), width=1)
+    _overview_text(draw, (x + width - 36, y + height // 2), "AI", size=16, fill=(215, 210, 255, 220), bold=True, mono=True, anchor="mm")
+
+
+def _overview_draw_tune(canvas: Image.Image, box: tuple[int, int, int, int], frame: Image.Image, frame_index: int) -> None:
+    _overview_paste_contained(canvas, frame, box)
+    x, y, width, height = box
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    chips = ("#0B0D12", "1600ms", "1.25x")
+    chip_x = x + 8
+    for index, chip in enumerate(chips):
+        chip_width = 62 if index == 0 else 50
+        draw.rounded_rectangle((chip_x, y + height - 24, chip_x + chip_width, y + height - 8), radius=3, fill=(7, 9, 8, 210), outline=(156, 140, 255, 170), width=1)
+        _overview_text(draw, (chip_x + chip_width // 2, y + height - 16), chip, size=7, fill=(242, 241, 233, 235), mono=True, anchor="mm")
+        chip_x += chip_width + 5
+    if frame_index % 8 < 4:
+        draw.line((x + width - 34, y + 10, x + width - 12, y + 10), fill=(156, 140, 255, 220), width=2)
+
+
+def _overview_draw_evidence(canvas: Image.Image, box: tuple[int, int, int, int], evidence: dict, frame_index: int) -> None:
+    x, y, width, height = box
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    themes = evidence.get("themes", []) if isinstance(evidence, dict) else []
+    route_count = len(themes) if isinstance(themes, list) else 0
+    comparisons = evidence.get("cross_theme_comparison", {}) if isinstance(evidence, dict) else {}
+    fingerprints = comparisons.get("progress_points", []) if isinstance(comparisons, dict) else []
+    unique_count = fingerprints[len(fingerprints) // 2].get("unique_trajectory_fingerprint_count", route_count) if fingerprints and isinstance(fingerprints[len(fingerprints) // 2], dict) else route_count
+    _overview_text(draw, (x + 12, y + 18), "CANDIDATE", size=11, fill=(255, 92, 77, 255), bold=True, mono=True)
+    _overview_text(draw, (x + width - 12, y + 18), "needs-review", size=8, fill=(162, 166, 159, 255), mono=True, anchor="ra")
+    metrics = (("routes", route_count, 13, (156, 140, 255, 235)), ("trajectories", unique_count, 13, (121, 226, 164, 235)), ("canonical", 1, 1, (255, 184, 107, 235)))
+    for index, (label, value, total, color) in enumerate(metrics):
+        bar_y = y + 38 + index * 20
+        _overview_text(draw, (x + 12, bar_y), f"{label:<12} {value:02d}/{total:02d}", size=8, fill=(215, 217, 208, 230), mono=True)
+        bar_left, bar_right = x + 112, x + width - 12
+        draw.line((bar_left, bar_y + 4, bar_right, bar_y + 4), fill=(48, 53, 50, 255), width=4)
+        fill_right = bar_left + round((bar_right - bar_left) * min(1, value / max(1, total)))
+        draw.line((bar_left, bar_y + 4, fill_right, bar_y + 4), fill=color, width=4)
+    marker_x = x + 12 + ((frame_index * 17) % max(1, width - 24))
+    draw.ellipse((marker_x - 2, y + height - 18, marker_x + 2, y + height - 14), fill=(255, 92, 77, 220))
+
+
+def build_feature_overview(data: dict, source_structure: dict[str, object]) -> Path:
+    """Bake the README's 4×3 capability overview from checked-in assets."""
+
+    FEATURE_OVERVIEW_GIF.parent.mkdir(parents=True, exist_ok=True)
+    source = Image.open(CROP_JPG).convert("RGB")
+    theme_by_id = {str(theme["id"]): theme for theme in data["themes"]}
+    gif_frames: dict[str, list[Image.Image]] = {}
+    for theme_id in {str(card["theme"]) for card in FEATURE_OVERVIEW_CARDS if card.get("theme")}:
+        gif_frames[theme_id], _ = _read_encoded_gif(ANIMATIONS / f"prysai-{theme_id}.gif")
+    stage_images = {
+        stage: Image.open(ANIMATIONS / f"prysai-ai-field-{stage}.png").convert("RGBA")
+        for stage in ("blank", "arc", "monogram", "canonical")
+    }
+    posters = {
+        "accessibility-first": Image.open(ANIMATIONS / "prysai-accessibility-first-poster.png").convert("RGBA"),
+    }
+    atlas_cover = Image.open(OUTPUT / "previews" / "atlas-cover.png").convert("RGBA")
+    evidence = json.loads(GROWTH_EVIDENCE.read_text(encoding="utf-8"))
+    frames: list[Image.Image] = []
+    margin_x, top, gap_x, gap_y = 28, 44, 12, 10
+    card_width = (FEATURE_OVERVIEW_SIZE[0] - margin_x * 2 - gap_x * 3) // 4
+    card_height = (FEATURE_OVERVIEW_SIZE[1] - top - 18 - gap_y * 2) // 3
+    for frame_index in range(FEATURE_OVERVIEW_FRAME_COUNT):
+        canvas = Image.new("RGBA", FEATURE_OVERVIEW_SIZE, (7, 9, 8, 255))
+        draw = ImageDraw.Draw(canvas, "RGBA")
+        _overview_text(draw, (28, 14), "MOTIFLUX / V1", size=11, fill=(242, 241, 233, 255), bold=True, mono=True)
+        _overview_text(draw, (FEATURE_OVERVIEW_SIZE[0] - 28, 15), "12 CAPABILITIES · 1 SOURCE · 13 ROUTES", size=9, fill=(162, 166, 159, 235), mono=True, anchor="ra")
+        draw.line((28, 34, FEATURE_OVERVIEW_SIZE[0] - 28, 34), fill=(48, 53, 50, 255), width=1)
+        active_index = (frame_index // 2) % len(FEATURE_OVERVIEW_CARDS)
+        for card_index, card in enumerate(FEATURE_OVERVIEW_CARDS):
+            row, column = divmod(card_index, 4)
+            card_x = margin_x + column * (card_width + gap_x)
+            card_y = top + row * (card_height + gap_y)
+            accent = _rgb(str(card["accent"]))
+            active = card_index == active_index
+            draw.rounded_rectangle((card_x + 2, card_y + 2, card_x + card_width + 2, card_y + card_height + 2), radius=5, fill=(0, 0, 0, 120))
+            draw.rounded_rectangle((card_x, card_y, card_x + card_width, card_y + card_height), radius=5, fill=(13, 16, 15, 255), outline=(*accent, 230 if active else 105), width=2 if active else 1)
+            _overview_text(draw, (card_x + 10, card_y + 10), card["index"], size=9, fill=(*accent, 255), bold=True, mono=True)
+            _overview_text(draw, (card_x + 38, card_y + 10), card["eyebrow"], size=7, fill=(162, 166, 159, 230), mono=True)
+            _overview_text(draw, (card_x + 10, card_y + 25), card["title"], size=13, fill=(242, 241, 233, 255), bold=True)
+            _overview_text(draw, (card_x + card_width - 10, card_y + 27), card["subtitle"], size=7, fill=(162, 166, 159, 230), mono=True, anchor="ra")
+            media = (card_x + 9, card_y + 48, card_width - 18, 104)
+            kind = card["kind"]
+            if kind == "source":
+                _overview_paste_contained(canvas, source, media)
+            elif kind == "observe":
+                _overview_draw_source_map(canvas, media, source, source_structure, pulse=(frame_index % 8) / 7)
+            elif kind == "review":
+                _overview_draw_source_map(canvas, media, source, source_structure, review=True, pulse=(frame_index % 8) / 7)
+            elif kind == "route":
+                _overview_paste_contained(canvas, Image.new("RGBA", (1, 1), (8, 10, 9, 255)), media)
+                _overview_draw_route(canvas, media, theme_by_id, frame_index)
+            elif kind == "plan":
+                _overview_draw_plan(canvas, media, stage_images, frame_index)
+            elif kind in {"growth", "gif"}:
+                theme_id = str(card["theme"])
+                _overview_paste_contained(canvas, _overview_gif_frame(gif_frames[theme_id], frame_index * 2 + card_index * 3), media)
+            elif kind == "prompt":
+                _overview_paste_contained(canvas, Image.new("RGBA", (1, 1), (8, 10, 9, 255)), media)
+                _overview_draw_prompt(canvas, media, frame_index)
+            elif kind == "tune":
+                _overview_draw_tune(canvas, media, _overview_gif_frame(gif_frames["ai-field"], frame_index * 2), frame_index)
+            elif kind == "reduced":
+                _overview_paste_contained(canvas, posters["accessibility-first"], media)
+                _overview_text(draw, (media[0] + 10, media[1] + media[3] - 10), "static-canonical", size=8, fill=(185, 216, 165, 230), mono=True)
+            elif kind == "pdf":
+                _overview_paste_contained(canvas, atlas_cover, media)
+            elif kind == "evidence":
+                _overview_paste_contained(canvas, Image.new("RGBA", (1, 1), (8, 10, 9, 255)), media)
+                _overview_draw_evidence(canvas, media, evidence, frame_index)
+            else:
+                _overview_paste_contained(canvas, source, media)
+            draw = ImageDraw.Draw(canvas, "RGBA")
+            draw.line((card_x + 10, card_y + 162, card_x + card_width - 10, card_y + 162), fill=(48, 53, 50, 255), width=1)
+            source_count = len(card.get("sources", []))
+            _overview_text(draw, (card_x + 10, card_y + 178), f"{source_count} checked-in source{'s' if source_count != 1 else ''}", size=7, fill=(162, 166, 159, 225), mono=True)
+            status = "FOCUS" if active else "READY"
+            _overview_text(draw, (card_x + card_width - 10, card_y + 178), status, size=7, fill=(*accent, 230 if active else 150), mono=True, anchor="ra")
+        _overview_text(draw, (FEATURE_OVERVIEW_SIZE[0] - 28, FEATURE_OVERVIEW_SIZE[1] - 8), f"CAPABILITY {active_index + 1:02d} / 12", size=8, fill=(162, 166, 159, 230), mono=True, anchor="rs")
+        frames.append(canvas.convert("RGB"))
+    durations = [FEATURE_OVERVIEW_FRAME_MS] * len(frames)
+    frames[0].save(FEATURE_OVERVIEW_GIF, save_all=True, append_images=frames[1:], duration=durations, loop=0, optimize=True, disposal=2)
+    frames[-1].save(FEATURE_OVERVIEW_POSTER, format="PNG", optimize=True)
+    manifest = {
+        "schema_version": "1.0",
+        "status": "baked",
+        "renderer": "showcase/generate_showcase.py",
+        "output": "showcase/output/previews/motiflux-feature-overview.gif",
+        "poster": "showcase/output/previews/motiflux-feature-overview-poster.png",
+        "size": list(FEATURE_OVERVIEW_SIZE),
+        "frame_count": FEATURE_OVERVIEW_FRAME_COUNT,
+        "duration_ms": FEATURE_OVERVIEW_FRAME_COUNT * FEATURE_OVERVIEW_FRAME_MS,
+        "layout": {"columns": 4, "rows": 3, "cards": len(FEATURE_OVERVIEW_CARDS)},
+        "cards": [{key: card[key] for key in ("id", "index", "eyebrow", "title", "subtitle", "kind", "sources")} for card in FEATURE_OVERVIEW_CARDS],
+        "source_policy": "real checked-in project assets; no third-party logos; capability cards do not replace the 13-theme catalog",
+        "not_run": ["browser-pixel-review", "human-raster-role-review"],
+    }
+    FEATURE_OVERVIEW_MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return FEATURE_OVERVIEW_GIF
 
 
 def _rgb(hex_color: str) -> tuple[int, int, int]:
@@ -4463,6 +4756,35 @@ def write_github_gallery(data: dict) -> None:
     PROJECT_README.write_text(updated, encoding="utf-8")
 
 
+def github_feature_overview() -> str:
+    """Build the compact README capability overview block."""
+
+    return "\n".join([
+        "## Capability overview",
+        "",
+        "This animated 4 × 3 map shows 12 stable Motiflux capabilities using real checked-in project assets. It is a capability overview, not a replacement for the complete 13-theme motion catalog below.",
+        "",
+        '<p align="center"><img src="showcase/output/previews/motiflux-feature-overview.gif" alt="Motiflux V1 animated overview of twelve capabilities in a four by three grid" width="100%"></p>',
+        "",
+        "<sub>Source lock · pixel observation · role review · theme routing · motion plan · foreground growth · prompt composer · measurable tuning · static fallback · GIF export · PDF atlas · evidence ledger</sub>",
+    ])
+
+
+def write_feature_overview() -> None:
+    """Replace only the generated capability overview in the root README."""
+
+    readme = PROJECT_README.read_text(encoding="utf-8")
+    if readme.count(FEATURE_OVERVIEW_START) != 1 or readme.count(FEATURE_OVERVIEW_END) != 1:
+        raise ValueError("project README must contain exactly one feature overview marker pair")
+    start = readme.index(FEATURE_OVERVIEW_START)
+    end = readme.index(FEATURE_OVERVIEW_END, start)
+    if end < start:
+        raise ValueError("project README feature overview markers are out of order")
+    replacement = f"{FEATURE_OVERVIEW_START}\n\n{github_feature_overview()}\n\n{FEATURE_OVERVIEW_END}"
+    updated = readme[:start] + replacement + readme[end + len(FEATURE_OVERVIEW_END):]
+    PROJECT_README.write_text(updated, encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--skip-pdf", action="store_true", help="write HTML assets only")
@@ -4506,8 +4828,10 @@ def main() -> None:
     build_animation_exports(data, source_structure)
     data["export_options"] = dict(EXPORT_OPTIONS)
     write_snapshot(data)
+    build_feature_overview(data, source_structure)
     build_html(data)
     write_readme(data)
+    write_feature_overview()
     write_github_gallery(data)
     if not args.skip_pdf:
         pdf_path = build_pdf(data)

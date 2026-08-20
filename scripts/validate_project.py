@@ -209,6 +209,9 @@ def validate_showcase() -> None:
         showcase / "assets" / "animations" / "prysai-ai-field.gif",
         showcase / "output" / "pdf" / "motiflux-theme-atlas.pdf",
         showcase / "output" / "growth-evidence.json",
+        showcase / "output" / "previews" / "motiflux-feature-overview.gif",
+        showcase / "output" / "previews" / "motiflux-feature-overview-poster.png",
+        showcase / "output" / "previews" / "motiflux-feature-overview.json",
     )
     for path in required:
         require_file(path)
@@ -257,6 +260,55 @@ def validate_showcase() -> None:
     ):
         if required_marker not in index and required_marker not in (showcase / "styles.css").read_text(encoding="utf-8"):
             fail(f"showcase is missing required interaction/accessibility marker: {required_marker}")
+
+    validate_feature_overview()
+
+
+def validate_feature_overview() -> None:
+    """Validate the README's generated 12-card capability overview."""
+
+    manifest_path = ROOT / "showcase" / "output" / "previews" / "motiflux-feature-overview.json"
+    gif_path = ROOT / "showcase" / "output" / "previews" / "motiflux-feature-overview.gif"
+    poster_path = ROOT / "showcase" / "output" / "previews" / "motiflux-feature-overview-poster.png"
+    readme_path = ROOT / "README.md"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("status") != "baked":
+        fail("feature overview manifest must be baked")
+    if manifest.get("layout") != {"columns": 4, "rows": 3, "cards": 12}:
+        fail("feature overview must declare a 4x3 layout with 12 cards")
+    cards = manifest.get("cards")
+    if not isinstance(cards, list) or len(cards) != 12:
+        fail("feature overview manifest must contain exactly 12 cards")
+    card_ids = [card.get("id") for card in cards if isinstance(card, dict)]
+    if len(card_ids) != 12 or len(set(card_ids)) != 12:
+        fail("feature overview card ids must be present and unique")
+    for card in cards:
+        if not isinstance(card, dict):
+            fail("feature overview contains an invalid card record")
+        sources = card.get("sources")
+        if not isinstance(sources, list) or not sources:
+            fail(f"feature overview card has no checked-in source: {card.get('id')}")
+        for source in sources:
+            if not (ROOT / str(source)).is_file():
+                fail(f"feature overview source is missing: {source}")
+    if gif_path.read_bytes()[:6] not in {b"GIF87a", b"GIF89a"}:
+        fail("feature overview output must be a GIF")
+    if poster_path.read_bytes()[:8] != b"\x89PNG\r\n\x1a\n":
+        fail("feature overview poster must be a PNG")
+    readme = readme_path.read_text(encoding="utf-8")
+    start_marker = "<!-- FEATURE_OVERVIEW:START -->"
+    end_marker = "<!-- FEATURE_OVERVIEW:END -->"
+    if readme.count(start_marker) != 1 or readme.count(end_marker) != 1:
+        fail("README must contain exactly one feature overview marker pair")
+    start = readme.index(start_marker)
+    end = readme.index(end_marker)
+    if end <= start:
+        fail("README feature overview markers must be in order")
+    overview = readme[start:end]
+    if "## Capability overview" not in overview or "showcase/output/previews/motiflux-feature-overview.gif" not in overview:
+        fail("README feature overview must include the generated GIF")
+    if start > readme.index("## What is included"):
+        fail("README feature overview must appear before the included-files section")
 
 
 def validate_github_gallery() -> None:

@@ -11,6 +11,18 @@ Status: public preview · Motiflux V1 · plugin release `1.0.0`
 
 Live showcase: [uuzzrm.github.io/motiflux](https://uuzzrm.github.io/motiflux/) · [source repository](https://github.com/uuzzrm/motiflux)
 
+<!-- FEATURE_OVERVIEW:START -->
+
+## Capability overview
+
+This animated 4 × 3 map shows 12 stable Motiflux capabilities using real checked-in project assets. It is a capability overview, not a replacement for the complete 13-theme motion catalog below.
+
+<p align="center"><img src="showcase/output/previews/motiflux-feature-overview.gif" alt="Motiflux V1 animated overview of twelve capabilities in a four by three grid" width="100%"></p>
+
+<sub>Source lock · pixel observation · role review · theme routing · motion plan · foreground growth · prompt composer · measurable tuning · static fallback · GIF export · PDF atlas · evidence ledger</sub>
+
+<!-- FEATURE_OVERVIEW:END -->
+
 ## What is included
 
 - `.codex-plugin/plugin.json` — Codex plugin manifest and project metadata.

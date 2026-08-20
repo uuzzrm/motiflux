@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "status": "baked",
+  "renderer": "showcase/generate_showcase.py",
+  "output": "showcase/output/previews/motiflux-feature-overview.gif",
+  "poster": "showcase/output/previews/motiflux-feature-overview-poster.png",
+  "size": [
+    1280,
+    688
+  ],
+  "frame_count": 24,
+  "duration_ms": 2400,
+  "layout": {
+    "columns": 4,
+    "rows": 3,
+    "cards": 12
+  },
+  "cards": [
+    {
+      "id": "source-lock",
+      "index": "01",
+      "eyebrow": "INPUT",
+      "title": "Source lock",
+      "subtitle": "Keep identity fixed",
+      "kind": "source",
+      "sources": [
+        "showcase/assets/prysai-mark-crop.jpg"
+      ]
+    },
+    {
+      "id": "pixel-observation",
+      "index": "02",
+      "eyebrow": "MEASURE",
+      "title": "Pixel observation",
+      "subtitle": "Bounded geometry only",
+      "kind": "observe",
+      "sources": [
+        "showcase/output/source-analysis.json"
+      ]
+    },
+    {
+      "id": "role-review",
+      "index": "03",
+      "eyebrow": "REVIEW",
+      "title": "Role review",
+      "subtitle": "Hypotheses stay visible",
+      "kind": "review",
+      "sources": [
+        "showcase/output/source-analysis.json"
+      ]
+    },
+    {
+      "id": "theme-routing",
+      "index": "04",
+      "eyebrow": "ROUTE",
+      "title": "Theme routing",
+      "subtitle": "Keyword → trajectory",
+      "kind": "route",
+      "sources": [
+        "skills/motiflux/catalog/themes.json"
+      ]
+    },
+    {
+      "id": "motion-plan",
+      "index": "05",
+      "eyebrow": "PLAN",
+      "title": "Motion plan",
+      "subtitle": "Seven visible checkpoints",
+      "kind": "plan",
+      "sources": [
+        "showcase/assets/animations/prysai-ai-field-blank.png",
+        "showcase/assets/animations/prysai-ai-field-canonical.png"
+      ]
+    },
+    {
+      "id": "foreground-growth",
+      "index": "06",
+      "eyebrow": "MOTION",
+      "title": "Foreground growth",
+      "subtitle": "Image → animated result",
+      "kind": "growth",
+      "sources": [
+        "showcase/assets/animations/prysai-ai-field.gif"
+      ]
+    },
+    {
+      "id": "prompt-composer",
+      "index": "07",
+      "eyebrow": "PROMPT",
+      "title": "Prompt composer",
+      "subtitle": "AI-readable request order",
+      "kind": "prompt",
+      "sources": [
+        "skills/motiflux/guides/prompting.md"
+      ]
+    },
+    {
+      "id": "measurable-tuning",
+      "index": "08",
+      "eyebrow": "TUNE",
+      "title": "Measurable tuning",
+      "subtitle": "Color · time · speed",
+      "kind": "tune",
+      "sources": [
+        "showcase/output/exports/ai-field/export-manifest.json"
+      ]
+    },
+    {
+      "id": "static-fallback",
+      "index": "09",
+      "eyebrow": "ACCESS",
+      "title": "Static fallback",
+      "subtitle": "Reduced motion lands safely",
+      "kind": "reduced",
+      "sources": [
+        "showcase/assets/animations/prysai-accessibility-first-poster.png"
+      ]
+    },
+    {
+      "id": "gif-export",
+      "index": "10",
+      "eyebrow": "EXPORT",
+      "title": "GIF export",
+      "subtitle": "Portable baked output",
+      "kind": "gif",
+      "sources": [
+        "showcase/assets/animations/prysai-premium-quiet.gif"
+      ]
+    },
+    {
+      "id": "pdf-atlas",
+      "index": "11",
+      "eyebrow": "ATLAS",
+      "title": "PDF atlas",
+      "subtitle": "Static checkpoint review",
+      "kind": "pdf",
+      "sources": [
+        "showcase/output/pdf/motiflux-theme-atlas.pdf"
+      ]
+    },
+    {
+      "id": "evidence-ledger",
+      "index": "12",
+      "eyebrow": "EVIDENCE",
+      "title": "Evidence ledger",
+      "subtitle": "Candidate / baked / verified",
+      "kind": "evidence",
+      "sources": [
+        "showcase/output/growth-evidence.json"
+      ]
+    }
+  ],
+  "source_policy": "real checked-in project assets; no third-party logos; capability cards do not replace the 13-theme catalog",
+  "not_run": [
+    "browser-pixel-review",
+    "human-raster-role-review"
+  ]
+}
